@@ -123,6 +123,8 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
+            if (__instance.dead) return;
+            
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
             VoiceManager.PlayRandomVoice(__instance, "Gutterman",
