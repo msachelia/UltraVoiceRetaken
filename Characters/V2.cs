@@ -339,7 +339,7 @@ namespace UltraVoice.Characters
 
         static IEnumerator PlayEscape(V2 v2)
         {
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1f);
 
             VoiceManager.CreateVoiceSource(
                 v2,
@@ -369,7 +369,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(V2 __instance, ref DamageData data)
         {
-            if (data.damage < 3f)
+            if (data.damage <= 2f)
                 return;
 
             if (__instance.dead)
@@ -379,9 +379,6 @@ namespace UltraVoice.Characters
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 0.1f))
-                return;
-
-            if (V2Character.PainClips == null || V2Character.PainClips.Length == 0)
                 return;
 
             int i = UnityEngine.Random.Range(0, V2Character.PainClips.Length);
@@ -468,7 +465,7 @@ namespace UltraVoice.Characters
             VoiceManager.ShowSubtitle("Ah, so glad you could make it", src);
 
             if (v2 == null || !src.isPlaying) yield break;
-            yield return new WaitForSeconds(2.75f);
+            yield return new WaitForSeconds(2.65f);
 
             VoiceManager.ShowSubtitle("You took something from me, you know", src);
 

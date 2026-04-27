@@ -162,8 +162,7 @@ namespace UltraVoice.Characters
             else
                 VoiceManager.PlayRandomVoice(__instance, "Ferryman",
                     FerrymanCharacter.SpawnClips,
-                    FerrymanCharacter.SpawnSubs,
-                    true
+                    FerrymanCharacter.SpawnSubs
                 );
 
             static IEnumerator PlayNoCoin(Ferryman ferry)
@@ -363,9 +362,6 @@ namespace UltraVoice.Characters
                 return;
 
             var player = MonoSingleton<NewMovement>.Instance;
-
-            if (player == null)
-                return;
 
             int id = __instance.GetInstanceID();
 

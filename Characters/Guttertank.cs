@@ -146,9 +146,6 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
-            if (__instance == null || __instance.dead)
-                return;
-
             UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
                             GuttertankCharacter.TripPainClips,
@@ -163,6 +160,8 @@ namespace UltraVoice.Characters
 
         static IEnumerator DelayedPunchTripVox(Guttertank tank)
         {
+            if (tank.dead || tank == null) yield break;
+
             yield return new WaitForSeconds(0.75f);
 
             VoiceManager.PlayRandomVoice(tank, "Guttertank",
