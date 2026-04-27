@@ -15,7 +15,7 @@ namespace UltraVoice.Utilities
         {
             return enemyType switch
             {
-                EnemyType.Swordsmachine => new UnityEngine.Color(0.91f, 0.6f, 0.05f),
+                EnemyType.Swordsmachine => new UnityEngine.Color(0.91f, 0.6f, 0.05f),   
                 EnemyType.Streetcleaner => new UnityEngine.Color(0.82f, 0.30f, 0.09f),
                 EnemyType.Cerberus => new UnityEngine.Color(0.65f, 0.65f, 0.65f),
                 EnemyType.Mindflayer => new UnityEngine.Color(0.26f, 0.89f, 0.74f),
@@ -25,6 +25,8 @@ namespace UltraVoice.Utilities
                 EnemyType.Guttertank => new UnityEngine.Color(0.8f, 0.07f, 0.07f),
                 EnemyType.Mannequin => new UnityEngine.Color(0.91f, 0.91f, 0.91f),
                 EnemyType.Providence => new UnityEngine.Color(0.9f, 0.79f, 0.86f),
+                EnemyType.Turret => new UnityEngine.Color(0.51f, 0.68f, 0.1f),
+                EnemyType.MaliciousFace => new UnityEngine.Color(0.76f, 0.66f, 0.56f),
                 _ => UnityEngine.Color.white
             };
         }
@@ -98,7 +100,9 @@ namespace UltraVoice.Utilities
             string subtitle = null,
             bool shouldInterrupt = false,
             UnityEngine.Color? subtitleColor = null,
-            float pitch = 1f
+            float pitch = 1f,
+            float spatialBlend = 1f,
+            float volumeMult = 1f
         )
         {
             if (enemy == null || clip == null)
@@ -129,13 +133,12 @@ namespace UltraVoice.Utilities
             var src = obj.AddComponent<AudioSource>();
 
             src.clip = clip;
-            src.spatialBlend = 1f;
+            src.spatialBlend = spatialBlend;
             src.volume = UltraVoicePlugin.VoiceVolume.value;
-            src.volume *= 2.5f;
             src.pitch = pitch;
             src.minDistance = 50f;
             src.maxDistance = 200f;
-            src.dopplerLevel = 0;
+            src.dopplerLevel = 0.25f;
 
             var mixer = MonoSingleton<AudioMixerController>.Instance;
             if (mixer != null)
