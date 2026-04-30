@@ -135,6 +135,7 @@ namespace UltraVoice.Utilities
             src.clip = clip;
             src.spatialBlend = spatialBlend;
             src.volume = UltraVoicePlugin.VoiceVolume.value;
+            src.volume *= volumeMult;
             src.pitch = pitch;
             src.minDistance = 50f;
             src.maxDistance = 200f;
