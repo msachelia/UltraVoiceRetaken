@@ -27,6 +27,7 @@ namespace UltraVoice.Utilities
                 EnemyType.Providence => new UnityEngine.Color(0.9f, 0.79f, 0.86f),
                 EnemyType.Turret => new UnityEngine.Color(0.51f, 0.68f, 0.1f),
                 EnemyType.MaliciousFace => new UnityEngine.Color(0.76f, 0.66f, 0.56f),
+                EnemyType.MirrorReaper => new UnityEngine.Color(0.9f, 0.85f, 0.76f),
                 _ => UnityEngine.Color.white
             };
         }
@@ -136,9 +137,9 @@ namespace UltraVoice.Utilities
             src.spatialBlend = spatialBlend;
             src.volume = UltraVoicePlugin.VoiceVolume.value;
             src.volume *= volumeMult;
-            src.pitch = pitch;
+            src.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
             src.minDistance = 50f;
-            src.maxDistance = 200f;
+            src.maxDistance = 120f;
             src.dopplerLevel = 0.25f;
 
             var mixer = MonoSingleton<AudioMixerController>.Instance;
