@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using HarmonyLib;
 using PluginConfig.API;
 using PluginConfig.API.Fields;
@@ -12,7 +12,7 @@ using UltraVoice.Utilities;
 
 namespace UltraVoice
 {
-    [BepInPlugin("com.yourname.ultravoice", "UltraVoice", "0.9.8")]
+    [BepInPlugin("com.yourname.ultravoice", "UltraVoice", "1.0.0")]
     [BepInDependency("com.eternalUnion.pluginConfigurator")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
@@ -35,10 +35,13 @@ namespace UltraVoice
         public static BoolField SentryVoiceEnabled;
         public static BoolField MauriceVoiceEnabled;
         public static BoolField EarthmoverVoiceEnabled;
+        public static BoolField MirrorReaperVoiceEnabled;
+        public static BoolField PowerSubtitleColorEnabled;
         public static FloatField VoiceCooldown;
         public static FloatField VoiceVolume;
         public static EnumField<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
         public static ConfigPanel TogglesPanel;
+        public static ConfigPanel SubtitleColorPanel;
         public static ConfigPanel SlidersPanel;
         public static ConfigPanel ActorPanel;
 
@@ -62,6 +65,7 @@ namespace UltraVoice
 
             // Create panels
             TogglesPanel = new ConfigPanel(config.rootPanel, "Enemy Line Toggles", "toggles");
+            SubtitleColorPanel = new ConfigPanel(config.rootPanel, "Subtitle Color Toggles", "subtitlecolor");
             SlidersPanel = new ConfigPanel(config.rootPanel, "Audio Settings", "sliders");
             ActorPanel = new ConfigPanel(config.rootPanel, "Voice Actors", "actors");
 
@@ -164,6 +168,20 @@ namespace UltraVoice
                 true
             );
 
+            MirrorReaperVoiceEnabled = new BoolField(
+                TogglesPanel,
+                "Enable Mirror Reaper Voice Lines",
+                "mirrorreapervoice",
+                true
+            );
+
+            PowerSubtitleColorEnabled = new BoolField(
+                SubtitleColorPanel,
+                "Enable Power Subtitle Color",
+                "powersubtitlecolor",
+                true
+            );
+
             VoiceCooldown = new FloatField(
                 SlidersPanel,
                 "Voice Cooldown",
@@ -220,6 +238,8 @@ namespace UltraVoice
             FerrymanCharacter.FerrymanPhaseChangePlayed = false;
 
             GuttertankCharacter.GuttertankSpawnInMirror = false;
+
+            MirrorReaperCharacter.Spawned = false;
         }
 
         void LoadAssets()
@@ -252,6 +272,7 @@ namespace UltraVoice
             SentryCharacter.LoadVoiceLines(bundle, Logger);
             MaliciousFaceCharacter.LoadVoiceLines(bundle, Logger);
             EarthmoverCharacter.LoadVoiceLines(bundle, Logger);
+            MirrorReaperCharacter.LoadVoiceLines(bundle, Logger);
         }
 
         public static AudioClip LoadClip(AssetBundle bundle, string name)
