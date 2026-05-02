@@ -58,76 +58,76 @@ namespace UltraVoice.Characters
             return smr.sharedMesh == mf.maleMesh;
         }
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn5"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn5.wav"),
             };
 
             ChatterClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter1"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter2"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter3"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter4"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter1.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter2.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter3.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter4.wav"),
             };
 
             MeleeClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee1"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee2"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee3"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee1.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee2.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee3.wav"),
             };
 
             EnrageClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage1"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage2"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage3"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage4"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage1.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage2.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage3.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage4.wav"),
             };
 
             SpawnClipsMasc = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn1Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn2Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn3Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn4Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Spawn5Masc"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn1Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn2Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn3Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn4Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn5Masc.wav"),
             };
 
             ChatterClipsMasc = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter1Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter2Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter3Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Chatter4Masc"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter1Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter2Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter3Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter4Masc.wav"),
             };
 
             MeleeClipsMasc = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee1Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee2Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Melee3Masc"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee1Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee2Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee3Masc.wav"),
             };
 
             EnrageClipsMasc = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage1Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage2Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage3Masc"),
-                UltraVoicePlugin.LoadClip(bundle, "mf_Enrage4Masc"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage1Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage2Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage3Masc.wav"),
+                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage4Masc.wav"),
             };
 
             logger.LogInfo("Mindflayer voice lines loaded successfully!");
         }
 
-}
+    }
 
     // MINDFLAYER PATCHES
 

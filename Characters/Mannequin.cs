@@ -10,21 +10,21 @@ namespace UltraVoice.Characters
         public static AudioClip[] ChatterClips;
         public static AudioClip[] DeathClips;
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             ChatterClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mq_Laugh1"),
-                UltraVoicePlugin.LoadClip(bundle, "mq_Laugh2"),
-                UltraVoicePlugin.LoadClip(bundle, "mq_Laugh3"),
-                UltraVoicePlugin.LoadClip(bundle, "mq_Laugh4"),
-                UltraVoicePlugin.LoadClip(bundle, "mq_Laugh5")
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh1.wav"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh2.wav"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh3.wav"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh4.wav"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh5.wav")
             };
 
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mq_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "mq_Death2"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Mannequin.mq_Death2.wav"),
             };
 
             logger.LogInfo("Mannequin voice lines loaded successfully!");

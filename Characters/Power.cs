@@ -39,7 +39,14 @@ namespace UltraVoice.Characters
             "Spear!",
             "Over here!",
             "Glaive!",
-            "Take THIS!"
+            "Take THIS!",
+            // Cutscenes
+            "HALT!",
+            "Where is Gabriel and what have you done to him?",
+            "Enough!",
+            "Your insolence must be punished.",
+            "There is no escape from Gabriel's children.",
+            "WHERE IS HE!?"
         };
 
         public static void Postfix(string caption, AudioSource audioSource, bool ignoreSetting)

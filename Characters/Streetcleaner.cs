@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using System.Collections;
 using UltraVoice.Utilities;
 
 namespace UltraVoice.Characters
@@ -38,39 +39,38 @@ namespace UltraVoice.Characters
             "HA HA"
         };
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             ChatterClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sc_Chatter1"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Chatter2"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Chatter3"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Chatter4"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Chatter5")
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Chatter1.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Chatter2.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Chatter3.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Chatter4.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Chatter5.wav")
             };
 
             AttackClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sc_Attack1"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Attack2"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Attack3"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Attack4"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Attack5")
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Attack1.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Attack2.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Attack3.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Attack4.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Attack5.wav")
             };
 
             ParryClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sc_Parry1"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Parry2"),
-                UltraVoicePlugin.LoadClip(bundle, "sc_Parry3"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Parry1.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Parry2.wav"),
+                UltraVoicePlugin.LoadClip("Streetcleaner.sc_Parry3.wav"),
             };
 
-            ScreamingClip = UltraVoicePlugin.LoadClip(bundle, "sc_Screaming");
+            ScreamingClip = UltraVoicePlugin.LoadClip("Streetcleaner.sc_Screaming.wav");
 
             logger.LogInfo("Streetcleaner voice lines loaded successfully!");
         }
-
-}
+    }
 
     // STREETCLEANER PATCHES
 
@@ -88,7 +88,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value) 
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
             if (__instance == null)
@@ -116,7 +116,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value) 
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
             if (Random.Range(0f, 1f) < 0.75)
@@ -132,16 +132,39 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value) 
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 4f))
-                return;
-
-            VoiceManager.PlayRandomVoice(__instance, "Streetcleaner",
+            if (Random.Range(0f, 1f) < 0.5)
+                VoiceManager.PlayRandomVoice(__instance, "Streetcleaner",
                 StreetcleanerCharacter.ParryClips,
                 StreetcleanerCharacter.ParrySubs
             );
+        }
+    }
+
+    [HarmonyPatch(typeof(Streetcleaner), "Update")]
+    class StreetcleanerFallPatch
+    {
+        static void Postfix(Streetcleaner __instance)
+        {
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
+                return;
+        }
+    }
+
+    [HarmonyPatch(typeof(Enemy), "HandleFallingSound")]
+    class StreetcleanerScreamingPatch
+    {
+        static void Prefix(Enemy __instance)
+        {
+            if (__instance.eid.enemyType != EnemyType.Streetcleaner)
+                return;
+
+            if (!__instance.ShouldSplat())
+                return;
+
+            __instance.aud.clip = StreetcleanerCharacter.ScreamingClip;
         }
     }
 

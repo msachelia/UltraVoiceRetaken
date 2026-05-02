@@ -50,44 +50,44 @@ namespace UltraVoice.Characters
             return d.eid.enemyType == EnemyType.Virtue;
         }
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Spawn5")
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn5.wav")
             };
 
             AttackClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Attack1"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Attack2"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Attack3"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Attack4"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Attack5")
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack1.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack2.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack3.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack4.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack5.wav")
             };
 
             EnrageClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Enrage1"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Enrage2"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Enrage3"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage1.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage2.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage3.wav"),
             };
 
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Death2"),
-                UltraVoicePlugin.LoadClip(bundle, "virtue_Death3"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Death2.wav"),
+                UltraVoicePlugin.LoadClip("Virtue.virtue_Death3.wav"),
             };
 
             logger.LogInfo("Virtue voice lines loaded successfully!");
         }
 
-}
+    }
 
     // VIRTUE PATCHES
 

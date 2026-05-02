@@ -134,102 +134,102 @@ namespace UltraVoice.Characters
                 : mofClips;
         }
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecial");
-            IntroClipSecond = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecial2");
-            BigPainClip = UltraVoicePlugin.LoadClip(bundle, "sm_BigPain");
-            LungeClip = UltraVoicePlugin.LoadClip(bundle, "sm_Lunge");
-            ComboClip = UltraVoicePlugin.LoadClip(bundle, "sm_Combo");
-            DeathClip = UltraVoicePlugin.LoadClip(bundle, "sm_Death");
-            KnockdownClipSpecial = UltraVoicePlugin.LoadClip(bundle, "sm_KnockdownSpecial");
+            IntroClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial.wav");
+            IntroClipSecond = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial2.wav");
+            BigPainClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_BigPain.wav");
+            LungeClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Lunge.wav");
+            ComboClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Combo.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Death.wav");
+            KnockdownClipSpecial = UltraVoicePlugin.LoadClip("Swordsmachine.sm_KnockdownSpecial.wav");
 
-            AgonySpawnClip = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecialAgony");
-            TundraSpawnClip = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecialTundra");
-            AgonyKnockdownClip = UltraVoicePlugin.LoadClip(bundle, "sm_DownedAgony");
-            TundraKnockdownClip = UltraVoicePlugin.LoadClip(bundle, "sm_DownedTundra");
+            AgonySpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialAgony.wav");
+            TundraSpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialTundra.wav");
+            AgonyKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedAgony.wav");
+            TundraKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedTundra.wav");
 
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn5"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn6"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn7"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn5.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn6.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn7.wav"),
             };
 
             EnrageClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage1"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage2"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage3"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage4")
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage1.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage2.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage3.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage4.wav")
             };
 
             KnockdownClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown1"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown2"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown3")
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown1.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown2.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown3.wav")
             };
 
             RangedClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Ranged1"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Ranged2"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Ranged1.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Ranged2.wav"),
             };
 
-            IntroClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecialNoto");
-            IntroClipSecondNoto = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecial2Noto");
-            BigPainClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_BigPainNoto");
-            LungeClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_LungeNoto");
-            ComboClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_ComboNoto");
-            DeathClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_DeathNoto");
-            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip(bundle, "sm_KnockdownSpecialNoto");
+            IntroClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialNoto.wav");
+            IntroClipSecondNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial2Noto.wav");
+            BigPainClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_BigPainNoto.wav");
+            LungeClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_LungeNoto.wav");
+            ComboClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_ComboNoto.wav");
+            DeathClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DeathNoto.wav");
+            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_KnockdownSpecialNoto.wav");
 
-            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecialAgonyNoto");
-            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_SpawnSpecialTundraNoto");
-            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_DownedAgonyNoto");
-            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip(bundle, "sm_DownedTundraNoto");
+            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialAgonyNoto.wav");
+            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialTundraNoto.wav");
+            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedAgonyNoto.wav");
+            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedTundraNoto.wav");
 
             SpawnClipsNoto = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn1Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn2Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn3Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn4Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn5Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn6Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Spawn7Noto")
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn1Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn2Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn3Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn4Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn5Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn6Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Spawn7Noto.wav")
             };
 
             EnrageClipsNoto = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage1Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage2Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage3Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Enrage4Noto")
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage1Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage2Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage3Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Enrage4Noto.wav")
             };
 
             KnockdownClipsNoto = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown1Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown2Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Knockdown3Noto")
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown1Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown2Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Knockdown3Noto.wav")
             };
 
             RangedClipsNoto = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "sm_Ranged1Noto"),
-                UltraVoicePlugin.LoadClip(bundle, "sm_Ranged2Noto"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Ranged1Noto.wav"),
+                UltraVoicePlugin.LoadClip("Swordsmachine.sm_Ranged2Noto.wav"),
             };
 
             logger.LogInfo("Swordsmachine voice lines loaded successfully!");
         }
 
-}
+    }
 
     // SWORDSMACHINE PATCHES
 
@@ -430,7 +430,7 @@ namespace UltraVoice.Characters
                 sm,
                 "SwordsmachineKnockdownSpecial",
                 SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.KnockdownClipSpecial, SwordsmachineCharacter.KnockdownClipSpecialNoto),
-                "YOU’RE NOT OFF THE HOOK YET, YOU HEAR ME",
+                "YOU'RE NOT OFF THE HOOK YET, YOU HEAR ME",
                 true,
                 SwordsmachineCharacter.GetColorOverride(sm)
             );

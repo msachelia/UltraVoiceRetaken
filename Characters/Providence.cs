@@ -49,37 +49,37 @@ namespace UltraVoice.Characters
             return d.eid.enemyType == EnemyType.Providence;
         }
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "prov_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Spawn5")
+                UltraVoicePlugin.LoadClip("Providence.prov_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Spawn5.wav")
             };
 
             AttackClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "prov_Chatter1"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Chatter2"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Chatter3"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Chatter4"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Chatter5")
+                UltraVoicePlugin.LoadClip("Providence.prov_Chatter1.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Chatter2.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Chatter3.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Chatter4.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Chatter5.wav")
             };
 
             DodgeClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "prov_Dodge1"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Dodge2"),
-                UltraVoicePlugin.LoadClip(bundle, "prov_Dodge3"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Dodge1.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Dodge2.wav"),
+                UltraVoicePlugin.LoadClip("Providence.prov_Dodge3.wav"),
             };
 
             logger.LogInfo("Providence voice lines loaded successfully!");
         }
 
-}
+    }
 
     [HarmonyPatch(typeof(Drone), "Start")]
     class ProvidenceSpawnPatch

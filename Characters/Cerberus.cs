@@ -53,51 +53,51 @@ namespace UltraVoice.Characters
             "You cannot run"
         };
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            PreludeClip = UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUpSpecial");
+            PreludeClip = UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUpSpecial.wav");
 
             AwakenClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp2"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp3"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp4"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp5"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_WakeUp6")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp2.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp3.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp4.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp5.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUp6.wav")
             };
 
             EnrageClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Enrage1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Enrage2"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Enrage3"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Enrage4")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Enrage1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Enrage2.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Enrage3.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Enrage4.wav")
             };
 
             ThrowClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Orb1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Orb2")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Orb1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Orb2.wav")
             };
 
             StompClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Stomp1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Stomp2")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Stomp1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Stomp2.wav")
             };
 
             TackleClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Tackle1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Tackle2")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Tackle1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Tackle2.wav")
             };
 
             DeathClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Death2"),
-                UltraVoicePlugin.LoadClip(bundle, "cerb_Death3")
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Death2.wav"),
+                UltraVoicePlugin.LoadClip("Cerberus.cerb_Death3.wav")
             };
 
             logger.LogInfo("Cerberus voice lines loaded successfully!");

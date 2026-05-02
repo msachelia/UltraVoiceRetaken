@@ -15,10 +15,10 @@ namespace UltraVoice.Characters
 
         public static readonly string[] DigInSubs =
         {
-            "This’ll do!",
-            "This spot’s perfect!",
+            "This'll do!",
+            "This spot's perfect!",
             "Now… to wait.",
-            "Let’s make this quick.",
+            "Let's make this quick.",
             "Lockin' in.",
             "Holdin' here!",
         };
@@ -39,38 +39,38 @@ namespace UltraVoice.Characters
             "Seriously!?"
         };
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             DigInClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn1"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn2"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn3"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn4"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn5"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_DigIn6")
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn1.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn2.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn3.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn4.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn5.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn6.wav")
             };
 
             InterruptClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "tur_Interrupt1"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Interrupt2"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Interrupt3"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Interrupt4"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Interrupt5")
+                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt1.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt2.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt3.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt4.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt5.wav")
             };
 
             KickClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "tur_Kick1"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Kick2"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Kick3")
+                UltraVoicePlugin.LoadClip("Sentry.tur_Kick1.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Kick2.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Kick3.wav")
             };
 
             DeathClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "tur_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "tur_Death2"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Sentry.tur_Death2.wav"),
             };
 
             logger.LogInfo("Sentry voice lines loaded successfully!");

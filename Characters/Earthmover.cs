@@ -19,14 +19,14 @@ namespace UltraVoice.Characters
         public static AudioClip BrainBattleClip;
         public static AudioClip BrainKilledClip;
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip(bundle, "em_Intro");
-            BloodVentClip = UltraVoicePlugin.LoadClip(bundle, "em_BloodVent");
-            DefenseSystemClip = UltraVoicePlugin.LoadClip(bundle, "em_DefenseSystem");
-            BloodFloodClip = UltraVoicePlugin.LoadClip(bundle, "em_BloodFlood");
-            BrainBattleClip = UltraVoicePlugin.LoadClip(bundle, "em_BrainBattle");
-            BrainKilledClip = UltraVoicePlugin.LoadClip(bundle, "em_BrainKilled");
+            IntroClip = UltraVoicePlugin.LoadClip("Earthmover.em_Intro.wav");
+            BloodVentClip = UltraVoicePlugin.LoadClip("Earthmover.em_BloodVent.wav");
+            DefenseSystemClip = UltraVoicePlugin.LoadClip("Earthmover.em_DefenseSystem.wav");
+            BloodFloodClip = UltraVoicePlugin.LoadClip("Earthmover.em_BloodFlood.wav");
+            BrainBattleClip = UltraVoicePlugin.LoadClip("Earthmover.em_BrainBattle.wav");
+            BrainKilledClip = UltraVoicePlugin.LoadClip("Earthmover.em_BrainKilled.wav");
 
             logger.LogInfo("Earthmover voice lines loaded successfully!");
         }

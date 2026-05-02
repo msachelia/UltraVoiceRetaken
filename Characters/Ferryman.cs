@@ -79,44 +79,44 @@ namespace UltraVoice.Characters
             return !eid.mirrorOnly;
         }
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            BossIntroClip = UltraVoicePlugin.LoadClip(bundle, "ferry_FightStarted");
-            CoinSkipClip = UltraVoicePlugin.LoadClip(bundle, "ferry_CoinSkip");
-            CoinFightClip = UltraVoicePlugin.LoadClip(bundle, "ferry_CoinFight");
-            PhaseChangeClip = UltraVoicePlugin.LoadClip(bundle, "ferry_PhaseChange");
-            ApproachClip = UltraVoicePlugin.LoadClip(bundle, "ferry_Approach");
+            BossIntroClip = UltraVoicePlugin.LoadClip("Ferryman.ferry_FightStarted.wav");
+            CoinSkipClip = UltraVoicePlugin.LoadClip("Ferryman.ferry_CoinSkip.wav");
+            CoinFightClip = UltraVoicePlugin.LoadClip("Ferryman.ferry_CoinFight.wav");
+            PhaseChangeClip = UltraVoicePlugin.LoadClip("Ferryman.ferry_PhaseChange.wav");
+            ApproachClip = UltraVoicePlugin.LoadClip("Ferryman.ferry_Approach.wav");
 
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Spawn5")
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Spawn5.wav")
             };
 
             ChatterClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Chatter1"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Chatter2"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Chatter3"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Chatter4"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Chatter1.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Chatter2.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Chatter3.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Chatter4.wav"),
             };
 
             ParryClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Parry1"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Parry2"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Parry3"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Parry4"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Parry1.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Parry2.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Parry3.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Parry4.wav"),
             };
 
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Death2"),
-                UltraVoicePlugin.LoadClip(bundle, "ferry_Death3"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Death2.wav"),
+                UltraVoicePlugin.LoadClip("Ferryman.ferry_Death3.wav"),
             };
 
             logger.LogInfo("Ferryman voice lines loaded successfully!");
@@ -138,15 +138,12 @@ namespace UltraVoice.Characters
             if (__instance == null)
                 return;
 
-            if (StatsManager.Instance.restarts > 0)
-                return;
-
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
             if (FerrymanCharacter.IsAgonisOrRudraksha(__instance))
                 return;
 
-            if (__instance.bossVersion)
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "e964cf0ffaa9e0e4e940b5c7389837" && StatsManager.Instance.restarts > 0)
                 if (FerrymanCharacter.FerrymanCoinTossed)
                 {
                     UltraVoicePlugin.Instance.StartCoroutine(PlayCoin(__instance));

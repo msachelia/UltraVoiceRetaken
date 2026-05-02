@@ -51,52 +51,52 @@ namespace UltraVoice.Characters
         public static bool V2SecondVoiceRestartPlayed = false;
         public static bool V2DeathPlayed = false;
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroFirstClip = UltraVoicePlugin.LoadClip(bundle, "v2_IntroFirst");
-            IntroFirstRestartClip = UltraVoicePlugin.LoadClip(bundle, "v2_RestartIntroFirst");
-            IntroSecondClip = UltraVoicePlugin.LoadClip(bundle, "v2_IntroSecond");
-            IntroSecondRestartClip = UltraVoicePlugin.LoadClip(bundle, "v2_RestartIntroSecond");
+            IntroFirstClip = UltraVoicePlugin.LoadClip("V2.v2_IntroFirst.wav");
+            IntroFirstRestartClip = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroFirst.wav");
+            IntroSecondClip = UltraVoicePlugin.LoadClip("V2.v2_IntroSecond.wav");
+            IntroSecondRestartClip = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroSecond.wav");
 
-            FastDefeatClip = UltraVoicePlugin.LoadClip(bundle, "v2_FastDefeat");
-            DefeatClip = UltraVoicePlugin.LoadClip(bundle, "v2_Defeat");
-            DeathClip = UltraVoicePlugin.LoadClip(bundle, "v2_Death");
-            FlailingClip = UltraVoicePlugin.LoadClip(bundle, "v2_Flailing");
-            EnragePatienceClip = UltraVoicePlugin.LoadClip(bundle, "v2_EnragePatience");
-            EnragePunchedClip = UltraVoicePlugin.LoadClip(bundle, "v2_EnragePunched");
-            EscapingClip = UltraVoicePlugin.LoadClip(bundle, "v2_Escaping");
+            FastDefeatClip = UltraVoicePlugin.LoadClip("V2.v2_FastDefeat.wav");
+            DefeatClip = UltraVoicePlugin.LoadClip("V2.v2_Defeat.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("V2.v2_Death.wav");
+            FlailingClip = UltraVoicePlugin.LoadClip("V2.v2_Flailing.wav");
+            EnragePatienceClip = UltraVoicePlugin.LoadClip("V2.v2_EnragePatience.wav");
+            EnragePunchedClip = UltraVoicePlugin.LoadClip("V2.v2_EnragePunched.wav");
+            EscapingClip = UltraVoicePlugin.LoadClip("V2.v2_Escaping.wav");
 
             ChatterClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "v2_Chatter1"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Chatter2"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Chatter3"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Chatter4"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Chatter5")
+                UltraVoicePlugin.LoadClip("V2.v2_Chatter1.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Chatter2.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Chatter3.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Chatter4.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Chatter5.wav")
             };
 
             ChatterPissedClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "v2_ChatterPissed1"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_ChatterPissed2"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_ChatterPissed3"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_ChatterPissed4"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_ChatterPissed5")
+                UltraVoicePlugin.LoadClip("V2.v2_ChatterPissed1.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_ChatterPissed2.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_ChatterPissed3.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_ChatterPissed4.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_ChatterPissed5.wav")
             };
 
             PainClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "v2_Pain1"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Pain2"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Pain3"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Pain4"),
-                UltraVoicePlugin.LoadClip(bundle, "v2_Pain5")
+                UltraVoicePlugin.LoadClip("V2.v2_Pain1.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Pain2.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Pain3.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Pain4.wav"),
+                UltraVoicePlugin.LoadClip("V2.v2_Pain5.wav")
             };
 
             logger.LogInfo("V2 voice lines loaded successfully!");
         }
 
-}
+    }
 
     // V2 PATCHES
 

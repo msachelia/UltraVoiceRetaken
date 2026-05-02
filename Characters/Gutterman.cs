@@ -54,59 +54,59 @@ namespace UltraVoice.Characters
             "OH, YOU MAKE ME SO MAD…"
         };
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Spawn3"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Spawn4"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Spawn5")
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Spawn4.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Spawn5.wav")
             };
 
             SpinUpClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_RevUp1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_RevUp2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_RevUp3"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_RevUp4")
+                UltraVoicePlugin.LoadClip("Gutterman.gm_RevUp1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_RevUp2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_RevUp3.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_RevUp4.wav")
             };
 
             LostSightClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_LostSight1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_LostSight2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_LostSight3")
+                UltraVoicePlugin.LoadClip("Gutterman.gm_LostSight1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_LostSight2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_LostSight3.wav")
             };
 
             ShieldBreakClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_GuardBreak1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_GuardBreak2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_GuardBreak3"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_GuardBreak1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_GuardBreak2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_GuardBreak3.wav"),
             };
 
             EnrageClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_Enrage1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Enrage2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Enrage3"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Enrage4")
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Enrage1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Enrage2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Enrage3.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Enrage4.wav")
             };
 
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Death2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Death3"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Death1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Death2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Death3.wav"),
             };
 
             ParryClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "gm_Parry1"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Parry2"),
-                UltraVoicePlugin.LoadClip(bundle, "gm_Parry3"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Parry1.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Parry2.wav"),
+                UltraVoicePlugin.LoadClip("Gutterman.gm_Parry3.wav"),
             };
 
             logger.LogInfo("Gutterman voice lines loaded successfully!");

@@ -29,25 +29,25 @@ namespace UltraVoice.Characters
             "PATHETIC",
         };
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             GenericClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Generic1"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Generic2"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Generic3"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Generic4"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Generic5"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic1.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic2.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic3.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic4.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic5.wav"),
             };
 
             EnrageClips = new[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Enraged1"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Enraged2"),
-                UltraVoicePlugin.LoadClip(bundle, "maurice_Enraged3"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged1.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged2.wav"),
+                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged3.wav"),
             };
 
-            DeathClip = UltraVoicePlugin.LoadClip(bundle, "maurice_Death");
+            DeathClip = UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Death.wav");
 
             logger.LogInfo("Malicious Face voice lines loaded successfully!");
         }
@@ -113,7 +113,7 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
                 return;
 
-            VoiceManager.CreateVoiceSource(__instance, 
+            VoiceManager.CreateVoiceSource(__instance,
                 "MaliciousFace",
                 MaliciousFaceCharacter.DeathClip,
                 null,

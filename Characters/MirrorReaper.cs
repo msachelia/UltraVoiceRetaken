@@ -39,39 +39,39 @@ namespace UltraVoice.Characters
 
         public static bool Spawned = false;
 
-        public static void LoadVoiceLines(AssetBundle bundle, BepInEx.Logging.ManualLogSource logger)
+        public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mr_SpawnSpecial"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Spawn1"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Spawn2"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Spawn3"),
+                UltraVoicePlugin.LoadClip("mr_SpawnSpecial"),
+                UltraVoicePlugin.LoadClip("mr_Spawn1"),
+                UltraVoicePlugin.LoadClip("mr_Spawn2"),
+                UltraVoicePlugin.LoadClip("mr_Spawn3"),
             };
             LaughClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mr_Laugh1"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Laugh2"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Laugh3"),
+                UltraVoicePlugin.LoadClip("mr_Laugh1"),
+                UltraVoicePlugin.LoadClip("mr_Laugh2"),
+                UltraVoicePlugin.LoadClip("mr_Laugh3"),
             };
             MirrorTauntClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mr_MirrorTaunt1"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_MirrorTaunt2"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_MirrorTaunt3"),
+                UltraVoicePlugin.LoadClip("mr_MirrorTaunt1"),
+                UltraVoicePlugin.LoadClip("mr_MirrorTaunt2"),
+                UltraVoicePlugin.LoadClip("mr_MirrorTaunt3"),
             };
             PuppetHandClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mr_PuppetHand1"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_PuppetHand2"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_PuppetHand3"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_PuppetHand4")
+                UltraVoicePlugin.LoadClip("mr_PuppetHand1"),
+                UltraVoicePlugin.LoadClip("mr_PuppetHand2"),
+                UltraVoicePlugin.LoadClip("mr_PuppetHand3"),
+                UltraVoicePlugin.LoadClip("mr_PuppetHand4")
             };
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip(bundle, "mr_Death1"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Death2"),
-                UltraVoicePlugin.LoadClip(bundle, "mr_Death3"),
+                UltraVoicePlugin.LoadClip("mr_Death1"),
+                UltraVoicePlugin.LoadClip("mr_Death2"),
+                UltraVoicePlugin.LoadClip("mr_Death3"),
             };
 
             logger.LogInfo("Mirror Reaper voice lines loaded successfully!");
@@ -245,6 +245,9 @@ namespace UltraVoice.Characters
                 return;
 
             if (__instance == null || __instance.eid.dead)
+                return;
+
+            if (Random.Range(0f, 1f) < 0.75f)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
