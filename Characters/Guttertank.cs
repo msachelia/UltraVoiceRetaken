@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UltraVoice.Utilities;
+using UnityEngine.Assertions.Must;
 
 namespace UltraVoice.Characters
 {
@@ -161,13 +162,17 @@ namespace UltraVoice.Characters
             {
                 yield return new WaitForSeconds(0.5f);
 
-                if (tank == null) yield break;
+                if (tank.dead || tank == null || tank.eid.dead) yield break;
 
-                VoiceManager.PlayRandomVoice(
-                    tank, "Guttertank",
-                    GuttertankCharacter.FrustratedClips,
-                    GuttertankCharacter.FrustratedSubs
-                );
+                UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
+                            VoiceManager.PlayRandomVoice(tank, "Guttertank",
+                                GuttertankCharacter.FrustratedClips,
+                                GuttertankCharacter.FrustratedSubs,
+                                true
+                            ),
+                        () => GuttertankCharacter.FrustratedClips != null && GuttertankCharacter.FrustratedClips.Length > 0,
+                        tank
+                    ));
             }
         }
     }

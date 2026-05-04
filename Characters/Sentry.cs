@@ -25,7 +25,7 @@ namespace UltraVoice.Characters
             "Now… to wait.",
             "Let's make this quick.",
             "Lockin' in.",
-            "Holdin' here!",
+            "Holding here!",
         };
 
         public static readonly string[] KickSubs =
@@ -44,7 +44,7 @@ namespace UltraVoice.Characters
             "Seriously!?"
         };
 
-        public static AudioClip[] UseSentryClips(AudioClip[] goobClips, AudioClip[] notoClips)
+        public static AudioClip[] UseSentryClips(AudioClip[] notoClips, AudioClip[] goobClips)
         {
             return UltraVoicePlugin.SentryVoiceActorField != null && UltraVoicePlugin.SentryVoiceActorField.value == UltraVoicePlugin.SentryVoiceActor.Goober
                 ? goobClips
