@@ -43,35 +43,35 @@ namespace UltraVoice.Characters
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("mr_SpawnSpecial"),
-                UltraVoicePlugin.LoadClip("mr_Spawn1"),
-                UltraVoicePlugin.LoadClip("mr_Spawn2"),
-                UltraVoicePlugin.LoadClip("mr_Spawn3"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_SpawnSpecial.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn3.wav"),
             };
             LaughClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("mr_Laugh1"),
-                UltraVoicePlugin.LoadClip("mr_Laugh2"),
-                UltraVoicePlugin.LoadClip("mr_Laugh3"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Laugh1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Laugh2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Laugh3.wav"),
             };
             MirrorTauntClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("mr_MirrorTaunt1"),
-                UltraVoicePlugin.LoadClip("mr_MirrorTaunt2"),
-                UltraVoicePlugin.LoadClip("mr_MirrorTaunt3"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_MirrorTaunt1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_MirrorTaunt2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_MirrorTaunt3.wav"),
             };
             PuppetHandClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("mr_PuppetHand1"),
-                UltraVoicePlugin.LoadClip("mr_PuppetHand2"),
-                UltraVoicePlugin.LoadClip("mr_PuppetHand3"),
-                UltraVoicePlugin.LoadClip("mr_PuppetHand4")
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_PuppetHand1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_PuppetHand2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_PuppetHand3.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_PuppetHand4.wav")
             };
             DeathClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("mr_Death1"),
-                UltraVoicePlugin.LoadClip("mr_Death2"),
-                UltraVoicePlugin.LoadClip("mr_Death3"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Death1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Death2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Death3.wav"),
             };
 
             logger.LogInfo("Mirror Reaper voice lines loaded successfully!");

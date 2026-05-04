@@ -160,6 +160,9 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
+            if (ULTRAKILL.Cheats.BlindEnemies.Blind)
+                return;
+
             if (__instance == null)
                 return;
 

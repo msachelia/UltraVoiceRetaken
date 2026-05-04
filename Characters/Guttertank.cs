@@ -115,9 +115,6 @@ namespace UltraVoice.Characters
                 () => GuttertankCharacter.SpawnClips != null && GuttertankCharacter.SpawnClips.Length > 0,
                 __instance
             ));
-
-            __instance.dead = false;
-            __instance.eid.dead = false;
         }
     }
 
@@ -158,12 +155,20 @@ namespace UltraVoice.Characters
                     __instance
                 ));
 
-            new WaitUntil(() => __instance.mach.parryable == false);
+            UltraVoicePlugin.Instance.StartCoroutine(Frustration(__instance));
 
-            VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                GuttertankCharacter.FrustratedClips,
-                GuttertankCharacter.FrustratedSubs
-            );
+            static IEnumerator Frustration(Guttertank tank)
+            {
+                yield return new WaitForSeconds(0.5f);
+
+                if (tank == null) yield break;
+
+                VoiceManager.PlayRandomVoice(
+                    tank, "Guttertank",
+                    GuttertankCharacter.FrustratedClips,
+                    GuttertankCharacter.FrustratedSubs
+                );
+            }
         }
     }
 

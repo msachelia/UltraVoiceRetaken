@@ -73,9 +73,6 @@ namespace UltraVoice.Characters
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 4f))
-                return;
-
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
 
@@ -108,7 +105,7 @@ namespace UltraVoice.Characters
     [HarmonyPatch(typeof(MaliciousFace), "OnGoLimp")]
     class MaliciousFaceDeathPatch
     {
-        static void Postfix(MaliciousFace __instance)
+        static void Prefix(MaliciousFace __instance)
         {
             if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
                 return;
