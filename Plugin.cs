@@ -42,6 +42,7 @@ namespace UltraVoice
         public static FloatField VoiceCooldown;
         public static FloatField VoiceVolume;
         public static EnumField<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
+        public static EnumField<SentryVoiceActor> SentryVoiceActorField;
         public static ConfigPanel TogglesPanel;
         public static ConfigPanel SubtitleColorPanel;
         public static ConfigPanel SlidersPanel;
@@ -51,6 +52,12 @@ namespace UltraVoice
         {
             Mel,
             Noto
+        }
+
+        public enum SentryVoiceActor
+        {
+            Noto,
+            Goober
         }
 
         private static Dictionary<ICharacter, Dictionary<string, AudioClip[]>> characterVoiceLines =
@@ -209,9 +216,18 @@ namespace UltraVoice
                 SwordsmachineVoiceActor.Mel
             );
 
+            UltraVoicePlugin.SentryVoiceActorField = new EnumField<SentryVoiceActor>(
+                ActorPanel,
+                "Sentry Voice Actor",
+                "svoiceactor",
+                SentryVoiceActor.Goober
+            );
+
             UltraVoicePlugin.SwordsmachineVoiceActorField.SetEnumDisplayName(SwordsmachineVoiceActor.Mel, "Mel");
             UltraVoicePlugin.SwordsmachineVoiceActorField.SetEnumDisplayName(SwordsmachineVoiceActor.Noto, "Noto");
 
+            UltraVoicePlugin.SentryVoiceActorField.SetEnumDisplayName(SentryVoiceActor.Goober, "Goober");
+            UltraVoicePlugin.SentryVoiceActorField.SetEnumDisplayName(SentryVoiceActor.Noto, "Noto");
             LoadAssets();
 
             new Harmony("com.mel33.ultravoice").PatchAll();
