@@ -620,9 +620,6 @@ namespace UltraVoice.Characters
             if (VoiceManager.IsEnemyVoicePlaying(__instance))
                 return;
 
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 2f))
-                return;
-
             var src = VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineCombo",
@@ -645,9 +642,6 @@ namespace UltraVoice.Characters
                 return;
 
             if (VoiceManager.IsEnemyVoicePlaying(__instance))
-                return;
-
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 2f))
                 return;
 
             var src = VoiceManager.CreateVoiceSource(

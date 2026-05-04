@@ -136,10 +136,9 @@ namespace UltraVoice.Utilities
             src.clip = clip;
             src.spatialBlend = spatialBlend;
             src.volume = UltraVoicePlugin.VoiceVolume.value;
-            src.volume *= volumeMult;
-            src.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+            src.volume *= 1.5f + volumeMult;
             src.minDistance = 50f;
-            src.maxDistance = 120f;
+            src.maxDistance = 200f;
             src.dopplerLevel = 0.25f;
 
             var mixer = MonoSingleton<AudioMixerController>.Instance;

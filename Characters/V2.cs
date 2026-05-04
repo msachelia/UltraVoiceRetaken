@@ -143,21 +143,21 @@ namespace UltraVoice.Characters
             V2Character.V2IntroTime = Time.time;
             VoiceManager.spawnVoiceEndTimes[v2] = Time.time + V2Character.IntroFirstClip.length;
 
-            VoiceManager.ShowSubtitle("A war-machine of my own design?", src);
+            VoiceManager.ShowSubtitle("So, you're my predecessor", src);
 
-            yield return new WaitForSeconds(2.75f);
-
-            if (v2 == null || !v2.inIntro)
-                yield break;
-
-            VoiceManager.ShowSubtitle("How flattering...", src);
-
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(2.25f);
 
             if (v2 == null || !v2.inIntro)
                 yield break;
 
-            VoiceManager.ShowSubtitle("Well, may the best machine win", src);
+            VoiceManager.ShowSubtitle("How quaint...", src);
+
+            yield return new WaitForSeconds(1.25f);
+
+            if (v2 == null || !v2.inIntro)
+                yield break;
+
+            VoiceManager.ShowSubtitle("I suppose I'll have to show you what an upgrade looks like.", src);
         }
     }
 
@@ -312,7 +312,7 @@ namespace UltraVoice.Characters
             if (src == null)
                 yield break;
 
-            VoiceManager.ShowSubtitle("Enough!", src);
+            VoiceManager.ShowSubtitle("Enough", src);
 
             yield return new WaitForSeconds(1.5f);
 
@@ -462,17 +462,17 @@ namespace UltraVoice.Characters
                 V2Character.IntroSecondClip
             );
 
-            VoiceManager.ShowSubtitle("Ah, so glad you could make it", src);
+            VoiceManager.ShowSubtitle("There you are.", src);
 
             if (v2 == null || !src.isPlaying) yield break;
-            yield return new WaitForSeconds(2.65f);
+            yield return new WaitForSeconds(1.25f);
 
-            VoiceManager.ShowSubtitle("You took something from me, you know", src);
+            VoiceManager.ShowSubtitle("I was wondering how long you'd keep my arm...", src);
 
             if (v2 == null || !src.isPlaying) yield break;
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(2.75f);
 
-            VoiceManager.ShowSubtitle("I think I'll be taking it back.", src);
+            VoiceManager.ShowSubtitle("Don't worry, I'll pry it off you myself.", src);
         }
     }
 
