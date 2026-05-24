@@ -37,6 +37,7 @@ namespace UltraVoice.Characters
             BiteClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Bite.wav");
             BiteWindupClip = UltraVoicePlugin.LoadClip("Leviathan.lev_BiteWindup.wav");
             ParryClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Parried.wav");
+            RoarClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Roar.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Death.wav");
             DeathEndClip = UltraVoicePlugin.LoadClip("Leviathan.lev_DeathEnd.wav");
 
