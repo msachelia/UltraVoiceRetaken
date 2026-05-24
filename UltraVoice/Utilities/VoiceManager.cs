@@ -171,6 +171,7 @@ namespace UltraVoice.Utilities
             string[] subtitles,
             bool interrupt = false,
             bool randomPitch = false,
+            float volumeMult = 1f,
             UnityEngine.Color? colorOverride = null
         )
         {
@@ -183,7 +184,7 @@ namespace UltraVoice.Utilities
             if (subtitles != null && index < subtitles.Length)
                 subtitle = subtitles[index];
 
-            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch);
+            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch, volumeMult);
         }
 
         public static void ShowSubtitle(string text, AudioSource src, UnityEngine.Color? color = null)

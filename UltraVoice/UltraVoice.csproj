@@ -21,6 +21,16 @@
 	  <None Remove="Resources\Guttertank\gt_Punch1.wav" />
 	  <None Remove="Resources\Guttertank\gt_Punch2.wav" />
 	  <None Remove="Resources\Guttertank\gt_Punch3.wav" />
+	  <None Remove="Resources\Leviathan\lev_Bite.wav" />
+	  <None Remove="Resources\Leviathan\lev_BiteWindup.wav" />
+	  <None Remove="Resources\Leviathan\lev_Chatter1.wav" />
+	  <None Remove="Resources\Leviathan\lev_Chatter2.wav" />
+	  <None Remove="Resources\Leviathan\lev_Chatter3.wav" />
+	  <None Remove="Resources\Leviathan\lev_Chatter4.wav" />
+	  <None Remove="Resources\Leviathan\lev_Chatter5.wav" />
+	  <None Remove="Resources\Leviathan\lev_Death.wav" />
+	  <None Remove="Resources\Leviathan\lev_DeathEnd.wav" />
+	  <None Remove="Resources\Leviathan\lev_Parried.wav" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -134,6 +144,16 @@
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain1.wav" />
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain2.wav" />
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain3.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Bite.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_BiteWindup.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter1.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter2.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter3.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter4.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter5.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Death.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_DeathEnd.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Parried.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Death.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Enraged1.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Enraged2.wav" />
@@ -388,40 +408,40 @@
 
 	<ItemGroup>
 		<Reference Include="0Harmony">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\0Harmony.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\0Harmony.dll</HintPath>
 		</Reference>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="BepInEx">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\BepInEx.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\BepInEx.dll</HintPath>
 		</Reference>
 		<Reference Include="PluginConfigurator">
-		  <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
+		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Networking">
-		  <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
+		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
-		  <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AnimationModule">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AssetBundleModule">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AudioModule">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UI">
-		  <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
+		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 

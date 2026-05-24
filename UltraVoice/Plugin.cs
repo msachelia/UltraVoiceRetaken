@@ -39,6 +39,7 @@ namespace UltraVoice
         public static BoolField EarthmoverVoiceEnabled;
         public static BoolField MirrorReaperVoiceEnabled;
         public static BoolField GeryonVoiceEnabled;
+        public static BoolField LeviathanVoiceEnabled;
         public static BoolField PowerSubtitleColorEnabled;
         public static FloatField VoiceCooldown;
         public static FloatField VoiceVolume;
@@ -192,6 +193,13 @@ namespace UltraVoice
                 true
             );
 
+            LeviathanVoiceEnabled = new BoolField(
+                TogglesPanel,
+                "Enable Leviathan Voice Lines",
+                "levivoice",
+                true
+            );
+
             PowerSubtitleColorEnabled = new BoolField(
                 SubtitleColorPanel,
                 "Enable Power Subtitle Color",
@@ -296,6 +304,7 @@ namespace UltraVoice
             EarthmoverCharacter.LoadVoiceLines(Logger);
             MirrorReaperCharacter.LoadVoiceLines(Logger);
             GeryonCharacter.LoadVoiceLines(Logger);
+            LeviathanCharacter.LoadVoiceLines(Logger);
         }
 
         public static AudioClip LoadClip(string resourcePath)
