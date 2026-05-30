@@ -30,7 +30,9 @@
 	  <None Remove="Resources\Leviathan\lev_Chatter5.wav" />
 	  <None Remove="Resources\Leviathan\lev_Death.wav" />
 	  <None Remove="Resources\Leviathan\lev_DeathEnd.wav" />
+	  <None Remove="Resources\Leviathan\lev_IntroRoar.wav" />
 	  <None Remove="Resources\Leviathan\lev_Parried.wav" />
+	  <None Remove="Resources\Leviathan\lev_Roar.wav" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -153,7 +155,9 @@
 	  <EmbeddedResource Include="Resources\Leviathan\lev_Chatter5.wav" />
 	  <EmbeddedResource Include="Resources\Leviathan\lev_Death.wav" />
 	  <EmbeddedResource Include="Resources\Leviathan\lev_DeathEnd.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_IntroRoar.wav" />
 	  <EmbeddedResource Include="Resources\Leviathan\lev_Parried.wav" />
+	  <EmbeddedResource Include="Resources\Leviathan\lev_Roar.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Death.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Enraged1.wav" />
 	  <EmbeddedResource Include="Resources\MaliciousFace\maurice_Enraged2.wav" />

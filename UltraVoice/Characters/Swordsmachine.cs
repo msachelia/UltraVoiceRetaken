@@ -425,7 +425,7 @@ namespace UltraVoice.Characters
                 SwordsmachineCharacter.KnockdownSubs,
                 true,
                 true,
-                SwordsmachineCharacter.GetColorOverride(sm)
+                colorOverride: SwordsmachineCharacter.GetColorOverride(sm)
             );
         }
 

@@ -11,6 +11,7 @@ namespace UltraVoice.Characters
         public static AudioClip BiteWindupClip;
         public static AudioClip ParryClip;
         public static AudioClip RoarClip;
+        public static AudioClip IntroRoarClip;
         public static AudioClip DeathClip;
         public static AudioClip DeathEndClip;
 
@@ -38,6 +39,7 @@ namespace UltraVoice.Characters
             BiteWindupClip = UltraVoicePlugin.LoadClip("Leviathan.lev_BiteWindup.wav");
             ParryClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Parried.wav");
             RoarClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Roar.wav");
+            IntroRoarClip = UltraVoicePlugin.LoadClip("Leviathan.lev_IntroRoar.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Death.wav");
             DeathEndClip = UltraVoicePlugin.LoadClip("Leviathan.lev_DeathEnd.wav");
 
@@ -52,7 +54,7 @@ namespace UltraVoice.Characters
                 if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
                     return;
 
-                if (!VoiceManager.CheckCooldown(__instance, 8f))
+                if (!VoiceManager.CheckCooldown(__instance, 3.5f))
                     return;
 
                 if (__instance.inAction || !__instance.active)
@@ -64,7 +66,7 @@ namespace UltraVoice.Characters
                     true,
                     volumeMult: 3f
                 );
-                __instance.attackCooldown = 4f;
+                __instance.attackCooldown = 3.5f;
 
             }
         }
@@ -79,6 +81,40 @@ namespace UltraVoice.Characters
 
                 VoiceManager.CreateVoiceSource(__instance, "Leviathan",
                     BiteWindupClip,
+                    null,
+                    true,
+                    volumeMult: 3f
+                );
+            }
+        }
+
+        [HarmonyPatch(typeof(LeviathanHead), nameof(LeviathanHead.Roar))]
+        class LeviathanRoarPatch
+        {
+            static void Postfix(LeviathanHead __instance)
+            {
+                if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
+                    return;
+
+                VoiceManager.CreateVoiceSource(__instance, "Leviathan",
+                    IntroRoarClip,
+                    null,
+                    true,
+                    volumeMult: 3f
+                );
+            }
+        }
+
+        [HarmonyPatch(typeof(LeviathanHead), nameof(LeviathanHead.Ascend))]
+        class LeviathanAscendPatch
+        {
+            static void Postfix(LeviathanHead __instance)
+            {
+                if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
+                    return;
+
+                VoiceManager.CreateVoiceSource(__instance, "Leviathan",
+                    IntroRoarClip,
                     null,
                     true,
                     volumeMult: 3f
@@ -109,6 +145,9 @@ namespace UltraVoice.Characters
             static void Postfix(LeviathanHead __instance)
             {
                 if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
+                    return;
+
+                if (!__instance.active)
                     return;
 
                 VoiceManager.CreateVoiceSource(__instance, "Leviathan",

@@ -37,7 +37,7 @@ namespace UltraVoice.Characters
             "THAT COST MONEY!",
             "YOU WILL PAY FOR THIS!",
             "OH, YOU MAKE ME SO MAD…",
-            "ЧОРТ ПОБЕРИ!",
+            "ЧЁРТ ПОБЕРИ!",
             "СУКИН СЫН!"
         };
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UltraVoice.Utilities;
+using System;
 
 namespace UltraVoice.Characters
 {
@@ -236,6 +237,25 @@ namespace UltraVoice.Characters
                     randomPitch: true
                 );
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(Turret), "ShouldKnockback")]
+    class SentryShouldKnockbackPatch
+    {
+        static void Postfix(Turret __instance, ref DamageData data, ref bool __result)
+        {
+            if (!__result || !UltraVoicePlugin.SentryVoiceEnabled.value) return;
+
+            if (data.hitter.Contains("saw")) return;
+
+            VoiceManager.PlayRandomVoice(
+                __instance, "Sentry",
+                SentryCharacter.UseSentryClips(SentryCharacter.InterruptPainClips, SentryCharacter.InterruptPainClipsGoob),
+                null,
+                true,
+                randomPitch: true
+            );
         }
     }
 

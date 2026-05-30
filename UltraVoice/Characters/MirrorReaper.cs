@@ -109,6 +109,8 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) 
                 return;
 
+            MirrorReaperCharacter.Spawned = true;
+
             if (SceneHelper.CurrentScene == "Level 8-2")
                 return;
 
@@ -119,8 +121,6 @@ namespace UltraVoice.Characters
                 MirrorReaperCharacter.SpawnSubs,
                 randomPitch: true
             );
-
-            MirrorReaperCharacter.Spawned = true;
         }
     }
 

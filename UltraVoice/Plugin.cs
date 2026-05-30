@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 namespace UltraVoice
 {
-    [BepInPlugin("com.mel33.ultravoice", "UltraVoice", "1.0.1")]
+    [BepInPlugin("com.mel33.ultravoice", "UltraVoice", "1.1.0")]
     [BepInDependency("com.eternalUnion.pluginConfigurator")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
