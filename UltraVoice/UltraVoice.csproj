@@ -7,35 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Gutterman\gm_Enrage5.wav" />
-	  <None Remove="Resources\Gutterman\gm_Punch1.wav" />
-	  <None Remove="Resources\Gutterman\gm_Punch2.wav" />
-	  <None Remove="Resources\Gutterman\gm_Punch3.wav" />
-	  <None Remove="Resources\Gutterman\gm_Spawn6.wav" />
-	  <None Remove="Resources\Guttertank\gt_Attack1.wav" />
-	  <None Remove="Resources\Guttertank\gt_Attack2.wav" />
-	  <None Remove="Resources\Guttertank\gt_Attack3.wav" />
-	  <None Remove="Resources\Guttertank\gt_Landmine1.wav" />
-	  <None Remove="Resources\Guttertank\gt_Landmine2.wav" />
-	  <None Remove="Resources\Guttertank\gt_Landmine3.wav" />
-	  <None Remove="Resources\Guttertank\gt_Punch1.wav" />
-	  <None Remove="Resources\Guttertank\gt_Punch2.wav" />
-	  <None Remove="Resources\Guttertank\gt_Punch3.wav" />
-	  <None Remove="Resources\Leviathan\lev_Bite.wav" />
-	  <None Remove="Resources\Leviathan\lev_BiteWindup.wav" />
-	  <None Remove="Resources\Leviathan\lev_Chatter1.wav" />
-	  <None Remove="Resources\Leviathan\lev_Chatter2.wav" />
-	  <None Remove="Resources\Leviathan\lev_Chatter3.wav" />
-	  <None Remove="Resources\Leviathan\lev_Chatter4.wav" />
-	  <None Remove="Resources\Leviathan\lev_Chatter5.wav" />
-	  <None Remove="Resources\Leviathan\lev_Death.wav" />
-	  <None Remove="Resources\Leviathan\lev_DeathEnd.wav" />
-	  <None Remove="Resources\Leviathan\lev_IntroRoar.wav" />
-	  <None Remove="Resources\Leviathan\lev_Parried.wav" />
-	  <None Remove="Resources\Leviathan\lev_Roar.wav" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Cerberus\cerb_Death1.wav" />
 	  <EmbeddedResource Include="Resources\Cerberus\cerb_Death2.wav" />
 	  <EmbeddedResource Include="Resources\Cerberus\cerb_Death3.wav" />

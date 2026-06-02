@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using System.Collections;
 using UltraVoice.Utilities;
 
 namespace UltraVoice.Characters
@@ -108,12 +109,19 @@ namespace UltraVoice.Characters
 
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
-            VoiceManager.PlayRandomVoice(__instance, "Gutterman",
-                GuttermanCharacter.SpawnClips,
-                GuttermanCharacter.SpawnSubs,
-                false,
-                randomPitch: true
-            );
+            UltraVoicePlugin.Instance.StartCoroutine(PlayCommon(__instance));
+
+            static IEnumerator PlayCommon(Gutterman gm)
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0f, 0.4f));
+
+                VoiceManager.PlayRandomVoice(gm, "Gutterman",
+                    GuttermanCharacter.SpawnClips,
+                    GuttermanCharacter.SpawnSubs,
+                    false,
+                    randomPitch: true
+                );
+            }
         }
     }
 

@@ -184,9 +184,40 @@ namespace UltraVoice.Characters
 
         static IEnumerator PlayAwaken(StatueFake cerb)
         {
-            yield return new WaitForSeconds(Random.Range(0f, 1f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
 
-            VoiceManager.PlayRandomVoice(cerb, "Cerberus", CerberusCharacter.AwakenClips, CerberusCharacter.AwakenSubs, colorOverride: new Color(0.65f, 0.65f, 0.65f), randomPitch: true);
+            int i = UnityEngine.Random.Range(0, CerberusCharacter.AwakenClips.Length);
+
+            AudioClip clip = CerberusCharacter.AwakenClips[i];
+
+            if (clip == null)
+                yield break;
+
+            GameObject obj = new GameObject("UltraVoice_CerberusIntro");
+            obj.transform.position = cerb.transform.position;
+
+            var src = obj.AddComponent<AudioSource>();
+
+            src.clip = clip;
+            src.spatialBlend = 1f;
+            src.volume = 1f;
+            src.minDistance = 50f;
+            src.maxDistance = 500f;
+            src.dopplerLevel = 0;
+
+            var mixer = MonoSingleton<AudioMixerController>.Instance;
+            src.outputAudioMixerGroup = mixer.allGroup;
+
+            src.Play();
+
+            if (src == null)
+                yield break;
+
+            VoiceManager.ShowSubtitle(
+                CerberusCharacter.AwakenSubs[i],
+                src,
+                new Color(0.65f, 0.65f, 0.65f)
+            );
         }
     }
 

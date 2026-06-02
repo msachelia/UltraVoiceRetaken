@@ -151,11 +151,7 @@ namespace UltraVoice.Characters
                     VoiceManager.spawnVoiceEndTimes[__instance] = Time.time + FerrymanCharacter.BossIntroClip.length;
                 }
             else if (!FerrymanCharacter.IsAgonisOrRudraksha(__instance))
-                VoiceManager.PlayRandomVoice(__instance, "Ferryman",
-                    FerrymanCharacter.SpawnClips,
-                    FerrymanCharacter.SpawnSubs,
-                    randomPitch: true
-                );
+                UltraVoicePlugin.Instance.StartCoroutine(PlayCommon(__instance));
             else if (FerrymanCharacter.IsAgonis(__instance))
                 VoiceManager.CreateVoiceSource(__instance, "Ferryman",
                     FerrymanCharacter.AgonisIntroClip
@@ -208,6 +204,17 @@ namespace UltraVoice.Characters
 
                 if (!src) yield break;
                 VoiceManager.ShowSubtitle("I granted you passage, and you repay me with DECEIT!?", src, new Color(0f, 0.66f, 0.77f));
+            }
+
+            static IEnumerator PlayCommon(Ferryman ferry)
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0f, 0.4f));
+
+                VoiceManager.PlayRandomVoice(ferry, "Ferryman",
+                    FerrymanCharacter.SpawnClips,
+                    FerrymanCharacter.SpawnSubs,
+                    randomPitch: true
+                );
             }
         }
     }
