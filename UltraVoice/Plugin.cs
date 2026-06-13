@@ -337,6 +337,9 @@ namespace UltraVoice
             GeryonCharacter.LoadVoiceLines(Logger);
             LeviathanCharacter.LoadVoiceLines(Logger);
             InsurrectionistCharacter.LoadVoiceLines(Logger);
+            FilthCharacter.LoadVoiceLines(Logger);
+            StrayCharacter.LoadVoiceLines(Logger);
+            SchismCharacter.LoadVoiceLines(Logger);
         }
 
         public static AudioClip LoadClip(string resourcePath)
