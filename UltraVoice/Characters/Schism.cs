@@ -32,7 +32,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -46,14 +46,14 @@ namespace UltraVoice.Characters
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mannequin",
-                StrayCharacter.ChatterClips,
+                SchismCharacter.ChatterClips,
                 null,
                 randomPitch: true
             );
         }
     }
 
-    [HarmonyPatch(typeof(ZombieProjectiles), nameof(ZombieProjectiles.ThrowProjectile))]
+    [HarmonyPatch(typeof(ZombieProjectiles), nameof(ZombieProjectiles.SpawnProjectile))]
     class SchismThrowPatch
     {
         static void Postfix(ZombieProjectiles __instance)
@@ -63,7 +63,7 @@ namespace UltraVoice.Characters
             if (__instance.eid.enemyType != EnemyType.Schism) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Mannequin",
-                StrayCharacter.AttackClip,
+                SchismCharacter.AttackClip,
                 null,
                 randomPitch: true
             );
@@ -80,7 +80,7 @@ namespace UltraVoice.Characters
             if (__instance.eid.enemyType != EnemyType.Schism) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Mannequin",
-                StrayCharacter.DeathClip,
+                SchismCharacter.DeathClip,
                 null,
                 true,
                 randomPitch: true

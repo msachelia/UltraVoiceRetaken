@@ -53,7 +53,7 @@ namespace UltraVoice.Characters
         }
     }
 
-    [HarmonyPatch(typeof(ZombieProjectiles), nameof(ZombieProjectiles.ThrowProjectile))]
+    [HarmonyPatch(typeof(ZombieProjectiles), nameof(ZombieProjectiles.SpawnProjectile))]
     class StrayThrowPatch
     {
         static void Postfix(ZombieProjectiles __instance)
