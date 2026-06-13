@@ -54,11 +54,13 @@ namespace UltraVoice.Characters
                 if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
                     return;
 
-                if (!VoiceManager.CheckCooldown(__instance, 7f))
+                if (!VoiceManager.CheckCooldown(__instance, 10f))
                     return;
 
-                if (!__instance.active)
+                if (__instance.inAction || !__instance.active)
                     return;
+
+                __instance.attackCooldown = 3.5f;
 
                 VoiceManager.PlayRandomVoice(__instance, "Leviathan",
                     ChatterClips,
@@ -66,7 +68,6 @@ namespace UltraVoice.Characters
                     true,
                     volumeMult: 3f
                 );
-                __instance.attackCooldown = 3.5f;
 
             }
         }

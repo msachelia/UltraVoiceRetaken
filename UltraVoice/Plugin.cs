@@ -40,7 +40,6 @@ namespace UltraVoice
         public static BoolField MirrorReaperVoiceEnabled;
         public static BoolField GeryonVoiceEnabled;
         public static BoolField LeviathanVoiceEnabled;
-        public static BoolField InsurrectionistVoiceEnabled;
         public static BoolField FilthVoiceEnabled;
         public static BoolField StrayVoiceEnabled;
         public static BoolField SchismVoiceEnabled;
@@ -194,13 +193,6 @@ namespace UltraVoice
                 TogglesPanel,
                 "Enable Leviathan Voice Lines",
                 "levivoice",
-                true
-            );
-
-            InsurrectionistVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Insurrctionist Voice Lines",
-                "insurvoice",
                 true
             );
 
