@@ -206,6 +206,32 @@
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain1.wav" />
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain2.wav" />
 	  <EmbeddedResource Include="Resources\Guttertank\gt_TripPain3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_AttackVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_AttackVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_AttackVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_DeathVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_DeathVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_DeathVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_LandmineVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_LandmineVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_LandmineVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchHitVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchHitVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchHitVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchTripVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchTripVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchTripVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_PunchTripVirchew4.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_SpawnVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_SpawnVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_SpawnVirchew3.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_SpawnVirchew4.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_TripPainVirchew1.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_TripPainVirchew2.wav" />
+    <EmbeddedResource Include="Resources\Guttertank\gt_TripPainVirchew3.wav" />
 	  <EmbeddedResource Include="Resources\HideousMass\mass_Death1.wav" />
 	  <EmbeddedResource Include="Resources\HideousMass\mass_Death2.wav" />
 	  <EmbeddedResource Include="Resources\HideousMass\mass_Enrage1.wav" />
@@ -509,6 +535,32 @@
 	  <EmbeddedResource Include="Resources\V2\v2_Pain5.wav" />
 	  <EmbeddedResource Include="Resources\V2\v2_RestartIntroFirst.wav" />
 	  <EmbeddedResource Include="Resources\V2\v2_RestartIntroSecond.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterCaszu1.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterCaszu2.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterCaszu3.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterCaszu4.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterCaszu5.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterPissedCaszu1.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterPissedCaszu2.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterPissedCaszu3.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterPissedCaszu4.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_ChatterPissedCaszu5.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_DeathCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_DefeatCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_EnragePatienceCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_EnragePunchedCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_EscapingCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_FastDefeatCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_FlailingCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_IntroFirstCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_IntroSecondCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_PainCaszu1.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_PainCaszu2.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_PainCaszu3.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_PainCaszu4.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_PainCaszu5.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_RestartIntroFirstCaszu.wav" />
+    <EmbeddedResource Include="Resources\V2\v2_RestartIntroSecondCaszu.wav" />
 	  <EmbeddedResource Include="Resources\Virtue\virtue_Attack1.wav" />
 	  <EmbeddedResource Include="Resources\Virtue\virtue_Attack2.wav" />
 	  <EmbeddedResource Include="Resources\Virtue\virtue_Attack3.wav" />
@@ -528,6 +580,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="UltraVoice.csproj.user" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Krafs.Publicizer" Version="2.3.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -540,51 +596,51 @@
 
 	<ItemGroup>
 		<Reference Include="0Harmony">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\0Harmony.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)BepInEx\core\0Harmony.dll</HintPath>
 		</Reference>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="BepInEx">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\core\BepInEx.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)BepInEx\core\BepInEx.dll</HintPath>
 		</Reference>
 		<Reference Include="PluginConfigurator">
-		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Networking">
-		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
-		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Unity.TextMeshPro.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AnimationModule">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AssetBundleModule">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AudioModule">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.PhysicsModule">
-		  <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UI">
-		  <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.UI.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UIModule">
-		  <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\ULTRAKILL_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.UIModule.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
 	<Target Name="CopyFiles" AfterTargets="Build">
-		<Copy SourceFiles="bin\Debug\netstandard2.1\UltraVoice.dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\ULTRAKILL\BepInEx\plugins\UltraVoice" />
+		<Copy SourceFiles="bin\Debug\netstandard2.1\UltraVoice.dll" DestinationFolder="$(ULTRAKILLPath)BepInEx\plugins\UltraVoice" />
 	</Target>
 
 </Project>

@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 
 namespace UltraVoice
 {
-    [BepInPlugin("com.mel33.ultravoice", "UltraVoice", "1.1.0")]
+    [BepInPlugin("com.achelia.ultravoiceretaken", "UltraVoice Retaken", "1.3.0")]
     [BepInDependency("com.eternalUnion.pluginConfigurator")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
@@ -54,6 +54,8 @@ namespace UltraVoice
 
         public static EnumField<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
         public static EnumField<SentryVoiceActor> SentryVoiceActorField;
+        public static EnumField<GuttertankVoiceActor> GuttertankVoiceActorField;
+        public static EnumField<V2VoiceActor> V2VoiceActorField;
         public static ConfigPanel TogglesPanel;
         public static ConfigPanel ActorPanel;
 
@@ -69,12 +71,25 @@ namespace UltraVoice
             Goober
         }
 
+        public enum GuttertankVoiceActor
+        {
+            Mel,
+            Virchew
+        }
+
+        public enum V2VoiceActor
+        {
+            Ruby,
+            Caszu
+        }
+
         void Awake()
         {
             Instance = this;
             VoiceManager = new VoiceManager();
 
-            config = PluginConfigurator.Create("UltraVoice", "com.mel33.ultravoice");
+            config = PluginConfigurator.Create("UltraVoice Retaken", "com.achelia.ultravoiceretaken");
+            config.SetIconWithURL("../Thunderstore/icon.png");
 
             // Create panels
             TogglesPanel = new ConfigPanel(config.rootPanel, "Enemy Line Toggles", "toggles");
@@ -141,7 +156,7 @@ namespace UltraVoice
                 TogglesPanel,
                 "Enable Mannequin Voice Lines",
                 "mannequinvoice",
-                false
+                true
             );
 
             GuttertankVoiceEnabled = new BoolField(
@@ -253,7 +268,7 @@ namespace UltraVoice
                 TogglesPanel,
                 "Enable Idol Voice Lines",
                 "idolvoice",
-                false
+                true
             );
 
             PowerSubtitleColorEnabled = new BoolField(
@@ -273,7 +288,7 @@ namespace UltraVoice
             );
 
             SubtitleLimit = new IntField(
-                config.rootPanel, 
+                config.rootPanel,
                 "Max Allowed Subtitles",
                 "subtitlelimit",
                 5,
@@ -295,11 +310,31 @@ namespace UltraVoice
                 SentryVoiceActor.Goober
             );
 
+            UltraVoicePlugin.GuttertankVoiceActorField = new EnumField<GuttertankVoiceActor>(
+                ActorPanel,
+                "Guttertank Voice Actor",
+                "gtvoiceactor",
+                GuttertankVoiceActor.Mel
+            );
+
+            UltraVoicePlugin.V2VoiceActorField = new EnumField<V2VoiceActor>(
+                ActorPanel,
+                "V2 Voice Actor",
+                "v2voiceactor",
+                V2VoiceActor.Ruby
+            );
+
             UltraVoicePlugin.SwordsmachineVoiceActorField.SetEnumDisplayName(SwordsmachineVoiceActor.Mel, "Mel");
             UltraVoicePlugin.SwordsmachineVoiceActorField.SetEnumDisplayName(SwordsmachineVoiceActor.Noto, "Noto");
 
             UltraVoicePlugin.SentryVoiceActorField.SetEnumDisplayName(SentryVoiceActor.Goober, "Goober");
             UltraVoicePlugin.SentryVoiceActorField.SetEnumDisplayName(SentryVoiceActor.Noto, "Noto");
+
+            UltraVoicePlugin.GuttertankVoiceActorField.SetEnumDisplayName(GuttertankVoiceActor.Mel, "Mel");
+            UltraVoicePlugin.GuttertankVoiceActorField.SetEnumDisplayName(GuttertankVoiceActor.Virchew, "Virchew");
+
+            UltraVoicePlugin.V2VoiceActorField.SetEnumDisplayName(V2VoiceActor.Ruby, "Ruby");
+            UltraVoicePlugin.V2VoiceActorField.SetEnumDisplayName(V2VoiceActor.Caszu, "Caszu");
 
             LoadAssets();
 

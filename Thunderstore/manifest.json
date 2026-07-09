@@ -1,0 +1,10 @@
+{
+  "name": "UltraVoice_Retaken",
+  "version_number": "1.3.0",
+  "website_url": "https://github.com/msachelia/UltraVoiceRetaken",
+  "description": "Adds voice lines to ULTRAKILL enemies. Forked to continue the development.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305",
+    "EternalsTeam-PluginConfigurator-1.10.2"
+  ]
+}

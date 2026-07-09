@@ -16,6 +16,15 @@ namespace UltraVoice.Characters
         public static AudioClip[] DeathClips;
         public static AudioClip[] TripPainClips;
 
+        public static AudioClip[] SpawnClipsVirchew;
+        public static AudioClip[] AttackClipsVirchew;
+        public static AudioClip[] LandmineClipsVirchew;
+        public static AudioClip[] PunchClipsVirchew;
+        public static AudioClip[] PunchHitClipsVirchew;
+        public static AudioClip[] FrustratedClipsVirchew;
+        public static AudioClip[] DeathClipsVirchew;
+        public static AudioClip[] TripPainClipsVirchew;
+
         public static readonly string[] SpawnSubs =
         {
             "WEAPONS ONLINE.",
@@ -54,6 +63,13 @@ namespace UltraVoice.Characters
         };
 
         public static bool GuttertankSpawnInMirror = false;
+
+        public static AudioClip[] UseGuttertankClips(AudioClip[] melClips, AudioClip[] virchewClips)
+        {
+            return UltraVoicePlugin.GuttertankVoiceActorField != null && UltraVoicePlugin.GuttertankVoiceActorField.value == UltraVoicePlugin.GuttertankVoiceActor.Virchew
+                ? virchewClips
+                : melClips;
+        }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
@@ -115,6 +131,64 @@ namespace UltraVoice.Characters
                 UltraVoicePlugin.LoadClip("Guttertank.gt_TripPain3.wav"),
             };
 
+            SpawnClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_SpawnVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_SpawnVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_SpawnVirchew3.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_SpawnVirchew4.wav")
+            };
+
+            AttackClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_AttackVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_AttackVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_AttackVirchew3.wav")
+            };
+
+            LandmineClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_LandmineVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_LandmineVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_LandmineVirchew3.wav")
+            };
+
+            PunchClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchVirchew3.wav")
+            };
+
+            PunchHitClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchHitVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchHitVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchHitVirchew3.wav")
+            };
+
+            FrustratedClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchTripVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchTripVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchTripVirchew3.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_PunchTripVirchew4.wav")
+            };
+
+            DeathClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_DeathVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_DeathVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_DeathVirchew3.wav")
+            };
+
+            TripPainClipsVirchew = new AudioClip[]
+            {
+                UltraVoicePlugin.LoadClip("Guttertank.gt_TripPainVirchew1.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_TripPainVirchew2.wav"),
+                UltraVoicePlugin.LoadClip("Guttertank.gt_TripPainVirchew3.wav"),
+            };
+
             logger.LogInfo("Guttertank voice lines loaded successfully!");
         }
 
@@ -143,7 +217,7 @@ namespace UltraVoice.Characters
 
             UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                 VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                    GuttertankCharacter.SpawnClips,
+                    GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.SpawnClips, GuttertankCharacter.SpawnClipsVirchew),
                     GuttertankCharacter.SpawnSubs,
                     false
                 ),
@@ -166,7 +240,7 @@ namespace UltraVoice.Characters
             if (Random.Range(0f, 1f) < 0.75)
                 UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.PunchHitClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.PunchHitClips, GuttertankCharacter.PunchHitClipsVirchew),
                             GuttertankCharacter.PunchHitSubs
                         ),
                     () => GuttertankCharacter.PunchHitClips != null && GuttertankCharacter.PunchHitClips.Length > 0,
@@ -188,7 +262,7 @@ namespace UltraVoice.Characters
             if (Random.Range(0f, 1f) < 0.5)
                 UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.LandmineClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.LandmineClips, GuttertankCharacter.LandmineClipsVirchew),
                             GuttertankCharacter.LandmineSubs
                         ),
                     () => GuttertankCharacter.LandmineClips != null && GuttertankCharacter.LandmineClips.Length > 0,
@@ -210,7 +284,7 @@ namespace UltraVoice.Characters
             if (Random.Range(0f, 1f) < 0.5)
                 UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.AttackClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.AttackClips, GuttertankCharacter.AttackClipsVirchew),
                             GuttertankCharacter.AttackSubs
                         ),
                     () => GuttertankCharacter.AttackClips != null && GuttertankCharacter.AttackClips.Length > 0,
@@ -231,7 +305,7 @@ namespace UltraVoice.Characters
 
             UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.PunchClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.PunchClips, GuttertankCharacter.PunchClipsVirchew),
                             null
                         ),
                     () => GuttertankCharacter.PunchClips != null && GuttertankCharacter.PunchClips.Length > 0,
@@ -249,7 +323,7 @@ namespace UltraVoice.Characters
 
             UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.TripPainClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.TripPainClips, GuttertankCharacter.TripPainClipsVirchew),
                             null,
                             true
                         ),
@@ -267,7 +341,7 @@ namespace UltraVoice.Characters
 
                 UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                             VoiceManager.PlayRandomVoice(tank, "Guttertank",
-                                GuttertankCharacter.FrustratedClips,
+                                GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.FrustratedClips, GuttertankCharacter.FrustratedClipsVirchew),
                                 GuttertankCharacter.FrustratedSubs,
                                 true
                             ),
@@ -290,7 +364,7 @@ namespace UltraVoice.Characters
 
             UltraVoicePlugin.Instance.StartCoroutine(UltraVoicePlugin.DelayedVox(() =>
                         VoiceManager.PlayRandomVoice(__instance, "Guttertank",
-                            GuttertankCharacter.DeathClips,
+                            GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.DeathClips, GuttertankCharacter.DeathClipsVirchew),
                             null,
                             true
                         ),
