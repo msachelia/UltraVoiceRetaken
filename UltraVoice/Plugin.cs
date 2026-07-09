@@ -89,7 +89,7 @@ namespace UltraVoice
             VoiceManager = new VoiceManager();
 
             config = PluginConfigurator.Create("UltraVoice Retaken", "com.achelia.ultravoiceretaken");
-            config.SetIconWithURL("../Thunderstore/icon.png");
+            config.SetIconWithURL("https://raw.githubusercontent.com/msachelia/UltraVoiceRetaken/refs/heads/main/Thunderstore/icon.png");
 
             // Create panels
             TogglesPanel = new ConfigPanel(config.rootPanel, "Enemy Line Toggles", "toggles");
@@ -338,12 +338,12 @@ namespace UltraVoice
 
             LoadAssets();
 
-            harmony = new Harmony("com.mel33.ultravoice");
+            harmony = new Harmony("com.achelia.ultravoiceretaken");
             harmony.PatchAll();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
-            Logger.LogInfo("UltraVoice loaded successfully!");
+            Logger.LogInfo("UltraVoice Retaken loaded successfully!");
         }
 
         void OnDestroy()
