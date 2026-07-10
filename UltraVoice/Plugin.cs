@@ -48,6 +48,7 @@ namespace UltraVoice
         public static BoolField StalkerVoiceEnabled;
         public static BoolField MassVoiceEnabled;
         public static BoolField IdolVoiceEnabled;
+        public static BoolField WickedVoiceEnabled;
         public static BoolField PowerSubtitleColorEnabled;
         public static FloatField VoiceCooldown;
         public static IntField SubtitleLimit;
@@ -271,6 +272,13 @@ namespace UltraVoice
                 true
             );
 
+            WickedVoiceEnabled = new BoolField(
+                TogglesPanel,
+                "Enable Wicked Voice Lines",
+                "wickedvoice",
+                true
+            );
+
             PowerSubtitleColorEnabled = new BoolField(
                 config.rootPanel,
                 "Enable Power Subtitle Color",
@@ -403,6 +411,7 @@ namespace UltraVoice
             SoldierCharacter.LoadVoiceLines(Logger);
             StalkerCharacter.LoadVoiceLines(Logger);
             IdolCharacter.LoadVoiceLines(Logger);
+            WickedCharacter.LoadVoiceLines(Logger);
         }
 
         public static AudioClip LoadClip(string resourcePath)
