@@ -1,9 +1,7 @@
 ﻿using HarmonyLib;
-using System.Collections;
 using System.Collections.Generic;
 using UltraVoice.Utilities;
 using UnityEngine;
-
 
 namespace UltraVoice.Characters
 {
@@ -12,41 +10,40 @@ namespace UltraVoice.Characters
         public static AudioClip[] BlessClips;
         public static AudioClip[] VulnerableClips;
 
+        public static AudioClip[] BlessClipsVirchew;
+        public static AudioClip[] VulnerableClipsVirchew;
+
         public static readonly string[] BlessSubs =
         {
-            "Peace be upon thee",
-            "Thou art safe",
-            "I bless thee",
-            "No harm shall befall thee",
-            "A kindness for thee, sinner"
+            "Peace be upon thee...",
+            "Thou art safe...",
+            "I bless thee...",
+            "No harm shall befall thee...",
+            "A kindness for thee, sinner..."
         };
 
         public static readonly string[] VulnerableSubs =
         {
-            "I am vulnerable",
-            "I ask for thy mercy",
-            "I deserve not thy ire",
-            "Spare me thy wrath",
+            "I am vulnerable.",
+            "I ask for thy mercy.",
+            "I deserve not thy ire.",
+            "Spare me thy wrath.",
         };
+
+        public static AudioClip[] UseIdolClips(AudioClip[] voinviClips, AudioClip[] virchewClips)
+        {
+            return UltraVoicePlugin.IdolVoiceActorField != null && UltraVoicePlugin.IdolVoiceActorField.value == UltraVoicePlugin.IdolVoiceActor.Virchew
+                ? virchewClips
+                : voinviClips;
+        }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            BlessClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Idol.idol_Spawn1.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Spawn2.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Spawn3.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Spawn4.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Spawn5.wav"),
-            };
+            BlessClips = UltraVoicePlugin.LoadClips("Idol.idol_Spawn{0}.wav", 5);
+            VulnerableClips = UltraVoicePlugin.LoadClips("Idol.idol_Vulnerable{0}.wav", 4);
 
-            VulnerableClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Idol.idol_Vulnerable1.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Vulnerable2.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Vulnerable3.wav"),
-                UltraVoicePlugin.LoadClip("Idol.idol_Vulnerable4.wav")
-            };
+            BlessClipsVirchew = UltraVoicePlugin.LoadClips("Idol.idol_Spawn{0}Virchew.wav", 5);
+            VulnerableClipsVirchew = UltraVoicePlugin.LoadClips("Idol.idol_Vulnerable{0}Virchew.wav", 4);
 
             logger.LogInfo("Idol voice lines loaded successfully!");
         }
@@ -100,8 +97,11 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.IdolVoiceEnabled.value)
                 return;
 
+            if (SceneHelper.CurrentScene == "Level 7-4")
+                return;
+
             VoiceManager.PlayRandomVoice(__instance, "Idol",
-                    IdolCharacter.BlessClips,
+                    IdolCharacter.UseIdolClips(IdolCharacter.BlessClips, IdolCharacter.BlessClipsVirchew),
                     IdolCharacter.BlessSubs,
                     randomPitch: true
             );
@@ -118,18 +118,11 @@ namespace UltraVoice.Characters
 
             if (!IdolCharacter.JustBecameVisible(NewMovement.Instance, __instance)) return;
 
-            UltraVoicePlugin.Instance.StartCoroutine(VulnerableVoice(__instance));
-
-            static IEnumerator VulnerableVoice(Idol ferry)
-            {
-                yield return new WaitForSeconds(0.1f);
-
-                VoiceManager.PlayRandomVoice(ferry, "Idol",
-                    IdolCharacter.VulnerableClips,
-                    IdolCharacter.VulnerableSubs,
-                    randomPitch: true
-                );
-            }
+            VoiceManager.PlayRandomVoiceDelayed(0.1f, __instance, "Idol",
+                IdolCharacter.UseIdolClips(IdolCharacter.VulnerableClips, IdolCharacter.VulnerableClipsVirchew),
+                IdolCharacter.VulnerableSubs,
+                randomPitch: true
+            );
         }
     }
 }

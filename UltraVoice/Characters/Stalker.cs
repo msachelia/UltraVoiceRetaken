@@ -11,12 +11,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Stalker.stalker_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Stalker.stalker_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Stalker.stalker_Chatter1.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.stalker_Chatter{0}.wav", 3);
 
             AttackClip = UltraVoicePlugin.LoadClip("Stalker.stalker_Explode.wav");
 

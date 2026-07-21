@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -83,10 +83,10 @@ namespace UltraVoice.Patches
                 if (created.GetComponent<SubtitleWatcher>() == null)
                 {
                     var watcher = created.gameObject.AddComponent<SubtitleWatcher>();
-                    watcher.source = audioSource;      // may be null
+                    watcher.source = audioSource;
                     watcher.controller = __instance;
-                    watcher.spawnTime = Time.time;    // set before starting
-                    watcher.StartWatching();          // start coroutine now that spawnTime is set
+                    watcher.spawnTime = Time.time;
+                    watcher.StartWatching();
                 }
             }
             catch (System.Exception ex)
@@ -183,7 +183,6 @@ namespace UltraVoice.Patches
                         yield return null;
                     }
 
-                    // audio stopped: wait 2s, with checks
                     float waited = 0f;
                     while (waited < WaitBeforeFadeAfterAudio)
                     {

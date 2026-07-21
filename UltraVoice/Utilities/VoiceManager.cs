@@ -14,6 +14,7 @@ namespace UltraVoice.Utilities
         {
             return enemyType switch
             {
+                EnemyType.V2 => new UnityEngine.Color(0.878f, 0.302f, 0.282f),
                 EnemyType.Swordsmachine => new UnityEngine.Color(0.91f, 0.6f, 0.05f),
                 EnemyType.Streetcleaner => new UnityEngine.Color(0.82f, 0.30f, 0.09f),
                 EnemyType.Cerberus => new UnityEngine.Color(0.65f, 0.65f, 0.65f),
@@ -96,6 +97,58 @@ namespace UltraVoice.Utilities
             return Time.time - spawnTime < delay;
         }
 
+        public static AudioClip ToMono(AudioClip clip)
+        {
+            if (clip == null || clip.channels == 1)
+                return clip;
+
+            int channels = clip.channels;
+            float[] samples = new float[clip.samples * channels];
+            clip.GetData(samples, 0);
+
+            float[] mono = new float[clip.samples];
+            for (int i = 0; i < mono.Length; i++)
+            {
+                float sum = 0f;
+                for (int c = 0; c < channels; c++)
+                    sum += samples[i * channels + c];
+                mono[i] = sum / channels;
+            }
+
+            AudioClip result = AudioClip.Create(clip.name, clip.samples, 1, clip.frequency, false);
+            result.SetData(mono, 0);
+
+            return result;
+        }
+
+        public static AudioClip AmplifyClip(AudioClip clip, float gain)
+        {
+            float[] samples = new float[clip.samples * clip.channels];
+            clip.GetData(samples, 0);
+
+            for (int i = 0; i < samples.Length; i++)
+                samples[i] = Mathf.Clamp(samples[i] * gain, -1f, 1f);
+
+            AudioClip amplified = AudioClip.Create(clip.name + "_amp", clip.samples, clip.channels, clip.frequency, false);
+            amplified.SetData(samples, 0);
+
+            return amplified;
+        }
+
+        public static void ApplyVolume(AudioSource src, float gain)
+        {
+            if (gain > 1f && src.clip != null)
+            {
+                src.clip = AmplifyClip(src.clip, gain);
+                src.volume = 1f;
+                UnityEngine.Object.Destroy(src.clip, src.clip.length + 2f);
+            }
+            else
+            {
+                src.volume = gain;
+            }
+        }
+
         public static AudioSource CreateVoiceSource(
             UnityEngine.Component enemy,
             string name,
@@ -105,9 +158,14 @@ namespace UltraVoice.Utilities
             UnityEngine.Color? subtitleColor = null,
             bool randomPitch = false,
             float spatialBlend = 1f,
-            float volumeMult = 1f
+            float volumeMult = 1f,
+            bool parentToEnemy = true,
+            float maxDistance = 200f
         )
         {
+            if (!UltraVoicePlugin.VoicesEnabled)
+                return null;
+
             if (enemy == null || clip == null)
                 return null;
 
@@ -117,9 +175,11 @@ namespace UltraVoice.Utilities
             if (enemy.gameObject.TryGetComponent<EnemyIdentifier>(out var eid) && eid.puppet)
                 return null;
 
+            bool ignoreGlobalCooldown = name == "V1";
+
             if (!shouldInterrupt)
             {
-                if (!CheckGlobalCooldown())
+                if (!ignoreGlobalCooldown && !CheckGlobalCooldown())
                     return null;
 
                 if (IsEnemyVoicePlaying(enemy))
@@ -130,20 +190,29 @@ namespace UltraVoice.Utilities
                 InterruptVoices(enemy);
             }
 
-            lastVoiceTime = Time.time;
+            if (!ignoreGlobalCooldown)
+                lastVoiceTime = Time.time;
 
             GameObject obj = new GameObject($"UltraVoice_{name}");
-            obj.transform.SetParent(enemy.transform);
-            obj.transform.localPosition = UnityEngine.Vector3.zero;
+
+            if (parentToEnemy)
+            {
+                obj.transform.SetParent(enemy.transform);
+                obj.transform.localPosition = UnityEngine.Vector3.zero;
+            }
+            else
+            {
+                obj.transform.position = enemy.transform.position;
+            }
 
             var src = obj.AddComponent<AudioSource>();
 
             src.clip = clip;
             src.spatialBlend = spatialBlend;
-            src.volume = 1f;
-            src.volume *= volumeMult;
+
+            ApplyVolume(src, Mathf.Min(volumeMult, 1f) * UltraVoicePlugin.GetVoiceVolume(name));
             src.minDistance = 50f;
-            src.maxDistance = 200f;
+            src.maxDistance = maxDistance;
             src.dopplerLevel = 0.25f;
 
             if (randomPitch)
@@ -173,7 +242,8 @@ namespace UltraVoice.Utilities
             bool interrupt = false,
             bool randomPitch = false,
             float volumeMult = 1f,
-            UnityEngine.Color? colorOverride = null
+            UnityEngine.Color? colorOverride = null,
+            float spatialBlend = 1f
         )
         {
             if (clips == null || clips.Length == 0)
@@ -185,7 +255,33 @@ namespace UltraVoice.Utilities
             if (subtitles != null && index < subtitles.Length)
                 subtitle = subtitles[index];
 
-            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch, volumeMult);
+            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch, spatialBlend: spatialBlend, volumeMult: volumeMult);
+        }
+
+        public static void PlayRandomVoiceDelayed(
+            float delay,
+            UnityEngine.Component enemy,
+            string enemyName,
+            AudioClip[] clips,
+            string[] subtitles,
+            bool interrupt = false,
+            bool randomPitch = false,
+            float volumeMult = 1f,
+            UnityEngine.Color? colorOverride = null,
+            float spatialBlend = 1f
+        )
+        {
+            UltraVoicePlugin.Instance.StartCoroutine(Routine());
+
+            System.Collections.IEnumerator Routine()
+            {
+                yield return new WaitForSeconds(delay);
+
+                if (enemy == null)
+                    yield break;
+
+                PlayRandomVoice(enemy, enemyName, clips, subtitles, interrupt, randomPitch, volumeMult, colorOverride, spatialBlend);
+            }
         }
 
         public static void ShowSubtitle(string text, AudioSource src, UnityEngine.Color? color = null)

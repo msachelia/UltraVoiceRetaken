@@ -2,6 +2,7 @@ using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UltraVoice.Characters
 {
@@ -26,15 +27,14 @@ namespace UltraVoice.Characters
 
         public const string WickedSceneName = "07b47256f0da7f941947e74905ad16b4";
 
+        public static bool InWickedLevel()
+        {
+            return SceneManager.GetActiveScene().name == WickedSceneName;
+        }
+
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChaseClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Wicked.wicked_Chase1.wav"),
-                UltraVoicePlugin.LoadClip("Wicked.wicked_Chase2.wav"),
-                UltraVoicePlugin.LoadClip("Wicked.wicked_Chase3.wav"),
-                UltraVoicePlugin.LoadClip("Wicked.wicked_Chase4.wav")
-            };
+            ChaseClips = UltraVoicePlugin.LoadClips("Wicked.wicked_Chase{0}.wav", 4);
 
             SkullPickupClip = UltraVoicePlugin.LoadClip("Wicked.wicked_SkullPickup.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Wicked.wicked_Death.wav");
@@ -42,8 +42,6 @@ namespace UltraVoice.Characters
             logger.LogInfo("Wicked voice lines loaded successfully!");
         }
     }
-
-    // WICKED PATCHES
 
     [HarmonyPatch(typeof(Wicked), "Update")]
     class WickedChasePatch
@@ -55,7 +53,7 @@ namespace UltraVoice.Characters
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != WickedCharacter.WickedSceneName)
+            if (!WickedCharacter.InWickedLevel())
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -67,8 +65,6 @@ namespace UltraVoice.Characters
             if (WickedCharacter.ChaseClips == null || WickedCharacter.ChaseClips.Length == 0)
                 return;
 
-            // Play 2D on the player so shooting Wicked (which teleports it away)
-            // doesn't drag the source out of audible range and cut the line off
             int i = Random.Range(0, WickedCharacter.ChaseClips.Length);
             string sub = i < WickedCharacter.ChaseSubs.Length ? WickedCharacter.ChaseSubs[i] : null;
 
@@ -94,7 +90,7 @@ namespace UltraVoice.Characters
             if (__instance == null || __instance.itemType != ItemType.SkullRed)
                 return;
 
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != WickedCharacter.WickedSceneName)
+            if (!WickedCharacter.InWickedLevel())
                 return;
 
             UltraVoicePlugin.Instance.StartCoroutine(PlaySkullPickup());
@@ -129,10 +125,9 @@ namespace UltraVoice.Characters
             if (__instance == null)
                 return;
 
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != WickedCharacter.WickedSceneName)
+            if (!WickedCharacter.InWickedLevel())
                 return;
 
-            // OnCorrectUse fires for any skull placed correctly — only react to the red one
             ItemIdentifier item = __instance.GetComponent<ItemIdentifier>();
             if (item == null || item.itemType != ItemType.SkullRed)
                 return;

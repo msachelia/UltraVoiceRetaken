@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -6,33 +6,18 @@ namespace UltraVoice.Characters
 {
     public class MannequinCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] ChatterClips;
         public static AudioClip[] DeathClips;
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh1.wav"),
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh2.wav"),
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh3.wav"),
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh4.wav"),
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Laugh5.wav")
-            };
-
-            DeathClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Death1.wav"),
-                UltraVoicePlugin.LoadClip("Mannequin.mq_Death2.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Mannequin.mq_Laugh{0}.wav", 5);
+            DeathClips = UltraVoicePlugin.LoadClips("Mannequin.mq_Death{0}.wav", 2);
 
             logger.LogInfo("Mannequin voice lines loaded successfully!");
         }
-
     }
-
-    // MANNEQUIN PATCHES
 
     [HarmonyPatch(typeof(Mannequin), "Update")]
     class MannequinChatterPatch

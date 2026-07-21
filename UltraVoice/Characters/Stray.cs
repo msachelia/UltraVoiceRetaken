@@ -12,12 +12,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Stray.str_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Stray.str_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Stray.str_Chatter1.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Stray.str_Chatter{0}.wav", 3);
 
             AttackClip = UltraVoicePlugin.LoadClip("Stray.str_Attack.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Stray.str_Death.wav");
@@ -25,7 +20,6 @@ namespace UltraVoice.Characters
             logger.LogInfo("Stray voice lines loaded successfully!");
         }
     }
-
 
     [HarmonyPatch(typeof(ZombieProjectiles), "Update")]
     class StrayChatterPatch

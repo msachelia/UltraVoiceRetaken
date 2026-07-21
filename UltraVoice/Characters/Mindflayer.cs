@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System.Collections;
+using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -7,7 +6,7 @@ namespace UltraVoice.Characters
 {
     public class MindflayerCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] SpawnClips;
         public static AudioClip[] ChatterClips;
         public static AudioClip[] MeleeClips;
@@ -18,7 +17,6 @@ namespace UltraVoice.Characters
         public static AudioClip[] MeleeClipsMasc;
         public static AudioClip[] EnrageClipsMasc;
 
-        // Subtitle storage
         public static readonly string[] SpawnSubs =
         {
             "I require your blood.",
@@ -58,78 +56,26 @@ namespace UltraVoice.Characters
             return smr.sharedMesh == mf.maleMesh;
         }
 
+        public static AudioClip[] UseMindflayerClips(Mindflayer mf, AudioClip[] femClips, AudioClip[] mascClips)
+        {
+            return IsMascMindflayer(mf) ? mascClips : femClips;
+        }
+
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn1.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn2.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn3.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn4.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn5.wav"),
-            };
+            SpawnClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Spawn{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Chatter{0}.wav", 4);
+            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Melee{0}.wav", 3);
+            EnrageClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Enrage{0}.wav", 4);
 
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter2.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter3.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter4.wav"),
-            };
-
-            MeleeClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee1.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee2.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee3.wav"),
-            };
-
-            EnrageClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage1.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage2.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage3.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage4.wav"),
-            };
-
-            SpawnClipsMasc = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn1Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn2Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn3Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn4Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Spawn5Masc.wav"),
-            };
-
-            ChatterClipsMasc = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter1Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter2Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter3Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Chatter4Masc.wav"),
-            };
-
-            MeleeClipsMasc = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee1Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee2Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Melee3Masc.wav"),
-            };
-
-            EnrageClipsMasc = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage1Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage2Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage3Masc.wav"),
-                UltraVoicePlugin.LoadClip("Mindflayer.mf_Enrage4Masc.wav"),
-            };
+            SpawnClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Spawn{0}Masc.wav", 5);
+            ChatterClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Chatter{0}Masc.wav", 4);
+            MeleeClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Melee{0}Masc.wav", 3);
+            EnrageClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Enrage{0}Masc.wav", 4);
 
             logger.LogInfo("Mindflayer voice lines loaded successfully!");
         }
-
     }
-
-    // MINDFLAYER PATCHES
 
     [HarmonyPatch(typeof(Mindflayer), "Start")]
     class MindflayerSpawnPatch
@@ -138,16 +84,12 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
-            if (__instance.dying == true) return;
+            if (__instance.dying) return;
 
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
-            var clips = MindflayerCharacter.IsMascMindflayer(__instance)
-                ? MindflayerCharacter.SpawnClipsMasc
-                : MindflayerCharacter.SpawnClips;
-
             VoiceManager.PlayRandomVoice(__instance, "Mindflayer",
-                clips,
+                MindflayerCharacter.UseMindflayerClips(__instance, MindflayerCharacter.SpawnClips, MindflayerCharacter.SpawnClipsMasc),
                 MindflayerCharacter.SpawnSubs,
                 false,
                 randomPitch: true
@@ -165,10 +107,8 @@ namespace UltraVoice.Characters
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance == null)
+            if (__instance == null || __instance.dying)
                 return;
-
-            if (__instance.dying == true) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 5f))
                 return;
@@ -176,21 +116,14 @@ namespace UltraVoice.Characters
             if (VoiceManager.TooSoonAfterSpawn(__instance, 3f))
                 return;
 
-            if (__instance.dying)
+            if (Random.Range(0f, 1f) >= 0.75f)
                 return;
 
-            if (Random.Range(0f, 1f) < 0.75f)
-            {
-                var clips = MindflayerCharacter.IsMascMindflayer(__instance)
-                    ? MindflayerCharacter.ChatterClipsMasc
-                    : MindflayerCharacter.ChatterClips;
-
-                VoiceManager.PlayRandomVoice(__instance, "Mindflayer",
-                    clips,
-                    MindflayerCharacter.ChatterSubs,
-                    randomPitch: true
-                );
-            }
+            VoiceManager.PlayRandomVoice(__instance, "Mindflayer",
+                MindflayerCharacter.UseMindflayerClips(__instance, MindflayerCharacter.ChatterClips, MindflayerCharacter.ChatterClipsMasc),
+                MindflayerCharacter.ChatterSubs,
+                randomPitch: true
+            );
         }
     }
 
@@ -201,26 +134,13 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
-            if (__instance.dying == true) return;
+            if (__instance.dying) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 2f))
                 return;
 
-            UltraVoicePlugin.Instance.StartCoroutine(DelayedMeleeVoice(__instance));
-        }
-
-        static IEnumerator DelayedMeleeVoice(Mindflayer mf)
-        {
-            yield return new WaitForSeconds(0.5f);
-
-            if (mf == null) yield break;
-
-            var clips = MindflayerCharacter.IsMascMindflayer(mf)
-                ? MindflayerCharacter.MeleeClipsMasc
-                : MindflayerCharacter.MeleeClips;
-
-            VoiceManager.PlayRandomVoice(mf, "Mindflayer",
-                clips,
+            VoiceManager.PlayRandomVoiceDelayed(0.5f, __instance, "Mindflayer",
+                MindflayerCharacter.UseMindflayerClips(__instance, MindflayerCharacter.MeleeClips, MindflayerCharacter.MeleeClipsMasc),
                 MindflayerCharacter.MeleeSubs,
                 randomPitch: true
             );
@@ -234,14 +154,10 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
-            if (__instance.dying == true) return;
-
-            var clips = MindflayerCharacter.IsMascMindflayer(__instance)
-                ? MindflayerCharacter.EnrageClipsMasc
-                : MindflayerCharacter.EnrageClips;
+            if (__instance.dying) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mindflayer",
-                clips,
+                MindflayerCharacter.UseMindflayerClips(__instance, MindflayerCharacter.EnrageClips, MindflayerCharacter.EnrageClipsMasc),
                 MindflayerCharacter.EnrageSubs,
                 interrupt: true,
                 randomPitch: true

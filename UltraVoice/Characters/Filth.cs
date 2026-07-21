@@ -12,12 +12,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Filth.fil_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Filth.fil_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Filth.fil_Chatter1.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Filth.fil_Chatter{0}.wav", 3);
 
             AttackClip = UltraVoicePlugin.LoadClip("Filth.fil_Attack.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Filth.fil_Death.wav");
@@ -51,13 +46,12 @@ namespace UltraVoice.Characters
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
-                FilthCharacter.DeathClip,
+                FilthCharacter.AttackClip,
                 null,
                 randomPitch: true
             );
         }
     }
-
 
     [HarmonyPatch(typeof(ZombieMelee), nameof(ZombieMelee.OnGoLimp))]
     class FilthDeathPatch
@@ -68,13 +62,12 @@ namespace UltraVoice.Characters
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
-                FilthCharacter.AttackClip,
+                FilthCharacter.DeathClip,
                 null,
                 randomPitch: true
             );
         }
     }
-
 
     [HarmonyPatch(typeof(ZombieMelee), "Update")]
     class FilthChatterPatch

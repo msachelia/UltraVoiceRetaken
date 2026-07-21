@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.IO;
 
 namespace UltraVoice.Utilities
@@ -10,18 +10,17 @@ namespace UltraVoice.Utilities
             using (var memStream = new MemoryStream(fileBytes))
             using (var reader = new BinaryReader(memStream))
             {
-                // Read RIFF header
+
                 string riff = new string(reader.ReadChars(4));
                 if (riff != "RIFF")
                     return null;
 
-                reader.ReadInt32(); // file size - 8
+                reader.ReadInt32();
 
                 string wave = new string(reader.ReadChars(4));
                 if (wave != "WAVE")
                     return null;
 
-                // Find fmt chunk
                 int channels = 0;
                 int sampleRate = 0;
                 int bytesPerSample = 0;
@@ -33,21 +32,20 @@ namespace UltraVoice.Utilities
 
                     if (chunkId == "fmt ")
                     {
-                        reader.ReadInt16(); // audio format (1 = PCM)
+                        reader.ReadInt16();
                         channels = reader.ReadInt16();
                         sampleRate = reader.ReadInt32();
-                        reader.ReadInt32(); // byte rate
-                        reader.ReadInt16(); // block align
+                        reader.ReadInt32();
+                        reader.ReadInt16();
                         int bitsPerSample = reader.ReadInt16();
                         bytesPerSample = bitsPerSample / 8;
 
-                        // Skip any extra bytes in fmt chunk
                         if (chunkSize > 16)
                             reader.ReadBytes(chunkSize - 16);
                     }
                     else if (chunkId == "data")
                     {
-                        // Read audio data
+
                         int sampleCount = chunkSize / bytesPerSample / channels;
                         float[] audioData = new float[sampleCount * channels];
 
@@ -71,7 +69,7 @@ namespace UltraVoice.Utilities
                     }
                     else
                     {
-                        // Skip unknown chunk
+
                         reader.ReadBytes(chunkSize);
                     }
                 }

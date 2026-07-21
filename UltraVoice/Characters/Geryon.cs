@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -37,6 +37,21 @@ namespace UltraVoice.Characters
             "CALM DOWN! CALM DOWN!",
         };
 
+        public static readonly Color AbsolutionColor = new Color(0.45f, 0.80f, 0.40f);
+        public static readonly Color DissonanceColor = new Color(0.65f, 0.45f, 0.85f);
+        public static readonly Color RetributionColor = new Color(0.87f, 0.30f, 0.30f);
+
+        public static readonly Color[] ChatterColors =
+        {
+            RetributionColor, RetributionColor, RetributionColor,
+            DissonanceColor, DissonanceColor, DissonanceColor,
+            AbsolutionColor, AbsolutionColor, AbsolutionColor
+        };
+
+        public static bool EnrageLinePlayed = false;
+        public static bool RestartedFight = false;
+        public static bool CanRestartFight = false;
+
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             IntroClip = UltraVoicePlugin.LoadClip("Geryon.ger_Intro.wav");
@@ -46,32 +61,40 @@ namespace UltraVoice.Characters
             BigPainClip = UltraVoicePlugin.LoadClip("Geryon.ger_BigPain.wav");
             RecoverClip = UltraVoicePlugin.LoadClip("Geryon.ger_Recover.wav");
 
-            ChatterClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter2.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter3.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter4.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter5.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter6.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter7.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter8.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Chatter9.wav"),
-            };
-
-            OverheatClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Geryon.ger_Overheat1.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Overheat2.wav"),
-                UltraVoicePlugin.LoadClip("Geryon.ger_Overheat3.wav")
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Geryon.ger_Chatter{0}.wav", 9);
+            OverheatClips = UltraVoicePlugin.LoadClips("Geryon.ger_Overheat{0}.wav", 3);
 
             logger.LogInfo("Geryon voice lines loaded successfully!");
         }
 
-        public static bool EnrageLinePlayed = false;
-        public static bool RestartedFight = false;
-        public static bool CanRestartFight = false;
+        public static void PlayScriptedLine(Geryon geryon, AudioClip clip, string firstSub, Color? firstColor, bool interrupt, float startDelay, params (float delay, string text, Color? color)[] followUps)
+        {
+            UltraVoicePlugin.Instance.StartCoroutine(Routine());
+
+            IEnumerator Routine()
+            {
+                if (startDelay > 0f)
+                    yield return new WaitForSeconds(startDelay);
+
+                if (geryon == null || !geryon.active)
+                    yield break;
+
+                var src = VoiceManager.CreateVoiceSource(geryon, "Geryon", clip, firstSub, interrupt, firstColor, spatialBlend: 0f);
+
+                if (src == null)
+                    yield break;
+
+                foreach (var (delay, text, color) in followUps)
+                {
+                    yield return new WaitForSeconds(delay);
+
+                    if (geryon == null || !geryon.active || !src)
+                        yield break;
+
+                    VoiceManager.ShowSubtitle(text, src, color);
+                }
+            }
+        }
     }
 
     [HarmonyPatch(typeof(Geryon), "Start")]
@@ -88,82 +111,18 @@ namespace UltraVoice.Characters
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
             if (!GeryonCharacter.RestartedFight)
-                UltraVoicePlugin.Instance.StartCoroutine(PlayIntro(__instance));
+                GeryonCharacter.PlayScriptedLine(__instance, GeryonCharacter.IntroClip,
+                    "FOOLISH...", GeryonCharacter.RetributionColor, false, 0f,
+                    (1f, "OR BRAVE?", GeryonCharacter.DissonanceColor),
+                    (1.25f, "IT MATTERS NOT...", GeryonCharacter.AbsolutionColor),
+                    (1.25f, "FOR WE SHALL STRIKE YOU DOWN!", null)
+                );
             else
-                UltraVoicePlugin.Instance.StartCoroutine(PlayRestart(__instance));
-
-            static IEnumerator PlayIntro(Geryon geryon)
-            {
-                if (!geryon.active)
-                    yield break;
-
-                var src = VoiceManager.CreateVoiceSource(
-                    geryon,
-                    "Geryon",
-                    GeryonCharacter.IntroClip,
-                    "FOOLISH...",
-                    false
+                GeryonCharacter.PlayScriptedLine(__instance, GeryonCharacter.RestartClip,
+                    "IT REAPPEARS...", GeryonCharacter.DissonanceColor, false, 0f,
+                    (1.8f, "IT WANTS MORE?", GeryonCharacter.AbsolutionColor),
+                    (1.4f, "THEN MORE IT SHALL RECEIVE!", GeryonCharacter.RetributionColor)
                 );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1f);
-                VoiceManager.ShowSubtitle(
-                    "OR BRAVE?",
-                    src
-                );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.25f);
-                VoiceManager.ShowSubtitle(
-                    "IT MATTERS NOT...",
-                    src
-                );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.25f);
-                VoiceManager.ShowSubtitle(
-                    "FOR WE SHALL STRIKE YOU DOWN!",
-                    src
-                );
-            }
-
-            static IEnumerator PlayRestart(Geryon geryon)
-            {
-                if (!geryon.active)
-                    yield break;
-
-                var src = VoiceManager.CreateVoiceSource(
-                    geryon,
-                    "Geryon",
-                    GeryonCharacter.RestartClip,
-                    "IT REAPPEARS...",
-                    false
-                );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.25f);
-                VoiceManager.ShowSubtitle(
-                    "IT WANTS MORE?",
-                    src
-                );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.5f);
-                VoiceManager.ShowSubtitle(
-                    "THEN MORE IT SHALL RECEIVE!",
-                    src
-                );
-            }
         }
     }
 
@@ -190,32 +149,23 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
-            VoiceManager.InterruptVoices(__instance);
-            UltraVoicePlugin.Instance.StartCoroutine(PlayOverheat(__instance));
+            VoiceManager.CreateVoiceSource(
+                __instance,
+                "Geryon",
+                GeryonCharacter.BigPainClip,
+                null,
+                true,
+                spatialBlend: 0f
+            );
 
-            static IEnumerator PlayOverheat(Geryon geryon)
-            {
-                VoiceManager.CreateVoiceSource(
-                    geryon,
-                    "Geryon",
-                    GeryonCharacter.BigPainClip,
-                    null,
-                    true
-                );
-
-                yield return new WaitForSeconds(1f);
-
-                VoiceManager.PlayRandomVoice(
-                    geryon, 
-                    "Geryon",
-                    GeryonCharacter.OverheatClips,
-                    GeryonCharacter.OverheatSubs,
-                    true
-                );
-            }
+            VoiceManager.PlayRandomVoiceDelayed(1f, __instance, "Geryon",
+                GeryonCharacter.OverheatClips,
+                GeryonCharacter.OverheatSubs,
+                interrupt: true,
+                spatialBlend: 0f
+            );
         }
     }
-
 
     [HarmonyPatch(typeof(Geryon), "Update")]
     class GeryonChatterPatch
@@ -225,16 +175,31 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
-            if (VoiceManager.CheckCooldown(__instance, 6f) && !VoiceManager.TooSoonAfterSpawn(__instance, 6f) && !__instance.stunned && __instance.active)
+            if (__instance.stunned || !__instance.active)
+                return;
 
-            if (Random.Range(0f, 1f) < 0.75f)
-                VoiceManager.PlayRandomVoice(
-                    __instance,
-                    "Geryon",
-                    GeryonCharacter.ChatterClips,
-                    GeryonCharacter.ChatterSubs,
-                    false
-                );
+            if (!VoiceManager.CheckCooldown(__instance, 6f))
+                return;
+
+            if (VoiceManager.TooSoonAfterSpawn(__instance, 6f))
+                return;
+
+            if (Random.Range(0f, 1f) >= 0.75f)
+                return;
+
+            if (GeryonCharacter.ChatterClips == null || GeryonCharacter.ChatterClips.Length == 0)
+                return;
+
+            int i = Random.Range(0, GeryonCharacter.ChatterClips.Length);
+
+            VoiceManager.CreateVoiceSource(
+                __instance,
+                "Geryon",
+                GeryonCharacter.ChatterClips[i],
+                i < GeryonCharacter.ChatterSubs.Length ? GeryonCharacter.ChatterSubs[i] : null,
+                subtitleColor: i < GeryonCharacter.ChatterColors.Length ? GeryonCharacter.ChatterColors[i] : (Color?)null,
+                spatialBlend: 0f
+            );
         }
     }
 
@@ -255,13 +220,17 @@ namespace UltraVoice.Characters
             {
                 yield return new WaitForSeconds(0.2f);
 
+                if (geryon == null)
+                    yield break;
+
                 VoiceManager.CreateVoiceSource(
-                        geryon.GetComponent(typeof(Animator)),
-                        "Geryon",
-                        GeryonCharacter.DeathClip,
-                        null,
-                        true
-                    );
+                    geryon.GetComponent(typeof(Animator)),
+                    "Geryon",
+                    GeryonCharacter.DeathClip,
+                    null,
+                    true,
+                    spatialBlend: 0f
+                );
             }
         }
     }
@@ -279,7 +248,8 @@ namespace UltraVoice.Characters
                 "Geryon",
                 GeryonCharacter.BigPainClip,
                 null,
-                true
+                true,
+                spatialBlend: 0f
             );
         }
     }
@@ -292,70 +262,25 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
-            if (!__instance.secondPhase)
-                VoiceManager.CreateVoiceSource(
-                    __instance,
-                    "Geryon",
-                    GeryonCharacter.RecoverClip,
-                    null,
-                    true
-                );
+            VoiceManager.CreateVoiceSource(
+                __instance,
+                "Geryon",
+                GeryonCharacter.RecoverClip,
+                null,
+                true,
+                spatialBlend: 0f
+            );
 
-            else if (__instance.secondPhase && !GeryonCharacter.EnrageLinePlayed)
-                UltraVoicePlugin.Instance.StartCoroutine(PlayEnrage(__instance));
+            if (!__instance.secondPhase || GeryonCharacter.EnrageLinePlayed)
+                return;
 
-            else
-                VoiceManager.CreateVoiceSource(
-                    __instance,
-                    "Geryon",
-                    GeryonCharacter.RecoverClip,
-                    null,
-                    true
-                );
+            GeryonCharacter.EnrageLinePlayed = true;
 
-            static IEnumerator PlayEnrage(Geryon geryon)
-            {
-                VoiceManager.CreateVoiceSource(
-                    geryon,
-                    "Geryon",
-                    GeryonCharacter.RecoverClip,
-                    null,
-                    true
-                );
-
-                yield return new WaitForSeconds(0.75f);
-
-                if (!geryon.active)
-                    yield break;
-
-                var src = VoiceManager.CreateVoiceSource(
-                    geryon,
-                    "Geryon",
-                    GeryonCharacter.EnrageClip,
-                    "INSUFFERABLE...",
-                    true
-                );
-
-                GeryonCharacter.EnrageLinePlayed = true;
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.25f);
-                VoiceManager.ShowSubtitle(
-                    "INFURIATING!",
-                    src
-                );
-
-                if (!geryon.active)
-                    yield break;
-
-                yield return new WaitForSeconds(1.25f);
-                VoiceManager.ShowSubtitle(
-                    "DIE!",
-                    src
-                );
-            }
+            GeryonCharacter.PlayScriptedLine(__instance, GeryonCharacter.EnrageClip,
+                "INSUFFERABLE...", GeryonCharacter.RetributionColor, true, 0.75f,
+                (1.9f, "INFURIATING!", GeryonCharacter.RetributionColor),
+                (2.3f, "DIE!", GeryonCharacter.RetributionColor)
+            );
         }
     }
 }

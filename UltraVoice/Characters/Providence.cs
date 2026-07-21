@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System.Collections;
+using HarmonyLib;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -7,35 +6,34 @@ namespace UltraVoice.Characters
 {
     public class ProvidenceCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] SpawnClips;
         public static AudioClip[] AttackClips;
         public static AudioClip[] DodgeClips;
 
-        // Subtitle storage
         public static readonly string[] SpawnSubs =
         {
-            "The light descends",
-            "The light finds you",
-            "You cannot hide from the light",
-            "He must be found",
-            "His silence calls us here"
+            "The light descends.",
+            "The light finds you.",
+            "You cannot hide from the light.",
+            "He must be found.",
+            "His silence calls us here."
         };
 
         public static readonly string[] AttackSubs =
         {
-            "Your end is written",
-            "You will answer",
-            "You chose this",
-            "This ends here",
-            "I will unmake you"
+            "Your end is written.",
+            "You will answer.",
+            "You chose this.",
+            "This ends here.",
+            "I will unmake you."
         };
 
         public static readonly string[] DodgeSubs =
         {
-            "Foolish",
-            "Unwise",
-            "You know nothing"
+            "Foolish.",
+            "Unwise.",
+            "You know nothing."
         };
 
         public static bool IsProvidence(Drone d)
@@ -51,34 +49,32 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Providence.prov_Spawn1.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Spawn2.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Spawn3.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Spawn4.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Spawn5.wav")
-            };
-
-            AttackClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Providence.prov_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Chatter2.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Chatter3.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Chatter4.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Chatter5.wav")
-            };
-
-            DodgeClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Providence.prov_Dodge1.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Dodge2.wav"),
-                UltraVoicePlugin.LoadClip("Providence.prov_Dodge3.wav"),
-            };
+            SpawnClips = UltraVoicePlugin.LoadClips("Providence.prov_Spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("Providence.prov_Chatter{0}.wav", 5);
+            DodgeClips = UltraVoicePlugin.LoadClips("Providence.prov_Dodge{0}.wav", 3);
 
             logger.LogInfo("Providence voice lines loaded successfully!");
         }
 
+        public static void PlayAttackVoice(Drone drone)
+        {
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
+
+            if (!IsProvidence(drone))
+                return;
+
+            if (!VoiceManager.CheckCooldown(drone, 5f))
+                return;
+
+            if (VoiceManager.TooSoonAfterSpawn(drone, 2f))
+                return;
+
+            VoiceManager.PlayRandomVoice(drone, "Providence",
+                AttackClips,
+                AttackSubs,
+                randomPitch: true
+            );
+        }
     }
 
     [HarmonyPatch(typeof(Drone), "Start")]
@@ -101,28 +97,12 @@ namespace UltraVoice.Characters
         }
     }
 
-
     [HarmonyPatch(typeof(Drone), "Shoot")]
     class ProvidenceShootPatch
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
-
-            if (!ProvidenceCharacter.IsProvidence(__instance))
-                return;
-
-            if (!VoiceManager.CheckCooldown(__instance, 5f))
-                return;
-
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 2f))
-                return;
-
-            VoiceManager.PlayRandomVoice(__instance, "Providence",
-                ProvidenceCharacter.AttackClips,
-                ProvidenceCharacter.AttackSubs,
-                randomPitch: true
-            );
+            ProvidenceCharacter.PlayAttackVoice(__instance);
         }
     }
 
@@ -131,22 +111,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
-
-            if (!ProvidenceCharacter.IsProvidence(__instance))
-                return;
-
-            if (!VoiceManager.CheckCooldown(__instance, 5f))
-                return;
-
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 2f))
-                return;
-
-            VoiceManager.PlayRandomVoice(__instance, "Providence",
-                ProvidenceCharacter.AttackClips,
-                ProvidenceCharacter.AttackSubs,
-                randomPitch: true
-            );
+            ProvidenceCharacter.PlayAttackVoice(__instance);
         }
     }
 

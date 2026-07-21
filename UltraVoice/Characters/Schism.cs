@@ -12,12 +12,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Schism.sch_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Schism.sch_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Schism.sch_Chatter1.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Schism.sch_Chatter{0}.wav", 3);
 
             AttackClip = UltraVoicePlugin.LoadClip("Schism.sch_Attack.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Schism.sch_Death.wav");
@@ -25,7 +20,6 @@ namespace UltraVoice.Characters
             logger.LogInfo("Schism voice lines loaded successfully!");
         }
     }
-
 
     [HarmonyPatch(typeof(ZombieProjectiles), "Update")]
     class SchismChatterPatch
@@ -58,7 +52,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (__instance.eid.enemyType != EnemyType.Schism) return;
 
@@ -75,7 +69,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (__instance.eid.enemyType != EnemyType.Schism) return;
 

@@ -1,9 +1,31 @@
-﻿using BepInEx;
+/*
+    UltraVoice Retaken - Adds custom voice lines to ULTRAKILL enemies
+    Copyright (C) 2026 msachelia, mel (mof_33)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    The voice recordings distributed with this program are licensed
+    separately under VOICE-ACTING-LICENSE.md and are not covered by the GPL.
+*/
+
+using BepInEx;
 using HarmonyLib;
 using PluginConfig.API;
 using PluginConfig.API.Fields;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using UltraVoice.Characters;
@@ -13,10 +35,13 @@ using UnityEngine.SceneManagement;
 
 namespace UltraVoice
 {
-    [BepInPlugin("com.achelia.ultravoiceretaken", "UltraVoice Retaken", "1.3.0")]
+    [BepInPlugin("com.achelia.ultravoiceretaken", "UltraVoice Retaken", PluginVersion)]
     [BepInDependency("com.eternalUnion.pluginConfigurator")]
+    [BepInDependency("com.github.end-4.notiffy")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
+        public const string PluginVersion = "1.4.0";
+
         public static UltraVoicePlugin Instance;
         public static VoiceManager VoiceManager;
         private Harmony harmony;
@@ -49,6 +74,9 @@ namespace UltraVoice
         public static BoolField MassVoiceEnabled;
         public static BoolField IdolVoiceEnabled;
         public static BoolField WickedVoiceEnabled;
+        public static BoolField V1VoiceEnabled;
+        public static BoolField PowerAltVoiceEnabled;
+        public static BoolField MasterVoiceEnabled;
         public static BoolField PowerSubtitleColorEnabled;
         public static FloatField VoiceCooldown;
         public static IntField SubtitleLimit;
@@ -56,9 +84,24 @@ namespace UltraVoice
         public static EnumField<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
         public static EnumField<SentryVoiceActor> SentryVoiceActorField;
         public static EnumField<GuttertankVoiceActor> GuttertankVoiceActorField;
+        public static EnumField<GuttermanVoiceActor> GuttermanVoiceActorField;
+        public static EnumField<CerberusVoiceActor> CerberusVoiceActorField;
+        public static EnumField<FerrymanVoiceActor> FerrymanVoiceActorField;
+        public static EnumField<IdolVoiceActor> IdolVoiceActorField;
+        public static EnumField<VirtueVoiceActor> VirtueVoiceActorField;
+        public static EnumField<MirrorReaperVoiceActor> MirrorReaperVoiceActorField;
         public static EnumField<V2VoiceActor> V2VoiceActorField;
         public static ConfigPanel TogglesPanel;
+        public static ConfigPanel EnemyTogglesPanel;
         public static ConfigPanel ActorPanel;
+        public static ConfigPanel VolumePanel;
+        public static ConfigPanel EnemyVolumePanel;
+
+        public static bool VoicesEnabled => MasterVoiceEnabled == null || MasterVoiceEnabled.value;
+
+        public static FloatSliderField MasterVolumeField;
+        public static FloatSliderField PowerAltVolumeField;
+        public static Dictionary<string, FloatSliderField> EnemyVolumeFields = new Dictionary<string, FloatSliderField>();
 
         public enum SwordsmachineVoiceActor
         {
@@ -78,10 +121,47 @@ namespace UltraVoice
             Virchew
         }
 
+        public enum GuttermanVoiceActor
+        {
+            Mel,
+            Lemen
+        }
+
+        public enum CerberusVoiceActor
+        {
+            Mel,
+            Soil,
+            Rotund
+        }
+
+        public enum FerrymanVoiceActor
+        {
+            Mel,
+            Soil
+        }
+
         public enum V2VoiceActor
         {
             Ruby,
-            Caszu
+            Cazsu
+        }
+
+        public enum IdolVoiceActor
+        {
+            Voinvi,
+            Virchew
+        }
+
+        public enum VirtueVoiceActor
+        {
+            Noto,
+            Virchew
+        }
+
+        public enum MirrorReaperVoiceActor
+        {
+            Noto,
+            Rotund
         }
 
         void Awake()
@@ -90,190 +170,215 @@ namespace UltraVoice
             VoiceManager = new VoiceManager();
 
             config = PluginConfigurator.Create("UltraVoice Retaken", "com.achelia.ultravoiceretaken");
-            config.SetIconWithURL("https://raw.githubusercontent.com/msachelia/UltraVoiceRetaken/refs/heads/main/Thunderstore/icon.png");
+            config.icon = UpdateChecker.LoadIcon();
 
-            // Create panels
             TogglesPanel = new ConfigPanel(config.rootPanel, "Enemy Line Toggles", "toggles");
             ActorPanel = new ConfigPanel(config.rootPanel, "Voice Actors", "actors");
+            VolumePanel = new ConfigPanel(config.rootPanel, "Volume Levels", "volumes");
 
-            // Enemy toggles
-            CerberusVoiceEnabled = new BoolField(
+            MasterVoiceEnabled = new BoolField(
                 TogglesPanel,
+                "Enable Voice Lines",
+                "mastervoice",
+                true
+            );
+
+            EnemyTogglesPanel = new ConfigPanel(TogglesPanel, "Enemy Toggles", "enemytoggles");
+
+            MasterVoiceEnabled.postValueChangeEvent += (bool enabled) => EnemyTogglesPanel.interactable = enabled;
+            EnemyTogglesPanel.interactable = MasterVoiceEnabled.value;
+
+            CerberusVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
                 "Enable Cerberus Voice Lines",
                 "cerberusvoice",
                 true
             );
 
-            SwordsmachineVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Swordsmachine Voice Lines",
-                "swordsmachinevoice",
-                true
-            );
-
-            V2VoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable V2 Voice Lines",
-                "v2voice",
-                true
-            );
-
-            StreetcleanerVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Streetcleaner Voice Lines",
-                "streetcleanervoice",
-                true
-            );
-
-            MindflayerVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Mindflayer Voice Lines",
-                "mindflayervoice",
-                true
-            );
-
-            VirtueVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Virtue Voice Lines",
-                "virtuevoice",
-                true
-            );
-
-            FerrymanVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Ferryman Voice Lines",
-                "ferrymanvoice",
-                true
-            );
-
-            GuttermanVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Gutterman Voice Lines",
-                "guttermanvoice",
-                true
-            );
-
-            MannequinVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Mannequin Voice Lines",
-                "mannequinvoice",
-                true
-            );
-
-            GuttertankVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Guttertank Voice Lines",
-                "guttertankvoice",
-                true
-            );
-
-            ProvidenceVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Providence Voice Lines",
-                "providencevoice",
-                true
-            );
-
-            SentryVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Sentry Voice Lines",
-                "sentryvoice",
-                true
-            );
-
-            MauriceVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Malicious Face Voice Lines",
-                "mauricevoice",
-                true
-            );
-
             EarthmoverVoiceEnabled = new BoolField(
-                TogglesPanel,
+                EnemyTogglesPanel,
                 "Enable Earthmover Voice Lines",
                 "earthmovervoice",
                 true
             );
 
-            MirrorReaperVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Mirror Reaper Voice Lines",
-                "mirrorreapervoice",
-                true
-            );
-
-            GeryonVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Geryon Voice Lines",
-                "geryonvoice",
-                true
-            );
-
-            LeviathanVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Leviathan Voice Lines",
-                "levivoice",
-                true
-            );
-
-            InsurrectionistVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Insurrectionist Voice Lines",
-                "Insurrectionist",
+            FerrymanVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Ferryman Voice Lines",
+                "ferrymanvoice",
                 true
             );
 
             FilthVoiceEnabled = new BoolField(
-                TogglesPanel,
+                EnemyTogglesPanel,
                 "Enable Filth Voice Lines",
                 "filthvoice",
                 false
             );
 
-            StrayVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Stray Voice Lines",
-                "strayvoice",
-                false
+            GeryonVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Geryon Voice Lines",
+                "geryonvoice",
+                true
             );
 
-            SchismVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Schism Voice Lines",
-                "schismvoice",
-                false
+            GuttermanVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Gutterman Voice Lines",
+                "guttermanvoice",
+                true
             );
 
-            SoldierVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Soldier Voice Lines",
-                "soldiervoice",
-                false
-            );
-
-            StalkerVoiceEnabled = new BoolField(
-                TogglesPanel,
-                "Enable Stalker Voice Lines",
-                "stalkervoice",
-                false
+            GuttertankVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Guttertank Voice Lines",
+                "guttertankvoice",
+                true
             );
 
             MassVoiceEnabled = new BoolField(
-                TogglesPanel,
+                EnemyTogglesPanel,
                 "Enable Hideous Mass Voice Lines",
                 "massvoice",
                 true
             );
 
             IdolVoiceEnabled = new BoolField(
-                TogglesPanel,
+                EnemyTogglesPanel,
                 "Enable Idol Voice Lines",
                 "idolvoice",
                 true
             );
 
+            InsurrectionistVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Insurrectionist Voice Lines",
+                "Insurrectionist",
+                true
+            );
+
+            LeviathanVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Leviathan Voice Lines",
+                "levivoice",
+                true
+            );
+
+            MauriceVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Malicious Face Voice Lines",
+                "mauricevoice",
+                true
+            );
+
+            MannequinVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Mannequin Voice Lines",
+                "mannequinvoice",
+                true
+            );
+
+            MindflayerVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Mindflayer Voice Lines",
+                "mindflayervoice",
+                true
+            );
+
+            MirrorReaperVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Mirror Reaper Voice Lines",
+                "mirrorreapervoice",
+                true
+            );
+
+            PowerAltVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Power Alt Voice Lines",
+                "poweraltvoice",
+                true
+            );
+
+            ProvidenceVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Providence Voice Lines",
+                "providencevoice",
+                true
+            );
+
+            SchismVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Schism Voice Lines",
+                "schismvoice",
+                false
+            );
+
+            SentryVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Sentry Voice Lines",
+                "sentryvoice",
+                true
+            );
+
+            SoldierVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Soldier Voice Lines",
+                "soldiervoice",
+                false
+            );
+
+            StalkerVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Stalker Voice Lines",
+                "stalkervoice",
+                false
+            );
+
+            StrayVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Stray Voice Lines",
+                "strayvoice",
+                false
+            );
+
+            StreetcleanerVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Streetcleaner Voice Lines",
+                "streetcleanervoice",
+                true
+            );
+
+            SwordsmachineVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Swordsmachine Voice Lines",
+                "swordsmachinevoice",
+                true
+            );
+
+            V1VoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable V1 Voice Lines",
+                "v1voice",
+                true
+            );
+
+            V2VoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable V2 Voice Lines",
+                "v2voice",
+                true
+            );
+
+            VirtueVoiceEnabled = new BoolField(
+                EnemyTogglesPanel,
+                "Enable Virtue Voice Lines",
+                "virtuevoice",
+                true
+            );
+
             WickedVoiceEnabled = new BoolField(
-                TogglesPanel,
+                EnemyTogglesPanel,
                 "Enable Wicked Voice Lines",
                 "wickedvoice",
                 true
@@ -304,18 +409,25 @@ namespace UltraVoice
                 10
             );
 
-            UltraVoicePlugin.SwordsmachineVoiceActorField = new EnumField<SwordsmachineVoiceActor>(
+            UltraVoicePlugin.CerberusVoiceActorField = new EnumField<CerberusVoiceActor>(
                 ActorPanel,
-                "Swordsmachine Voice Actor",
-                "smvoiceactor",
-                SwordsmachineVoiceActor.Mel
+                "Cerberus Voice Actor",
+                "cerbvoiceactor",
+                CerberusVoiceActor.Mel
             );
 
-            UltraVoicePlugin.SentryVoiceActorField = new EnumField<SentryVoiceActor>(
+            UltraVoicePlugin.FerrymanVoiceActorField = new EnumField<FerrymanVoiceActor>(
                 ActorPanel,
-                "Sentry Voice Actor",
-                "svoiceactor",
-                SentryVoiceActor.Goober
+                "Ferryman Voice Actor",
+                "ferryvoiceactor",
+                FerrymanVoiceActor.Mel
+            );
+
+            UltraVoicePlugin.GuttermanVoiceActorField = new EnumField<GuttermanVoiceActor>(
+                ActorPanel,
+                "Gutterman Voice Actor",
+                "gmvoiceactor",
+                GuttermanVoiceActor.Mel
             );
 
             UltraVoicePlugin.GuttertankVoiceActorField = new EnumField<GuttertankVoiceActor>(
@@ -325,11 +437,46 @@ namespace UltraVoice
                 GuttertankVoiceActor.Mel
             );
 
+            UltraVoicePlugin.IdolVoiceActorField = new EnumField<IdolVoiceActor>(
+                ActorPanel,
+                "Idol Voice Actor",
+                "idolvoiceactor",
+                IdolVoiceActor.Voinvi
+            );
+
+            UltraVoicePlugin.MirrorReaperVoiceActorField = new EnumField<MirrorReaperVoiceActor>(
+                ActorPanel,
+                "Mirror Reaper Voice Actor",
+                "mrvoiceactor",
+                MirrorReaperVoiceActor.Noto
+            );
+
+            UltraVoicePlugin.SentryVoiceActorField = new EnumField<SentryVoiceActor>(
+                ActorPanel,
+                "Sentry Voice Actor",
+                "svoiceactor",
+                SentryVoiceActor.Goober
+            );
+
+            UltraVoicePlugin.SwordsmachineVoiceActorField = new EnumField<SwordsmachineVoiceActor>(
+                ActorPanel,
+                "Swordsmachine Voice Actor",
+                "smvoiceactor",
+                SwordsmachineVoiceActor.Mel
+            );
+
             UltraVoicePlugin.V2VoiceActorField = new EnumField<V2VoiceActor>(
                 ActorPanel,
                 "V2 Voice Actor",
                 "v2voiceactor",
                 V2VoiceActor.Ruby
+            );
+
+            UltraVoicePlugin.VirtueVoiceActorField = new EnumField<VirtueVoiceActor>(
+                ActorPanel,
+                "Virtue Voice Actor",
+                "virtuevoiceactor",
+                VirtueVoiceActor.Noto
             );
 
             UltraVoicePlugin.SwordsmachineVoiceActorField.SetEnumDisplayName(SwordsmachineVoiceActor.Mel, "Mel");
@@ -341,8 +488,89 @@ namespace UltraVoice
             UltraVoicePlugin.GuttertankVoiceActorField.SetEnumDisplayName(GuttertankVoiceActor.Mel, "Mel");
             UltraVoicePlugin.GuttertankVoiceActorField.SetEnumDisplayName(GuttertankVoiceActor.Virchew, "Virchew");
 
+            UltraVoicePlugin.GuttermanVoiceActorField.SetEnumDisplayName(GuttermanVoiceActor.Mel, "Mel");
+            UltraVoicePlugin.GuttermanVoiceActorField.SetEnumDisplayName(GuttermanVoiceActor.Lemen, "Lemen");
+
+            UltraVoicePlugin.CerberusVoiceActorField.SetEnumDisplayName(CerberusVoiceActor.Mel, "Mel");
+            UltraVoicePlugin.CerberusVoiceActorField.SetEnumDisplayName(CerberusVoiceActor.Soil, "Soil");
+            UltraVoicePlugin.CerberusVoiceActorField.SetEnumDisplayName(CerberusVoiceActor.Rotund, "Rotund");
+
+            UltraVoicePlugin.FerrymanVoiceActorField.SetEnumDisplayName(FerrymanVoiceActor.Mel, "Mel");
+            UltraVoicePlugin.FerrymanVoiceActorField.SetEnumDisplayName(FerrymanVoiceActor.Soil, "Soil");
+
             UltraVoicePlugin.V2VoiceActorField.SetEnumDisplayName(V2VoiceActor.Ruby, "Ruby");
-            UltraVoicePlugin.V2VoiceActorField.SetEnumDisplayName(V2VoiceActor.Caszu, "Caszu");
+            UltraVoicePlugin.V2VoiceActorField.SetEnumDisplayName(V2VoiceActor.Cazsu, "Cazsu");
+
+            UltraVoicePlugin.IdolVoiceActorField.SetEnumDisplayName(IdolVoiceActor.Voinvi, "Voinvi");
+            UltraVoicePlugin.IdolVoiceActorField.SetEnumDisplayName(IdolVoiceActor.Virchew, "Virchew");
+
+            UltraVoicePlugin.VirtueVoiceActorField.SetEnumDisplayName(VirtueVoiceActor.Noto, "Noto");
+            UltraVoicePlugin.VirtueVoiceActorField.SetEnumDisplayName(VirtueVoiceActor.Virchew, "Virchew");
+
+            UltraVoicePlugin.MirrorReaperVoiceActorField.SetEnumDisplayName(MirrorReaperVoiceActor.Noto, "Noto");
+            UltraVoicePlugin.MirrorReaperVoiceActorField.SetEnumDisplayName(MirrorReaperVoiceActor.Rotund, "Rotund");
+
+            MasterVolumeField = new FloatSliderField(
+                VolumePanel,
+                "Master Voice Volume",
+                "mastervolume",
+                new Tuple<float, float>(0f, 200f),
+                100f,
+                0
+            );
+
+            EnemyVolumePanel = new ConfigPanel(VolumePanel, "Enemy Volumes", "enemyvolumes");
+
+            (string key, string displayName, BoolField toggle)[] volumeEnemies =
+            {
+                ("Cerberus", "Cerberus", CerberusVoiceEnabled),
+                ("Earthmover", "Earthmover", EarthmoverVoiceEnabled),
+                ("Ferryman", "Ferryman", FerrymanVoiceEnabled),
+                ("Filth", "Filth", FilthVoiceEnabled),
+                ("Geryon", "Geryon", GeryonVoiceEnabled),
+                ("Gutterman", "Gutterman", GuttermanVoiceEnabled),
+                ("Guttertank", "Guttertank", GuttertankVoiceEnabled),
+                ("HideousMass", "Hideous Mass", MassVoiceEnabled),
+                ("Idol", "Idol", IdolVoiceEnabled),
+                ("Insurrectionist", "Insurrectionist", InsurrectionistVoiceEnabled),
+                ("Leviathan", "Leviathan", LeviathanVoiceEnabled),
+                ("MaliciousFace", "Malicious Face", MauriceVoiceEnabled),
+                ("Mannequin", "Mannequin", MannequinVoiceEnabled),
+                ("Mindflayer", "Mindflayer", MindflayerVoiceEnabled),
+                ("MirrorReaper", "Mirror Reaper", MirrorReaperVoiceEnabled),
+                ("PowerAlt", "Power Alt", PowerAltVoiceEnabled),
+                ("Providence", "Providence", ProvidenceVoiceEnabled),
+                ("Schism", "Schism", SchismVoiceEnabled),
+                ("Sentry", "Sentry", SentryVoiceEnabled),
+                ("Soldier", "Soldier", SoldierVoiceEnabled),
+                ("Stalker", "Stalker", StalkerVoiceEnabled),
+                ("Stray", "Stray", StrayVoiceEnabled),
+                ("Streetcleaner", "Streetcleaner", StreetcleanerVoiceEnabled),
+                ("Swordsmachine", "Swordsmachine", SwordsmachineVoiceEnabled),
+                ("V1", "V1", V1VoiceEnabled),
+                ("V2", "V2", V2VoiceEnabled),
+                ("Virtue", "Virtue", VirtueVoiceEnabled),
+                ("Wicked", "Wicked", WickedVoiceEnabled)
+            };
+
+            foreach (var (key, displayName, toggle) in volumeEnemies)
+            {
+                FloatSliderField slider = new FloatSliderField(
+                    EnemyVolumePanel,
+                    $"{displayName} Volume",
+                    $"volume_{key.ToLowerInvariant()}",
+                    new Tuple<float, float>(0f, 200f),
+                    100f,
+                    0
+                );
+
+                EnemyVolumeFields[key] = slider;
+
+                slider.hidden = !toggle.value;
+                toggle.postValueChangeEvent += (bool enabled) => slider.hidden = !enabled;
+            }
+
+            PowerAltVolumeField = EnemyVolumeFields["PowerAlt"];
 
             LoadAssets();
 
@@ -350,6 +578,8 @@ namespace UltraVoice
             harmony.PatchAll();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            StartCoroutine(UpdateChecker.CheckForUpdates(Logger));
 
             Logger.LogInfo("UltraVoice Retaken loaded successfully!");
         }
@@ -361,10 +591,11 @@ namespace UltraVoice
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            ResetCharacterStates();
+            ResetEnemyStates();
+            UpdateChecker.OnSceneLoaded();
         }
 
-        void ResetCharacterStates()
+        void ResetEnemyStates()
         {
             SwordsmachineCharacter.FirstFightDone = false;
             SwordsmachineCharacter.FirstFightLinePlayed = false;
@@ -373,6 +604,8 @@ namespace UltraVoice
             V2Character.V2CutsceneVoicePlayed = false;
             V2Character.V2SecondVoiceRestartPlayed = false;
             V2Character.V2DeathPlayed = false;
+            V1Character.V2BossKillPlayed = false;
+            V1Character.AlreadyPickedUp.Clear();
 
             FerrymanCharacter.FerrymanCoinTossed = false;
             FerrymanCharacter.FerrymanPhaseChangePlayed = false;
@@ -381,37 +614,98 @@ namespace UltraVoice
 
             GeryonCharacter.EnrageLinePlayed = false;
             GeryonCharacter.CanRestartFight = false;
+
+            PowerCharacter.RollVoice();
+            PowerCharacter.ResetIntroRolls();
         }
 
         void LoadAssets()
         {
-            // Load character voice lines from embedded resources
             CerberusCharacter.LoadVoiceLines(Logger);
-            SwordsmachineCharacter.LoadVoiceLines(Logger);
-            V2Character.LoadVoiceLines(Logger);
-            MindflayerCharacter.LoadVoiceLines(Logger);
-            VirtueCharacter.LoadVoiceLines(Logger);
-            StreetcleanerCharacter.LoadVoiceLines(Logger);
+            EarthmoverCharacter.LoadVoiceLines(Logger);
             FerrymanCharacter.LoadVoiceLines(Logger);
-            MannequinCharacter.LoadVoiceLines(Logger);
+            FilthCharacter.LoadVoiceLines(Logger);
+            GeryonCharacter.LoadVoiceLines(Logger);
             GuttermanCharacter.LoadVoiceLines(Logger);
             GuttertankCharacter.LoadVoiceLines(Logger);
-            ProvidenceCharacter.LoadVoiceLines(Logger);
-            SentryCharacter.LoadVoiceLines(Logger);
-            MaliciousFaceCharacter.LoadVoiceLines(Logger);
-            EarthmoverCharacter.LoadVoiceLines(Logger);
-            MirrorReaperCharacter.LoadVoiceLines(Logger);
-            GeryonCharacter.LoadVoiceLines(Logger);
-            LeviathanCharacter.LoadVoiceLines(Logger);
-            InsurrectionistCharacter.LoadVoiceLines(Logger);
             HideousMassCharacter.LoadVoiceLines(Logger);
-            FilthCharacter.LoadVoiceLines(Logger);
-            StrayCharacter.LoadVoiceLines(Logger);
+            IdolCharacter.LoadVoiceLines(Logger);
+            InsurrectionistCharacter.LoadVoiceLines(Logger);
+            LeviathanCharacter.LoadVoiceLines(Logger);
+            MaliciousFaceCharacter.LoadVoiceLines(Logger);
+            MannequinCharacter.LoadVoiceLines(Logger);
+            MindflayerCharacter.LoadVoiceLines(Logger);
+            MirrorReaperCharacter.LoadVoiceLines(Logger);
+            PowerCharacter.LoadVoiceLines(Logger);
+            ProvidenceCharacter.LoadVoiceLines(Logger);
             SchismCharacter.LoadVoiceLines(Logger);
+            SentryCharacter.LoadVoiceLines(Logger);
             SoldierCharacter.LoadVoiceLines(Logger);
             StalkerCharacter.LoadVoiceLines(Logger);
-            IdolCharacter.LoadVoiceLines(Logger);
+            StrayCharacter.LoadVoiceLines(Logger);
+            StreetcleanerCharacter.LoadVoiceLines(Logger);
+            SwordsmachineCharacter.LoadVoiceLines(Logger);
+            V1Character.LoadVoiceLines(Logger);
+            V2Character.LoadVoiceLines(Logger);
+            VirtueCharacter.LoadVoiceLines(Logger);
             WickedCharacter.LoadVoiceLines(Logger);
+        }
+
+        public static float GetVoiceVolume(string voiceName)
+        {
+            float master = MasterVolumeField != null ? MasterVolumeField.value / 100f : 1f;
+
+            if (string.IsNullOrEmpty(voiceName))
+                return master;
+
+            if (voiceName.StartsWith("Agony") || voiceName.StartsWith("Tundra"))
+                voiceName = "Swordsmachine";
+
+            float character = 1f;
+
+            foreach (var pair in EnemyVolumeFields)
+            {
+                if (voiceName.StartsWith(pair.Key))
+                {
+                    character = pair.Value.value / 100f;
+                    break;
+                }
+            }
+
+            return master * character * GetAltVoiceBaseVolume(voiceName);
+        }
+
+        static float GetAltVoiceBaseVolume(string voiceName)
+        {
+            if (voiceName.StartsWith("Gutterman") && GuttermanVoiceActorField != null && GuttermanVoiceActorField.value == GuttermanVoiceActor.Lemen)
+                return 0.6f;
+
+            if (voiceName.StartsWith("Ferryman") && FerrymanVoiceActorField != null && FerrymanVoiceActorField.value == FerrymanVoiceActor.Soil)
+                return 0.6f;
+
+            if (voiceName.StartsWith("Cerberus") && CerberusVoiceActorField != null && CerberusVoiceActorField.value == CerberusVoiceActor.Soil)
+                return 0.6f;
+
+            if (voiceName.StartsWith("Idol") && IdolVoiceActorField != null && IdolVoiceActorField.value == IdolVoiceActor.Virchew)
+                return 2.5f;
+
+            if (voiceName == "Geryon")
+                return 1.6f;
+
+            if (voiceName == "V1")
+                return 1.7f;
+
+            return 1f;
+        }
+
+        public static AudioClip[] LoadClips(string format, int count)
+        {
+            AudioClip[] clips = new AudioClip[count];
+
+            for (int i = 0; i < count; i++)
+                clips[i] = LoadClip(string.Format(format, i + 1));
+
+            return clips;
         }
 
         public static AudioClip LoadClip(string resourcePath)
@@ -452,34 +746,5 @@ namespace UltraVoice
             }
         }
 
-        public static IEnumerator DelayedVox(System.Action playAction, System.Func<bool> ready, UnityEngine.Component attached)
-        {
-            float waited = 0f;
-            while (!ready() && waited < 2f)
-            {
-                if (attached == null) yield break;
-                yield return new WaitForSeconds(0.1f);
-                waited += 0.1f;
-            }
-            if (ready() && attached != null)
-            {
-                playAction();
-            }
-        }
-
-        public static void SetField(Type t, object inst, string name, object value)
-        {
-            var f = AccessTools.Field(t, name);
-            if (f != null)
-                f.SetValue(inst, value);
-        }
-
-        public static void SetArrayField(Type t, object inst, string name, Type elementType)
-        {
-            var f = AccessTools.Field(t, name);
-            if (f == null) return;
-            var empty = Array.CreateInstance(elementType, 0);
-            f.SetValue(inst, empty);
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -7,13 +7,17 @@ namespace UltraVoice.Characters
 {
     public class VirtueCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] SpawnClips;
         public static AudioClip[] AttackClips;
         public static AudioClip[] EnrageClips;
         public static AudioClip[] DeathClips;
 
-        // Subtitle storage
+        public static AudioClip[] SpawnClipsVirchew;
+        public static AudioClip[] AttackClipsVirchew;
+        public static AudioClip[] EnrageClipsVirchew;
+        public static AudioClip[] DeathClipsVirchew;
+
         public static readonly string[] SpawnSubs =
         {
             "It comes to this.",
@@ -36,7 +40,7 @@ namespace UltraVoice.Characters
         {
             "You force my hand!",
             "You leave me no choice!",
-            "So be it…"
+            "So be it..."
         };
 
         public static bool IsVirtue(Drone d)
@@ -50,46 +54,28 @@ namespace UltraVoice.Characters
             return d.eid.enemyType == EnemyType.Virtue;
         }
 
+        public static AudioClip[] UseVirtueClips(AudioClip[] notoClips, AudioClip[] virchewClips)
+        {
+            return UltraVoicePlugin.VirtueVoiceActorField != null && UltraVoicePlugin.VirtueVoiceActorField.value == UltraVoicePlugin.VirtueVoiceActor.Virchew
+                ? virchewClips
+                : notoClips;
+        }
+
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn1.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn2.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn3.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn4.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Spawn5.wav")
-            };
+            SpawnClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Attack{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Enrage{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Death{0}.wav", 3);
 
-            AttackClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack1.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack2.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack3.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack4.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Attack5.wav")
-            };
-
-            EnrageClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage1.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage2.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Enrage3.wav"),
-            };
-
-            DeathClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Death1.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Death2.wav"),
-                UltraVoicePlugin.LoadClip("Virtue.virtue_Death3.wav"),
-            };
+            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Spawn{0}Virchew.wav", 5);
+            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Attack{0}Virchew.wav", 5);
+            EnrageClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Enrage{0}Virchew.wav", 3);
+            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Death{0}Virchew.wav", 3);
 
             logger.LogInfo("Virtue voice lines loaded successfully!");
         }
-
     }
-
-    // VIRTUE PATCHES
 
     [HarmonyPatch(typeof(Drone), "Start")]
     class VirtueSpawnPatch
@@ -104,7 +90,7 @@ namespace UltraVoice.Characters
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
             VoiceManager.PlayRandomVoice(__instance, "Virtue",
-                VirtueCharacter.SpawnClips,
+                VirtueCharacter.UseVirtueClips(VirtueCharacter.SpawnClips, VirtueCharacter.SpawnClipsVirchew),
                 VirtueCharacter.SpawnSubs,
                 randomPitch: true
             );
@@ -139,7 +125,7 @@ namespace UltraVoice.Characters
 
             if (Random.Range(0f, 1f) < 0.5f)
                 VoiceManager.PlayRandomVoice(drone, "Virtue",
-                        VirtueCharacter.AttackClips,
+                        VirtueCharacter.UseVirtueClips(VirtueCharacter.AttackClips, VirtueCharacter.AttackClipsVirchew),
                         VirtueCharacter.AttackSubs,
                         randomPitch: true
                 );
@@ -164,7 +150,7 @@ namespace UltraVoice.Characters
             yield return new WaitForSeconds(0.1f);
 
             VoiceManager.PlayRandomVoice(drone, "Virtue",
-                VirtueCharacter.EnrageClips,
+                VirtueCharacter.UseVirtueClips(VirtueCharacter.EnrageClips, VirtueCharacter.EnrageClipsVirchew),
                 VirtueCharacter.EnrageSubs,
                 interrupt: true,
                 randomPitch: true
@@ -190,7 +176,7 @@ namespace UltraVoice.Characters
             yield return new WaitForSeconds(0f);
 
             VoiceManager.PlayRandomVoice(drone, "Virtue",
-                VirtueCharacter.DeathClips,
+                VirtueCharacter.UseVirtueClips(VirtueCharacter.DeathClips, VirtueCharacter.DeathClipsVirchew),
                 null,
                 interrupt: true,
                 randomPitch: true

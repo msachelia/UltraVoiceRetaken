@@ -8,6 +8,7 @@
 
 	<ItemGroup>
     <EmbeddedResource Include="Resources\**\*.wav" />
+    <EmbeddedResource Include="..\Thunderstore\icon.png" LogicalName="UltraVoice.Resources.icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -29,15 +30,18 @@
 		<Reference Include="0Harmony">
 			<HintPath>$(ULTRAKILLPath)BepInEx\core\0Harmony.dll</HintPath>
 		</Reference>
-		<Reference Include="Assembly-CSharp">
-			<HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
-		</Reference>
 		<Reference Include="BepInEx">
 			<HintPath>$(ULTRAKILLPath)BepInEx\core\BepInEx.dll</HintPath>
 		</Reference>
 		<Reference Include="PluginConfigurator">
 		  <HintPath>$(ULTRAKILLPath)BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
 		</Reference>
+    <Reference Include="Notiffy">
+      <HintPath>$(ULTRAKILLPath)BepInEx\plugins\Notiffy\Notiffy.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
 		<Reference Include="Unity.Services.Core.Networking">
 		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
 		</Reference>
@@ -67,6 +71,18 @@
 		</Reference>
 		<Reference Include="UnityEngine.UIModule">
 		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+		  <HintPath>$(ULTRAKILLPath)ULTRAKILL_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 

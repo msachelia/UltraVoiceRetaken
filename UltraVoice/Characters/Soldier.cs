@@ -1,6 +1,4 @@
-﻿using HarmonyLib;
-using System;
-using System.Reflection;
+using HarmonyLib;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -14,12 +12,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = new AudioClip[]
-            {
-                UltraVoicePlugin.LoadClip("Soldier.sol_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Soldier.sol_Chatter1.wav"),
-                UltraVoicePlugin.LoadClip("Soldier.sol_Chatter1.wav"),
-            };
+            ChatterClips = UltraVoicePlugin.LoadClips("Soldier.sol_Chatter{0}.wav", 3);
 
             AttackClip = UltraVoicePlugin.LoadClip("Soldier.sol_Attack.wav");
             DeathClip = UltraVoicePlugin.LoadClip("Soldier.sol_Death.wav");
@@ -43,7 +36,7 @@ namespace UltraVoice.Characters
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
 
-            if (UnityEngine.Random.Range(0f, 1f) < 0.75f)
+            if (Random.Range(0f, 1f) < 0.75f)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Soldier",
@@ -80,6 +73,13 @@ namespace UltraVoice.Characters
 
             if (__instance.eid.enemyType != EnemyType.Soldier) return;
 
+            if (__instance.tr != null)
+            {
+                AudioSource kickSource = __instance.tr.GetComponent<AudioSource>();
+                if (kickSource != null)
+                    kickSource.Stop();
+            }
+
             VoiceManager.CreateVoiceSource(__instance, "Soldier",
                 SoldierCharacter.AttackClip,
                 null,
@@ -106,48 +106,17 @@ namespace UltraVoice.Characters
         }
     }
 
-    [HarmonyPatch]
+    [HarmonyPatch(typeof(Enemy), "Awake")]
     class ZombieMuteOnSoldierPatch
     {
-        static MethodBase TargetMethod()
+        static void Postfix(Enemy __instance)
         {
-            var t = AccessTools.TypeByName("Zombie");
-            return t != null ? AccessTools.Method(t, "Awake") : null;
-        }
+            if (__instance == null || __instance.eid == null) return;
 
-        static void Postfix(object __instance)
-        {
-            if (__instance == null) return;
+            if (__instance.eid.enemyType != EnemyType.Soldier) return;
 
-            var eid = __instance.GetType().GetField("eid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetValue(__instance);
-            var et = eid.GetType().GetField("enemyType", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetValue(eid).ToString();
-            if (et != "Soldier") return;
-
-            UltraVoicePlugin.SetArrayField(__instance.GetType(), __instance, "hurtSounds", typeof(AudioClip));
-            UltraVoicePlugin.SetField(__instance.GetType(), __instance, "deathSound", null);
-        }
-    }
-
-    [HarmonyPatch]
-    class ZombieProjectilesMeleePatch
-    {
-        static MethodBase TargetMethod()
-        {
-            var t = AccessTools.TypeByName("ZombieProjectiles");
-            return t != null ? AccessTools.Method(t, "Melee") : null;
-        }
-
-        static void Postfix(object __instance)
-        {
-            if (__instance == null) return;
-
-            var eid = __instance.GetType().GetField("eid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetValue(__instance);
-            var et = eid.GetType().GetField("enemyType", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetValue(eid).ToString();
-            if (et != "Soldier") return;
-
-            var tr = __instance.GetType().GetField("tr", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).GetValue(__instance) as Component;
-            if (tr != null)
-                tr.GetComponent<AudioSource>()?.Stop();
+            __instance.hurtSounds = new AudioClip[0];
+            __instance.deathSound = null;
         }
     }
 }

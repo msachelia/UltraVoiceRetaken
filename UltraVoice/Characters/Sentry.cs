@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System.Collections;
+using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -7,7 +6,7 @@ namespace UltraVoice.Characters
 {
     public class SentryCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] DigInClips;
         public static AudioClip[] ShootClips;
         public static AudioClip[] InterruptPainClips;
@@ -26,7 +25,7 @@ namespace UltraVoice.Characters
         {
             "This'll do!",
             "This spot's perfect!",
-            "Now… to wait.",
+            "Now... to wait.",
             "Let's make this quick.",
             "Lockin' in.",
             "Holding here!",
@@ -64,95 +63,19 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            DigInClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn2.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn3.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn4.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn5.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn6.wav")
-            };
+            DigInClips = UltraVoicePlugin.LoadClips("Sentry.tur_DigIn{0}.wav", 6);
+            InterruptPainClips = UltraVoicePlugin.LoadClips("Sentry.tur_Pain{0}.wav", 2);
+            InterruptClips = UltraVoicePlugin.LoadClips("Sentry.tur_Interrupt{0}.wav", 5);
+            ShootClips = UltraVoicePlugin.LoadClips("Sentry.tur_Fire{0}.wav", 3);
+            KickClips = UltraVoicePlugin.LoadClips("Sentry.tur_Kick{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Sentry.tur_Death{0}.wav", 2);
 
-            InterruptPainClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Pain1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Pain2.wav"),
-            };
-
-            InterruptClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt2.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt3.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt4.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt5.wav")
-            };
-
-            ShootClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire2.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire3.wav")
-            };
-
-            KickClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick2.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick3.wav")
-            };
-
-            DeathClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Death1.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Death2.wav"),
-            };
-
-            DigInClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn2Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn3Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn4Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn5Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_DigIn6Goob.wav")
-            };
-
-            ShootClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire2Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Fire3Goob.wav")
-            };
-
-            InterruptPainClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Pain1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Pain2Goob.wav"),
-            };
-
-            InterruptClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt2Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt3Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt4Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Interrupt5Goob.wav")
-            };
-
-            KickClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick2Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Kick3Goob.wav")
-            };
-
-            DeathClipsGoob = new[]
-            {
-                UltraVoicePlugin.LoadClip("Sentry.tur_Death1Goob.wav"),
-                UltraVoicePlugin.LoadClip("Sentry.tur_Death2Goob.wav"),
-            };
+            DigInClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_DigIn{0}Goob.wav", 6);
+            InterruptPainClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Pain{0}Goob.wav", 2);
+            InterruptClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Interrupt{0}Goob.wav", 5);
+            ShootClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Fire{0}Goob.wav", 3);
+            KickClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Kick{0}Goob.wav", 3);
+            DeathClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Death{0}Goob.wav", 2);
 
             logger.LogInfo("Sentry voice lines loaded successfully!");
         }
@@ -219,23 +142,13 @@ namespace UltraVoice.Characters
                 true,
                 randomPitch: true
             );
-            
-            UltraVoicePlugin.Instance.StartCoroutine(Interrupt(__instance));
 
-            static IEnumerator Interrupt(Turret turret)
-            {
-                yield return new WaitForSeconds(0.75f);
-
-                if (turret == null)
-                    yield break;
-
-                VoiceManager.PlayRandomVoice(turret, "Sentry",
-                    SentryCharacter.UseSentryClips(SentryCharacter.InterruptClips, SentryCharacter.InterruptClipsGoob),
-                    SentryCharacter.InterruptSubs,
-                    true,
-                    randomPitch: true
-                );
-            }
+            VoiceManager.PlayRandomVoiceDelayed(0.75f, __instance, "Sentry",
+                SentryCharacter.UseSentryClips(SentryCharacter.InterruptClips, SentryCharacter.InterruptClipsGoob),
+                SentryCharacter.InterruptSubs,
+                interrupt: true,
+                randomPitch: true
+            );
         }
     }
 

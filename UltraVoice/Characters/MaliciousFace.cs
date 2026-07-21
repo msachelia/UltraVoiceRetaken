@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System.Collections;
+using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -7,45 +6,31 @@ namespace UltraVoice.Characters
 {
     public class MaliciousFaceCharacter
     {
-        // Voice line storage
+
         public static AudioClip[] GenericClips;
         public static AudioClip[] EnrageClips;
         public static AudioClip DeathClip;
 
-        // Subtitle storage
         public static readonly string[] GenericSubs =
         {
-            "BLEED",
-            "FOOLISH",
-            "FUTILE",
-            "FRAIL",
-            "WEAKLING"
+            "BLEED...",
+            "FOOLISH...",
+            "FUTILE...",
+            "FRAIL...",
+            "WEAKLING..."
         };
 
         public static readonly string[] EnrageSubs =
         {
-            "ENOUGH",
-            "SUFFER",
-            "PATHETIC",
+            "ENOUGH.",
+            "SUFFER.",
+            "PATHETIC."
         };
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            GenericClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic1.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic2.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic3.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic4.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Generic5.wav"),
-            };
-
-            EnrageClips = new[]
-            {
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged1.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged2.wav"),
-                UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Enraged3.wav"),
-            };
+            GenericClips = UltraVoicePlugin.LoadClips("MaliciousFace.maurice_Generic{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("MaliciousFace.maurice_Enraged{0}.wav", 3);
 
             DeathClip = UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Death.wav");
 
@@ -73,18 +58,20 @@ namespace UltraVoice.Characters
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 6f))
-                return;
-
             if (__instance == null || __instance.eid.dead)
                 return;
 
-            if (Random.Range(0f, 1f) < 0.75f)
-                VoiceManager.PlayRandomVoice(__instance, "MaliciousFace",
-                    MaliciousFaceCharacter.GenericClips,
-                    MaliciousFaceCharacter.GenericSubs,
-                    randomPitch: true
-                );
+            if (!VoiceManager.CheckCooldown(__instance, 6f))
+                return;
+
+            if (Random.Range(0f, 1f) >= 0.75f)
+                return;
+
+            VoiceManager.PlayRandomVoice(__instance, "MaliciousFace",
+                MaliciousFaceCharacter.GenericClips,
+                MaliciousFaceCharacter.GenericSubs,
+                randomPitch: true
+            );
         }
     }
 
