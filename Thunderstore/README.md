@@ -25,11 +25,13 @@ This mod currently adds voice lines to:
 * Malicious Faces
 * Mindflayers (both masc and fem)
 * Mirror Reapers
+* Powers
 * Providences
 * Sentries
 * Something Wicked
 * Streetcleaners
 * Swordsmachines (including Agony and Tundra)
+* V1
 * V2 (both fights, masc and fem versions)
 * Virtues
 
