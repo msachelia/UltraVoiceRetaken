@@ -75,3 +75,4 @@ See the [GitHub repository](https://github.com/msachelia/UltraVoiceRetaken) for 
 * Virchew (alternate voice of Guttertank, Virtue and Idol)
 * Cazsu (alternate voice of V2)
 * ValinVO, TheRatman and Megaslash (voices of Geryon)
+* Cyber-lord (voice of V1)

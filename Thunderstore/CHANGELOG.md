@@ -1,6 +1,31 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.4.0</summary>
+
+- Added alternative actors to Ferryman, Cerberus, Idol and Gutterman (provided by Virchew, Buried Soil, Rotund and Lemen)
+- Added voice lines for V1 (provided by Cyber-lord)
+- Added new voices to Power (provided by Noto, Goober and Cazsu)
+- Replaced Geryon's single voice actor with three new voice actors (provided by ValinVO, TheRatman and Megaslash)
+- Added volume sliders
+- Rewritten backend (overall better performance)
+- Update checker
+
+</details>
+
+---
+
+<details>
+  <summary>1.3.1</summary>
+
+- Edited CHANGELOG
+
+</details>
+
+
+---
+
+<details>
   <summary>1.3.0</summary>
 
 - Added alternative actors to V2 and Guttertank
