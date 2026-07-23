@@ -113,14 +113,14 @@ namespace UltraVoice.Characters
             if (!GeryonCharacter.RestartedFight)
                 GeryonCharacter.PlayScriptedLine(__instance, GeryonCharacter.IntroClip,
                     "FOOLISH...", GeryonCharacter.RetributionColor, false, 0f,
-                    (1f, "OR BRAVE?", GeryonCharacter.DissonanceColor),
-                    (1.25f, "IT MATTERS NOT...", GeryonCharacter.AbsolutionColor),
-                    (1.25f, "FOR WE SHALL STRIKE YOU DOWN!", null)
+                    (1.25f, "OR BRAVE?", GeryonCharacter.DissonanceColor),
+                    (1.5f, "IT MATTERS NOT...", GeryonCharacter.AbsolutionColor),
+                    (1.7f, "FOR WE SHALL STRIKE YOU DOWN!", null)
                 );
             else
                 GeryonCharacter.PlayScriptedLine(__instance, GeryonCharacter.RestartClip,
-                    "IT REAPPEARS...", GeryonCharacter.DissonanceColor, false, 0f,
-                    (1.8f, "IT WANTS MORE?", GeryonCharacter.AbsolutionColor),
+                    "IT REAPPEARS...", GeryonCharacter.AbsolutionColor, false, 0f,
+                    (1.8f, "IT WANTS MORE?", GeryonCharacter.DissonanceColor),
                     (1.4f, "THEN MORE IT SHALL RECEIVE!", GeryonCharacter.RetributionColor)
                 );
         }

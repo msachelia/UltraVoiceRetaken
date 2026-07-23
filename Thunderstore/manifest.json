@@ -1,6 +1,6 @@
 {
   "name": "UltraVoice_Retaken",
-  "version_number": "1.4.2",
+  "version_number": "1.4.4",
   "website_url": "https://github.com/msachelia/UltraVoiceRetaken",
   "description": "Adds voice lines to ULTRAKILL enemies. Forked to continue development.",
   "dependencies": [

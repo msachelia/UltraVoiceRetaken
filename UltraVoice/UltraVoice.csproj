@@ -8,6 +8,7 @@
 
 	<ItemGroup>
     <EmbeddedResource Include="Resources\**\*.wav" />
+    <EmbeddedResource Include="Images\*.png" />
     <EmbeddedResource Include="..\Thunderstore\icon.png" LogicalName="UltraVoice.Resources.icon.png" />
 	</ItemGroup>
 

@@ -1,6 +1,43 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.4.4</summary>
+
+- Added line specific toggles for V1
+- Modified the intro and the infamous 3 liner
+
+</details>
+
+---
+
+<details>
+  <summary>1.4.3</summary>
+
+- **Eve**n more more bug fixes
+
+</details>
+
+---
+
+<details>
+  <summary>1.4.2</summary>
+
+- Even more bug fixes
+
+</details>
+
+---
+
+<details>
+  <summary>1.4.1</summary>
+
+- Bug fixes
+
+</details>
+
+---
+
+<details>
   <summary>1.4.0</summary>
 
 - Added alternative actors to Ferryman, Cerberus, Idol and Gutterman (provided by Virchew, Buried Soil, Rotund and Lemen)

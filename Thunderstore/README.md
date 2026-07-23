@@ -77,5 +77,6 @@ See the [GitHub repository](https://github.com/msachelia/UltraVoiceRetaken) for 
 * Virchew (alternate voice of Guttertank, Virtue and Idol)
 * Cazsu (alternate voice of V2)
 * Arlenou (voice of Something Wicked)
-* ValinVO, TheRatman and Megaslash (voices of Geryon)
+* [Valin](https://www.castingcall.club/valin), TheRatman and Megaslash (voices of Geryon)
 * Cyber-lord (voice of V1)
+* Tryhard (made the fx of many post-1.3.0 additions)

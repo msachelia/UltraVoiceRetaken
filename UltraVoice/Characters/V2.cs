@@ -436,7 +436,7 @@ namespace UltraVoice.Characters
 
             float delay = 0f;
 
-            if (UltraVoicePlugin.V1VoiceEnabled.value && V1Character.EnrageV2Clip != null)
+            if (UltraVoicePlugin.V1LineEnabled("enrage") && V1Character.EnrageV2Clip != null)
                 delay = V1Character.EnrageV2Clip.length + 0.2f;
 
             AudioClip clip = V2Character.UseV2Clip(V2Character.EnragePunchedClip, V2Character.EnragePunchedClipCazsu);

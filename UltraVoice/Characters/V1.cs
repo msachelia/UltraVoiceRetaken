@@ -244,7 +244,7 @@ namespace UltraVoice.Characters
 
         public static void PlayBosskillLine()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("bosskill"))
                 return;
 
             UltraVoicePlugin.Instance.StartCoroutine(BosskillRoutine());
@@ -315,6 +315,11 @@ namespace UltraVoice.Characters
 
             bool airshot = Time.time - LastAirshotKillTime < 0.5f;
             bool headshot = Time.time - LastHeadshotKillTime < 0.3f;
+
+            string category = env ? "environmental" : airshot ? "airshot" : headshot ? "headshot" : "kill";
+
+            if (!UltraVoicePlugin.V1LineEnabled(category))
+                yield break;
 
             AudioClip[] clips = env ? EnvironmentalClips : airshot ? AirshotClips : headshot ? HeadshotClips : KillClips;
             string[] subs = env ? EnvironmentalSubs : airshot ? AirshotSubs : headshot ? HeadshotSubs : KillSubs;
@@ -422,7 +427,7 @@ namespace UltraVoice.Characters
             if (__instance.name != "v2_GreenArm")
                 return;
 
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("bosskill"))
                 return;
 
             if (V1Character.V2BossKillPlayed)
@@ -500,7 +505,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(FinalRank __instance, bool __state)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("rank"))
                 return;
 
             if (__instance.totalRank == null || __state || !__instance.totalRank.gameObject.activeSelf)
@@ -571,7 +576,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(WeaponPickUp __instance)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("pickup"))
                 return;
 
             if (__instance.pPref == "rev0" || (__instance.weapon != null && __instance.weapon.name.Contains("Revolver Pierce")))
@@ -592,7 +597,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("pickup"))
                 return;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -610,10 +615,10 @@ namespace UltraVoice.Characters
     {
         static void Postfix(GameObject __instance, bool value)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (__instance == null || __instance.name != "Geryon_Rig")
                 return;
 
-            if (__instance == null || __instance.name != "Geryon_Rig")
+            if (!UltraVoicePlugin.V1LineEnabled("bosskill"))
                 return;
 
             if (__instance.transform.parent == null || __instance.transform.parent.name != "Theatre (1)")
@@ -654,7 +659,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("checkpoint"))
                 return;
 
             if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -677,7 +682,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("respawn"))
                 return;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -706,7 +711,7 @@ namespace UltraVoice.Characters
             if (!__state || !__instance.activated)
                 return;
 
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("secret"))
                 return;
 
             if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -729,7 +734,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("purchase"))
                 return;
 
             if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -752,7 +757,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ItemIdentifier __instance)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("skull"))
                 return;
 
             if (__instance.itemType != ItemType.SkullBlue && __instance.itemType != ItemType.SkullRed)
@@ -784,7 +789,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix()
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("death"))
                 return;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -818,7 +823,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(StyleHUD __instance, int __state)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("maxstyle"))
                 return;
 
             int topRank = __instance.ranks.Count - 1;
@@ -874,7 +879,7 @@ namespace UltraVoice.Characters
                 if (pointID == "ultrakill.chargeback" && eid != null && eid.enemyType == EnemyType.Gutterman)
                     return;
 
-                if (!UltraVoicePlugin.V1VoiceEnabled.value)
+                if (!UltraVoicePlugin.V1LineEnabled("parry"))
                     return;
 
                 if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -898,7 +903,7 @@ namespace UltraVoice.Characters
 
                 if (styleName.Contains("HITTING YOURSELF"))
                 {
-                    if (!UltraVoicePlugin.V1VoiceEnabled.value)
+                    if (!UltraVoicePlugin.V1LineEnabled("enrage"))
                         return;
 
                     NewMovement enragePlayer = MonoSingleton<NewMovement>.Instance;
@@ -919,7 +924,7 @@ namespace UltraVoice.Characters
 
                 if (styleName.Contains("RAISON"))
                 {
-                    if (!UltraVoicePlugin.V1VoiceEnabled.value)
+                    if (!UltraVoicePlugin.V1LineEnabled("bosskill"))
                         return;
 
                     NewMovement raisonPlayer = MonoSingleton<NewMovement>.Instance;
@@ -941,7 +946,7 @@ namespace UltraVoice.Characters
 
             if (pointID == "ultrakill.enraged")
             {
-                if (!UltraVoicePlugin.V1VoiceEnabled.value)
+                if (!UltraVoicePlugin.V1LineEnabled("enrage"))
                     return;
 
                 if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -965,7 +970,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StyleCalculator __instance)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1LineEnabled("multikill"))
                 return;
 
             if (__instance.multikillCount != 2)

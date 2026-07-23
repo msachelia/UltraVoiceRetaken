@@ -40,7 +40,7 @@ namespace UltraVoice
     [BepInDependency("com.github.end-4.notiffy")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
-        public const string PluginVersion = "1.4.0";
+        public const string PluginVersion = "1.4.3";
 
         public static UltraVoicePlugin Instance;
         public static VoiceManager VoiceManager;
@@ -96,6 +96,17 @@ namespace UltraVoice
         public static ConfigPanel ActorPanel;
         public static ConfigPanel VolumePanel;
         public static ConfigPanel EnemyVolumePanel;
+        public static ConfigPanel V1LinesPanel;
+
+        public static Dictionary<string, BoolField> V1LineToggles = new Dictionary<string, BoolField>();
+
+        public static bool V1LineEnabled(string key)
+        {
+            if (V1VoiceEnabled == null || !V1VoiceEnabled.value)
+                return false;
+
+            return !V1LineToggles.TryGetValue(key, out BoolField field) || field.value;
+        }
 
         public static bool VoicesEnabled => MasterVoiceEnabled == null || MasterVoiceEnabled.value;
 
@@ -363,6 +374,35 @@ namespace UltraVoice
                 true
             );
 
+            V1LinesPanel = new ConfigPanel(EnemyTogglesPanel, "V1 Line Categories", "v1lines");
+
+            V1VoiceEnabled.postValueChangeEvent += (bool enabled) => V1LinesPanel.interactable = enabled;
+            V1LinesPanel.interactable = V1VoiceEnabled.value;
+
+            (string key, string name)[] v1Categories =
+            {
+                ("kill", "Kill Lines"),
+                ("multikill", "Multikill Lines"),
+                ("bosskill", "Boss Kill Lines"),
+                ("headshot", "Headshot Lines"),
+                ("airshot", "Airshot Lines"),
+                ("environmental", "Environmental Kill Lines"),
+                ("maxstyle", "Max Style Lines"),
+                ("rank", "Level Rank Lines"),
+                ("parry", "Parry Lines"),
+                ("enrage", "Enrage Lines"),
+                ("death", "Death Lines"),
+                ("pickup", "Weapon Pickup Lines"),
+                ("purchase", "Purchase Lines"),
+                ("skull", "Skull Pickup Lines"),
+                ("checkpoint", "Checkpoint Lines"),
+                ("respawn", "Respawn Lines"),
+                ("secret", "Secret Orb Lines")
+            };
+
+            foreach (var (key, name) in v1Categories)
+                V1LineToggles[key] = new BoolField(V1LinesPanel, name, $"v1line_{key}", true);
+
             V2VoiceEnabled = new BoolField(
                 EnemyTogglesPanel,
                 "Enable V2 Voice Lines",
@@ -592,6 +632,10 @@ namespace UltraVoice
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             ResetEnemyStates();
+
+            if (scene.name == "4f8ecffaa98c2614f89922daf31fa22d")
+                IntroTagline.ApplyToScene();
+
             UpdateChecker.OnSceneLoaded();
         }
 
