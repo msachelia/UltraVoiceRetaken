@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Stray.str_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Stray.Mel.str_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Stray.str_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Stray.str_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Stray.Mel.str_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Stray.Mel.str_Death.wav");
 
             logger.LogInfo("Stray voice lines loaded successfully!");
         }
@@ -26,12 +26,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.StrayVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance.eid.enemyType != EnemyType.Stray) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Stray) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -52,9 +52,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.StrayVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Stray) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Stray) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Stray",
                 StrayCharacter.AttackClip,
@@ -69,9 +69,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.StrayVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.StrayVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Stray) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Stray) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Stray",
                 StrayCharacter.DeathClip,

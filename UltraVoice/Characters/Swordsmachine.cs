@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +17,7 @@ namespace UltraVoice.Characters
         public static AudioClip DeathClip;
         public static AudioClip KnockdownClipSpecial;
         public static AudioClip KnockdownClipSpecialBrutal;
+        public static AudioClip SandedClip;
 
         public static AudioClip AgonySpawnClip;
         public static AudioClip TundraSpawnClip;
@@ -29,23 +30,41 @@ namespace UltraVoice.Characters
         public static AudioClip[] RangedClips;
 
         public static AudioClip IntroClipNoto;
+        public static AudioClip IntroClipSoil;
         public static AudioClip IntroClipSecondNoto;
+        public static AudioClip IntroClipSecondSoil;
         public static AudioClip BigPainClipNoto;
+        public static AudioClip BigPainClipSoil;
         public static AudioClip LungeClipNoto;
+        public static AudioClip LungeClipSoil;
         public static AudioClip ComboClipNoto;
+        public static AudioClip ComboClipSoil;
         public static AudioClip DeathClipNoto;
+        public static AudioClip DeathClipSoil;
         public static AudioClip KnockdownClipSpecialNoto;
+        public static AudioClip KnockdownClipSpecialSoil;
         public static AudioClip KnockdownClipSpecialBrutalNoto;
+        public static AudioClip KnockdownClipSpecialBrutalSoil;
+        public static AudioClip SandedClipNoto;
+        public static AudioClip SandedClipSoil;
 
         public static AudioClip AgonySpawnClipNoto;
+        public static AudioClip AgonySpawnClipSoil;
         public static AudioClip TundraSpawnClipNoto;
+        public static AudioClip TundraSpawnClipSoil;
         public static AudioClip AgonyKnockdownClipNoto;
+        public static AudioClip AgonyKnockdownClipSoil;
         public static AudioClip TundraKnockdownClipNoto;
+        public static AudioClip TundraKnockdownClipSoil;
 
         public static AudioClip[] SpawnClipsNoto;
+        public static AudioClip[] SpawnClipsSoil;
         public static AudioClip[] EnrageClipsNoto;
+        public static AudioClip[] EnrageClipsSoil;
         public static AudioClip[] KnockdownClipsNoto;
+        public static AudioClip[] KnockdownClipsSoil;
         public static AudioClip[] RangedClipsNoto;
+        public static AudioClip[] RangedClipsSoil;
 
         public static readonly string[] EnrageSubs =
         {
@@ -123,66 +142,103 @@ namespace UltraVoice.Characters
             return SwordsmachineColor;
         }
 
-        public static AudioClip UseSwordsmachineClip(AudioClip mofClip, AudioClip notoClip)
+        public static AudioClip UseSwordsmachineClip(AudioClip melClip, AudioClip notoClip, AudioClip soilClip)
         {
-            return UltraVoicePlugin.SwordsmachineVoiceActorField != null && UltraVoicePlugin.SwordsmachineVoiceActorField.value == UltraVoicePlugin.SwordsmachineVoiceActor.Noto
-                ? notoClip
-                : mofClip;
+            if (UltraVoicePlugin.SwordsmachineVoiceActorField == null)
+                return melClip;
+
+            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.Value)
+            {
+                case UltraVoicePlugin.SwordsmachineVoiceActor.Noto:
+                    return notoClip;
+                case UltraVoicePlugin.SwordsmachineVoiceActor.Soil:
+                    return soilClip;
+                default:
+                    return melClip;
+            }
         }
 
-        public static AudioClip[] UseSwordsmachineClips(AudioClip[] mofClips, AudioClip[] notoClips)
+        public static AudioClip[] UseSwordsmachineClips(AudioClip[] melClips, AudioClip[] notoClips, AudioClip[] soilClips)
         {
-            return UltraVoicePlugin.SwordsmachineVoiceActorField != null && UltraVoicePlugin.SwordsmachineVoiceActorField.value == UltraVoicePlugin.SwordsmachineVoiceActor.Noto
-                ? notoClips
-                : mofClips;
+            if (UltraVoicePlugin.SwordsmachineVoiceActorField == null)
+                return melClips;
+
+            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.Value)
+            {
+                case UltraVoicePlugin.SwordsmachineVoiceActor.Noto:
+                    return notoClips;
+                case UltraVoicePlugin.SwordsmachineVoiceActor.Soil:
+                    return soilClips;
+                default:
+                    return melClips;
+            }
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial.wav");
-            IntroClipSecond = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial2.wav");
-            BigPainClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_BigPain.wav");
-            LungeClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Lunge.wav");
-            ComboClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Combo.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_Death.wav");
-            KnockdownClipSpecial = UltraVoicePlugin.LoadClip("Swordsmachine.sm_KnockdownSpecial.wav");
-            KnockdownClipSpecialBrutal = UltraVoicePlugin.LoadClip("Swordsmachine.sm_PieceOfShit.wav");
+            IntroClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecial.wav");
+            IntroClipSecond = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecial2.wav");
+            BigPainClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_BigPain.wav");
+            LungeClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Lunge.wav");
+            ComboClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Combo.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Death.wav");
+            KnockdownClipSpecial = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_KnockdownSpecial.wav");
+            KnockdownClipSpecialBrutal = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_PieceOfShit.wav");
+            SandedClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Sanded.wav");
 
-            AgonySpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialAgony.wav");
-            TundraSpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialTundra.wav");
-            AgonyKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedAgony.wav");
-            TundraKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedTundra.wav");
+            AgonySpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialAgony.wav");
+            TundraSpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialTundra.wav");
+            AgonyKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_DownedAgony.wav");
+            TundraKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_DownedTundra.wav");
 
-            SpawnClips = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Spawn{0}.wav", 7);
-            EnrageClips = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Enrage{0}.wav", 4);
-            KnockdownClips = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Knockdown{0}.wav", 3);
-            RangedClips = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Ranged{0}.wav", 2);
+            SpawnClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Spawn{0}.wav", 7);
+            EnrageClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Enrage{0}.wav", 4);
+            KnockdownClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Knockdown{0}.wav", 3);
+            RangedClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Ranged{0}.wav", 2);
 
-            IntroClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialNoto.wav");
-            IntroClipSecondNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecial2Noto.wav");
-            BigPainClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_BigPainNoto.wav");
-            LungeClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_LungeNoto.wav");
-            ComboClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_ComboNoto.wav");
-            DeathClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DeathNoto.wav");
-            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_KnockdownSpecialNoto.wav");
-            KnockdownClipSpecialBrutalNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_PieceOfShitNoto.wav");
+            IntroClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecial.wav");
+            IntroClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecial.wav");
+            IntroClipSecondNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecial2.wav");
+            IntroClipSecondSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecial2.wav");
+            BigPainClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_BigPain.wav");
+            BigPainClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_BigPain.wav");
+            LungeClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Lunge.wav");
+            LungeClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Lunge.wav");
+            ComboClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Combo.wav");
+            ComboClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Combo.wav");
+            DeathClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Death.wav");
+            DeathClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Death.wav");
+            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_KnockdownSpecial.wav");
+            KnockdownClipSpecialSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_KnockdownSpecial.wav");
+            KnockdownClipSpecialBrutalNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_PieceOfShit.wav");
+            KnockdownClipSpecialBrutalSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_PieceOfShit.wav");
+            SandedClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Sanded.wav");
+            SandedClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Sanded.wav");
 
-            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialAgonyNoto.wav");
-            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_SpawnSpecialTundraNoto.wav");
-            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedAgonyNoto.wav");
-            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.sm_DownedTundraNoto.wav");
+            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecialAgony.wav");
+            AgonySpawnClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecialAgony.wav");
+            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecialTundra.wav");
+            TundraSpawnClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecialTundra.wav");
+            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_DownedAgony.wav");
+            AgonyKnockdownClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_DownedAgony.wav");
+            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_DownedTundra.wav");
+            TundraKnockdownClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_DownedTundra.wav");
 
-            SpawnClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Spawn{0}Noto.wav", 7);
-            EnrageClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Enrage{0}Noto.wav", 4);
-            KnockdownClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Knockdown{0}Noto.wav", 3);
-            RangedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.sm_Ranged{0}Noto.wav", 2);
+            SpawnClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Spawn{0}.wav", 7);
+            SpawnClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Spawn{0}.wav", 7);
+            EnrageClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Enrage{0}.wav", 4);
+            EnrageClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Enrage{0}.wav", 4);
+            KnockdownClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Knockdown{0}.wav", 3);
+            KnockdownClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Knockdown{0}.wav", 3);
+            RangedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Ranged{0}.wav", 2);
+            RangedClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Ranged{0}.wav", 2);
 
             logger.LogInfo("Swordsmachine voice lines loaded successfully!");
         }
 
         public static void PlayRangedVoice(SwordsMachine sm)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(sm, 3f))
@@ -195,7 +251,7 @@ namespace UltraVoice.Characters
                 return;
 
             VoiceManager.PlayRandomVoice(sm, "Swordsmachine",
-                UseSwordsmachineClips(RangedClips, RangedClipsNoto),
+                UseSwordsmachineClips(RangedClips, RangedClipsNoto, RangedClipsSoil),
                 RangedSubs,
                 colorOverride: GetColorOverride(sm),
                 randomPitch: true
@@ -210,7 +266,7 @@ namespace UltraVoice.Characters
         {
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -229,7 +285,7 @@ namespace UltraVoice.Characters
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Swordsmachine",
-                SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.SpawnClips, SwordsmachineCharacter.SpawnClipsNoto),
+                SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.SpawnClips, SwordsmachineCharacter.SpawnClipsNoto, SwordsmachineCharacter.SpawnClipsSoil),
                 SwordsmachineCharacter.SpawnSubs,
                 true
             );
@@ -244,12 +300,12 @@ namespace UltraVoice.Characters
 
             if (!SwordsmachineCharacter.FirstFightDone)
             {
-                clip = SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.IntroClip, SwordsmachineCharacter.IntroClipNoto);
+                clip = SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.IntroClip, SwordsmachineCharacter.IntroClipNoto, SwordsmachineCharacter.IntroClipSoil);
                 subtitle = "YOU WANT A FIGHT? LET'S FIGHT!";
             }
             else
             {
-                clip = SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.IntroClipSecond, SwordsmachineCharacter.IntroClipSecondNoto);
+                clip = SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.IntroClipSecond, SwordsmachineCharacter.IntroClipSecondNoto, SwordsmachineCharacter.IntroClipSecondSoil);
                 subtitle = "DID YOU THINK I FORGOT ABOUT YOU?";
             }
 
@@ -265,7 +321,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (!SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -277,7 +333,7 @@ namespace UltraVoice.Characters
                 VoiceManager.CreateVoiceSource(
                     __instance,
                     "AgonySpawn",
-                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.AgonySpawnClip, SwordsmachineCharacter.AgonySpawnClipNoto),
+                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.AgonySpawnClip, SwordsmachineCharacter.AgonySpawnClipNoto, SwordsmachineCharacter.AgonySpawnClipSoil),
                     "JUMP 'EM!",
                     true,
                     SwordsmachineCharacter.AgonyColor
@@ -286,7 +342,7 @@ namespace UltraVoice.Characters
                 VoiceManager.CreateVoiceSource(
                     __instance,
                     "TundraSpawn",
-                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.TundraSpawnClip, SwordsmachineCharacter.TundraSpawnClipNoto),
+                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.TundraSpawnClip, SwordsmachineCharacter.TundraSpawnClipNoto, SwordsmachineCharacter.TundraSpawnClipSoil),
                     "THERE THEY ARE!",
                     true,
                     SwordsmachineCharacter.TundraColor
@@ -299,7 +355,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -323,7 +379,7 @@ namespace UltraVoice.Characters
             var src = VoiceManager.CreateVoiceSource(
                 sm,
                 "SwordsmachineEnrage",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.EnrageClips[i], SwordsmachineCharacter.EnrageClipsNoto[i]),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.EnrageClips[i], SwordsmachineCharacter.EnrageClipsNoto[i], SwordsmachineCharacter.EnrageClipsSoil[i]),
                 SwordsmachineCharacter.EnrageSubs[i],
                 true,
                 randomPitch: true
@@ -350,7 +406,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -359,7 +415,7 @@ namespace UltraVoice.Characters
             VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineBigPain",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.BigPainClip, SwordsmachineCharacter.BigPainClipNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.BigPainClip, SwordsmachineCharacter.BigPainClipNoto, SwordsmachineCharacter.BigPainClipSoil),
                 null,
                 true
             );
@@ -385,7 +441,7 @@ namespace UltraVoice.Characters
             VoiceManager.PlayRandomVoice(
                 sm,
                 "SwordsmachineKnockdownSpecial",
-                SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.KnockdownClips, SwordsmachineCharacter.KnockdownClipsNoto),
+                SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.KnockdownClips, SwordsmachineCharacter.KnockdownClipsNoto, SwordsmachineCharacter.KnockdownClipsSoil),
                 SwordsmachineCharacter.KnockdownSubs,
                 true,
                 true,
@@ -402,7 +458,7 @@ namespace UltraVoice.Characters
             var src = VoiceManager.CreateVoiceSource(
                 sm,
                 "SwordsmachineKnockdownSpecial",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.KnockdownClipSpecial, SwordsmachineCharacter.KnockdownClipSpecialNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.KnockdownClipSpecial, SwordsmachineCharacter.KnockdownClipSpecialNoto, SwordsmachineCharacter.KnockdownClipSpecialSoil),
                 null,
                 true,
                 SwordsmachineCharacter.GetColorOverride(sm)
@@ -429,7 +485,7 @@ namespace UltraVoice.Characters
             VoiceManager.CreateVoiceSource(
                 sm,
                 "SwordsmachineKnockdown",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.KnockdownClipSpecialBrutal, SwordsmachineCharacter.KnockdownClipSpecialBrutalNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.KnockdownClipSpecialBrutal, SwordsmachineCharacter.KnockdownClipSpecialBrutalNoto, SwordsmachineCharacter.KnockdownClipSpecialBrutalSoil),
                 "PIECE OF SHIT!",
                 true,
                 SwordsmachineCharacter.GetColorOverride(sm)
@@ -442,7 +498,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 0.1f))
@@ -451,7 +507,7 @@ namespace UltraVoice.Characters
             VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineBigPain",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.BigPainClip, SwordsmachineCharacter.BigPainClipNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.BigPainClip, SwordsmachineCharacter.BigPainClipNoto, SwordsmachineCharacter.BigPainClipSoil),
                 null,
                 true,
                 randomPitch: true
@@ -471,7 +527,7 @@ namespace UltraVoice.Characters
                 VoiceManager.CreateVoiceSource(
                     sm,
                     "AgonyKnockdown",
-                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.AgonyKnockdownClip, SwordsmachineCharacter.AgonyKnockdownClipNoto),
+                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.AgonyKnockdownClip, SwordsmachineCharacter.AgonyKnockdownClipNoto, SwordsmachineCharacter.AgonyKnockdownClipSoil),
                     "DAMMIT!",
                     true,
                     SwordsmachineCharacter.AgonyColor
@@ -480,7 +536,7 @@ namespace UltraVoice.Characters
                 VoiceManager.CreateVoiceSource(
                     sm,
                     "TundraKnockdown",
-                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.TundraKnockdownClip, SwordsmachineCharacter.TundraKnockdownClipNoto),
+                    SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.TundraKnockdownClip, SwordsmachineCharacter.TundraKnockdownClipNoto, SwordsmachineCharacter.TundraKnockdownClipSoil),
                     "COVER ME!",
                     true,
                     SwordsmachineCharacter.TundraColor
@@ -530,7 +586,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -542,7 +598,7 @@ namespace UltraVoice.Characters
             VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineCombo",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.ComboClip, SwordsmachineCharacter.ComboClipNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.ComboClip, SwordsmachineCharacter.ComboClipNoto, SwordsmachineCharacter.ComboClipSoil),
                 "DIE, DIE, DIE!",
                 subtitleColor: SwordsmachineCharacter.GetColorOverride(__instance),
                 randomPitch: true
@@ -555,7 +611,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -567,7 +623,7 @@ namespace UltraVoice.Characters
             VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineLunge",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.LungeClip, SwordsmachineCharacter.LungeClipNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.LungeClip, SwordsmachineCharacter.LungeClipNoto, SwordsmachineCharacter.LungeClipSoil),
                 "DIE!",
                 subtitleColor: SwordsmachineCharacter.GetColorOverride(__instance),
                 randomPitch: true
@@ -580,17 +636,50 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
                 return;
 
             VoiceManager.CreateVoiceSource(
                 __instance,
                 "SwordsmachineDeath",
-                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.DeathClip, SwordsmachineCharacter.DeathClipNoto),
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.DeathClip, SwordsmachineCharacter.DeathClipNoto, SwordsmachineCharacter.DeathClipSoil),
                 null,
                 true,
                 subtitleColor: SwordsmachineCharacter.GetColorOverride(__instance),
                 randomPitch: true
+            );
+        }
+    }
+
+    [HarmonyPatch(typeof(EnemyIdentifier), nameof(EnemyIdentifier.Sandify))]
+    class SwordsmachineSandedPatch
+    {
+        static void Prefix(EnemyIdentifier __instance, out bool __state)
+        {
+            __state = __instance.sandified;
+        }
+
+        static void Postfix(EnemyIdentifier __instance, bool __state)
+        {
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+                return;
+
+            if (__state || !__instance.sandified)
+                return;
+
+            if (__instance.enemyType != EnemyType.Swordsmachine)
+                return;
+
+            if (!__instance.TryGetComponent<SwordsMachine>(out SwordsMachine sm))
+                return;
+
+            VoiceManager.CreateVoiceSource(
+                sm,
+                "SwordsmachineSanded",
+                SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.SandedClip, SwordsmachineCharacter.SandedClipNoto, SwordsmachineCharacter.SandedClipSoil),
+                "TRY HEALING OFF ME NOW, DIPSHIT!",
+                true,
+                subtitleColor: SwordsmachineCharacter.GetColorOverride(sm)
             );
         }
     }

@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -63,15 +63,15 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Spawn{0}.wav", 5);
-            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Chatter{0}.wav", 4);
-            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Melee{0}.wav", 3);
-            EnrageClips = UltraVoicePlugin.LoadClips("Mindflayer.mf_Enrage{0}.wav", 4);
+            SpawnClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Spawn{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Chatter{0}.wav", 4);
+            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Melee{0}.wav", 3);
+            EnrageClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Enrage{0}.wav", 4);
 
-            SpawnClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Spawn{0}Masc.wav", 5);
-            ChatterClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Chatter{0}Masc.wav", 4);
-            MeleeClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Melee{0}Masc.wav", 3);
-            EnrageClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.mf_Enrage{0}Masc.wav", 4);
+            SpawnClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Spawn{0}.wav", 5);
+            ChatterClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Chatter{0}.wav", 4);
+            MeleeClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Melee{0}.wav", 3);
+            EnrageClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Enrage{0}.wav", 4);
 
             logger.LogInfo("Mindflayer voice lines loaded successfully!");
         }
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
 
             if (__instance.dying) return;
 
@@ -102,7 +102,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -132,7 +132,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
 
             if (__instance.dying) return;
 
@@ -152,7 +152,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
 
             if (__instance.dying) return;
 

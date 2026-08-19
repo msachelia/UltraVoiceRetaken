@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -49,16 +49,16 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Providence.prov_Spawn{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Providence.prov_Chatter{0}.wav", 5);
-            DodgeClips = UltraVoicePlugin.LoadClips("Providence.prov_Dodge{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Chatter{0}.wav", 5);
+            DodgeClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Dodge{0}.wav", 3);
 
             logger.LogInfo("Providence voice lines loaded successfully!");
         }
 
         public static void PlayAttackVoice(Drone drone)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
 
             if (!IsProvidence(drone))
                 return;
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
 
             if (!ProvidenceCharacter.IsProvidence(__instance))
                 return;
@@ -120,7 +120,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
 
             if (!ProvidenceCharacter.IsProvidence(__instance))
                 return;

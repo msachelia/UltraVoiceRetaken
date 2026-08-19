@@ -92,9 +92,9 @@ namespace UltraVoice.Utilities
             notificationId = NotificationSystem.NotifySend(
                 "Update available!",
                 $"UltraVoice Retaken has been updated to {pendingVersion}",
-                iconSprite: LoadIcon(),
-                urgency: Urgency.Critical,
-                appName: "UltraVoice Retaken",
+                iconSprite: LoadIcon("UltraVoice.Images.notiffy_icon.png"),
+                urgency: Urgency.Normal,
+                appName: UltraVoicePlugin.PluginName,
                 actions: new Dictionary<string, string>
                 {
                     { OpenPageAction, "Thunderstore Page" },
@@ -114,11 +114,11 @@ namespace UltraVoice.Utilities
                 Application.OpenURL(ChangelogUrl);
         }
 
-        public static Sprite LoadIcon()
+        public static Sprite LoadIcon(string resourcePath)
         {
             try
             {
-                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("UltraVoice.Resources.icon.png"))
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
                 {
                     if (stream == null)
                         return null;

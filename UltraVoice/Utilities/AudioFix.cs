@@ -4,6 +4,36 @@ using UnityEngine;
 
 namespace UltraVoice.Utilities
 {
+    [HarmonyPatch(typeof(VirtualAudioManager), "AddAudioSource", new[] { typeof(AudioSource) })]
+    class PowerAudioFix
+    {
+        public static bool SkipVirtualAudio(AudioSource source)
+        {
+            if (source == null || SceneHelper.CurrentScene != "Level 8-3")
+                return false;
+
+            return source.GetComponentInParent<Power>() != null;
+        }
+
+        static bool Prefix(AudioSource source)
+        {
+            return !SkipVirtualAudio(source);
+        }
+    }
+
+    [HarmonyPatch(typeof(VirtualAudioManager), "AddAudioSource", new[] { typeof(VirtualAudioFilter) })]
+    class PowerAudioFilterFix
+    {
+        static bool Prefix(VirtualAudioFilter filter)
+        {
+            if (filter == null || !PowerAudioFix.SkipVirtualAudio(filter.source))
+                return true;
+
+            filter.enabled = false;
+            return false;
+        }
+    }
+
     [HarmonyPatch(typeof(VirtualAudioManager), "UpdateSources")]
     class AudioFix
     {

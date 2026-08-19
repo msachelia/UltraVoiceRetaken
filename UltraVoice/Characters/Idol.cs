@@ -32,18 +32,18 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseIdolClips(AudioClip[] voinviClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.IdolVoiceActorField != null && UltraVoicePlugin.IdolVoiceActorField.value == UltraVoicePlugin.IdolVoiceActor.Virchew
+            return UltraVoicePlugin.IdolVoiceActorField != null && UltraVoicePlugin.IdolVoiceActorField.Value == UltraVoicePlugin.IdolVoiceActor.Virchew
                 ? virchewClips
                 : voinviClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            BlessClips = UltraVoicePlugin.LoadClips("Idol.idol_Spawn{0}.wav", 5);
-            VulnerableClips = UltraVoicePlugin.LoadClips("Idol.idol_Vulnerable{0}.wav", 4);
+            BlessClips = UltraVoicePlugin.LoadClips("Idol.Voinvi.idol_Spawn{0}.wav", 5);
+            VulnerableClips = UltraVoicePlugin.LoadClips("Idol.Voinvi.idol_Vulnerable{0}.wav", 4);
 
-            BlessClipsVirchew = UltraVoicePlugin.LoadClips("Idol.idol_Spawn{0}Virchew.wav", 5);
-            VulnerableClipsVirchew = UltraVoicePlugin.LoadClips("Idol.idol_Vulnerable{0}Virchew.wav", 4);
+            BlessClipsVirchew = UltraVoicePlugin.LoadClips("Idol.Virchew.idol_Spawn{0}.wav", 5);
+            VulnerableClipsVirchew = UltraVoicePlugin.LoadClips("Idol.Virchew.idol_Vulnerable{0}.wav", 4);
 
             logger.LogInfo("Idol voice lines loaded successfully!");
         }
@@ -94,7 +94,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Idol __instance)
         {
-            if (!UltraVoicePlugin.IdolVoiceEnabled.value)
+            if (!UltraVoicePlugin.IdolVoiceEnabled.Value)
                 return;
 
             if (SceneHelper.CurrentScene == "Level 7-4")
@@ -113,7 +113,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Idol __instance)
         {
-            if (!UltraVoicePlugin.IdolVoiceEnabled.value)
+            if (!UltraVoicePlugin.IdolVoiceEnabled.Value)
                 return;
 
             if (!IdolCharacter.JustBecameVisible(NewMovement.Instance, __instance)) return;

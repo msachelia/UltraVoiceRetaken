@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -56,22 +56,22 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseVirtueClips(AudioClip[] notoClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.VirtueVoiceActorField != null && UltraVoicePlugin.VirtueVoiceActorField.value == UltraVoicePlugin.VirtueVoiceActor.Virchew
+            return UltraVoicePlugin.VirtueVoiceActorField != null && UltraVoicePlugin.VirtueVoiceActorField.Value == UltraVoicePlugin.VirtueVoiceActor.Virchew
                 ? virchewClips
                 : notoClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Spawn{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Attack{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Enrage{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("Virtue.virtue_Death{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Attack{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Enrage{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Death{0}.wav", 3);
 
-            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Spawn{0}Virchew.wav", 5);
-            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Attack{0}Virchew.wav", 5);
-            EnrageClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Enrage{0}Virchew.wav", 3);
-            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.virtue_Death{0}Virchew.wav", 3);
+            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Spawn{0}.wav", 5);
+            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Attack{0}.wav", 5);
+            EnrageClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Enrage{0}.wav", 3);
+            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Death{0}.wav", 3);
 
             logger.LogInfo("Virtue voice lines loaded successfully!");
         }
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;
@@ -102,7 +102,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(VirtueInsignia __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
 
             Drone drone = null;
 
@@ -137,7 +137,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;
@@ -163,7 +163,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;

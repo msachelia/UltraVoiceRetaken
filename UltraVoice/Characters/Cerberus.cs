@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -75,7 +75,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.CerberusVoiceActorField == null)
                 return melClip;
 
-            switch (UltraVoicePlugin.CerberusVoiceActorField.value)
+            switch (UltraVoicePlugin.CerberusVoiceActorField.Value)
             {
                 case UltraVoicePlugin.CerberusVoiceActor.Soil:
                     return soilClip;
@@ -91,7 +91,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.CerberusVoiceActorField == null)
                 return melClips;
 
-            switch (UltraVoicePlugin.CerberusVoiceActorField.value)
+            switch (UltraVoicePlugin.CerberusVoiceActorField.Value)
             {
                 case UltraVoicePlugin.CerberusVoiceActor.Soil:
                     return soilClips;
@@ -104,29 +104,29 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            PreludeClip = UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUpSpecial.wav");
-            AwakenClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_WakeUp{0}.wav", 6);
-            EnrageClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_Enrage{0}.wav", 4);
-            ThrowClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_Orb{0}.wav", 2);
-            StompClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_Stomp{0}.wav", 2);
-            TackleClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_Tackle{0}.wav", 2);
-            DeathClips = UltraVoicePlugin.LoadClips("Cerberus.cerb_Death{0}.wav", 3);
+            PreludeClip = UltraVoicePlugin.LoadClip("Cerberus.Mel.cerb_WakeUpSpecial.wav");
+            AwakenClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_WakeUp{0}.wav", 6);
+            EnrageClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Enrage{0}.wav", 4);
+            ThrowClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Orb{0}.wav", 2);
+            StompClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Stomp{0}.wav", 2);
+            TackleClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Tackle{0}.wav", 2);
+            DeathClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Death{0}.wav", 3);
 
-            PreludeClipSoil = UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUpSpecialSoil.wav");
-            AwakenClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_WakeUp{0}Soil.wav", 6);
-            EnrageClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_Enrage{0}Soil.wav", 4);
-            ThrowClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_Orb{0}Soil.wav", 2);
-            StompClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_Stomp{0}Soil.wav", 2);
-            TackleClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_Tackle{0}Soil.wav", 2);
-            DeathClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.cerb_Death{0}Soil.wav", 3);
+            PreludeClipSoil = UltraVoicePlugin.LoadClip("Cerberus.Soil.cerb_WakeUpSpecial.wav");
+            AwakenClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_WakeUp{0}.wav", 6);
+            EnrageClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Enrage{0}.wav", 4);
+            ThrowClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Orb{0}.wav", 2);
+            StompClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Stomp{0}.wav", 2);
+            TackleClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Tackle{0}.wav", 2);
+            DeathClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Death{0}.wav", 3);
 
-            PreludeClipRotund = UltraVoicePlugin.LoadClip("Cerberus.cerb_WakeUpSpecialRotund.wav");
-            AwakenClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_WakeUp{0}Rotund.wav", 6);
-            EnrageClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_Enrage{0}Rotund.wav", 4);
-            ThrowClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_Orb{0}Rotund.wav", 2);
-            StompClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_Stomp{0}Rotund.wav", 2);
-            TackleClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_Tackle{0}Rotund.wav", 2);
-            DeathClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.cerb_Death{0}Rotund.wav", 3);
+            PreludeClipRotund = UltraVoicePlugin.LoadClip("Cerberus.Rotund.cerb_WakeUpSpecial.wav");
+            AwakenClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_WakeUp{0}.wav", 6);
+            EnrageClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Enrage{0}.wav", 4);
+            ThrowClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Orb{0}.wav", 2);
+            StompClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Stomp{0}.wav", 2);
+            TackleClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Tackle{0}.wav", 2);
+            DeathClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Death{0}.wav", 3);
 
             logger.LogInfo("Cerberus voice lines loaded successfully!");
         }
@@ -141,7 +141,7 @@ namespace UltraVoice.Characters
             if (__instance.quickSpawn)
                 return;
 
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             UltraVoicePlugin.Instance.StartCoroutine(PlayIntro(__instance));
@@ -185,7 +185,7 @@ namespace UltraVoice.Characters
             if (!__instance.quickSpawn)
                 return;
 
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -234,7 +234,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             VoiceManager.PlayRandomVoiceDelayed(Random.Range(0f, 0.4f), __instance, "Cerberus",
@@ -250,7 +250,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -272,7 +272,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -294,7 +294,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -316,7 +316,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Cerberus",

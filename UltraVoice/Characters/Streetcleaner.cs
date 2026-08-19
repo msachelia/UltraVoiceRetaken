@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -38,9 +38,9 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Streetcleaner.sc_Chatter{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Streetcleaner.sc_Attack{0}.wav", 5);
-            ParryClips = UltraVoicePlugin.LoadClips("Streetcleaner.sc_Parry{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Chatter{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Attack{0}.wav", 5);
+            ParryClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Parry{0}.wav", 3);
 
             logger.LogInfo("Streetcleaner voice lines loaded successfully!");
         }
@@ -51,7 +51,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
                 return;
 
             if (__instance == null)
@@ -79,7 +79,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
                 return;
 
             if (Random.Range(0f, 1f) >= 0.75f)
@@ -98,7 +98,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
                 return;
 
             if (Random.Range(0f, 1f) >= 0.5f)

@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System;
 using System.Collections;
 using UltraVoice.Utilities;
@@ -84,17 +84,17 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_Spawn{0}.wav", 4);
-            AttackClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_Attack{0}.wav", 4);
-            AttackSpecialClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_AttackSpecial{0}.wav", 3);
-            StunClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_Stun{0}.wav", 2);
-            FrustratedClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_Frustration{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("Insurrectionist.insur_Death{0}.wav", 2);
+            SpawnClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Spawn{0}.wav", 4);
+            AttackClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Attack{0}.wav", 4);
+            AttackSpecialClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_AttackSpecial{0}.wav", 3);
+            StunClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Stun{0}.wav", 2);
+            FrustratedClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Frustration{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Death{0}.wav", 2);
 
-            AngrySpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.insur_SpawnSpecialAngry.wav");
-            RudeSpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.insur_SpawnSpecialRude.wav");
-            AngryKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.insur_DownedAngry.wav");
-            RudeKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.insur_DownedRude.wav");
+            AngrySpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_SpawnSpecialAngry.wav");
+            RudeSpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_SpawnSpecialRude.wav");
+            AngryKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_DownedAngry.wav");
+            RudeKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_DownedRude.wav");
 
             logger.LogInfo("Insurrectionist voice lines loaded successfully!");
         }
@@ -122,7 +122,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             if (!InsurrectionistCharacter.IsAngryOrRude(__instance))
                 VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
@@ -156,7 +156,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.AttackClips,
@@ -171,7 +171,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.AttackClips,
@@ -186,7 +186,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -197,7 +197,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -208,7 +208,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -219,7 +219,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -230,7 +230,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(Animator __instance, int id)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             if (!__instance.gameObject.TryGetComponent<Sisyphus>(out var sisyphus))
                 return;
@@ -249,7 +249,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -301,7 +301,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.DeathClips,

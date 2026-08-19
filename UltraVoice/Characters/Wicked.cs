@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -34,10 +34,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChaseClips = UltraVoicePlugin.LoadClips("Wicked.wicked_Chase{0}.wav", 4);
+            ChaseClips = UltraVoicePlugin.LoadClips("Wicked.Cyberlord.wicked_Chase{0}.wav", 4);
 
-            SkullPickupClip = UltraVoicePlugin.LoadClip("Wicked.wicked_SkullPickup.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Wicked.wicked_Death.wav");
+            SkullPickupClip = UltraVoicePlugin.LoadClip("Wicked.Cyberlord.wicked_SkullPickup.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Wicked.Cyberlord.wicked_Death.wav");
 
             logger.LogInfo("Wicked voice lines loaded successfully!");
         }
@@ -48,7 +48,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Wicked __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -56,10 +56,7 @@ namespace UltraVoice.Characters
             if (!WickedCharacter.InWickedLevel())
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 3f))
-                return;
-
-            if (Random.Range(0f, 1f) < 0.5f)
+            if (!VoiceManager.CheckCooldown(__instance, 15f))
                 return;
 
             if (WickedCharacter.ChaseClips == null || WickedCharacter.ChaseClips.Length == 0)
@@ -85,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ItemIdentifier __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
 
             if (__instance == null || __instance.itemType != ItemType.SkullRed)
                 return;
@@ -120,7 +117,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Skull __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;

@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using System.Collections;
 using UltraVoice.Utilities;
@@ -50,26 +50,26 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseGuttermanClips(AudioClip[] melClips, AudioClip[] lemenClips)
         {
-            return UltraVoicePlugin.GuttermanVoiceActorField != null && UltraVoicePlugin.GuttermanVoiceActorField.value == UltraVoicePlugin.GuttermanVoiceActor.Lemen
+            return UltraVoicePlugin.GuttermanVoiceActorField != null && UltraVoicePlugin.GuttermanVoiceActorField.Value == UltraVoicePlugin.GuttermanVoiceActor.Lemen
                 ? lemenClips
                 : melClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Gutterman.gm_Spawn{0}.wav", 6);
-            PunchClips = UltraVoicePlugin.LoadClips("Gutterman.gm_Punch{0}.wav", 3);
-            ShieldBreakClips = UltraVoicePlugin.LoadClips("Gutterman.gm_GuardBreak{0}.wav", 3);
-            EnrageClips = UltraVoicePlugin.LoadClips("Gutterman.gm_Enrage{0}.wav", 5);
-            DeathClips = UltraVoicePlugin.LoadClips("Gutterman.gm_Death{0}.wav", 3);
-            ParryClips = UltraVoicePlugin.LoadClips("Gutterman.gm_Parry{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Spawn{0}.wav", 6);
+            PunchClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Punch{0}.wav", 3);
+            ShieldBreakClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_GuardBreak{0}.wav", 3);
+            EnrageClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Enrage{0}.wav", 5);
+            DeathClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Death{0}.wav", 3);
+            ParryClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Parry{0}.wav", 3);
 
-            SpawnClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_Spawn{0}Lemen.wav", 6);
-            PunchClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_Punch{0}Lemen.wav", 3);
-            ShieldBreakClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_GuardBreak{0}Lemen.wav", 3);
-            EnrageClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_Enrage{0}Lemen.wav", 5);
-            DeathClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_Death{0}Lemen.wav", 3);
-            ParryClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.gm_Parry{0}Lemen.wav", 3);
+            SpawnClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Spawn{0}.wav", 6);
+            PunchClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Punch{0}.wav", 3);
+            ShieldBreakClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_GuardBreak{0}.wav", 3);
+            EnrageClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Enrage{0}.wav", 5);
+            DeathClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Death{0}.wav", 3);
+            ParryClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Parry{0}.wav", 3);
 
             logger.LogInfo("Gutterman voice lines loaded successfully!");
         }
@@ -80,7 +80,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
 
             if (__instance.dead) return;
 
@@ -100,7 +100,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
 
             if (__instance.enraged)
                 VoiceManager.PlayRandomVoice(__instance, "Gutterman",
@@ -124,7 +124,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Gutterman",
                 GuttermanCharacter.UseGuttermanClips(GuttermanCharacter.DeathClips, GuttermanCharacter.DeathClipsLemen),
@@ -140,7 +140,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
                 return;
@@ -159,7 +159,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Gutterman",
                 GuttermanCharacter.UseGuttermanClips(GuttermanCharacter.PunchClips, GuttermanCharacter.PunchClipsLemen),

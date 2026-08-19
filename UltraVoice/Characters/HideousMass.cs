@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UnityEngine;
 using UltraVoice.Utilities;
@@ -49,13 +49,13 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            AwakenClip = UltraVoicePlugin.LoadClip("HideousMass.mass_SpawnSpecial.wav");
+            AwakenClip = UltraVoicePlugin.LoadClip("HideousMass.Soil.mass_SpawnSpecial.wav");
 
-            ChatterClips = UltraVoicePlugin.LoadClips("HideousMass.mass_Generic{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("HideousMass.mass_Enrage{0}.wav", 4);
-            HarpoonClips = UltraVoicePlugin.LoadClips("HideousMass.mass_Harpoon{0}.wav", 3);
-            ParryClips = UltraVoicePlugin.LoadClips("HideousMass.mass_Parried{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("HideousMass.mass_Death{0}.wav", 2);
+            ChatterClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Generic{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Enrage{0}.wav", 4);
+            HarpoonClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Harpoon{0}.wav", 3);
+            ParryClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Parried{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Death{0}.wav", 2);
 
             logger.LogInfo("Hideous Mass voice lines loaded successfully!");
         }
@@ -66,7 +66,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -94,10 +94,10 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "HideousMass",
@@ -113,7 +113,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(FakeMassActivator __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
             if (__instance == null)
@@ -143,10 +143,10 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "HideousMass",
@@ -163,10 +163,10 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "HideousMass",
@@ -182,10 +182,10 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             VoiceManager.PlayRandomVoiceDelayed(1f, __instance, "HideousMass",

@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Schism.sch_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Schism.Mel.sch_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Schism.sch_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Schism.sch_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Schism.Mel.sch_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Schism.Mel.sch_Death.wav");
 
             logger.LogInfo("Schism voice lines loaded successfully!");
         }
@@ -26,12 +26,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance.eid.enemyType != EnemyType.Schism) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Schism) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -52,9 +52,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Schism) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Schism) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Schism",
                 SchismCharacter.AttackClip,
@@ -69,9 +69,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Schism) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Schism) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Schism",
                 SchismCharacter.DeathClip,

@@ -1,4 +1,4 @@
-# UltraVoice Retaken (version 1.4.0)
+# UltraVoice Retaken (version 1.5.0)
 
 UltraVoice Retaken is a fork of the UltraVoice mod for ULTRAKILL that adds custom voice lines to some enemies, giving them more personality during combat and cutscenes.
 
@@ -28,6 +28,7 @@ This mod currently adds voice lines to:
 * Powers
 * Providences
 * Sentries
+* Shop Terminals
 * Something Wicked
 * Streetcleaners
 * Swordsmachines (including Agony and Tundra)
@@ -65,10 +66,10 @@ See the [GitHub repository](https://github.com/msachelia/UltraVoiceRetaken) for 
 * Mel (for letting me continue the development of this great mod)
 * Raphael (mod icon)
 * [RubyVA](https://www.youtube.com/@legasaya) (voice of V2)
-* Noto (voice of Virtue, Mannequin, Mirror Reaper, Leviathan and alternate voice of Swordsmachine, Sentry and Power)
-* Goober (voice of Sentry, Providence and alternate voice of Power)
+* Noto (voice of Virtue, Mannequin, Mirror Reaper, Leviathan and alternate voice of Swordsmachine, Sentry, Power, V1)
+* Goober (voice of Sentry, Providence and alternate voice of Power, Shop Terminal)
 * [Kyljoi](https://www.youtube.com/@KyljoiVA) (voice of Streetcleaners)
-* Rotund (voice of Earthmover, Malicious Face and alternate voice of Cerberus)
+* Rotund (voice of Earthmover, Malicious Face and alternate voice of Cerberus, Mirror Reaper)
 * Voinvi (voice of Idols)
 * Buried Soil (voice of Insurrectionist, Hideous Mass and alternate voice of Ferryman, Cerberus)
 * CFAnim (voice of Filth)
@@ -76,7 +77,10 @@ See the [GitHub repository](https://github.com/msachelia/UltraVoiceRetaken) for 
 * Mitzi (voice of Stalkers)
 * Virchew (alternate voice of Guttertank, Virtue and Idol)
 * Cazsu (alternate voice of V2)
-* Arlenou (voice of Something Wicked)
 * [Valin](https://www.castingcall.club/valin), TheRatman and Megaslash (voices of Geryon)
-* Cyber-lord (voice of V1)
-* Tryhard (made the fx of many post-1.3.0 additions)
+* Cyber-lord (voice of V1, Something Wicked)
+* HashCap (alternative voice of V1)
+* Bouncy (voice of Shop Terminals)
+* Nicky (alternative voice of Ferryman)
+* [TondarYZD](https://www.youtube.com/@TondarYZD) (alternative voice of Earthmover, making the mod popular <3)
+* Tryhard (fx of many post-1.3.0 additions)

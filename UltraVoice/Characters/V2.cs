@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,7 +59,30 @@ namespace UltraVoice.Characters
             "You don't stand a chance against me!"
         };
 
-        public static Color V2Color => VoiceManager.GetEnemyTypeColor(EnemyType.V2);
+        public static void PlayScriptedLine(Component v2, string name, AudioClip clip, string firstSub, bool interrupt, params (float delay, string text)[] followUps)
+        {
+            UltraVoicePlugin.Instance.StartCoroutine(Routine());
+
+            IEnumerator Routine()
+            {
+                Color color = VoiceManager.GetEnemyTypeColor(EnemyType.V2);
+
+                var src = VoiceManager.CreateVoiceSource(v2, name, clip, firstSub, interrupt, color);
+
+                if (src == null)
+                    yield break;
+
+                foreach (var (delay, text) in followUps)
+                {
+                    yield return new WaitForSeconds(delay);
+
+                    if (v2 == null || !src)
+                        yield break;
+
+                    VoiceManager.ShowSubtitle(text, src, color);
+                }
+            }
+        }
 
         public const string LimboClimaxSceneName = "36abcaae9708abc4d9e89e6ec73a2846";
         public const string GreedClimaxSceneName = "ac1675e648695a343bd064c6d0c56e57";
@@ -71,53 +94,53 @@ namespace UltraVoice.Characters
 
         public static AudioClip UseV2Clip(AudioClip rubyClip, AudioClip caszuClip)
         {
-            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.value == UltraVoicePlugin.V2VoiceActor.Cazsu
+            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.Value == UltraVoicePlugin.V2VoiceActor.Cazsu
                 ? caszuClip
                 : rubyClip;
         }
 
         public static AudioClip[] UseV2Clips(AudioClip[] rubyClips, AudioClip[] caszuClips)
         {
-            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.value == UltraVoicePlugin.V2VoiceActor.Cazsu
+            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.Value == UltraVoicePlugin.V2VoiceActor.Cazsu
                 ? caszuClips
                 : rubyClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroFirstClip = UltraVoicePlugin.LoadClip("V2.v2_IntroFirst.wav");
-            IntroFirstRestartClip = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroFirst.wav");
-            IntroSecondClip = UltraVoicePlugin.LoadClip("V2.v2_IntroSecond.wav");
-            IntroSecondRestartClip = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroSecond.wav");
+            IntroFirstClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_IntroFirst.wav");
+            IntroFirstRestartClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_RestartIntroFirst.wav");
+            IntroSecondClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_IntroSecond.wav");
+            IntroSecondRestartClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_RestartIntroSecond.wav");
 
-            FastDefeatClip = UltraVoicePlugin.LoadClip("V2.v2_FastDefeat.wav");
-            DefeatClip = UltraVoicePlugin.LoadClip("V2.v2_Defeat.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("V2.v2_Death.wav");
-            FlailingClip = UltraVoicePlugin.LoadClip("V2.v2_Flailing.wav");
-            EnragePatienceClip = UltraVoicePlugin.LoadClip("V2.v2_EnragePatience.wav");
-            EnragePunchedClip = UltraVoicePlugin.LoadClip("V2.v2_EnragePunched.wav");
-            EscapingClip = UltraVoicePlugin.LoadClip("V2.v2_Escaping.wav");
+            FastDefeatClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_FastDefeat.wav");
+            DefeatClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Defeat.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Death.wav");
+            FlailingClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Flailing.wav");
+            EnragePatienceClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_EnragePatience.wav");
+            EnragePunchedClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_EnragePunched.wav");
+            EscapingClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Escaping.wav");
 
-            ChatterClips = UltraVoicePlugin.LoadClips("V2.v2_Chatter{0}.wav", 5);
-            ChatterPissedClips = UltraVoicePlugin.LoadClips("V2.v2_ChatterPissed{0}.wav", 5);
-            PainClips = UltraVoicePlugin.LoadClips("V2.v2_Pain{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_Chatter{0}.wav", 5);
+            ChatterPissedClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_ChatterPissed{0}.wav", 5);
+            PainClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_Pain{0}.wav", 5);
 
-            IntroFirstClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_IntroFirstCazsu.wav");
-            IntroFirstRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroFirstCazsu.wav");
-            IntroSecondClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_IntroSecondCazsu.wav");
-            IntroSecondRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_RestartIntroSecondCazsu.wav");
+            IntroFirstClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_IntroFirst.wav");
+            IntroFirstRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_RestartIntroFirst.wav");
+            IntroSecondClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_IntroSecond.wav");
+            IntroSecondRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_RestartIntroSecond.wav");
 
-            FastDefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_FastDefeatCazsu.wav");
-            DefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_DefeatCazsu.wav");
-            DeathClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_DeathCazsu.wav");
-            FlailingClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_FlailingCazsu.wav");
-            EnragePatienceClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_EnragePatienceCazsu.wav");
-            EnragePunchedClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_EnragePunchedCazsu.wav");
-            EscapingClipCazsu = UltraVoicePlugin.LoadClip("V2.v2_EscapingCazsu.wav");
+            FastDefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_FastDefeat.wav");
+            DefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Defeat.wav");
+            DeathClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Death.wav");
+            FlailingClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Flailing.wav");
+            EnragePatienceClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_EnragePatience.wav");
+            EnragePunchedClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_EnragePunched.wav");
+            EscapingClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Escaping.wav");
 
-            ChatterClipsCazsu = UltraVoicePlugin.LoadClips("V2.v2_ChatterCazsu{0}.wav", 5);
-            ChatterPissedClipsCazsu = UltraVoicePlugin.LoadClips("V2.v2_ChatterPissedCazsu{0}.wav", 5);
-            PainClipsCazsu = UltraVoicePlugin.LoadClips("V2.v2_PainCazsu{0}.wav", 5);
+            ChatterClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_Chatter{0}.wav", 5);
+            ChatterPissedClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_ChatterPissed{0}.wav", 5);
+            PainClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_Pain{0}.wav", 5);
 
             logger.LogInfo("V2 voice lines loaded successfully!");
         }
@@ -128,10 +151,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(V2 __instance)
         {
-            if (StatsManager.Instance.restarts >= 1)
+            StatsManager stats = MonoSingleton<StatsManager>.Instance;
+
+            if (stats == null || stats.restarts >= 1)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (__instance.secondEncounter)
@@ -153,33 +178,14 @@ namespace UltraVoice.Characters
 
             AudioClip clip = V2Character.UseV2Clip(V2Character.IntroFirstClip, V2Character.IntroFirstClipCazsu);
 
-            var src = VoiceManager.CreateVoiceSource(
-                v2,
-                "V2Intro",
-                clip
-            );
-
-            if (src == null)
-                yield break;
-
             V2Character.V2IntroTime = Time.time;
             VoiceManager.spawnVoiceEndTimes[v2] = Time.time + clip.length;
 
-            VoiceManager.ShowSubtitle("So, you're my predecessor.", src, V2Character.V2Color);
-
-            yield return new WaitForSeconds(2.25f);
-
-            if (v2 == null || !v2.inIntro)
-                yield break;
-
-            VoiceManager.ShowSubtitle("How quaint...", src, V2Character.V2Color);
-
-            yield return new WaitForSeconds(1.25f);
-
-            if (v2 == null || !v2.inIntro)
-                yield break;
-
-            VoiceManager.ShowSubtitle("I suppose I'll have to show you what an upgrade looks like.", src, V2Character.V2Color);
+            V2Character.PlayScriptedLine(v2, "V2Intro", clip,
+                "So, you're my predecessor.", false,
+                (2.25f, "How quaint..."),
+                (1.25f, "I suppose I'll have to show you what an upgrade looks like.")
+            );
         }
     }
 
@@ -188,10 +194,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(V2 __instance)
         {
-            if (StatsManager.Instance.restarts == 0)
+            StatsManager stats = MonoSingleton<StatsManager>.Instance;
+
+            if (stats == null || stats.restarts == 0)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (!__instance.secondEncounter)
@@ -259,7 +267,7 @@ namespace UltraVoice.Characters
             if (__instance == null)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -301,7 +309,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             float timeSinceIntro = Time.time - V2Character.V2IntroTime;
@@ -309,7 +317,7 @@ namespace UltraVoice.Characters
             if (!__instance.secondEncounter)
             {
                 if (__instance.inIntro || timeSinceIntro < 15f)
-                    UltraVoicePlugin.Instance.StartCoroutine(PlayFastDefeat(__instance));
+                    PlayFastDefeat(__instance);
                 else
                     UltraVoicePlugin.Instance.StartCoroutine(PlayDefeat(__instance));
             }
@@ -322,27 +330,13 @@ namespace UltraVoice.Characters
             }
         }
 
-        static IEnumerator PlayFastDefeat(V2 v2)
+        static void PlayFastDefeat(V2 v2)
         {
-            var src = VoiceManager.CreateVoiceSource(
-                v2,
-                "V2FastDefeat",
+            V2Character.PlayScriptedLine(v2, "V2FastDefeat",
                 V2Character.UseV2Clip(V2Character.FastDefeatClip, V2Character.FastDefeatClipCazsu),
-                null,
-                true
+                "Enough!", true,
+                (1.5f, "You've proven your point...")
             );
-
-            if (src == null)
-                yield break;
-
-            VoiceManager.ShowSubtitle("Enough!", src, V2Character.V2Color);
-
-            yield return new WaitForSeconds(1.5f);
-
-            if (!src)
-                yield break;
-
-            VoiceManager.ShowSubtitle("You've proven your point...", src, V2Character.V2Color);
         }
 
         static IEnumerator PlayDefeat(V2 v2)
@@ -352,18 +346,13 @@ namespace UltraVoice.Characters
             if (v2 == null)
                 yield break;
 
-            var src = VoiceManager.CreateVoiceSource(
+            VoiceManager.CreateVoiceSource(
                 v2,
                 "V2Defeat",
                 V2Character.UseV2Clip(V2Character.DefeatClip, V2Character.DefeatClipCazsu),
-                null,
+                "This isn't over! Mark my words...",
                 true
             );
-
-            if (src == null)
-                yield break;
-
-            VoiceManager.ShowSubtitle("This isn't over! Mark my words...", src, V2Character.V2Color);
         }
 
         static IEnumerator PlayEscape(V2 v2)
@@ -410,7 +399,7 @@ namespace UltraVoice.Characters
             if (__instance.dead)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 0.1f))
@@ -428,36 +417,15 @@ namespace UltraVoice.Characters
     {
         static void Prefix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (__instance.enraged)
                 return;
 
-            float delay = 0f;
-
-            if (UltraVoicePlugin.V1LineEnabled("enrage") && V1Character.EnrageV2Clip != null)
-                delay = V1Character.EnrageV2Clip.length + 0.2f;
-
             AudioClip clip = V2Character.UseV2Clip(V2Character.EnragePunchedClip, V2Character.EnragePunchedClipCazsu);
 
-            if (delay <= 0f)
-            {
-                VoiceManager.CreateVoiceSource(__instance, "V2Enrage", clip, "EXCUSE ME?!", true);
-                return;
-            }
-
-            UltraVoicePlugin.Instance.StartCoroutine(Routine());
-
-            IEnumerator Routine()
-            {
-                yield return new WaitForSeconds(delay);
-
-                if (__instance == null)
-                    yield break;
-
-                VoiceManager.CreateVoiceSource(__instance, "V2Enrage", clip, "EXCUSE ME?!", true);
-            }
+            VoiceManager.CreateVoiceSource(__instance, "V2Enrage", clip, "EXCUSE ME?!", true);
         }
     }
 
@@ -466,7 +434,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             VoiceManager.CreateVoiceSource(
@@ -484,7 +452,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Animator __instance, string stateName, int layer, float normalizedTime)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (__instance == null)
@@ -505,30 +473,12 @@ namespace UltraVoice.Characters
 
             V2Character.V2CutsceneVoicePlayed = true;
 
-            var src = VoiceManager.CreateVoiceSource(
-                v2,
-                "V2Cutscene",
-                V2Character.UseV2Clip(V2Character.IntroSecondClip, V2Character.IntroSecondClipCazsu)
+            V2Character.PlayScriptedLine(v2, "V2Cutscene",
+                V2Character.UseV2Clip(V2Character.IntroSecondClip, V2Character.IntroSecondClipCazsu),
+                "There you are.", false,
+                (1.25f, "I was wondering how long you'd keep my arm..."),
+                (2.75f, "Don't worry, I'll pry it off you myself.")
             );
-
-            if (src == null)
-                yield break;
-
-            VoiceManager.ShowSubtitle("There you are.", src, V2Character.V2Color);
-
-            yield return new WaitForSeconds(1.25f);
-
-            if (v2 == null || !src || !src.isPlaying)
-                yield break;
-
-            VoiceManager.ShowSubtitle("I was wondering how long you'd keep my arm...", src, V2Character.V2Color);
-
-            yield return new WaitForSeconds(2.75f);
-
-            if (v2 == null || !src || !src.isPlaying)
-                yield break;
-
-            VoiceManager.ShowSubtitle("Don't worry, I'll pry it off you myself.", src, V2Character.V2Color);
         }
     }
 
@@ -540,7 +490,7 @@ namespace UltraVoice.Characters
             if (__instance.name != "v2_GreenArm")
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
                 return;
 
             if (V2Character.V2DeathPlayed) return;
@@ -569,7 +519,7 @@ namespace UltraVoice.Characters
                 V2Character.UseV2Clip(V2Character.DeathClip, V2Character.DeathClipCazsu),
                 "NOOOOOOO!",
                 true,
-                subtitleColor: V2Character.V2Color
+                VoiceManager.GetEnemyTypeColor(EnemyType.V2)
             );
         }
     }

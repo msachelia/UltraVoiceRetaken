@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +16,6 @@ namespace UltraVoice.Characters
         static readonly Dictionary<string, AudioClip>[] AltClipSets = new Dictionary<string, AudioClip>[VoiceActors.Length];
 
         static readonly List<int> VoicePool = new List<int> { 0 };
-
-        static readonly Dictionary<string, float> VoiceBaseVolumes = new Dictionary<string, float>
-        {
-            { "Cazsu", 2.1f },
-            { "Goober", 2.1f },
-            { "Mel", 2.1f },
-            { "NotoFem", 2.1f },
-            { "NotoMasc", 2.1f }
-        };
 
         static readonly Dictionary<string, AudioClip> SwappedOriginals = new Dictionary<string, AudioClip>();
 
@@ -59,21 +50,56 @@ namespace UltraVoice.Characters
             "pow_Taunt1", "pow_Taunt2", "pow_Taunt3", "pow_Taunt4"
         };
 
+        static int ForcedVoice()
+        {
+            int index = System.Array.IndexOf(VoiceActors, UltraVoicePlugin.PowerVoiceActorField.Value.ToString());
+
+            return index < 0 ? 0 : index + 1;
+        }
+
+        static bool VoiceAllowed(int voice)
+        {
+            string actor = voice == 0 ? "Vanilla" : VoiceActors[voice - 1];
+
+            return !UltraVoicePlugin.PowerVoiceToggles.TryGetValue(actor, out ThornClient.Core.ConfigurableElements.Setting<bool> field) || field.Value;
+        }
+
+        static List<int> AllowedVoices()
+        {
+            if (UltraVoicePlugin.PowerVoiceActorField != null
+                && UltraVoicePlugin.PowerVoiceActorField.Value != UltraVoicePlugin.PowerVoiceActor.Random)
+                return new List<int> { ForcedVoice() };
+
+            List<int> allowed = new List<int>();
+
+            foreach (int voice in VoicePool)
+                if (VoiceAllowed(voice))
+                    allowed.Add(voice);
+
+            if (allowed.Count == 0)
+                allowed.Add(0);
+
+            return allowed;
+        }
+
         public static void RollVoice()
         {
-            CurrentVoice = VoicePool[Random.Range(0, VoicePool.Count)];
+            List<int> pool = AllowedVoices();
+
+            CurrentVoice = pool[Random.Range(0, pool.Count)];
         }
 
         public static int RollExcluding(HashSet<int> used)
         {
+            List<int> pool = AllowedVoices();
             List<int> options = new List<int>();
 
-            foreach (int voice in VoicePool)
+            foreach (int voice in pool)
                 if (!used.Contains(voice))
                     options.Add(voice);
 
             if (options.Count == 0)
-                return VoicePool[Random.Range(0, VoicePool.Count)];
+                return pool[Random.Range(0, pool.Count)];
 
             return options[Random.Range(0, options.Count)];
         }
@@ -124,20 +150,21 @@ namespace UltraVoice.Characters
             AudioSource moved = obj.AddComponent<AudioSource>();
             moved.clip = introSource.clip;
             moved.outputAudioMixerGroup = introSource.outputAudioMixerGroup;
-            moved.pitch = introSource.pitch;
+            moved.SetPitch(introSource.GetPitch());
             moved.volume = introSource.volume;
-            moved.spatialBlend = introSource.spatialBlend;
+            moved.SetSpatialBlend(introSource.GetSpatialBlend());
             moved.rolloffMode = introSource.rolloffMode;
             moved.minDistance = introSource.minDistance;
             moved.maxDistance = introSource.maxDistance;
             moved.dopplerLevel = introSource.dopplerLevel;
             moved.priority = introSource.priority;
             moved.time = introSource.time;
-            moved.Play();
+            moved.Play(tracked: true);
 
             introSource.volume = 0f;
 
-            Object.Destroy(obj, moved.clip.length + 1f);
+            RemoveOnTime remove = obj.AddComponent<RemoveOnTime>();
+            remove.useAudioLength = true;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
@@ -152,7 +179,7 @@ namespace UltraVoice.Characters
 
                 foreach (string vanillaName in VanillaClipNames)
                 {
-                    string resourcePath = $"UltraVoice.Resources.Power.{actor}.{vanillaName}{actor}.wav";
+                    string resourcePath = $"UltraVoice.Resources.Power.{actor}.{vanillaName}.wav";
 
                     if (!resourceNames.Contains(resourcePath))
                         continue;
@@ -185,17 +212,14 @@ namespace UltraVoice.Characters
             if (!AltClipSets[voice - 1].TryGetValue(vanilla.name, out AudioClip alt) || alt == null)
                 return null;
 
-            return WithVolume(alt, VoiceActors[voice - 1]);
+            return WithVolume(alt);
         }
 
-        static AudioClip WithVolume(AudioClip alt, string actor)
+        static AudioClip WithVolume(AudioClip alt)
         {
-            if (!VoiceBaseVolumes.TryGetValue(actor, out float baseVolume))
-                baseVolume = 1f;
-
-            float gain = (UltraVoicePlugin.PowerAltVolumeField != null
-                ? UltraVoicePlugin.PowerAltVolumeField.value / 100f
-                : 1f) * baseVolume;
+            float gain = UltraVoicePlugin.PowerAltVolumeField != null
+                ? UltraVoicePlugin.PowerAltVolumeField.Value / 100f
+                : 1f;
 
             if (Mathf.Approximately(gain, 1f))
                 return alt;
@@ -247,7 +271,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Power __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             int id = __instance.GetInstanceID();
@@ -278,7 +302,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ref AudioClip __result)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             AudioClip alt = PowerCharacter.GetVoiceClip(PowerCharacter.CurrentVoice, __result);
@@ -293,7 +317,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(Power __instance, ref AudioClip clip)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             if (clip == null)
@@ -314,7 +338,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ref AudioClip __result)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             AudioClip alt = PowerCharacter.GetVoiceClip(PowerCharacter.CurrentVoice, __result);
@@ -329,7 +353,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(PowerIntro __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             HashSet<int> used = PowerCharacter.ActiveVoices(0);
@@ -372,7 +396,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(PowerIntro __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
                 return;
 
             if (!__instance.TryGetComponent<AudioSource>(out AudioSource introSource) || !introSource.isPlaying)
@@ -444,7 +468,7 @@ namespace UltraVoice.Characters
 
         public static void Postfix(string caption)
         {
-            if (!UltraVoicePlugin.PowerSubtitleColorEnabled.value)
+            if (!UltraVoicePlugin.SubtitleColorAllowed("Power"))
                 return;
 
             bool isPowerLine = PowerLines.Contains(caption);
@@ -456,13 +480,20 @@ namespace UltraVoice.Characters
 
             var controller = MonoSingleton<SubtitleController>.Instance;
 
+            if (controller == null || controller.container == null || controller.container.childCount == 0)
+                return;
+
             var container = controller.container;
 
             var lastChild = container.GetChild(container.childCount - 1);
-            var subtitleComp = lastChild.GetComponent<Subtitle>();
 
-            var text = subtitleComp.GetComponentInChildren<TMP_Text>();
-            text.color = PowerYellow;
+            if (lastChild.GetComponent<Subtitle>() == null)
+                return;
+
+            var text = lastChild.GetComponentInChildren<TMP_Text>();
+
+            if (text != null)
+                text.color = PowerYellow;
         }
     }
 }

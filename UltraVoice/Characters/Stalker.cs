@@ -11,9 +11,9 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.stalker_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Stalker.stalker_Explode.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Stalker.Mitzi.stalker_Explode.wav");
 
             logger.LogInfo("Stalker voice lines loaded successfully!");
         }
@@ -24,7 +24,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Stalker __instance)
         {
-            if (!UltraVoicePlugin.StalkerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.StalkerVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -48,7 +48,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Stalker __instance)
         {
-            if (!UltraVoicePlugin.StalkerVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.StalkerVoiceEnabled.Value) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Stalker",
                 StalkerCharacter.AttackClip,

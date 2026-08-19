@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -26,22 +26,22 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Leviathan.lev_Chatter{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Leviathan.Noto.lev_Chatter{0}.wav", 5);
 
-            BiteClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Bite.wav");
-            BiteWindupClip = UltraVoicePlugin.LoadClip("Leviathan.lev_BiteWindup.wav");
-            ParryClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Parried.wav");
-            RoarClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Roar.wav");
-            IntroRoarClip = UltraVoicePlugin.LoadClip("Leviathan.lev_IntroRoar.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Leviathan.lev_Death.wav");
-            DeathEndClip = UltraVoicePlugin.LoadClip("Leviathan.lev_DeathEnd.wav");
+            BiteClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Bite.wav");
+            BiteWindupClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_BiteWindup.wav");
+            ParryClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Parried.wav");
+            RoarClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Roar.wav");
+            IntroRoarClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_IntroRoar.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Death.wav");
+            DeathEndClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_DeathEnd.wav");
 
             logger.LogInfo("Leviathan voice lines loaded successfully!");
         }
 
         public static void PlayClip(LeviathanHead head, AudioClip clip)
         {
-            if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
+            if (!UltraVoicePlugin.LeviathanVoiceEnabled.Value)
                 return;
 
             VoiceManager.CreateVoiceSource(head, "Leviathan", clip, null, true);
@@ -53,7 +53,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(LeviathanHead __instance)
         {
-            if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
+            if (!UltraVoicePlugin.LeviathanVoiceEnabled.Value)
                 return;
 
             if (!__instance.active)

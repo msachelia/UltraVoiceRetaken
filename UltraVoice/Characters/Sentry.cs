@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -56,26 +56,26 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseSentryClips(AudioClip[] notoClips, AudioClip[] goobClips)
         {
-            return UltraVoicePlugin.SentryVoiceActorField != null && UltraVoicePlugin.SentryVoiceActorField.value == UltraVoicePlugin.SentryVoiceActor.Goober
+            return UltraVoicePlugin.SentryVoiceActorField != null && UltraVoicePlugin.SentryVoiceActorField.Value == UltraVoicePlugin.SentryVoiceActor.Goober
                 ? goobClips
                 : notoClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            DigInClips = UltraVoicePlugin.LoadClips("Sentry.tur_DigIn{0}.wav", 6);
-            InterruptPainClips = UltraVoicePlugin.LoadClips("Sentry.tur_Pain{0}.wav", 2);
-            InterruptClips = UltraVoicePlugin.LoadClips("Sentry.tur_Interrupt{0}.wav", 5);
-            ShootClips = UltraVoicePlugin.LoadClips("Sentry.tur_Fire{0}.wav", 3);
-            KickClips = UltraVoicePlugin.LoadClips("Sentry.tur_Kick{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("Sentry.tur_Death{0}.wav", 2);
+            DigInClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_DigIn{0}.wav", 6);
+            InterruptPainClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Pain{0}.wav", 2);
+            InterruptClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Interrupt{0}.wav", 5);
+            ShootClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Fire{0}.wav", 3);
+            KickClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Kick{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Death{0}.wav", 2);
 
-            DigInClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_DigIn{0}Goob.wav", 6);
-            InterruptPainClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Pain{0}Goob.wav", 2);
-            InterruptClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Interrupt{0}Goob.wav", 5);
-            ShootClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Fire{0}Goob.wav", 3);
-            KickClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Kick{0}Goob.wav", 3);
-            DeathClipsGoob = UltraVoicePlugin.LoadClips("Sentry.tur_Death{0}Goob.wav", 2);
+            DigInClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_DigIn{0}.wav", 6);
+            InterruptPainClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Pain{0}.wav", 2);
+            InterruptClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Interrupt{0}.wav", 5);
+            ShootClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Fire{0}.wav", 3);
+            KickClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Kick{0}.wav", 3);
+            DeathClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Death{0}.wav", 2);
 
             logger.LogInfo("Sentry voice lines loaded successfully!");
         }
@@ -86,7 +86,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.DigInClips, SentryCharacter.DigInClipsGoob),
@@ -102,7 +102,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.ShootClips, SentryCharacter.ShootClipsGoob),
@@ -118,7 +118,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.KickClips, SentryCharacter.KickClipsGoob),
@@ -134,7 +134,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.InterruptPainClips, SentryCharacter.InterruptPainClipsGoob),
@@ -157,7 +157,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             if (__instance.aiming) return;
 
@@ -183,7 +183,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.DeathClips, SentryCharacter.DeathClipsGoob),

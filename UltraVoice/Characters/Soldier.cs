@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Soldier.sol_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Soldier.Lemen.sol_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Soldier.sol_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Soldier.sol_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Soldier.Lemen.sol_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Soldier.Lemen.sol_Death.wav");
 
             logger.LogInfo("Soldier voice lines loaded successfully!");
         }
@@ -26,12 +26,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SoldierVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SoldierVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance.eid.enemyType != EnemyType.Soldier) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Soldier) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -52,9 +52,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SoldierVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SoldierVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Soldier) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Soldier) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Soldier",
                 SoldierCharacter.AttackClip,
@@ -69,9 +69,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SoldierVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SoldierVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Soldier) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Soldier) return;
 
             if (__instance.tr != null)
             {
@@ -93,9 +93,9 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SoldierVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.SoldierVoiceEnabled.Value) return;
 
-            if (__instance.eid.enemyType != EnemyType.Soldier) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Soldier) return;
 
             VoiceManager.CreateVoiceSource(__instance, "Soldier",
                 SoldierCharacter.DeathClip,
@@ -113,7 +113,7 @@ namespace UltraVoice.Characters
         {
             if (__instance == null || __instance.eid == null) return;
 
-            if (__instance.eid.enemyType != EnemyType.Soldier) return;
+            if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Soldier) return;
 
             __instance.hurtSounds = new AudioClip[0];
             __instance.deathSound = null;

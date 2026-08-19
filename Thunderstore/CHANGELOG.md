@@ -1,6 +1,43 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.5.2</summary>
+
+- Fixed a bug where Thorn would generate a copy of UltraVoice's config settings
+
+</details>
+
+---
+
+<details>
+  <summary>1.5.1</summary>
+
+- Forgot to edit the readme cuz im a DUMBASS
+
+</details>
+
+---
+
+<details>
+  <summary>1.5.0</summary>
+
+- Migrated the configuration settings to [Thorn](https://thunderstore.io/c/ultrakill/p/end_4/Thorn/)
+- Added voice lines to Shop Terminals (provided by Bouncy and Goober)
+- Added new alternatives voices to Power and made Power more customizable (provided by Noto and Mel)
+- Added alternative actors to V1, Swordsmachine, Ferryman, Mirror Reaper, Virtue and Earthmover (provided by HashCap, Noto, Buried Soil, Nicky, Rotund, Virchew, TondarYZD and Megaslash)
+- Added sanded lines for Swordsmachine 
+- Added new lines to V1 and Earthmover
+- Revamped Buried Soil's Cerberus, Virchew's Idol and Goober's Power
+- Changed Something Wicked's voice actor (provided by Cyberlord)
+- Reintroduced the old Geryon as an alternative option
+- General optimization changes, allowing low-end users to play with much better performance
+- Removed the custom intro and the 3 liner edits for breaking compability with many mods
+
+</details>
+
+---
+
+<details>
   <summary>1.4.4</summary>
 
 - Added line specific toggles for V1
@@ -43,7 +80,7 @@
 - Added alternative actors to Ferryman, Cerberus, Idol and Gutterman (provided by Virchew, Buried Soil, Rotund and Lemen)
 - Added voice lines for V1 (provided by Cyber-lord)
 - Added new voices to Power (provided by Noto, Goober and Cazsu)
-- Added voice lines for Something Wicked (provided by Arlenou)
+- Added voice lines for Something Wicked
 - Replaced Geryon's single voice actor with three new voice actors (provided by ValinVO, TheRatman and Megaslash)
 - Added volume sliders
 - Rewritten backend (overall better performance)

@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Filth.fil_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Filth.CFanim.fil_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Filth.fil_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Filth.fil_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Filth.CFanim.fil_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Filth.CFanim.fil_Death.wav");
 
             logger.LogInfo("Filth voice lines loaded successfully!");
         }
@@ -26,7 +26,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -42,7 +42,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -58,7 +58,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -74,7 +74,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;

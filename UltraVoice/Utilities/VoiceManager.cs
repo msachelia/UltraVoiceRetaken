@@ -1,5 +1,7 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UltraVoice.Utilities
 {
@@ -64,7 +66,7 @@ namespace UltraVoice.Utilities
 
         public static bool CheckGlobalCooldown()
         {
-            if (Time.time - lastVoiceTime < UltraVoicePlugin.VoiceCooldown.value)
+            if (Time.time - lastVoiceTime < UltraVoicePlugin.VoiceCooldown.Value)
                 return false;
 
             lastVoiceTime = Time.time;
@@ -160,7 +162,8 @@ namespace UltraVoice.Utilities
             float spatialBlend = 1f,
             float volumeMult = 1f,
             bool parentToEnemy = true,
-            float maxDistance = 200f
+            float maxDistance = 200f,
+            bool ignoreTimeFreeze = false
         )
         {
             if (!UltraVoicePlugin.VoicesEnabled)
@@ -169,13 +172,15 @@ namespace UltraVoice.Utilities
             if (enemy == null || clip == null)
                 return null;
 
-            if (enemy.gameObject.name.Contains("Big Johninator"))
+            string objectName = enemy.gameObject.name;
+
+            if (objectName.Contains("Johnator") || objectName.Contains("Johninator"))
                 return null;
 
             if (enemy.gameObject.TryGetComponent<EnemyIdentifier>(out var eid) && eid.puppet)
                 return null;
 
-            bool ignoreGlobalCooldown = name == "V1";
+            bool ignoreGlobalCooldown = name == "V1" || name == "ShopTerminal";
 
             if (!shouldInterrupt)
             {
@@ -208,28 +213,31 @@ namespace UltraVoice.Utilities
             var src = obj.AddComponent<AudioSource>();
 
             src.clip = clip;
-            src.spatialBlend = spatialBlend;
+            src.SetSpatialBlend(spatialBlend);
+
+            bool terminal = name == "ShopTerminal";
 
             ApplyVolume(src, Mathf.Min(volumeMult, 1f) * UltraVoicePlugin.GetVoiceVolume(name));
-            src.minDistance = 50f;
-            src.maxDistance = maxDistance;
+            src.minDistance = terminal ? 8f : 50f;
+            src.maxDistance = terminal ? 35f : maxDistance;
             src.dopplerLevel = 0.25f;
 
             if (randomPitch)
-                src.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+                src.SetPitch(UnityEngine.Random.Range(0.95f, 1.05f));
 
             var mixer = MonoSingleton<AudioMixerController>.Instance;
             if (mixer != null)
-                src.outputAudioMixerGroup = mixer.allGroup;
+                src.outputAudioMixerGroup = ignoreTimeFreeze ? mixer.unfreezeableGroup : mixer.allGroup;
 
-            src.Play();
+            src.Play(tracked: true);
 
             var finalColor = GetSubtitleColor(enemy, subtitleColor);
 
             if (!string.IsNullOrEmpty(subtitle))
-                ShowSubtitle(subtitle, src, finalColor);
+                ShowSubtitle(subtitle, src, finalColor, ignoreTimeFreeze);
 
-            UnityEngine.Object.Destroy(obj, clip.length + 1f);
+            RemoveOnTime remove = obj.AddComponent<RemoveOnTime>();
+            remove.useAudioLength = true;
 
             return src;
         }
@@ -243,7 +251,8 @@ namespace UltraVoice.Utilities
             bool randomPitch = false,
             float volumeMult = 1f,
             UnityEngine.Color? colorOverride = null,
-            float spatialBlend = 1f
+            float spatialBlend = 1f,
+            bool ignoreTimeFreeze = false
         )
         {
             if (clips == null || clips.Length == 0)
@@ -255,7 +264,7 @@ namespace UltraVoice.Utilities
             if (subtitles != null && index < subtitles.Length)
                 subtitle = subtitles[index];
 
-            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch, spatialBlend: spatialBlend, volumeMult: volumeMult);
+            CreateVoiceSource(enemy, enemyName, clips[index], subtitle, interrupt, colorOverride, randomPitch: randomPitch, spatialBlend: spatialBlend, volumeMult: volumeMult, ignoreTimeFreeze: ignoreTimeFreeze);
         }
 
         public static void PlayRandomVoiceDelayed(
@@ -284,19 +293,70 @@ namespace UltraVoice.Utilities
             }
         }
 
-        public static void ShowSubtitle(string text, AudioSource src, UnityEngine.Color? color = null)
+        public static void ShowSubtitle(string text, AudioSource src, UnityEngine.Color? color = null, bool ignoreTimeFreeze = false)
         {
-            if (!string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            if (color.HasValue && src != null && src.gameObject.name.StartsWith("UltraVoice_") &&
+                !UltraVoicePlugin.SubtitleColorAllowed(src.gameObject.name.Substring(11)))
+                color = null;
+
+            if (color.HasValue)
+                text = $"<color=#{ColorUtility.ToHtmlStringRGB(color.Value)}>{text}</color>";
+
+            var controller = MonoSingleton<SubtitleController>.Instance;
+
+            if (controller == null)
+                return;
+
+            Subtitle previous = controller.previousSubtitle;
+
+            controller.DisplaySubtitle(text, src);
+
+            if (!ignoreTimeFreeze)
+                return;
+
+            Subtitle created = controller.previousSubtitle;
+
+            if (created == null || created == previous)
+                return;
+
+            UltraVoicePlugin.Instance.StartCoroutine(UnfreezeSubtitle(created, src));
+        }
+
+        static IEnumerator UnfreezeSubtitle(Subtitle subtitle, AudioSource src)
+        {
+            yield return null;
+
+            if (subtitle == null)
+                yield break;
+
+            float preferredSize = LayoutUtility.GetPreferredSize(subtitle.uiText.rectTransform, 0);
+            subtitle.uiText.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredSize);
+            subtitle.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferredSize + subtitle.paddingHorizontal * 2f);
+
+            while (subtitle != null && subtitle.isFadingIn)
             {
-                if (color.HasValue)
-                {
-                    string coloredText = $"<color=#{ColorUtility.ToHtmlStringRGB(color.Value)}>{text}</color>";
-                    MonoSingleton<SubtitleController>.Instance.DisplaySubtitle(coloredText, src);
-                }
-                else
-                {
-                    MonoSingleton<SubtitleController>.Instance.DisplaySubtitle(text, src);
-                }
+                subtitle.currentAlpha += subtitle.fadeInSpeed * Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            yield return new WaitForSecondsRealtime(subtitle == null ? 0f : subtitle.holdFor);
+
+            if (subtitle == null)
+                yield break;
+
+            subtitle.chainContinue = true;
+            subtitle.holdingSince = subtitle.holdFor + 1f;
+
+            while (subtitle != null && !subtitle.isFadingOut)
+                yield return null;
+
+            while (subtitle != null)
+            {
+                subtitle.currentAlpha -= subtitle.fadeOutSpeed * Time.unscaledDeltaTime;
+                yield return null;
             }
         }
 
@@ -310,3 +370,4 @@ namespace UltraVoice.Utilities
         }
     }
 }
+// achelia was here :3

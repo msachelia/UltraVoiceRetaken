@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -43,7 +43,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseMirrorReaperClips(AudioClip[] notoClips, AudioClip[] rotundClips)
         {
-            return UltraVoicePlugin.MirrorReaperVoiceActorField != null && UltraVoicePlugin.MirrorReaperVoiceActorField.value == UltraVoicePlugin.MirrorReaperVoiceActor.Rotund
+            return UltraVoicePlugin.MirrorReaperVoiceActorField != null && UltraVoicePlugin.MirrorReaperVoiceActorField.Value == UltraVoicePlugin.MirrorReaperVoiceActor.Rotund
                 ? rotundClips
                 : notoClips;
         }
@@ -52,36 +52,36 @@ namespace UltraVoice.Characters
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_SpawnSpecial.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn1.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn2.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn3.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_SpawnSpecial.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn3.wav"),
             };
 
-            LaughClips = UltraVoicePlugin.LoadClips("MirrorReaper.mr_Laugh{0}.wav", 3);
-            MirrorTauntClips = UltraVoicePlugin.LoadClips("MirrorReaper.mr_MirrorTaunt{0}.wav", 3);
-            PuppetHandClips = UltraVoicePlugin.LoadClips("MirrorReaper.mr_PuppetHand{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("MirrorReaper.mr_Death{0}.wav", 3);
+            LaughClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_Laugh{0}.wav", 3);
+            MirrorTauntClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_MirrorTaunt{0}.wav", 3);
+            PuppetHandClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_PuppetHand{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_Death{0}.wav", 3);
 
             SpawnClipsRotund = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_SpawnSpecialRotund.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn1Rotund.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn2Rotund.wav"),
-                UltraVoicePlugin.LoadClip("MirrorReaper.mr_Spawn3Rotund.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_SpawnSpecial.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn3.wav"),
             };
 
-            LaughClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.mr_Laugh{0}Rotund.wav", 3);
-            MirrorTauntClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.mr_MirrorTaunt{0}Rotund.wav", 3);
-            PuppetHandClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.mr_PuppetHand{0}Rotund.wav", 4);
-            DeathClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.mr_Death{0}Rotund.wav", 3);
+            LaughClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_Laugh{0}.wav", 3);
+            MirrorTauntClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_MirrorTaunt{0}.wav", 3);
+            PuppetHandClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_PuppetHand{0}.wav", 4);
+            DeathClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_Death{0}.wav", 3);
 
             logger.LogInfo("Mirror Reaper voice lines loaded successfully!");
         }
 
         public static void PlaySwingLaugh(MirrorReaper reaper)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
                 return;
 
             if (reaper == null || reaper.eid.dead)
@@ -103,7 +103,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(BossHealthBar __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
                 return;
 
             if (SceneHelper.CurrentScene != "Level 8-2")
@@ -129,7 +129,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
                 return;
 
             if (SceneHelper.CurrentScene == "Level 8-2")
@@ -150,12 +150,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
@@ -211,7 +211,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -229,7 +229,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
                 MirrorReaperCharacter.UseMirrorReaperClips(MirrorReaperCharacter.DeathClips, MirrorReaperCharacter.DeathClipsRotund),

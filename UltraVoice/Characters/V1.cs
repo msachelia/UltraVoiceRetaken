@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using System.Collections.Generic;
 using UltraVoice.Utilities;
@@ -27,10 +27,102 @@ namespace UltraVoice.Characters
         public static AudioClip[] CheckpointClips;
         public static AudioClip[] RespawnClips;
         public static AudioClip[] SecretOrbClips;
+        public static AudioClip[] CrushedClips;
+        public static AudioClip[] RicoshotClips;
+        public static AudioClip[] LevelStartClips;
+        public static AudioClip[] LevelStartBossClips;
+        public static AudioClip[] DualWieldClips;
         public static AudioClip BosskillV2Clip;
         public static AudioClip BosskillEarthmoverClip;
-        public static AudioClip BosskillGeryonClip;
-        public static AudioClip EnrageV2Clip;
+        public static AudioClip V2EscapeClip;
+        public static AudioClip V2CowardClip;
+
+        public static AudioClip[] KillClipsCyberlord;
+        public static AudioClip[] MultikillClipsCyberlord;
+        public static AudioClip[] BosskillClipsCyberlord;
+        public static AudioClip[] HeadshotClipsCyberlord;
+        public static AudioClip[] AirshotClipsCyberlord;
+        public static AudioClip[] EnvironmentalClipsCyberlord;
+        public static AudioClip[] MaxStyleClipsCyberlord;
+        public static AudioClip[] RankLowClipsCyberlord;
+        public static AudioClip[] RankHighClipsCyberlord;
+        public static AudioClip[] RankPClipsCyberlord;
+        public static AudioClip[] ParryClipsCyberlord;
+        public static AudioClip[] DeathClipsCyberlord;
+        public static AudioClip[] EnrageClipsCyberlord;
+        public static AudioClip[] NewWeaponClipsCyberlord;
+        public static AudioClip[] PurchaseClipsCyberlord;
+        public static AudioClip[] SkullPickupClipsCyberlord;
+        public static AudioClip[] CheckpointClipsCyberlord;
+        public static AudioClip[] RespawnClipsCyberlord;
+        public static AudioClip[] SecretOrbClipsCyberlord;
+        public static AudioClip[] CrushedClipsCyberlord;
+        public static AudioClip[] RicoshotClipsCyberlord;
+        public static AudioClip[] LevelStartClipsCyberlord;
+        public static AudioClip[] LevelStartBossClipsCyberlord;
+        public static AudioClip[] DualWieldClipsCyberlord;
+        public static AudioClip BosskillV2ClipCyberlord;
+        public static AudioClip BosskillEarthmoverClipCyberlord;
+        public static AudioClip V2EscapeClipCyberlord;
+        public static AudioClip V2CowardClipCyberlord;
+
+        public static AudioClip[] KillClipsNoto;
+        public static AudioClip[] MultikillClipsNoto;
+        public static AudioClip[] BosskillClipsNoto;
+        public static AudioClip[] HeadshotClipsNoto;
+        public static AudioClip[] AirshotClipsNoto;
+        public static AudioClip[] EnvironmentalClipsNoto;
+        public static AudioClip[] MaxStyleClipsNoto;
+        public static AudioClip[] RankLowClipsNoto;
+        public static AudioClip[] RankHighClipsNoto;
+        public static AudioClip[] RankPClipsNoto;
+        public static AudioClip[] ParryClipsNoto;
+        public static AudioClip[] DeathClipsNoto;
+        public static AudioClip[] EnrageClipsNoto;
+        public static AudioClip[] NewWeaponClipsNoto;
+        public static AudioClip[] PurchaseClipsNoto;
+        public static AudioClip[] SkullPickupClipsNoto;
+        public static AudioClip[] CheckpointClipsNoto;
+        public static AudioClip[] RespawnClipsNoto;
+        public static AudioClip[] SecretOrbClipsNoto;
+        public static AudioClip[] CrushedClipsNoto;
+        public static AudioClip[] RicoshotClipsNoto;
+        public static AudioClip[] LevelStartClipsNoto;
+        public static AudioClip[] LevelStartBossClipsNoto;
+        public static AudioClip[] DualWieldClipsNoto;
+        public static AudioClip BosskillV2ClipNoto;
+        public static AudioClip BosskillEarthmoverClipNoto;
+        public static AudioClip V2EscapeClipNoto;
+        public static AudioClip V2CowardClipNoto;
+
+        public static AudioClip[] KillClipsHashCap;
+        public static AudioClip[] MultikillClipsHashCap;
+        public static AudioClip[] BosskillClipsHashCap;
+        public static AudioClip[] HeadshotClipsHashCap;
+        public static AudioClip[] AirshotClipsHashCap;
+        public static AudioClip[] EnvironmentalClipsHashCap;
+        public static AudioClip[] MaxStyleClipsHashCap;
+        public static AudioClip[] RankLowClipsHashCap;
+        public static AudioClip[] RankHighClipsHashCap;
+        public static AudioClip[] RankPClipsHashCap;
+        public static AudioClip[] ParryClipsHashCap;
+        public static AudioClip[] DeathClipsHashCap;
+        public static AudioClip[] EnrageClipsHashCap;
+        public static AudioClip[] NewWeaponClipsHashCap;
+        public static AudioClip[] PurchaseClipsHashCap;
+        public static AudioClip[] SkullPickupClipsHashCap;
+        public static AudioClip[] CheckpointClipsHashCap;
+        public static AudioClip[] RespawnClipsHashCap;
+        public static AudioClip[] SecretOrbClipsHashCap;
+        public static AudioClip[] CrushedClipsHashCap;
+        public static AudioClip[] RicoshotClipsHashCap;
+        public static AudioClip[] LevelStartClipsHashCap;
+        public static AudioClip[] LevelStartBossClipsHashCap;
+        public static AudioClip[] DualWieldClipsHashCap;
+        public static AudioClip BosskillV2ClipHashCap;
+        public static AudioClip BosskillEarthmoverClipHashCap;
+        public static AudioClip V2EscapeClipHashCap;
+        public static AudioClip V2CowardClipHashCap;
 
         public static readonly string[] KillSubs =
         {
@@ -197,7 +289,53 @@ namespace UltraVoice.Characters
             "HIDDEN THINGS SHOULD STAY HIDDEN."
         };
 
-        public static readonly Color SubtitleColor = new Color(0.184f, 0.310f, 0.561f);
+        public static readonly string[] CrushedSubs =
+        {
+            "I’M NOT CLEANING THAT UP.",
+            "THAT LOOKED LIKE IT HURT.",
+            "FLATTENED. WHAT A SHAME.",
+            "LOOK UP NEXT TIME."
+        };
+
+        public static readonly string[] RicoshotSubs =
+        {
+            "KEEP THE CHANGE.",
+            "IT’S A KINDNESS.",
+            "A COIN FOR YOUR TROUBLES.",
+            "I DO NOT TAKE CASH."
+        };
+
+        public static readonly string[] LevelStartSubs =
+        {
+            "LET’S DO THIS.",
+            "LET’S GET THIS DONE.",
+            "THEY DON’T STAND A CHANCE.",
+            "MOBILIZING.",
+            "GET DEADLY.",
+            "CLEAR TO ENGAGE.",
+            "AND SO IT BEGINS."
+        };
+
+        public static readonly string[] DualWieldSubs =
+        {
+            "BRING IT ON.",
+            "THE MORE THE MERRIER.",
+            "HOW THE TABLES HAVE TURNED.",
+            "THIS CHANGES THE ODDS."
+        };
+
+        public static readonly string[] LevelStartBossSubs =
+        {
+            "THEY SHALL FALL.",
+            "THEY ARE ALREADY DEAD.",
+            "THIS IS WHAT I WAS MADE FOR.",
+            "THIS IS BUSINESS.",
+            "I’LL TAKE DOWN ANYONE.",
+            "MAKE IT INTERESTING.",
+            "WHATEVER IT TAKES."
+        };
+
+        public static readonly Color SubtitleColor = new Color(0.290f, 0.451f, 0.784f);
 
         public static bool V2BossKillPlayed = false;
 
@@ -207,39 +345,153 @@ namespace UltraVoice.Characters
 
         public static float LastEnvKillTime = -999f;
 
+        public static float LastMauricedTime = -999f;
+
+        public static float LastCrushedTime = -999f;
+
+        public static float LastRicoshotTime = -999f;
+
         public static float MaxStyleLineEndTime = -999f;
 
+        public static float V2KnockedOutTime = -999f;
+
         public static float EnvLineEndTime = -999f;
+
+        public static float PurchaseLineEndTime = -999f;
 
         public static readonly HashSet<int> AlreadyPickedUp = new HashSet<int>();
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            KillClips = UltraVoicePlugin.LoadClips("V1.v1_Kill{0}.wav", 9);
-            MultikillClips = UltraVoicePlugin.LoadClips("V1.v1_Multikill{0}.wav", 7);
-            BosskillClips = UltraVoicePlugin.LoadClips("V1.v1_Bosskill{0}.wav", 7);
-            HeadshotClips = UltraVoicePlugin.LoadClips("V1.v1_Headshot{0}.wav", 5);
-            AirshotClips = UltraVoicePlugin.LoadClips("V1.v1_Airshot{0}.wav", 3);
-            EnvironmentalClips = UltraVoicePlugin.LoadClips("V1.v1_Environmental{0}.wav", 6);
-            MaxStyleClips = UltraVoicePlugin.LoadClips("V1.v1_MaxStyle{0}.wav", 4);
-            RankLowClips = UltraVoicePlugin.LoadClips("V1.v1_RankLow{0}.wav", 4);
-            RankHighClips = UltraVoicePlugin.LoadClips("V1.v1_RankHigh{0}.wav", 4);
-            RankPClips = UltraVoicePlugin.LoadClips("V1.v1_RankP{0}.wav", 4);
-            ParryClips = UltraVoicePlugin.LoadClips("V1.v1_Parry{0}.wav", 6);
-            DeathClips = UltraVoicePlugin.LoadClips("V1.v1_Death{0}.wav", 4);
-            EnrageClips = UltraVoicePlugin.LoadClips("V1.v1_Enrage{0}.wav", 5);
-            NewWeaponClips = UltraVoicePlugin.LoadClips("V1.v1_NewWeapon{0}.wav", 6);
-            PurchaseClips = UltraVoicePlugin.LoadClips("V1.v1_Purchase{0}.wav", 3);
-            SkullPickupClips = UltraVoicePlugin.LoadClips("V1.v1_SkullPickup{0}.wav", 5);
-            CheckpointClips = UltraVoicePlugin.LoadClips("V1.v1_Checkpoint{0}.wav", 5);
-            RespawnClips = UltraVoicePlugin.LoadClips("V1.v1_Respawn{0}.wav", 5);
-            SecretOrbClips = UltraVoicePlugin.LoadClips("V1.v1_SecretOrb{0}.wav", 5);
-            BosskillV2Clip = UltraVoicePlugin.LoadClip("V1.v1_BosskillV2.wav");
-            BosskillEarthmoverClip = UltraVoicePlugin.LoadClip("V1.v1_BosskillEarthmover.wav");
-            BosskillGeryonClip = UltraVoicePlugin.LoadClip("V1.v1_BosskillGeryon.wav");
-            EnrageV2Clip = UltraVoicePlugin.LoadClip("V1.v1_EnrageV2.wav");
+            KillClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Kill{0}.wav", 9);
+            MultikillClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Multikill{0}.wav", 7);
+            BosskillClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Bosskill{0}.wav", 7);
+            HeadshotClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Headshot{0}.wav", 5);
+            AirshotClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Airshot{0}.wav", 3);
+            EnvironmentalClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Environmental{0}.wav", 6);
+            MaxStyleClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_MaxStyle{0}.wav", 4);
+            RankLowClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_RankLow{0}.wav", 4);
+            RankHighClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_RankHigh{0}.wav", 4);
+            RankPClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_RankP{0}.wav", 4);
+            ParryClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Parry{0}.wav", 6);
+            DeathClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Death{0}.wav", 4);
+            EnrageClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Enrage{0}.wav", 5);
+            NewWeaponClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_NewWeapon{0}.wav", 6);
+            PurchaseClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Purchase{0}.wav", 3);
+            SkullPickupClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_SkullPickup{0}.wav", 5);
+            CheckpointClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Checkpoint{0}.wav", 5);
+            RespawnClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Respawn{0}.wav", 5);
+            SecretOrbClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_SecretOrb{0}.wav", 5);
+            CrushedClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Crushed{0}.wav", 4);
+            RicoshotClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_Ricoshot{0}.wav", 4);
+            LevelStartClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_LevelStartNormal{0}.wav", 7);
+            LevelStartBossClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_LevelStartBoss{0}.wav", 7);
+            DualWieldClipsCyberlord = UltraVoicePlugin.LoadClips("V1.Cyberlord.v1_DualWield{0}.wav", 4);
+            BosskillV2ClipCyberlord = UltraVoicePlugin.LoadClip("V1.Cyberlord.v1_BosskillV2.wav");
+            BosskillEarthmoverClipCyberlord = UltraVoicePlugin.LoadClip("V1.Cyberlord.v1_BosskillEarthmover.wav");
+            V2EscapeClipCyberlord = UltraVoicePlugin.LoadClip("V1.Cyberlord.v1_V2Escape.wav");
+            V2CowardClipCyberlord = UltraVoicePlugin.LoadClip("V1.Cyberlord.v1_V2Coward.wav");
+
+            KillClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Kill{0}.wav", 9);
+            MultikillClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Multikill{0}.wav", 7);
+            BosskillClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Bosskill{0}.wav", 7);
+            HeadshotClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Headshot{0}.wav", 5);
+            AirshotClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Airshot{0}.wav", 3);
+            EnvironmentalClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Environmental{0}.wav", 6);
+            MaxStyleClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_MaxStyle{0}.wav", 4);
+            RankLowClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_RankLow{0}.wav", 4);
+            RankHighClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_RankHigh{0}.wav", 4);
+            RankPClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_RankP{0}.wav", 4);
+            ParryClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Parry{0}.wav", 6);
+            DeathClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Death{0}.wav", 4);
+            EnrageClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Enrage{0}.wav", 5);
+            NewWeaponClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_NewWeapon{0}.wav", 6);
+            PurchaseClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Purchase{0}.wav", 3);
+            SkullPickupClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_SkullPickup{0}.wav", 5);
+            CheckpointClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Checkpoint{0}.wav", 5);
+            RespawnClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Respawn{0}.wav", 5);
+            SecretOrbClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_SecretOrb{0}.wav", 5);
+            CrushedClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Crushed{0}.wav", 4);
+            RicoshotClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_Ricoshot{0}.wav", 4);
+            LevelStartClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_LevelStartNormal{0}.wav", 7);
+            LevelStartBossClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_LevelStartBoss{0}.wav", 7);
+            DualWieldClipsNoto = UltraVoicePlugin.LoadClips("V1.Noto.v1_DualWield{0}.wav", 4);
+            BosskillV2ClipNoto = UltraVoicePlugin.LoadClip("V1.Noto.v1_BosskillV2.wav");
+            BosskillEarthmoverClipNoto = UltraVoicePlugin.LoadClip("V1.Noto.v1_BosskillEarthmover.wav");
+            V2EscapeClipNoto = UltraVoicePlugin.LoadClip("V1.Noto.v1_V2Escape.wav");
+            V2CowardClipNoto = UltraVoicePlugin.LoadClip("V1.Noto.v1_V2Coward.wav");
+
+            KillClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Kill{0}.wav", 9);
+            MultikillClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Multikill{0}.wav", 7);
+            BosskillClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Bosskill{0}.wav", 7);
+            HeadshotClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Headshot{0}.wav", 5);
+            AirshotClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Airshot{0}.wav", 3);
+            EnvironmentalClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Environmental{0}.wav", 6);
+            MaxStyleClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_MaxStyle{0}.wav", 4);
+            RankLowClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_RankLow{0}.wav", 4);
+            RankHighClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_RankHigh{0}.wav", 4);
+            RankPClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_RankP{0}.wav", 4);
+            ParryClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Parry{0}.wav", 6);
+            DeathClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Death{0}.wav", 4);
+            EnrageClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Enrage{0}.wav", 5);
+            NewWeaponClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_NewWeapon{0}.wav", 6);
+            PurchaseClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Purchase{0}.wav", 3);
+            SkullPickupClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_SkullPickup{0}.wav", 5);
+            CheckpointClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Checkpoint{0}.wav", 5);
+            RespawnClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Respawn{0}.wav", 5);
+            SecretOrbClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_SecretOrb{0}.wav", 5);
+            CrushedClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Crushed{0}.wav", 4);
+            RicoshotClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_Ricoshot{0}.wav", 4);
+            LevelStartClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_LevelStartNormal{0}.wav", 7);
+            LevelStartBossClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_LevelStartBoss{0}.wav", 7);
+            DualWieldClipsHashCap = UltraVoicePlugin.LoadClips("V1.HashCap.v1_DualWield{0}.wav", 4);
+            BosskillV2ClipHashCap = UltraVoicePlugin.LoadClip("V1.HashCap.v1_BosskillV2.wav");
+            BosskillEarthmoverClipHashCap = UltraVoicePlugin.LoadClip("V1.HashCap.v1_BosskillEarthmover.wav");
+            V2EscapeClipHashCap = UltraVoicePlugin.LoadClip("V1.HashCap.v1_V2Escape.wav");
+            V2CowardClipHashCap = UltraVoicePlugin.LoadClip("V1.HashCap.v1_V2Coward.wav");
+
+            ApplyVoiceActor();
 
             logger.LogInfo("V1 voice lines loaded successfully!");
+        }
+
+        public static void ApplyVoiceActor()
+        {
+            UltraVoicePlugin.V1VoiceActor actor = UltraVoicePlugin.V1VoiceActorField != null
+                ? UltraVoicePlugin.V1VoiceActorField.Value
+                : UltraVoicePlugin.V1VoiceActor.HashCap;
+
+            bool noto = actor == UltraVoicePlugin.V1VoiceActor.Noto;
+            bool hashcap = actor == UltraVoicePlugin.V1VoiceActor.HashCap;
+
+            KillClips = hashcap ? KillClipsHashCap : noto ? KillClipsNoto : KillClipsCyberlord;
+            MultikillClips = hashcap ? MultikillClipsHashCap : noto ? MultikillClipsNoto : MultikillClipsCyberlord;
+            BosskillClips = hashcap ? BosskillClipsHashCap : noto ? BosskillClipsNoto : BosskillClipsCyberlord;
+            HeadshotClips = hashcap ? HeadshotClipsHashCap : noto ? HeadshotClipsNoto : HeadshotClipsCyberlord;
+            AirshotClips = hashcap ? AirshotClipsHashCap : noto ? AirshotClipsNoto : AirshotClipsCyberlord;
+            EnvironmentalClips = hashcap ? EnvironmentalClipsHashCap : noto ? EnvironmentalClipsNoto : EnvironmentalClipsCyberlord;
+            MaxStyleClips = hashcap ? MaxStyleClipsHashCap : noto ? MaxStyleClipsNoto : MaxStyleClipsCyberlord;
+            RankLowClips = hashcap ? RankLowClipsHashCap : noto ? RankLowClipsNoto : RankLowClipsCyberlord;
+            RankHighClips = hashcap ? RankHighClipsHashCap : noto ? RankHighClipsNoto : RankHighClipsCyberlord;
+            RankPClips = hashcap ? RankPClipsHashCap : noto ? RankPClipsNoto : RankPClipsCyberlord;
+            ParryClips = hashcap ? ParryClipsHashCap : noto ? ParryClipsNoto : ParryClipsCyberlord;
+            DeathClips = hashcap ? DeathClipsHashCap : noto ? DeathClipsNoto : DeathClipsCyberlord;
+            EnrageClips = hashcap ? EnrageClipsHashCap : noto ? EnrageClipsNoto : EnrageClipsCyberlord;
+            NewWeaponClips = hashcap ? NewWeaponClipsHashCap : noto ? NewWeaponClipsNoto : NewWeaponClipsCyberlord;
+            PurchaseClips = hashcap ? PurchaseClipsHashCap : noto ? PurchaseClipsNoto : PurchaseClipsCyberlord;
+            SkullPickupClips = hashcap ? SkullPickupClipsHashCap : noto ? SkullPickupClipsNoto : SkullPickupClipsCyberlord;
+            CheckpointClips = hashcap ? CheckpointClipsHashCap : noto ? CheckpointClipsNoto : CheckpointClipsCyberlord;
+            RespawnClips = hashcap ? RespawnClipsHashCap : noto ? RespawnClipsNoto : RespawnClipsCyberlord;
+            SecretOrbClips = hashcap ? SecretOrbClipsHashCap : noto ? SecretOrbClipsNoto : SecretOrbClipsCyberlord;
+            CrushedClips = hashcap ? CrushedClipsHashCap : noto ? CrushedClipsNoto : CrushedClipsCyberlord;
+            RicoshotClips = hashcap ? RicoshotClipsHashCap : noto ? RicoshotClipsNoto : RicoshotClipsCyberlord;
+            LevelStartClips = hashcap ? LevelStartClipsHashCap : noto ? LevelStartClipsNoto : LevelStartClipsCyberlord;
+            LevelStartBossClips = hashcap ? LevelStartBossClipsHashCap : noto ? LevelStartBossClipsNoto : LevelStartBossClipsCyberlord;
+            DualWieldClips = hashcap ? DualWieldClipsHashCap : noto ? DualWieldClipsNoto : DualWieldClipsCyberlord;
+            BosskillV2Clip = hashcap ? BosskillV2ClipHashCap : noto ? BosskillV2ClipNoto : BosskillV2ClipCyberlord;
+            BosskillEarthmoverClip = hashcap ? BosskillEarthmoverClipHashCap : noto ? BosskillEarthmoverClipNoto : BosskillEarthmoverClipCyberlord;
+            V2EscapeClip = hashcap ? V2EscapeClipHashCap : noto ? V2EscapeClipNoto : V2EscapeClipCyberlord;
+            V2CowardClip = hashcap ? V2CowardClipHashCap : noto ? V2CowardClipNoto : V2CowardClipCyberlord;
         }
 
         public static void PlayBosskillLine()
@@ -295,6 +547,9 @@ namespace UltraVoice.Characters
 
         public static IEnumerator KillLineRoutine(NewMovement player, bool environmental)
         {
+            if (Random.Range(0f, 1f) >= 0.8f)
+                yield break;
+
             yield return new WaitForSeconds(0.1f);
 
             if (player == null)
@@ -313,16 +568,19 @@ namespace UltraVoice.Characters
             if (!env && scalc != null && scalc.multikillCount >= 2)
                 yield break;
 
+            bool crushed = Time.time - LastMauricedTime < 0.3f ||
+                (SceneHelper.CurrentScene != "Level 5-2" && Time.time - LastCrushedTime < 0.3f);
+            bool ricoshot = Time.time - LastRicoshotTime < 0.3f;
             bool airshot = Time.time - LastAirshotKillTime < 0.5f;
             bool headshot = Time.time - LastHeadshotKillTime < 0.3f;
 
-            string category = env ? "environmental" : airshot ? "airshot" : headshot ? "headshot" : "kill";
+            string category = crushed ? "crushed" : env ? "environmental" : ricoshot ? "ricoshot" : airshot ? "airshot" : headshot ? "headshot" : "kill";
 
             if (!UltraVoicePlugin.V1LineEnabled(category))
                 yield break;
 
-            AudioClip[] clips = env ? EnvironmentalClips : airshot ? AirshotClips : headshot ? HeadshotClips : KillClips;
-            string[] subs = env ? EnvironmentalSubs : airshot ? AirshotSubs : headshot ? HeadshotSubs : KillSubs;
+            AudioClip[] clips = crushed ? CrushedClips : env ? EnvironmentalClips : ricoshot ? RicoshotClips : airshot ? AirshotClips : headshot ? HeadshotClips : KillClips;
+            string[] subs = crushed ? CrushedSubs : env ? EnvironmentalSubs : ricoshot ? RicoshotSubs : airshot ? AirshotSubs : headshot ? HeadshotSubs : KillSubs;
 
             if (clips == null || clips.Length == 0)
                 yield break;
@@ -351,10 +609,13 @@ namespace UltraVoice.Characters
 
         static void Postfix(EnemyIdentifier __instance, bool __state)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.value)
+            if (!UltraVoicePlugin.V1VoiceEnabled.Value)
                 return;
 
             if (__state || __instance.puppet || !__instance.dead)
+                return;
+
+            if (__instance.hitter == "enemy")
                 return;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -459,7 +720,7 @@ namespace UltraVoice.Characters
             float delay = 2.5f;
 
             AudioClip v2DeathClip = V2Character.UseV2Clip(V2Character.DeathClip, V2Character.DeathClipCazsu);
-            if (UltraVoicePlugin.V2VoiceEnabled.value && v2DeathClip != null)
+            if (UltraVoicePlugin.V2VoiceEnabled.Value && v2DeathClip != null)
                 delay = v2DeathClip.length + 0.4f;
 
             UltraVoicePlugin.Instance.StartCoroutine(Routine());
@@ -505,13 +766,16 @@ namespace UltraVoice.Characters
 
         static void Postfix(FinalRank __instance, bool __state)
         {
-            if (!UltraVoicePlugin.V1LineEnabled("rank"))
-                return;
-
             if (__instance.totalRank == null || __state || !__instance.totalRank.gameObject.activeSelf)
                 return;
 
             string rank = StripTags(__instance.totalRank.text);
+
+            ShopTerminalCharacter.LastLevelWasPRank = rank == "P";
+            ShopTerminalCharacter.LastLevelUsedCheats = rank == "_" || rank == "-";
+
+            if (!UltraVoicePlugin.V1LineEnabled("rank"))
+                return;
 
             AudioClip[] clips;
             string[] subs;
@@ -610,18 +874,39 @@ namespace UltraVoice.Characters
         }
     }
 
-    [HarmonyPatch(typeof(GameObject), "SetActive")]
-    class V1BosskillGeryonPatch
+    [HarmonyPatch(typeof(V2), "KnockedOut")]
+    class V1V2CowardPatch
     {
-        static void Postfix(GameObject __instance, bool value)
+        static void Prefix(V2 __instance)
         {
-            if (__instance == null || __instance.name != "Geryon_Rig")
+            if (__instance == null || __instance.secondEncounter)
                 return;
 
-            if (!UltraVoicePlugin.V1LineEnabled("bosskill"))
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != V2Character.LimboClimaxSceneName)
                 return;
 
-            if (__instance.transform.parent == null || __instance.transform.parent.name != "Theatre (1)")
+            V1Character.V2KnockedOutTime = Time.time;
+        }
+    }
+
+    [HarmonyPatch(typeof(WeaponPickUp), "Awake")]
+    class V1V2ArmDropPatch
+    {
+        static void Postfix(WeaponPickUp __instance)
+        {
+            if (__instance == null || !__instance.arm)
+                return;
+
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != V2Character.LimboClimaxSceneName)
+                return;
+
+            if (Time.time - V1Character.V2KnockedOutTime > 30f)
+                return;
+
+            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.Value)
+                return;
+
+            if (V1Character.V2CowardClip == null)
                 return;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -629,28 +914,101 @@ namespace UltraVoice.Characters
             if (player == null)
                 return;
 
-            float delay = 1f;
+            VoiceManager.PlayRandomVoiceDelayed(0.5f, player, "V1",
+                new[] { V1Character.V2CowardClip },
+                new[] { "HMH. COWARD." },
+                interrupt: true,
+                colorOverride: V1Character.SubtitleColor,
+                spatialBlend: 0f
+            );
+        }
+    }
 
-            if (UltraVoicePlugin.GeryonVoiceEnabled.value && GeryonCharacter.DeathClip != null)
-                delay = 0.2f + GeryonCharacter.DeathClip.length + 0.3f;
+    [HarmonyPatch(typeof(HudMessage), nameof(HudMessage.PlayMessage))]
+    class V1V2EscapePatch
+    {
+        static bool Prefix(HudMessage __instance)
+        {
+            if (SceneHelper.CurrentScene != "Level 4-4")
+                return true;
 
-            UltraVoicePlugin.Instance.StartCoroutine(Routine());
+            if (__instance == null || __instance.message == null || !__instance.message.ToLowerInvariant().Contains("not getting away"))
+                return true;
 
-            IEnumerator Routine()
-            {
-                yield return new WaitForSeconds(delay);
+            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.Value)
+                return true;
 
-                if (player == null)
-                    yield break;
+            if (V1Character.V2EscapeClip == null)
+                return true;
 
-                VoiceManager.CreateVoiceSource(player, "V1",
-                    V1Character.BosskillGeryonClip,
-                    "THANK YOU ALL FOR BEING SUCH A WONDERFUL CROWD.",
-                    true,
-                    V1Character.SubtitleColor,
-                    spatialBlend: 0f
-                );
-            }
+            NewMovement player = MonoSingleton<NewMovement>.Instance;
+
+            if (player == null)
+                return true;
+
+            Object.Destroy(__instance);
+
+            VoiceManager.CreateVoiceSource(player, "V1",
+                V1Character.V2EscapeClip,
+                "YOU'RE NOT GETTING AWAY THIS TIME.",
+                true,
+                V1Character.SubtitleColor,
+                spatialBlend: 0f
+            );
+
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(StatsManager), nameof(StatsManager.StartTimer))]
+    class V1LevelStartPatch
+    {
+        static readonly HashSet<string> BossLevels = new HashSet<string>
+        {
+            "Level 0-5",
+            "Level 1-4",
+            "Level 2-4",
+            "Level 3-2",
+            "Level 4-4",
+            "Level 5-4",
+            "Level 6-2",
+            "Level 7-4",
+            "Level 8-4",
+            "Level P-1",
+            "Level P-2"
+        };
+
+        static void Prefix(StatsManager __instance, out bool __state)
+        {
+            __state = __instance != null && __instance.timerOnOnce;
+        }
+
+        static void Postfix(StatsManager __instance, bool __state)
+        {
+            if (__instance == null || __state || !__instance.timerOnOnce)
+                return;
+
+            string scene = SceneHelper.CurrentScene;
+
+            if (scene == "Endless" || scene == "uk_construct" || (scene != null && scene.EndsWith("-S")))
+                return;
+
+            if (!UltraVoicePlugin.V1LineEnabled("levelstart"))
+                return;
+
+            NewMovement player = MonoSingleton<NewMovement>.Instance;
+
+            if (player == null)
+                return;
+
+            bool boss = scene != null && BossLevels.Contains(scene);
+
+            VoiceManager.PlayRandomVoice(player, "V1",
+                boss ? V1Character.LevelStartBossClips : V1Character.LevelStartClips,
+                boss ? V1Character.LevelStartBossSubs : V1Character.LevelStartSubs,
+                colorOverride: V1Character.SubtitleColor,
+                spatialBlend: 0f
+            );
         }
     }
 
@@ -660,6 +1018,9 @@ namespace UltraVoice.Characters
         static void Postfix()
         {
             if (!UltraVoicePlugin.V1LineEnabled("checkpoint"))
+                return;
+
+            if (SceneHelper.CurrentScene == "uk_construct")
                 return;
 
             if (Time.time < V1Character.MaxStyleLineEndTime)
@@ -745,7 +1106,44 @@ namespace UltraVoice.Characters
             if (player == null)
                 return;
 
-            VoiceManager.PlayRandomVoice(player, "V1", V1Character.PurchaseClips, V1Character.PurchaseSubs,
+            if (V1Character.PurchaseClips == null || V1Character.PurchaseClips.Length == 0)
+                return;
+
+            int i = Random.Range(0, V1Character.PurchaseClips.Length);
+            AudioClip clip = V1Character.PurchaseClips[i];
+
+            if (clip == null)
+                return;
+
+            AudioSource src = VoiceManager.CreateVoiceSource(player, "V1", clip,
+                i < V1Character.PurchaseSubs.Length ? V1Character.PurchaseSubs[i] : null,
+                false,
+                V1Character.SubtitleColor,
+                spatialBlend: 0f
+            );
+
+            if (src != null)
+                V1Character.PurchaseLineEndTime = Time.time + clip.length;
+        }
+    }
+
+    [HarmonyPatch(typeof(DualWieldPickup), "PickedUp")]
+    class V1DualWieldPatch
+    {
+        static void Postfix()
+        {
+            if (!UltraVoicePlugin.V1LineEnabled("dualwield"))
+                return;
+
+            if (Time.time < V1Character.MaxStyleLineEndTime)
+                return;
+
+            NewMovement player = MonoSingleton<NewMovement>.Instance;
+
+            if (player == null)
+                return;
+
+            VoiceManager.PlayRandomVoice(player, "V1", V1Character.DualWieldClips, V1Character.DualWieldSubs,
                 colorOverride: V1Character.SubtitleColor,
                 spatialBlend: 0f
             );
@@ -826,6 +1224,9 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.V1LineEnabled("maxstyle"))
                 return;
 
+            if (__instance == null || __instance.ranks == null)
+                return;
+
             int topRank = __instance.ranks.Count - 1;
 
             if (__state >= topRank || __instance.rankIndex < topRank)
@@ -871,8 +1272,14 @@ namespace UltraVoice.Characters
             if (pointID == "ultrakill.airshot" || pointID == "ultrakill.fireworks" || pointID == "ultrakill.airslam")
                 V1Character.LastAirshotKillTime = Time.time;
 
-            if (pointID == "ultrakill.splattered" || pointID == "ultrakill.mauriced" || pointID == "ultrakill.compressed")
+            if (pointID == "ultrakill.splattered" || pointID == "ultrakill.compressed")
                 V1Character.LastEnvKillTime = Time.time;
+
+            if (pointID == "ultrakill.mauriced")
+                V1Character.LastMauricedTime = Time.time;
+
+            if (pointID == "ultrakill.ricoshot")
+                V1Character.LastRicoshotTime = Time.time;
 
             if (pointID == "ultrakill.parry" || pointID == "ultrakill.chargeback")
             {
@@ -901,26 +1308,8 @@ namespace UltraVoice.Characters
                 StyleHUD shud = MonoSingleton<StyleHUD>.Instance;
                 string styleName = shud != null ? shud.GetLocalizedName(pointID).ToUpperInvariant() : "";
 
-                if (styleName.Contains("HITTING YOURSELF"))
-                {
-                    if (!UltraVoicePlugin.V1LineEnabled("enrage"))
-                        return;
-
-                    NewMovement enragePlayer = MonoSingleton<NewMovement>.Instance;
-
-                    if (enragePlayer == null)
-                        return;
-
-                    VoiceManager.CreateVoiceSource(enragePlayer, "V1",
-                        V1Character.EnrageV2Clip,
-                        "STOP HITTING YOURSELF.",
-                        true,
-                        V1Character.SubtitleColor,
-                        spatialBlend: 0f
-                    );
-
-                    return;
-                }
+                if (styleName.Contains("CRUSHED"))
+                    V1Character.LastCrushedTime = Time.time;
 
                 if (styleName.Contains("RAISON"))
                 {

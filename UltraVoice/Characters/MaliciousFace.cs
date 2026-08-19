@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -29,10 +29,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            GenericClips = UltraVoicePlugin.LoadClips("MaliciousFace.maurice_Generic{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("MaliciousFace.maurice_Enraged{0}.wav", 3);
+            GenericClips = UltraVoicePlugin.LoadClips("MaliciousFace.Rotund.maurice_Generic{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("MaliciousFace.Rotund.maurice_Enraged{0}.wav", 3);
 
-            DeathClip = UltraVoicePlugin.LoadClip("MaliciousFace.maurice_Death.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("MaliciousFace.Rotund.maurice_Death.wav");
 
             logger.LogInfo("Malicious Face voice lines loaded successfully!");
         }
@@ -52,13 +52,13 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (__instance == null || __instance.eid.dead)
+            if (__instance == null || __instance.eid == null || __instance.eid.dead)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 6f))
@@ -80,7 +80,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "MaliciousFace",
@@ -96,7 +96,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
                 return;
 
             VoiceManager.CreateVoiceSource(__instance,

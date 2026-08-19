@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using UnityEngine;
 using UltraVoice.Utilities;
 
@@ -12,8 +12,8 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Mannequin.mq_Laugh{0}.wav", 5);
-            DeathClips = UltraVoicePlugin.LoadClips("Mannequin.mq_Death{0}.wav", 2);
+            ChatterClips = UltraVoicePlugin.LoadClips("Mannequin.Noto.mq_Laugh{0}.wav", 5);
+            DeathClips = UltraVoicePlugin.LoadClips("Mannequin.Noto.mq_Death{0}.wav", 2);
 
             logger.LogInfo("Mannequin voice lines loaded successfully!");
         }
@@ -24,7 +24,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -48,7 +48,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mannequin",
                 MannequinCharacter.ChatterClips,
@@ -63,7 +63,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mannequin",
                 MannequinCharacter.DeathClips,

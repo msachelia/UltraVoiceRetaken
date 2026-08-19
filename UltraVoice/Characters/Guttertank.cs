@@ -1,4 +1,4 @@
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -69,30 +69,30 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseGuttertankClips(AudioClip[] melClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.GuttertankVoiceActorField != null && UltraVoicePlugin.GuttertankVoiceActorField.value == UltraVoicePlugin.GuttertankVoiceActor.Virchew
+            return UltraVoicePlugin.GuttertankVoiceActorField != null && UltraVoicePlugin.GuttertankVoiceActorField.Value == UltraVoicePlugin.GuttertankVoiceActor.Virchew
                 ? virchewClips
                 : melClips;
         }
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Guttertank.gt_Spawn{0}.wav", 4);
-            AttackClips = UltraVoicePlugin.LoadClips("Guttertank.gt_Attack{0}.wav", 3);
-            LandmineClips = UltraVoicePlugin.LoadClips("Guttertank.gt_Landmine{0}.wav", 3);
-            PunchClips = UltraVoicePlugin.LoadClips("Guttertank.gt_Punch{0}.wav", 3);
-            PunchHitClips = UltraVoicePlugin.LoadClips("Guttertank.gt_PunchHit{0}.wav", 3);
-            FrustratedClips = UltraVoicePlugin.LoadClips("Guttertank.gt_PunchTrip{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("Guttertank.gt_Death{0}.wav", 3);
-            TripPainClips = UltraVoicePlugin.LoadClips("Guttertank.gt_TripPain{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Spawn{0}.wav", 4);
+            AttackClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Attack{0}.wav", 3);
+            LandmineClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Landmine{0}.wav", 3);
+            PunchClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Punch{0}.wav", 3);
+            PunchHitClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_PunchHit{0}.wav", 3);
+            FrustratedClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_PunchTrip{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Death{0}.wav", 3);
+            TripPainClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_TripPain{0}.wav", 3);
 
-            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_SpawnVirchew{0}.wav", 4);
-            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_AttackVirchew{0}.wav", 3);
-            LandmineClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_LandmineVirchew{0}.wav", 3);
-            PunchClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_PunchVirchew{0}.wav", 3);
-            PunchHitClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_PunchHitVirchew{0}.wav", 3);
-            FrustratedClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_PunchTripVirchew{0}.wav", 4);
-            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_DeathVirchew{0}.wav", 3);
-            TripPainClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.gt_TripPainVirchew{0}.wav", 3);
+            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Spawn{0}.wav", 4);
+            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Attack{0}.wav", 3);
+            LandmineClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Landmine{0}.wav", 3);
+            PunchClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Punch{0}.wav", 3);
+            PunchHitClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_PunchHit{0}.wav", 3);
+            FrustratedClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_PunchTrip{0}.wav", 4);
+            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Death{0}.wav", 3);
+            TripPainClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_TripPain{0}.wav", 3);
 
             logger.LogInfo("Guttertank voice lines loaded successfully!");
         }
@@ -103,7 +103,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -129,7 +129,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -149,7 +149,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -169,7 +169,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -189,7 +189,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -206,7 +206,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
@@ -240,7 +240,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
 
             if (__instance == null)
                 return;
