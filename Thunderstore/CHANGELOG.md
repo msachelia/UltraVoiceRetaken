@@ -1,6 +1,15 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.5.3</summary>
+
+- Updated to Thorn's 0.1.4 version
+
+</details>
+
+---
+
+<details>
   <summary>1.5.2</summary>
 
 - Fixed a bug where Thorn would generate a copy of UltraVoice's config settings

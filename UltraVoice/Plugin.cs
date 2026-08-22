@@ -43,7 +43,7 @@ namespace UltraVoice
     {
         public const string PluginGuid = "com.achelia.ultravoiceretaken";
         public const string PluginName = "UltraVoice Retaken";
-        public const string PluginVersion = "1.5.2";
+        public const string PluginVersion = "1.5.3";
 
         public static UltraVoicePlugin Instance;
         public static VoiceManager VoiceManager;

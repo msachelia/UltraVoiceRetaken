@@ -1,4 +1,4 @@
-# UltraVoice Retaken (version 1.5.0)
+# UltraVoice Retaken (version 1.5.3)
 
 UltraVoice Retaken is a fork of the UltraVoice mod for ULTRAKILL that adds custom voice lines to some enemies, giving them more personality during combat and cutscenes.
 

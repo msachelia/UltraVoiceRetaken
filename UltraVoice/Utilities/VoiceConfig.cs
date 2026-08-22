@@ -56,32 +56,32 @@ namespace UltraVoice.Utilities
             SettingGroup enemies = CreateGroup("enemytoggles", "Enemy Toggles", "", toggles);
             UltraVoicePlugin.EnemyTogglesPanel = enemies;
 
-            UltraVoicePlugin.CerberusVoiceEnabled = CreateSetting("cerberusvoice", "Enable Cerberus Voice Lines", "", true, enemies);
-            UltraVoicePlugin.EarthmoverVoiceEnabled = CreateSetting("earthmovervoice", "Enable Earthmover Voice Lines", "", true, enemies);
-            UltraVoicePlugin.FerrymanVoiceEnabled = CreateSetting("ferrymanvoice", "Enable Ferryman Voice Lines", "", true, enemies);
-            UltraVoicePlugin.FilthVoiceEnabled = CreateSetting("filthvoice", "Enable Filth Voice Lines", "", false, enemies);
-            UltraVoicePlugin.GeryonVoiceEnabled = CreateSetting("geryonvoice", "Enable Geryon Voice Lines", "", true, enemies);
-            UltraVoicePlugin.GuttermanVoiceEnabled = CreateSetting("guttermanvoice", "Enable Gutterman Voice Lines", "", true, enemies);
-            UltraVoicePlugin.GuttertankVoiceEnabled = CreateSetting("guttertankvoice", "Enable Guttertank Voice Lines", "", true, enemies);
-            UltraVoicePlugin.MassVoiceEnabled = CreateSetting("massvoice", "Enable Hideous Mass Voice Lines", "", true, enemies);
-            UltraVoicePlugin.IdolVoiceEnabled = CreateSetting("idolvoice", "Enable Idol Voice Lines", "", true, enemies);
-            UltraVoicePlugin.InsurrectionistVoiceEnabled = CreateSetting("Insurrectionist", "Enable Insurrectionist Voice Lines", "", true, enemies);
-            UltraVoicePlugin.LeviathanVoiceEnabled = CreateSetting("levivoice", "Enable Leviathan Voice Lines", "", true, enemies);
-            UltraVoicePlugin.MauriceVoiceEnabled = CreateSetting("mauricevoice", "Enable Malicious Face Voice Lines", "", true, enemies);
-            UltraVoicePlugin.MannequinVoiceEnabled = CreateSetting("mannequinvoice", "Enable Mannequin Voice Lines", "", false, enemies);
-            UltraVoicePlugin.MindflayerVoiceEnabled = CreateSetting("mindflayervoice", "Enable Mindflayer Voice Lines", "", true, enemies);
-            UltraVoicePlugin.MirrorReaperVoiceEnabled = CreateSetting("mirrorreapervoice", "Enable Mirror Reaper Voice Lines", "", true, enemies);
-            UltraVoicePlugin.PowerAltVoiceEnabled = CreateSetting("poweraltvoice", "Enable Power Alt Voice Lines", "", true, enemies);
-            UltraVoicePlugin.ProvidenceVoiceEnabled = CreateSetting("providencevoice", "Enable Providence Voice Lines", "", true, enemies);
-            UltraVoicePlugin.SchismVoiceEnabled = CreateSetting("schismvoice", "Enable Schism Voice Lines", "", false, enemies);
-            UltraVoicePlugin.SentryVoiceEnabled = CreateSetting("sentryvoice", "Enable Sentry Voice Lines", "", true, enemies);
-            UltraVoicePlugin.ShopTerminalVoiceEnabled = CreateSetting("shopterminalvoice", "Enable Shop Terminal Voice Lines", "", true, enemies);
-            UltraVoicePlugin.SoldierVoiceEnabled = CreateSetting("soldiervoice", "Enable Soldier Voice Lines", "", false, enemies);
-            UltraVoicePlugin.StalkerVoiceEnabled = CreateSetting("stalkervoice", "Enable Stalker Voice Lines", "", false, enemies);
-            UltraVoicePlugin.StrayVoiceEnabled = CreateSetting("strayvoice", "Enable Stray Voice Lines", "", false, enemies);
-            UltraVoicePlugin.StreetcleanerVoiceEnabled = CreateSetting("streetcleanervoice", "Enable Streetcleaner Voice Lines", "", true, enemies);
-            UltraVoicePlugin.SwordsmachineVoiceEnabled = CreateSetting("swordsmachinevoice", "Enable Swordsmachine Voice Lines", "", true, enemies);
-            UltraVoicePlugin.V1VoiceEnabled = CreateSetting("v1voice", "Enable V1 Voice Lines", "", true, enemies);
+            UltraVoicePlugin.CerberusVoiceEnabled = CreateEnemyToggle("cerberusvoice", "Cerberus", true, enemies);
+            UltraVoicePlugin.EarthmoverVoiceEnabled = CreateEnemyToggle("earthmovervoice", "Earthmover", true, enemies);
+            UltraVoicePlugin.FerrymanVoiceEnabled = CreateEnemyToggle("ferrymanvoice", "Ferryman", true, enemies);
+            UltraVoicePlugin.FilthVoiceEnabled = CreateEnemyToggle("filthvoice", "Filth", false, enemies);
+            UltraVoicePlugin.GeryonVoiceEnabled = CreateEnemyToggle("geryonvoice", "Geryon", true, enemies);
+            UltraVoicePlugin.GuttermanVoiceEnabled = CreateEnemyToggle("guttermanvoice", "Gutterman", true, enemies);
+            UltraVoicePlugin.GuttertankVoiceEnabled = CreateEnemyToggle("guttertankvoice", "Guttertank", true, enemies);
+            UltraVoicePlugin.MassVoiceEnabled = CreateEnemyToggle("massvoice", "Hideous Mass", true, enemies);
+            UltraVoicePlugin.IdolVoiceEnabled = CreateEnemyToggle("idolvoice", "Idol", true, enemies);
+            UltraVoicePlugin.InsurrectionistVoiceEnabled = CreateEnemyToggle("Insurrectionist", "Insurrectionist", true, enemies);
+            UltraVoicePlugin.LeviathanVoiceEnabled = CreateEnemyToggle("levivoice", "Leviathan", true, enemies);
+            UltraVoicePlugin.MauriceVoiceEnabled = CreateEnemyToggle("mauricevoice", "Malicious Face", true, enemies);
+            UltraVoicePlugin.MannequinVoiceEnabled = CreateEnemyToggle("mannequinvoice", "Mannequin", false, enemies);
+            UltraVoicePlugin.MindflayerVoiceEnabled = CreateEnemyToggle("mindflayervoice", "Mindflayer", true, enemies);
+            UltraVoicePlugin.MirrorReaperVoiceEnabled = CreateEnemyToggle("mirrorreapervoice", "Mirror Reaper", true, enemies);
+            UltraVoicePlugin.PowerAltVoiceEnabled = CreateEnemyToggle("poweraltvoice", "Power Alt", true, enemies);
+            UltraVoicePlugin.ProvidenceVoiceEnabled = CreateEnemyToggle("providencevoice", "Providence", true, enemies);
+            UltraVoicePlugin.SchismVoiceEnabled = CreateEnemyToggle("schismvoice", "Schism", false, enemies);
+            UltraVoicePlugin.SentryVoiceEnabled = CreateEnemyToggle("sentryvoice", "Sentry", true, enemies);
+            UltraVoicePlugin.ShopTerminalVoiceEnabled = CreateEnemyToggle("shopterminalvoice", "Shop Terminal", true, enemies);
+            UltraVoicePlugin.SoldierVoiceEnabled = CreateEnemyToggle("soldiervoice", "Soldier", false, enemies);
+            UltraVoicePlugin.StalkerVoiceEnabled = CreateEnemyToggle("stalkervoice", "Stalker", false, enemies);
+            UltraVoicePlugin.StrayVoiceEnabled = CreateEnemyToggle("strayvoice", "Stray", false, enemies);
+            UltraVoicePlugin.StreetcleanerVoiceEnabled = CreateEnemyToggle("streetcleanervoice", "Streetcleaner", true, enemies);
+            UltraVoicePlugin.SwordsmachineVoiceEnabled = CreateEnemyToggle("swordsmachinevoice", "Swordsmachine", true, enemies);
+            UltraVoicePlugin.V1VoiceEnabled = CreateEnemyToggle("v1voice", "V1", true, enemies);
 
             SettingGroup v1Lines = CreateGroup("v1lines", "V1 Line Categories", "", enemies);
             UltraVoicePlugin.V1LinesPanel = v1Lines;
@@ -114,9 +114,9 @@ namespace UltraVoice.Utilities
             foreach (var (key, name) in v1Categories)
                 UltraVoicePlugin.V1LineToggles[key] = CreateSetting($"v1line_{key}", name, "", true, v1Lines);
 
-            UltraVoicePlugin.V2VoiceEnabled = CreateSetting("v2voice", "Enable V2 Voice Lines", "", true, enemies);
-            UltraVoicePlugin.VirtueVoiceEnabled = CreateSetting("virtuevoice", "Enable Virtue Voice Lines", "", true, enemies);
-            UltraVoicePlugin.WickedVoiceEnabled = CreateSetting("wickedvoice", "Enable Wicked Voice Lines", "", true, enemies);
+            UltraVoicePlugin.V2VoiceEnabled = CreateEnemyToggle("v2voice", "V2", true, enemies);
+            UltraVoicePlugin.VirtueVoiceEnabled = CreateEnemyToggle("virtuevoice", "Virtue", true, enemies);
+            UltraVoicePlugin.WickedVoiceEnabled = CreateEnemyToggle("wickedvoice", "Wicked", true, enemies);
         }
 
         void BuildSubtitleColors()
@@ -162,42 +162,42 @@ namespace UltraVoice.Utilities
         {
             SettingGroup actors = UltraVoicePlugin.ActorPanel;
 
-            UltraVoicePlugin.CerberusVoiceActorField = CreateActorSetting("cerbvoiceactor", "Cerberus Voice Actor", UltraVoicePlugin.CerberusVoiceActor.Mel, actors,
+            UltraVoicePlugin.CerberusVoiceActorField = CreateActorSetting("cerbvoiceactor", "Cerberus", UltraVoicePlugin.CerberusVoiceActor.Mel, actors,
                 (UltraVoicePlugin.CerberusVoiceActor.Mel, "Mel"),
                 (UltraVoicePlugin.CerberusVoiceActor.Soil, "Buried Soil"),
                 (UltraVoicePlugin.CerberusVoiceActor.Rotund, "Rotund"));
 
-            UltraVoicePlugin.EarthmoverVoiceActorField = CreateActorSetting("earthmovervoiceactor", "Earthmover Voice Actor", UltraVoicePlugin.EarthmoverVoiceActor.Rotund, actors,
+            UltraVoicePlugin.EarthmoverVoiceActorField = CreateActorSetting("earthmovervoiceactor", "Earthmover", UltraVoicePlugin.EarthmoverVoiceActor.Rotund, actors,
                 (UltraVoicePlugin.EarthmoverVoiceActor.Rotund, "Rotund"),
                 (UltraVoicePlugin.EarthmoverVoiceActor.Tondar, "TondarYZD"),
                 (UltraVoicePlugin.EarthmoverVoiceActor.Megaslash, "Megaslash"));
 
-            UltraVoicePlugin.FerrymanVoiceActorField = CreateActorSetting("ferryvoiceactor", "Ferryman Voice Actor", UltraVoicePlugin.FerrymanVoiceActor.Mel, actors,
+            UltraVoicePlugin.FerrymanVoiceActorField = CreateActorSetting("ferryvoiceactor", "Ferryman", UltraVoicePlugin.FerrymanVoiceActor.Mel, actors,
                 (UltraVoicePlugin.FerrymanVoiceActor.Mel, "Mel"),
                 (UltraVoicePlugin.FerrymanVoiceActor.Soil, "Buried Soil"),
                 (UltraVoicePlugin.FerrymanVoiceActor.Nicky, "Nicky"));
 
-            UltraVoicePlugin.GeryonVoiceActorField = CreateActorSetting("geryonvoiceactor", "Geryon Voice Actor", UltraVoicePlugin.GeryonVoiceActor.TheRatmanValinMegaslash, actors,
+            UltraVoicePlugin.GeryonVoiceActorField = CreateActorSetting("geryonvoiceactor", "Geryon", UltraVoicePlugin.GeryonVoiceActor.TheRatmanValinMegaslash, actors,
                 (UltraVoicePlugin.GeryonVoiceActor.TheRatmanValinMegaslash, "TheRatman, Valin, Megalash"),
                 (UltraVoicePlugin.GeryonVoiceActor.Mel, "Mel"));
 
-            UltraVoicePlugin.GuttermanVoiceActorField = CreateActorSetting("gmvoiceactor", "Gutterman Voice Actor", UltraVoicePlugin.GuttermanVoiceActor.Mel, actors,
+            UltraVoicePlugin.GuttermanVoiceActorField = CreateActorSetting("gmvoiceactor", "Gutterman", UltraVoicePlugin.GuttermanVoiceActor.Mel, actors,
                 (UltraVoicePlugin.GuttermanVoiceActor.Mel, "Mel"),
                 (UltraVoicePlugin.GuttermanVoiceActor.Lemen, "Lemen"));
 
-            UltraVoicePlugin.GuttertankVoiceActorField = CreateActorSetting("gtvoiceactor", "Guttertank Voice Actor", UltraVoicePlugin.GuttertankVoiceActor.Mel, actors,
+            UltraVoicePlugin.GuttertankVoiceActorField = CreateActorSetting("gtvoiceactor", "Guttertank", UltraVoicePlugin.GuttertankVoiceActor.Mel, actors,
                 (UltraVoicePlugin.GuttertankVoiceActor.Mel, "Mel"),
                 (UltraVoicePlugin.GuttertankVoiceActor.Virchew, "Virchew"));
 
-            UltraVoicePlugin.IdolVoiceActorField = CreateActorSetting("idolvoiceactor", "Idol Voice Actor", UltraVoicePlugin.IdolVoiceActor.Voinvi, actors,
+            UltraVoicePlugin.IdolVoiceActorField = CreateActorSetting("idolvoiceactor", "Idol", UltraVoicePlugin.IdolVoiceActor.Voinvi, actors,
                 (UltraVoicePlugin.IdolVoiceActor.Voinvi, "Voinvi"),
                 (UltraVoicePlugin.IdolVoiceActor.Virchew, "Virchew"));
 
-            UltraVoicePlugin.MirrorReaperVoiceActorField = CreateActorSetting("mrvoiceactor", "Mirror Reaper Voice Actor", UltraVoicePlugin.MirrorReaperVoiceActor.Noto, actors,
+            UltraVoicePlugin.MirrorReaperVoiceActorField = CreateActorSetting("mrvoiceactor", "Mirror Reaper", UltraVoicePlugin.MirrorReaperVoiceActor.Noto, actors,
                 (UltraVoicePlugin.MirrorReaperVoiceActor.Noto, "Noto"),
                 (UltraVoicePlugin.MirrorReaperVoiceActor.Rotund, "Rotund"));
 
-            UltraVoicePlugin.PowerVoiceActorField = CreateActorSetting("powervoiceactor", "Power Voice Actor", UltraVoicePlugin.PowerVoiceActor.Random, actors,
+            UltraVoicePlugin.PowerVoiceActorField = CreateActorSetting("powervoiceactor", "Power", UltraVoicePlugin.PowerVoiceActor.Random, actors,
                 (UltraVoicePlugin.PowerVoiceActor.Random, "Random"),
                 (UltraVoicePlugin.PowerVoiceActor.Cazsu, "Cazsu (Masc)"),
                 (UltraVoicePlugin.PowerVoiceActor.Goober, "Goober (Masc)"),
@@ -212,31 +212,31 @@ namespace UltraVoice.Utilities
             foreach (string actor in UltraVoicePlugin.PowerVoiceOrder)
                 UltraVoicePlugin.PowerVoiceToggles[actor] = CreateSetting($"powervoice_{actor.ToLowerInvariant()}", UltraVoicePlugin.PowerVoiceNames[actor], "", true, powerPool);
 
-            UltraVoicePlugin.SentryVoiceActorField = CreateActorSetting("svoiceactor", "Sentry Voice Actor", UltraVoicePlugin.SentryVoiceActor.Goober, actors,
+            UltraVoicePlugin.SentryVoiceActorField = CreateActorSetting("svoiceactor", "Sentry", UltraVoicePlugin.SentryVoiceActor.Goober, actors,
                 (UltraVoicePlugin.SentryVoiceActor.Noto, "Noto"),
                 (UltraVoicePlugin.SentryVoiceActor.Goober, "Goober"));
 
-            UltraVoicePlugin.ShopTerminalVoiceActorField = CreateActorSetting("shopterminalvoiceactor", "Shop Terminal Voice Actor", UltraVoicePlugin.ShopTerminalVoiceActor.Bouncy, actors,
+            UltraVoicePlugin.ShopTerminalVoiceActorField = CreateActorSetting("shopterminalvoiceactor", "Shop Terminal", UltraVoicePlugin.ShopTerminalVoiceActor.Bouncy, actors,
                 (UltraVoicePlugin.ShopTerminalVoiceActor.Bouncy, "Bouncy"),
                 (UltraVoicePlugin.ShopTerminalVoiceActor.Goober, "Goober"));
 
-            UltraVoicePlugin.SwordsmachineVoiceActorField = CreateActorSetting("smvoiceactor", "Swordsmachine Voice Actor", UltraVoicePlugin.SwordsmachineVoiceActor.Mel, actors,
+            UltraVoicePlugin.SwordsmachineVoiceActorField = CreateActorSetting("smvoiceactor", "Swordsmachine", UltraVoicePlugin.SwordsmachineVoiceActor.Mel, actors,
                 (UltraVoicePlugin.SwordsmachineVoiceActor.Mel, "Mel"),
                 (UltraVoicePlugin.SwordsmachineVoiceActor.Noto, "Noto"),
                 (UltraVoicePlugin.SwordsmachineVoiceActor.Soil, "Buried Soil"));
 
-            UltraVoicePlugin.V1VoiceActorField = CreateActorSetting("v1voiceactor", "V1 Voice Actor", UltraVoicePlugin.V1VoiceActor.HashCap, actors,
+            UltraVoicePlugin.V1VoiceActorField = CreateActorSetting("v1voiceactor", "V1", UltraVoicePlugin.V1VoiceActor.HashCap, actors,
                 (UltraVoicePlugin.V1VoiceActor.Cyberlord, "Cyberlord (Masc)"),
                 (UltraVoicePlugin.V1VoiceActor.Noto, "Noto (Fem)"),
                 (UltraVoicePlugin.V1VoiceActor.HashCap, "HashCap (Masc)"));
 
             UltraVoicePlugin.V1VoiceActorField.OnValueChanged += _ => V1Character.ApplyVoiceActor();
 
-            UltraVoicePlugin.V2VoiceActorField = CreateActorSetting("v2voiceactor", "V2 Voice Actor", UltraVoicePlugin.V2VoiceActor.Ruby, actors,
+            UltraVoicePlugin.V2VoiceActorField = CreateActorSetting("v2voiceactor", "V2", UltraVoicePlugin.V2VoiceActor.Ruby, actors,
                 (UltraVoicePlugin.V2VoiceActor.Ruby, "Ruby (Fem)"),
                 (UltraVoicePlugin.V2VoiceActor.Cazsu, "Cazsu (Masc)"));
 
-            UltraVoicePlugin.VirtueVoiceActorField = CreateActorSetting("virtuevoiceactor", "Virtue Voice Actor", UltraVoicePlugin.VirtueVoiceActor.Noto, actors,
+            UltraVoicePlugin.VirtueVoiceActorField = CreateActorSetting("virtuevoiceactor", "Virtue", UltraVoicePlugin.VirtueVoiceActor.Noto, actors,
                 (UltraVoicePlugin.VirtueVoiceActor.Noto, "Noto"),
                 (UltraVoicePlugin.VirtueVoiceActor.Virchew, "Virchew"));
         }
@@ -290,7 +290,7 @@ namespace UltraVoice.Utilities
 
             foreach (var (key, displayName, toggle) in volumeEnemies)
             {
-                Setting<float> slider = CreateSetting($"volume_{key.ToLowerInvariant()}", $"{displayName} Volume", "", 100f, enemyVolumes);
+                Setting<float> slider = CreateSetting($"volume_{key.ToLowerInvariant()}", displayName, "", 100f, enemyVolumes);
 
                 UltraVoicePlugin.EnemyVolumeFields[key] = slider;
 
@@ -309,6 +309,11 @@ namespace UltraVoice.Utilities
                 Decimals = 0,
                 Hidden = hidden
             };
+        }
+
+        Setting<bool> CreateEnemyToggle(string guid, string name, bool defaultValue, SettingGroup group)
+        {
+            return CreateSetting(guid, name, "", defaultValue, group);
         }
 
         Setting<T> CreateActorSetting<T>(string guid, string name, T defaultValue, SettingGroup group, params (T actor, string label)[] options) where T : struct
