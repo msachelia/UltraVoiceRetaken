@@ -1,6 +1,15 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.5.4</summary>
+
+- Added compability for [The Timestopper](https://thunderstore.io/c/ultrakill/p/GalvinVoltag/The_Timestopper/) mod
+
+</details>
+
+---
+
+<details>
   <summary>1.5.3</summary>
 
 - Updated to Thorn's 0.1.4 version
