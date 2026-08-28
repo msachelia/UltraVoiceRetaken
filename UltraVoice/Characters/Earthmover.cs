@@ -237,7 +237,7 @@ namespace UltraVoice.Characters
         {
             return AccessTools
                 .GetDeclaredMethods(typeof(AudioSource))
-                .Where(method => !method.IsStatic && method.Name.Contains("Play"));
+                .Where(method => !method.IsStatic && !method.IsSpecialName && method.Name.StartsWith("Play"));
         }
 
         static void Postfix(AudioSource __instance)
@@ -254,7 +254,7 @@ namespace UltraVoice.Characters
             if (__instance.clip.name != "Centaur A-1")
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 0.1f))
+            if (!VoiceManager.CheckEventCooldown("Earthmover_Shoot", 1f))
                 return;
 
             EarthmoverCharacter.PlayAnnouncement(3f, "Earthmover_Shoot", EarthmoverCharacter.UseEarthmoverClip(EarthmoverCharacter.ShootClip, EarthmoverCharacter.ShootClipTondar, EarthmoverCharacter.ShootClipMegaslash),
@@ -300,7 +300,7 @@ namespace UltraVoice.Characters
             if (__instance.to.clip.name != "Centaur A-2")
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 0.1f))
+            if (!VoiceManager.CheckEventCooldown("Earthmover_BloodVent", 1f))
                 return;
 
             EarthmoverCharacter.PlayAnnouncement(0.5f, "Earthmover_BloodVent", EarthmoverCharacter.UseEarthmoverClip(EarthmoverCharacter.BloodVentClip, EarthmoverCharacter.BloodVentClipTondar, EarthmoverCharacter.BloodVentClipMegaslash),

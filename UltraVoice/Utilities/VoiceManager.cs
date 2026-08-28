@@ -9,6 +9,7 @@ namespace UltraVoice.Utilities
     {
         private static float lastVoiceTime = -999f;
         private static Dictionary<int, float> enemyVoiceCooldown = new Dictionary<int, float>();
+        private static Dictionary<string, float> eventCooldown = new Dictionary<string, float>();
         public static Dictionary<UnityEngine.Component, float> spawnVoiceEndTimes = new Dictionary<UnityEngine.Component, float>();
         public static Dictionary<UnityEngine.Component, float> enemySpawnTimes = new Dictionary<UnityEngine.Component, float>();
 
@@ -61,6 +62,18 @@ namespace UltraVoice.Utilities
             }
 
             enemyVoiceCooldown[id] = Time.time;
+            return true;
+        }
+
+        public static bool CheckEventCooldown(string key, float cooldown)
+        {
+            if (eventCooldown.TryGetValue(key, out float last))
+            {
+                if (Time.time - last < cooldown)
+                    return false;
+            }
+
+            eventCooldown[key] = Time.time;
             return true;
         }
 
