@@ -11,42 +11,46 @@ namespace UltraVoice.Characters
         public static AudioClip[] ChatterClips;
         public static AudioClip[] MeleeClips;
         public static AudioClip[] EnrageClips;
+        public static AudioClip[] DeathClips;
 
         public static AudioClip[] SpawnClipsMasc;
         public static AudioClip[] ChatterClipsMasc;
         public static AudioClip[] MeleeClipsMasc;
         public static AudioClip[] EnrageClipsMasc;
+        public static AudioClip[] DeathClipsMasc;
 
         public static readonly string[] SpawnSubs =
         {
-            "I require your blood.",
-            "You appear to contain blood.",
-            "You are suitable for blood extraction.",
-            "Please donate your blood to me.",
-            "Thank you for your imminent blood donation."
+            "Bleed for me.",
+            "Witness my perfection!",
+            "Behold, true elegance!",
+            "Submit to your better!",
+            "You're simply inferior!"
         };
 
         public static readonly string[] ChatterSubs =
         {
-            "This process will be brief.",
-            "Your cooperation is appreciated.",
-            "Please do not resist.",
-            "Continued resistance is unnecessary."
+            "How unrefined!",
+            "How barbaric!",
+            "You disgust me.",
+            "This is beneath me.",
+            "So crude!"
         };
 
         public static readonly string[] MeleeSubs =
         {
-            "Please maintain distance.",
-            "Kindly step back.",
-            "You are too close."
+            "Don't touch me!",
+            "Do you mind!?",
+            "Hands off!",
+            "No touching, please!"
         };
 
         public static readonly string[] EnrageSubs =
         {
-            "You have made a very unwise choice.",
-            "Your behavior is unacceptable.",
-            "This is your final warning.",
-            "I will correct you by force."
+            "YOU'VE RUINED ME!",
+            "YOU DARE MARE PERFECTION!?",
+            "LOOK WHAT YOU'VE DONE TO ME!",
+            "I WILL NOT BE VANDALIZED!"
         };
 
         public static bool IsMascMindflayer(Mindflayer mf)
@@ -64,14 +68,16 @@ namespace UltraVoice.Characters
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
             SpawnClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Spawn{0}.wav", 5);
-            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Chatter{0}.wav", 4);
-            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Melee{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Chatter{0}.wav", 5);
+            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Melee{0}.wav", 4);
             EnrageClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Enrage{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Death{0}.wav", 3);
 
             SpawnClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Spawn{0}.wav", 5);
             ChatterClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Chatter{0}.wav", 4);
             MeleeClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Melee{0}.wav", 3);
             EnrageClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Enrage{0}.wav", 4);
+            DeathClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Death{0}.wav", 3);
 
             logger.LogInfo("Mindflayer voice lines loaded successfully!");
         }
@@ -110,7 +116,7 @@ namespace UltraVoice.Characters
             if (__instance == null || __instance.dying)
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 5f))
+            if (!VoiceManager.CheckCooldown(__instance, 8f))
                 return;
 
             if (VoiceManager.TooSoonAfterSpawn(__instance, 3f))
@@ -170,7 +176,12 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            VoiceManager.InterruptVoices(__instance);
+            VoiceManager.PlayRandomVoice(__instance, "Mindflayer",
+                MindflayerCharacter.UseMindflayerClips(__instance, MindflayerCharacter.DeathClips, MindflayerCharacter.DeathClipsMasc),
+                null,
+                interrupt: true,
+                randomPitch: true
+            );
         }
     }
 }

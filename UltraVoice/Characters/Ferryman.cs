@@ -315,19 +315,10 @@ namespace UltraVoice.Characters
             if (__instance == null)
                 return;
 
-            if (__instance.currentWindup != null)
-                return;
-
-            if (!VoiceManager.CheckCooldown(__instance, 6f))
+            if (!VoiceManager.CheckCooldown(__instance, 5f))
                 return;
 
             if (FerrymanCharacter.IsAgonis(__instance))
-                return;
-
-            if (VoiceManager.TooSoonAfterSpawn(__instance, 3f))
-                return;
-
-            if (Random.Range(0f, 1f) < 0.75f)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Ferryman",

@@ -219,6 +219,7 @@ namespace UltraVoice.Characters
             VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
                 MirrorReaperCharacter.UseMirrorReaperClips(MirrorReaperCharacter.PuppetHandClips, MirrorReaperCharacter.PuppetHandClipsRotund),
                 MirrorReaperCharacter.PuppetHandSubs,
+                interrupt: true,
                 randomPitch: true
             );
         }

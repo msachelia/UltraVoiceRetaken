@@ -547,7 +547,10 @@ namespace UltraVoice.Characters
 
         public static IEnumerator KillLineRoutine(NewMovement player, bool environmental)
         {
-            if (Random.Range(0f, 1f) >= 0.8f)
+            if (Random.Range(0f, 1f) >= 0.5f)
+                yield break;
+
+            if (!VoiceManager.CheckCooldown(player, 5f))
                 yield break;
 
             yield return new WaitForSeconds(0.1f);
@@ -1362,7 +1365,7 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.V1LineEnabled("multikill"))
                 return;
 
-            if (__instance.multikillCount != 2)
+            if (__instance.multikillCount < 4)
                 return;
 
             if (Time.time - V1Character.LastEnvKillTime < 0.3f)
