@@ -266,9 +266,14 @@ namespace UltraVoice
             Instance = this;
             VoiceManager = new VoiceManager();
 
-            ConfigModule = new VoiceConfig();
-            RegisterConfig();
-            ConfigManager.LoadConfig(ConfigModule);
+            ConfigModule = ModuleManager.Get<VoiceConfig>();
+
+            if (ConfigModule == null)
+            {
+                ConfigModule = new VoiceConfig();
+                ModuleManager.Items.Add(ConfigModule);
+                ConfigManager.LoadConfig(ConfigModule);
+            }
 
             LoadAssets();
 
