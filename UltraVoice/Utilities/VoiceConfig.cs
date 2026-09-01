@@ -57,6 +57,7 @@ namespace UltraVoice.Utilities
             UltraVoicePlugin.EnemyTogglesPanel = enemies;
 
             UltraVoicePlugin.CerberusVoiceEnabled = CreateEnemyToggle("cerberusvoice", "Cerberus", true, enemies);
+            UltraVoicePlugin.DeathcatcherVoiceEnabled = CreateEnemyToggle("deathcatchervoice", "Deathcatcher", true, enemies);
             UltraVoicePlugin.EarthmoverVoiceEnabled = CreateEnemyToggle("earthmovervoice", "Earthmover", true, enemies);
             UltraVoicePlugin.FerrymanVoiceEnabled = CreateEnemyToggle("ferrymanvoice", "Ferryman", true, enemies);
             UltraVoicePlugin.FilthVoiceEnabled = CreateEnemyToggle("filthvoice", "Filth", false, enemies);

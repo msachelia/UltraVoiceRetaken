@@ -550,9 +550,6 @@ namespace UltraVoice.Characters
             if (Random.Range(0f, 1f) >= 0.5f)
                 yield break;
 
-            if (!VoiceManager.CheckCooldown(player, 5f))
-                yield break;
-
             yield return new WaitForSeconds(0.1f);
 
             if (player == null)
@@ -592,7 +589,7 @@ namespace UltraVoice.Characters
 
             AudioSource src = VoiceManager.CreateVoiceSource(player, "V1", clips[index],
                 index < subs.Length ? subs[index] : null,
-                env,
+                false,
                 SubtitleColor,
                 spatialBlend: 0f
             );
@@ -1292,12 +1289,14 @@ namespace UltraVoice.Characters
                 if (!UltraVoicePlugin.V1LineEnabled("parry"))
                     return;
 
-                if (Time.time < V1Character.MaxStyleLineEndTime)
-                    return;
-
                 NewMovement player = MonoSingleton<NewMovement>.Instance;
 
                 if (player == null)
+                    return;
+
+                if (VoiceManager.CheckCooldown(player, 5))
+
+                if (Time.time < V1Character.MaxStyleLineEndTime)
                     return;
 
                 VoiceManager.PlayRandomVoice(player, "V1", V1Character.ParryClips, V1Character.ParrySubs,
@@ -1380,7 +1379,7 @@ namespace UltraVoice.Characters
                 return;
 
             VoiceManager.PlayRandomVoice(player, "V1", V1Character.MultikillClips, V1Character.MultikillSubs,
-                interrupt: true,
+                interrupt: false,
                 colorOverride: V1Character.SubtitleColor,
                 spatialBlend: 0f
             );

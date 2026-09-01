@@ -80,6 +80,7 @@ namespace UltraVoice
         public static Setting<bool> V1VoiceEnabled;
         public static Setting<bool> ShopTerminalVoiceEnabled;
         public static Setting<bool> PowerAltVoiceEnabled;
+        public static Setting<bool> DeathcatcherVoiceEnabled;
         public static Setting<bool> MasterVoiceEnabled;
         public static Setting<bool> SubtitleColorsEnabled;
         public static Setting<float> VoiceCooldown;
@@ -351,6 +352,7 @@ namespace UltraVoice
         void LoadAssets()
         {
             CerberusCharacter.LoadVoiceLines(Logger);
+            DeathcatcherCharacter.LoadVoiceLines(Logger);
             EarthmoverCharacter.LoadVoiceLines(Logger);
             FerrymanCharacter.LoadVoiceLines(Logger);
             FilthCharacter.LoadVoiceLines(Logger);

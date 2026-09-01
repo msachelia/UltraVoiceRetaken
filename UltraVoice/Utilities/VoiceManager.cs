@@ -17,7 +17,7 @@ namespace UltraVoice.Utilities
         {
             return enemyType switch
             {
-                EnemyType.V2 => new UnityEngine.Color(0.878f, 0.302f, 0.282f),
+                EnemyType.V2 => new UnityEngine.Color(0.8f, 0.07f, 0.07f),
                 EnemyType.Swordsmachine => new UnityEngine.Color(0.91f, 0.6f, 0.05f),
                 EnemyType.Streetcleaner => new UnityEngine.Color(0.82f, 0.30f, 0.09f),
                 EnemyType.Cerberus => new UnityEngine.Color(0.65f, 0.65f, 0.65f),
@@ -25,7 +25,7 @@ namespace UltraVoice.Utilities
                 EnemyType.Virtue => new UnityEngine.Color(0.4f, 0.75f, 0.94f),
                 EnemyType.Gutterman => new UnityEngine.Color(0.91f, 0.73f, 0.51f),
                 EnemyType.Ferryman => new UnityEngine.Color(0f, 0.66f, 0.77f),
-                EnemyType.Guttertank => new UnityEngine.Color(0.8f, 0.07f, 0.07f),
+                EnemyType.Guttertank => new UnityEngine.Color(0.81f, 0.12f, 0.12f),
                 EnemyType.Mannequin => new UnityEngine.Color(0.91f, 0.91f, 0.91f),
                 EnemyType.Providence => new UnityEngine.Color(0.9f, 0.79f, 0.86f),
                 EnemyType.Turret => new UnityEngine.Color(0.51f, 0.68f, 0.1f),
@@ -34,6 +34,7 @@ namespace UltraVoice.Utilities
                 EnemyType.Sisyphus => new UnityEngine.Color(0.79f, 0.58f, 0.49f),
                 EnemyType.HideousMass => new UnityEngine.Color(0.67f, 0.57f, 0.57f),
                 EnemyType.Idol => new UnityEngine.Color(0.62f, 0.87f, 0.92f),
+                EnemyType.Deathcatcher => new UnityEngine.Color(1f, 0f, 0f),
                 _ => UnityEngine.Color.white
             };
         }

@@ -118,7 +118,10 @@ namespace UltraVoice.Characters
 
             if (!IdolCharacter.JustBecameVisible(NewMovement.Instance, __instance)) return;
 
-            VoiceManager.PlayRandomVoiceDelayed(0.1f, __instance, "Idol",
+            if (!VoiceManager.CheckCooldown(__instance, 5f))
+                return;
+
+            VoiceManager.PlayRandomVoice(__instance, "Idol",
                 IdolCharacter.UseIdolClips(IdolCharacter.VulnerableClips, IdolCharacter.VulnerableClipsVirchew),
                 IdolCharacter.VulnerableSubs,
                 randomPitch: true
