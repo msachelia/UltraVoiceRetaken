@@ -550,6 +550,9 @@ namespace UltraVoice.Characters
             if (Random.Range(0f, 1f) >= 0.5f)
                 yield break;
 
+            if (!VoiceManager.CheckCooldown(player, 4f))
+                yield break;
+
             yield return new WaitForSeconds(0.1f);
 
             if (player == null)
@@ -1294,7 +1297,8 @@ namespace UltraVoice.Characters
                 if (player == null)
                     return;
 
-                if (VoiceManager.CheckCooldown(player, 5))
+                if (!VoiceManager.CheckCooldown(player, 5))
+                    return;
 
                 if (Time.time < V1Character.MaxStyleLineEndTime)
                     return;

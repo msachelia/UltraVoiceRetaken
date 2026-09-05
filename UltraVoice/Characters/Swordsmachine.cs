@@ -228,7 +228,7 @@ namespace UltraVoice.Characters
             KnockdownClipSpecialBrutalSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_PieceOfShit.wav");
             SpawnClipSecretNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialSecret.wav");
             SpawnClipSecretSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialSecret.wav");
-            SandedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Sanded{0}.wav", 3);
+            SandedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Sanded{0}.wav", 3);
             SandedClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Sanded{0}.wav", 3);
 
             AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecialAgony.wav");
@@ -301,7 +301,8 @@ namespace UltraVoice.Characters
                 );
             }
 
-            VoiceManager.PlayRandomVoice(__instance, "Swordsmachine",
+            if (SceneHelper.CurrentScene != "Level 0-3")
+                VoiceManager.PlayRandomVoice(__instance, "Swordsmachine",
                 SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.SpawnClips, SwordsmachineCharacter.SpawnClipsNoto, SwordsmachineCharacter.SpawnClipsSoil),
                 SwordsmachineCharacter.SpawnSubs,
                 true

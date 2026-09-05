@@ -87,7 +87,7 @@
 	</ItemGroup>
 
 	<Target Name="CopyFiles" AfterTargets="Build">
-		<Copy SourceFiles="bin\Debug\netstandard2.1\UltraVoice.dll" DestinationFolder="$(ULTRAKILLPath)BepInEx\plugins\UltraVoice" />
+		<Copy SourceFiles="bin\Release\netstandard2.1\UltraVoice.dll" DestinationFolder="$(ULTRAKILLPath)BepInEx\plugins\UltraVoice" />
 	</Target>
 
 </Project>

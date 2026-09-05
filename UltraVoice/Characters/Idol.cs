@@ -100,6 +100,9 @@ namespace UltraVoice.Characters
             if (SceneHelper.CurrentScene == "Level 7-4")
                 return;
 
+            if (!__instance.isActiveAndEnabled)
+                return;
+
             VoiceManager.PlayRandomVoice(__instance, "Idol",
                     IdolCharacter.UseIdolClips(IdolCharacter.BlessClips, IdolCharacter.BlessClipsVirchew),
                     IdolCharacter.BlessSubs,
@@ -126,6 +129,15 @@ namespace UltraVoice.Characters
                 IdolCharacter.VulnerableSubs,
                 randomPitch: true
             );
+        }
+    }
+
+    [HarmonyPatch(typeof(Idol), nameof(Idol.Death))]
+    class IdolDeathInterruptPatch
+    {
+        static void Postfix(Idol __instance)
+        {
+            VoiceManager.InterruptVoices(__instance);
         }
     }
 }

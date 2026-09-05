@@ -93,7 +93,11 @@ namespace UltraVoice.Characters
             "V-1! V-1! V-1!",
             "Style points for that one!",
             "Yeaaah! That’s what I’m talkin’ about!",
-            "They aren't even putting up a fight at this point!"
+            "They aren't even putting up a fight at this point!",
+            "Clean sweep!",
+            "What a performance!",
+            "And the crows goes wild!",
+            "Ladies and gentlemen, another PERFECT wave!"
         };
 
         public static readonly string[] CybergrindDeathSubs =
@@ -153,6 +157,8 @@ namespace UltraVoice.Characters
 
         public static float LastInteraction = -999f;
 
+        public static float EndlessStartTime = -999f;
+
         const float IdleDelay = 20f;
 
         public static IEnumerator WaveWatcher()
@@ -166,6 +172,9 @@ namespace UltraVoice.Characters
                 EndlessGrid grid = MonoSingleton<EndlessGrid>.Instance;
 
                 if (grid == null)
+                    continue;
+
+                if (Time.time < EndlessStartTime + 5f)
                     continue;
 
                 if (grid.currentWave <= lastWave)
@@ -327,8 +336,8 @@ namespace UltraVoice.Characters
             BootUpCybergrindClipsGoober = UltraVoicePlugin.LoadClips("ShopTerminal.Goober.shop_BootUpCybergrind{0}.wav", 4);
             BootUpCybergrindRespawnClip = UltraVoicePlugin.LoadClip("ShopTerminal.Bouncy.shop_BootUpCybergrindRespawn.wav");
             BootUpCybergrindRespawnClipGoober = UltraVoicePlugin.LoadClip("ShopTerminal.Goober.shop_BootUpCybergrindRespawn.wav");
-            WaveCompleteClips = UltraVoicePlugin.LoadClips("ShopTerminal.Bouncy.shop_WaveComplete{0}.wav", 4);
-            WaveCompleteClipsGoober = UltraVoicePlugin.LoadClips("ShopTerminal.Goober.shop_WaveComplete{0}.wav", 4);
+            WaveCompleteClips = UltraVoicePlugin.LoadClips("ShopTerminal.Goober.shop_WaveComplete{0}.wav", 8);
+            WaveCompleteClipsGoober = UltraVoicePlugin.LoadClips("ShopTerminal.Goober.shop_WaveComplete{0}.wav", 8);
             CybergrindDeathClips = UltraVoicePlugin.LoadClips("ShopTerminal.Bouncy.shop_CybergrindDeath{0}.wav", 4);
             CybergrindDeathClipsGoober = UltraVoicePlugin.LoadClips("ShopTerminal.Goober.shop_CybergrindDeath{0}.wav", 4);
             PageEnemyClips = UltraVoicePlugin.LoadClips("ShopTerminal.Bouncy.shop_PageEnemy{0}.wav", 3);
@@ -709,6 +718,15 @@ namespace UltraVoice.Characters
                 i < subs.Length ? subs[i] : null,
                 subtitleColor: ShopTerminalCharacter.SubtitleColor
             );
+        }
+    }
+
+    [HarmonyPatch(typeof(EndlessGrid), "Start")]
+    public static class EndlessGridStartPatch
+    {
+        public static void Postfix()
+        {
+            ShopTerminalCharacter.EndlessStartTime = Time.time;
         }
     }
 }

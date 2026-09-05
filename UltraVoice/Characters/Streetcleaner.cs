@@ -54,13 +54,16 @@ namespace UltraVoice.Characters
             if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
                 return;
 
+            if (ULTRAKILL.Cheats.BlindEnemies.Blind)
+                return;
+
             if (__instance == null)
                 return;
 
             if (__instance.dead)
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 4f))
+            if (!VoiceManager.CheckCooldown(__instance, 6f))
                 return;
 
             if (Random.Range(0f, 1f) >= 0.75f)
