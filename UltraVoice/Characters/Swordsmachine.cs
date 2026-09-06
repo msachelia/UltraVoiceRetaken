@@ -301,7 +301,7 @@ namespace UltraVoice.Characters
                 );
             }
 
-            if (SceneHelper.CurrentScene != "Level 0-3" || SceneHelper.CurrentScene != "Level 0-2")
+            if (SceneHelper.CurrentScene != "Level 0-3" && SceneHelper.CurrentScene != "Level 0-2")
                 VoiceManager.PlayRandomVoice(__instance, "Swordsmachine",
                 SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.SpawnClips, SwordsmachineCharacter.SpawnClipsNoto, SwordsmachineCharacter.SpawnClipsSoil),
                 SwordsmachineCharacter.SpawnSubs,
