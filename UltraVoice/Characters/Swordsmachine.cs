@@ -293,7 +293,7 @@ namespace UltraVoice.Characters
                 if (SceneHelper.CurrentScene == "Level 0-3")
                     UltraVoicePlugin.Instance.StartCoroutine(PlayBossIntro(__instance));
 
-                if (SceneHelper.CurrentScene == "Level 0-2") 
+                else if (SceneHelper.CurrentScene == "Level 0-2")
                     VoiceManager.CreateVoiceSource(__instance, "Swordsmachine",
                     SwordsmachineCharacter.UseSwordsmachineClip(SwordsmachineCharacter.SpawnClipSecret, SwordsmachineCharacter.SpawnClipSecretNoto, SwordsmachineCharacter.SpawnClipSecretSoil),
                     "FINALLY CAUGHT UP WITH ME, HUH, PIPSQUEAK!?",
@@ -301,7 +301,7 @@ namespace UltraVoice.Characters
                 );
             }
 
-            if (SceneHelper.CurrentScene != "Level 0-3")
+            if (SceneHelper.CurrentScene != "Level 0-3" || SceneHelper.CurrentScene != "Level 0-2")
                 VoiceManager.PlayRandomVoice(__instance, "Swordsmachine",
                 SwordsmachineCharacter.UseSwordsmachineClips(SwordsmachineCharacter.SpawnClips, SwordsmachineCharacter.SpawnClipsNoto, SwordsmachineCharacter.SpawnClipsSoil),
                 SwordsmachineCharacter.SpawnSubs,

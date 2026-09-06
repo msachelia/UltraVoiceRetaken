@@ -87,9 +87,6 @@ namespace UltraVoice.Characters
             if (reaper == null || reaper.eid.dead)
                 return;
 
-            if (Random.Range(0f, 1f) < 0.5f)
-                return;
-
             VoiceManager.PlayRandomVoice(reaper, "MirrorReaper",
                 UseMirrorReaperClips(LaughClips, LaughClipsRotund),
                 null,
@@ -142,40 +139,6 @@ namespace UltraVoice.Characters
                 MirrorReaperCharacter.SpawnSubs,
                 randomPitch: true
             );
-        }
-    }
-
-    [HarmonyPatch(typeof(MirrorReaper), "Update")]
-    class MirrorReaperChatterPatch
-    {
-        static void Postfix(MirrorReaper __instance)
-        {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
-
-            if (ULTRAKILL.Cheats.BlindEnemies.Blind)
-                return;
-
-            if (__instance == null || __instance.eid == null || __instance.eid.dead)
-                return;
-
-            if (!VoiceManager.CheckCooldown(__instance, 4f))
-                return;
-
-            if (Random.Range(0f, 1f) >= 0.5f)
-                return;
-
-            if (__instance.inMirrorPhase)
-                VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
-                    MirrorReaperCharacter.UseMirrorReaperClips(MirrorReaperCharacter.MirrorTauntClips, MirrorReaperCharacter.MirrorTauntClipsRotund),
-                    MirrorReaperCharacter.MirrorTauntSubs,
-                    randomPitch: true
-                );
-            else
-                VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
-                    MirrorReaperCharacter.UseMirrorReaperClips(MirrorReaperCharacter.LaughClips, MirrorReaperCharacter.LaughClipsRotund),
-                    null,
-                    randomPitch: true
-                );
         }
     }
 

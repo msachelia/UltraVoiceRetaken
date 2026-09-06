@@ -103,9 +103,13 @@ namespace UltraVoice.Characters
             if (!__instance.isActiveAndEnabled)
                 return;
 
+            if (!VoiceManager.CheckCooldown(__instance, 1f))
+                return;
+
             VoiceManager.PlayRandomVoice(__instance, "Idol",
                     IdolCharacter.UseIdolClips(IdolCharacter.BlessClips, IdolCharacter.BlessClipsVirchew),
                     IdolCharacter.BlessSubs,
+                    interrupt: true,
                     randomPitch: true
             );
         }
@@ -121,7 +125,7 @@ namespace UltraVoice.Characters
 
             if (!IdolCharacter.JustBecameVisible(NewMovement.Instance, __instance)) return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 5f))
+            if (!VoiceManager.CheckCooldown(__instance, 10f))
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Idol",

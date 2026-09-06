@@ -240,6 +240,7 @@ namespace UltraVoice.Characters
             VoiceManager.PlayRandomVoiceDelayed(Random.Range(0f, 0.4f), __instance, "Cerberus",
                 CerberusCharacter.UseCerberusClips(CerberusCharacter.EnrageClips, CerberusCharacter.EnrageClipsSoil, CerberusCharacter.EnrageClipsRotund),
                 CerberusCharacter.EnrageSubs,
+                interrupt: true,
                 randomPitch: true
             );
         }

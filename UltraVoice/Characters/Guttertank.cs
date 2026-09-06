@@ -139,7 +139,8 @@ namespace UltraVoice.Characters
 
             VoiceManager.PlayRandomVoice(__instance, "Guttertank",
                 GuttertankCharacter.UseGuttertankClips(GuttertankCharacter.PunchHitClips, GuttertankCharacter.PunchHitClipsVirchew),
-                GuttertankCharacter.PunchHitSubs
+                GuttertankCharacter.PunchHitSubs,
+                interrupt: true
             );
         }
     }
