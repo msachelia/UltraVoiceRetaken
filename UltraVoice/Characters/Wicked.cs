@@ -17,7 +17,9 @@ namespace UltraVoice.Characters
             "LEAVE...",
             "GET OUT...",
             "UNWELCOME...",
-            "TURN... BACK..."
+            "TURN BACK...",
+            "GO AWAY...",
+            "UNWANTED..."
         };
 
         public static readonly string SkullPickupSub = "NO...";

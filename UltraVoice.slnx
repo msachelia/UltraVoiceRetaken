@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="UltraVoice/UltraVoice.csproj" />
+  <Project Path="UltraVoice/UltraVoice.csproj">
+    <BuildType Project="Release" />
+  </Project>
 </Solution>
