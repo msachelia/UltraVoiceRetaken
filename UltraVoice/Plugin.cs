@@ -378,6 +378,7 @@ namespace UltraVoice
             SentryCharacter.LoadVoiceLines(Logger);
             ShopTerminalCharacter.LoadVoiceLines(Logger);
             SoldierCharacter.LoadVoiceLines(Logger);
+            WickedCharacter.LoadVoiceLines(Logger);
             StalkerCharacter.LoadVoiceLines(Logger);
             StrayCharacter.LoadVoiceLines(Logger);
             StreetcleanerCharacter.LoadVoiceLines(Logger);
@@ -385,7 +386,6 @@ namespace UltraVoice
             V1Character.LoadVoiceLines(Logger);
             V2Character.LoadVoiceLines(Logger);
             VirtueCharacter.LoadVoiceLines(Logger);
-            WickedCharacter.LoadVoiceLines(Logger);
         }
 
         public static float GetVoiceVolume(string voiceName)
