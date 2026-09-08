@@ -87,11 +87,18 @@ namespace UltraVoice.Characters
             if (reaper == null || reaper.eid.dead)
                 return;
 
-            VoiceManager.PlayRandomVoice(reaper, "MirrorReaper",
-                UseMirrorReaperClips(LaughClips, LaughClipsRotund),
-                null,
-                randomPitch: true
-            );
+            if (reaper.inMirrorPhase)
+                VoiceManager.PlayRandomVoice(reaper, "MirrorReaper",
+                    UseMirrorReaperClips(MirrorTauntClips, MirrorTauntClipsRotund),
+                    MirrorTauntSubs,
+                    randomPitch: true
+                );
+            else
+                VoiceManager.PlayRandomVoice(reaper, "MirrorReaper",
+                    UseMirrorReaperClips(LaughClips, LaughClipsRotund),
+                    null,
+                    randomPitch: true
+                );
         }
     }
 

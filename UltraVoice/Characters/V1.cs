@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -504,12 +505,15 @@ namespace UltraVoice.Characters
 
         static IEnumerator BosskillRoutine()
         {
+            NewMovement player = MonoSingleton<NewMovement>.Instance;
+
+            if (!VoiceManager.CheckCooldown(player, 4f))
+                yield break;
+
             yield return new WaitForSeconds(1f);
 
             while (Time.time < MaxStyleLineEndTime)
                 yield return null;
-
-            NewMovement player = MonoSingleton<NewMovement>.Instance;
 
             if (player == null)
                 yield break;
@@ -1225,6 +1229,9 @@ namespace UltraVoice.Characters
         static void Postfix(StyleHUD __instance, int __state)
         {
             if (!UltraVoicePlugin.V1LineEnabled("maxstyle"))
+                return;
+
+            if (!VoiceManager.CheckCooldown(__instance, 10f))
                 return;
 
             if (__instance == null || __instance.ranks == null)

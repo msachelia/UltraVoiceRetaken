@@ -27,6 +27,7 @@ namespace UltraVoice.Utilities
                 EnemyType.Ferryman => new UnityEngine.Color(0f, 0.66f, 0.77f),
                 EnemyType.Guttertank => new UnityEngine.Color(0.81f, 0.12f, 0.12f),
                 EnemyType.Mannequin => new UnityEngine.Color(0.91f, 0.91f, 0.91f),
+                EnemyType.Stalker => new UnityEngine.Color(0.67f, 0.61f, 0.47f),
                 EnemyType.Providence => new UnityEngine.Color(0.9f, 0.79f, 0.86f),
                 EnemyType.Turret => new UnityEngine.Color(0.51f, 0.68f, 0.1f),
                 EnemyType.MaliciousFace => new UnityEngine.Color(0.76f, 0.66f, 0.56f),

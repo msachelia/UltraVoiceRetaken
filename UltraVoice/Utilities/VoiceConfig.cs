@@ -78,7 +78,7 @@ namespace UltraVoice.Utilities
             UltraVoicePlugin.SentryVoiceEnabled = CreateEnemyToggle("sentryvoice", "Sentry", true, enemies);
             UltraVoicePlugin.ShopTerminalVoiceEnabled = CreateEnemyToggle("shopterminalvoice", "Shop Terminal", true, enemies);
             UltraVoicePlugin.SoldierVoiceEnabled = CreateEnemyToggle("soldiervoice", "Soldier", false, enemies);
-            UltraVoicePlugin.StalkerVoiceEnabled = CreateEnemyToggle("stalkervoice", "Stalker", false, enemies);
+            UltraVoicePlugin.StalkerVoiceEnabled = CreateEnemyToggle("stalkervoice", "Stalker", true, enemies);
             UltraVoicePlugin.StrayVoiceEnabled = CreateEnemyToggle("strayvoice", "Stray", false, enemies);
             UltraVoicePlugin.StreetcleanerVoiceEnabled = CreateEnemyToggle("streetcleanervoice", "Streetcleaner", true, enemies);
             UltraVoicePlugin.SwordsmachineVoiceEnabled = CreateEnemyToggle("swordsmachinevoice", "Swordsmachine", true, enemies);
@@ -132,6 +132,7 @@ namespace UltraVoice.Utilities
             (string key, string label)[] subtitleColorCharacters =
             {
                 ("Cerberus", "Cerberus"),
+                ("Deathcatcher", "Deathcatcher"),
                 ("Ferryman", "Ferryman"),
                 ("Geryon", "Geryon"),
                 ("Gutterman", "Gutterman"),
@@ -146,6 +147,7 @@ namespace UltraVoice.Utilities
                 ("Power", "Power"),
                 ("Providence", "Providence"),
                 ("Sentry", "Sentry"),
+                ("Stalker", "Stalker"),
                 ("ShopTerminal", "Shop Terminal"),
                 ("Streetcleaner", "Streetcleaner"),
                 ("Swordsmachine", "Swordsmachine"),

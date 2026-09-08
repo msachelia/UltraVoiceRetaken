@@ -7,16 +7,32 @@ namespace UltraVoice.Characters
     public class StalkerCharacter
     {
         public static AudioClip[] ChatterClips;
-        public static AudioClip AttackClip;
+        public static AudioClip[] AttackClips;
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Chatter{0}.wav", 5);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Stalker.Mitzi.stalker_Explode.wav");
+            AttackClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Explode{0}.wav", 3);
 
             logger.LogInfo("Stalker voice lines loaded successfully!");
         }
+
+        public static readonly string[] ChatterSubs =
+        {
+            "I am… burdened…", 
+            "So… heavy…", 
+            "This… weight…", 
+            "Let me… rest…", 
+            "My… back…"
+        };
+
+        public static readonly string[] AttackSubs =
+        {
+            "No more!",
+            "Freedom!",
+            "Free me!"
+        };
     }
 
     [HarmonyPatch(typeof(Stalker), "Update")]
@@ -29,15 +45,12 @@ namespace UltraVoice.Characters
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 4f))
-                return;
-
-            if (UnityEngine.Random.Range(0f, 1f) < 0.75f)
+            if (!VoiceManager.CheckCooldown(__instance, 7f))
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Stalker",
                 StalkerCharacter.ChatterClips,
-                null,
+                StalkerCharacter.ChatterSubs,
                 randomPitch: true
             );
         }
@@ -50,9 +63,9 @@ namespace UltraVoice.Characters
         {
             if (!UltraVoicePlugin.StalkerVoiceEnabled.Value) return;
 
-            VoiceManager.CreateVoiceSource(__instance, "Stalker",
-                StalkerCharacter.AttackClip,
-                null,
+            VoiceManager.PlayRandomVoice(__instance, "Stalker",
+                StalkerCharacter.AttackClips,
+                StalkerCharacter.AttackSubs,
                 randomPitch: true
             );
         }

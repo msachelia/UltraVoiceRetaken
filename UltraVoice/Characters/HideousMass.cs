@@ -61,6 +61,17 @@ namespace UltraVoice.Characters
         }
     }
 
+    [HarmonyPatch(typeof(Mass), "Start")]
+    class MassSpawnPatch
+    {
+        static void Postfix(Mass __instance)
+        {
+            if (!UltraVoicePlugin.MassVoiceEnabled.Value) return;
+
+            VoiceManager.enemySpawnTimes[__instance] = Time.time;
+        }
+    }
+
     [HarmonyPatch(typeof(Mass), "Update")]
     class MassChatterPatch
     {
@@ -70,6 +81,9 @@ namespace UltraVoice.Characters
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
+                return;
+
+            if (VoiceManager.TooSoonAfterSpawn(__instance, 3f))
                 return;
 
             if (__instance == null || __instance.isDead)
@@ -123,7 +137,7 @@ namespace UltraVoice.Characters
 
             static IEnumerator PlayAwaken(FakeMassActivator activator)
             {
-                yield return new WaitForSeconds(0.75f);
+                yield return new WaitForSeconds(0.5f);
 
                 if (activator == null)
                     yield break;

@@ -17,7 +17,9 @@ namespace UltraVoice.Characters
             "LEAVE...",
             "GET OUT...",
             "UNWELCOME...",
-            "TURN... BACK..."
+            "TURN... BACK...",
+            "GO... AWAY...",
+            "UNWANTED..."
         };
 
         public static readonly string SkullPickupSub = "NO...";
@@ -43,6 +45,17 @@ namespace UltraVoice.Characters
         }
     }
 
+    [HarmonyPatch(typeof(Wicked), "Start")]
+    class WickedSpawnPatch
+    {
+        static void Postfix(Wicked __instance)
+        {
+            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
+
+            VoiceManager.enemySpawnTimes[__instance] = Time.time;
+        }
+    }
+
     [HarmonyPatch(typeof(Wicked), "Update")]
     class WickedChasePatch
     {
@@ -56,10 +69,10 @@ namespace UltraVoice.Characters
             if (!WickedCharacter.InWickedLevel())
                 return;
 
-            if (!VoiceManager.CheckCooldown(__instance, 15f))
+            if (VoiceManager.TooSoonAfterSpawn(__instance, 5f))
                 return;
 
-            if (WickedCharacter.ChaseClips == null || WickedCharacter.ChaseClips.Length == 0)
+            if (!VoiceManager.CheckCooldown(__instance, 15f))
                 return;
 
             int i = Random.Range(0, WickedCharacter.ChaseClips.Length);
