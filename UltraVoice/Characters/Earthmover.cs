@@ -143,6 +143,18 @@ namespace UltraVoice.Characters
             logger.LogInfo("Earthmover voice lines loaded successfully!");
         }
 
+        public static void PlayShootAnnouncement()
+        {
+            if (!VoiceManager.CheckEventCooldown("Earthmover_Shoot", 5f))
+                return;
+
+            PlayAnnouncement(3f, "Earthmover_Shoot", UseEarthmoverClip(ShootClip, ShootClipTondar, ShootClipMegaslash),
+                "FIRING SEQUENCE INTERRUPTED.",
+                (2.1f, 2.05f, 2.55f, "EXTERIOR HULL INTEGRITY:"),
+                (1.5f, 1.6f, 2.4f, "60%.")
+            );
+        }
+
         public static void PlayAnnouncement(float startDelay, string sourceName, AudioClip clip, string firstSub, params (float rotundDelay, float tondarDelay, float megaslashDelay, string text)[] followUps)
         {
             UltraVoicePlugin.Instance.StartCoroutine(Routine());
@@ -254,14 +266,38 @@ namespace UltraVoice.Characters
             if (__instance.clip.name != "Centaur A-1")
                 return;
 
-            if (!VoiceManager.CheckEventCooldown("Earthmover_Shoot", 1f))
+            EarthmoverCharacter.PlayShootAnnouncement();
+        }
+    }
+
+    [HarmonyPatch(typeof(AudioSource), nameof(AudioSource.isPlaying), MethodType.Getter)]
+    class EarthmoverShootPollPatch
+    {
+        static readonly Dictionary<int, bool> lastState = new Dictionary<int, bool>();
+
+        static void Postfix(AudioSource __instance, bool __result)
+        {
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
                 return;
 
-            EarthmoverCharacter.PlayAnnouncement(3f, "Earthmover_Shoot", EarthmoverCharacter.UseEarthmoverClip(EarthmoverCharacter.ShootClip, EarthmoverCharacter.ShootClipTondar, EarthmoverCharacter.ShootClipMegaslash),
-                "FIRING SEQUENCE INTERRUPTED.",
-                (2.1f, 2.05f, 2.55f, "EXTERIOR HULL INTEGRITY:"),
-                (1.5f, 1.6f, 2.4f, "60%.")
-            );
+            if (__instance == null || __instance.clip == null)
+                return;
+
+            if (__instance.clip.name != "Centaur A-1")
+                return;
+
+            if (!EarthmoverCharacter.InEarthmoverLevel())
+                return;
+
+            int id = __instance.GetInstanceID();
+
+            bool wasPlaying = lastState.TryGetValue(id, out bool previous) && previous;
+            lastState[id] = __result;
+
+            if (!__result || wasPlaying)
+                return;
+
+            EarthmoverCharacter.PlayShootAnnouncement();
         }
     }
 

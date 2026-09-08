@@ -17,8 +17,8 @@ namespace UltraVoice.Characters
             "LEAVE...",
             "GET OUT...",
             "UNWELCOME...",
-            "TURN... BACK...",
-            "GO... AWAY...",
+            "TURN BACK...",
+            "GO AWAY...",
             "UNWANTED..."
         };
 
