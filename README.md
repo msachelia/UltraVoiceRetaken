@@ -2,7 +2,7 @@
 
 A fork of the [UltraVoice](https://github.com/mof33/UltraVoice) mod for ULTRAKILL, made to keep development going after the original lead developer stepped away. It adds custom voice lines to enemies, giving them more personality during combat and cutscenes.
 
-This mod is maintained and developed by achelia with permission from the original developer, mel (mof_33). Everything before version 1.3.0 belongs to her.
+This mod is maintained and developed by achelia with permission from the original developer, mel (mof_33). Everything before version 1.3.0 was made by her.
 
 - **Thunderstore:** https://thunderstore.io/c/ultrakill/p/achelia/UltraVoice_Retaken/
 - **Discord:** https://discord.gg/fW7NvE5WDM
