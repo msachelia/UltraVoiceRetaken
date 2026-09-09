@@ -13,6 +13,8 @@ This mod is **NOT FINISHED**. It will continue to expand with more enemies and v
 This mod currently adds voice lines to:
 
 * Cerberus
+* Configuration Terminals
+* Deathcatchers
 * Earthmover
 * Ferrymans (including Agonis and Rudraksha)
 * Geryon
@@ -28,6 +30,7 @@ This mod currently adds voice lines to:
 * Powers
 * Providences
 * Sentries
+* Stalkers
 * Shop Terminals
 * Something Wicked
 * Streetcleaners
@@ -42,7 +45,6 @@ This mod currently adds ambient non-dialogue to:
 * Mannequins
 * Schisms
 * Soldiers
-* Stalkers
 * Strays
 
 ## Installation
@@ -67,7 +69,7 @@ See the [GitHub repository](https://github.com/msachelia/UltraVoiceRetaken) for 
 * Raphael (mod icon)
 * [RubyVA](https://www.youtube.com/@legasaya) (voice of V2)
 * Noto (voice of Virtue, Mannequin, Mirror Reaper, Leviathan and alternate voice of Swordsmachine, Sentry, Power, V1)
-* Goober (voice of Sentry, Providence, and alternate voice of Power, Shop Terminal)
+* Vox (voice of Sentry, Providence, and alternate voice of Power, Shop Terminal)
 * [Kyljoi](https://www.youtube.com/@KyljoiVA) (voice of Streetcleaners)
 * Rotund (voice of Earthmover, Malicious Face and alternate voice of Cerberus, Mirror Reaper)
 * [Voinvi](https://www.youtube.com/@voinvi) (voice of Idols, assistant writer for Deathcatcher, Idol, Mindflayer & Insurrectionist)
