@@ -1,3 +1,0 @@
-Working directory: 'C:\Users\engin\Desktop\GitHub\UltraVoiceRetaken\Unity Project'
-Current directory: 'C:\Program Files\Unity\Hub\Editor\2022.3.29f1\Editor\Data\Tools'
-WARNING: Could not locate table.bin at the project directory. Using default compiler.
