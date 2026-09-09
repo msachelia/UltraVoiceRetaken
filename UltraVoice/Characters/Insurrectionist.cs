@@ -84,17 +84,17 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Spawn{0}.wav", 4);
-            AttackClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Attack{0}.wav", 4);
-            AttackSpecialClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_AttackSpecial{0}.wav", 3);
-            StunClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Stun{0}.wav", 2);
-            FrustratedClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Frustration{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("Insurrectionist.Soil.insur_Death{0}.wav", 2);
+            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_spawn{0}.wav", 4);
+            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_attack{0}.wav", 4);
+            AttackSpecialClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_attackspecial{0}.wav", 3);
+            StunClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_stun{0}.wav", 2);
+            FrustratedClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_frustration{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/insurrectionist/soil/insur_death{0}.wav", 2);
 
-            AngrySpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_SpawnSpecialAngry.wav");
-            RudeSpawnClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_SpawnSpecialRude.wav");
-            AngryKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_DownedAngry.wav");
-            RudeKnockdownClip = UltraVoicePlugin.LoadClip("Insurrectionist.Soil.insur_DownedRude.wav");
+            AngrySpawnClip = UltraVoicePlugin.LoadClip("assets/resources/insurrectionist/soil/insur_spawnspecialangry.wav");
+            RudeSpawnClip = UltraVoicePlugin.LoadClip("assets/resources/insurrectionist/soil/insur_spawnspecialrude.wav");
+            AngryKnockdownClip = UltraVoicePlugin.LoadClip("assets/resources/insurrectionist/soil/insur_downedangry.wav");
+            RudeKnockdownClip = UltraVoicePlugin.LoadClip("assets/resources/insurrectionist/soil/insur_downedrude.wav");
 
             logger.LogInfo("Insurrectionist voice lines loaded successfully!");
         }

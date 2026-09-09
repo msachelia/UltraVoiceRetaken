@@ -108,39 +108,39 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroFirstClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_IntroFirst.wav");
-            IntroFirstRestartClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_RestartIntroFirst.wav");
-            IntroSecondClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_IntroSecond.wav");
-            IntroSecondRestartClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_RestartIntroSecond.wav");
+            IntroFirstClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_introfirst.wav");
+            IntroFirstRestartClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_restartintrofirst.wav");
+            IntroSecondClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_introsecond.wav");
+            IntroSecondRestartClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_restartintrosecond.wav");
 
-            FastDefeatClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_FastDefeat.wav");
-            DefeatClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Defeat.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Death.wav");
-            FlailingClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Flailing.wav");
-            EnragePatienceClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_EnragePatience.wav");
-            EnragePunchedClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_EnragePunched.wav");
-            EscapingClip = UltraVoicePlugin.LoadClip("V2.Ruby.v2_Escaping.wav");
+            FastDefeatClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_fastdefeat.wav");
+            DefeatClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_defeat.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_death.wav");
+            FlailingClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_flailing.wav");
+            EnragePatienceClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_enragepatience.wav");
+            EnragePunchedClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_enragepunched.wav");
+            EscapingClip = UltraVoicePlugin.LoadClip("assets/resources/v2/ruby/v2_escaping.wav");
 
-            ChatterClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_Chatter{0}.wav", 5);
-            ChatterPissedClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_ChatterPissed{0}.wav", 5);
-            PainClips = UltraVoicePlugin.LoadClips("V2.Ruby.v2_Pain{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/v2/ruby/v2_chatter{0}.wav", 5);
+            ChatterPissedClips = UltraVoicePlugin.LoadClips("assets/resources/v2/ruby/v2_chatterpissed{0}.wav", 5);
+            PainClips = UltraVoicePlugin.LoadClips("assets/resources/v2/ruby/v2_pain{0}.wav", 5);
 
-            IntroFirstClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_IntroFirst.wav");
-            IntroFirstRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_RestartIntroFirst.wav");
-            IntroSecondClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_IntroSecond.wav");
-            IntroSecondRestartClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_RestartIntroSecond.wav");
+            IntroFirstClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_introfirst.wav");
+            IntroFirstRestartClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_restartintrofirst.wav");
+            IntroSecondClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_introsecond.wav");
+            IntroSecondRestartClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_restartintrosecond.wav");
 
-            FastDefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_FastDefeat.wav");
-            DefeatClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Defeat.wav");
-            DeathClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Death.wav");
-            FlailingClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Flailing.wav");
-            EnragePatienceClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_EnragePatience.wav");
-            EnragePunchedClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_EnragePunched.wav");
-            EscapingClipCazsu = UltraVoicePlugin.LoadClip("V2.Cazsu.v2_Escaping.wav");
+            FastDefeatClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_fastdefeat.wav");
+            DefeatClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_defeat.wav");
+            DeathClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_death.wav");
+            FlailingClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_flailing.wav");
+            EnragePatienceClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_enragepatience.wav");
+            EnragePunchedClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_enragepunched.wav");
+            EscapingClipCazsu = UltraVoicePlugin.LoadClip("assets/resources/v2/cazsu/v2_escaping.wav");
 
-            ChatterClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_Chatter{0}.wav", 5);
-            ChatterPissedClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_ChatterPissed{0}.wav", 5);
-            PainClipsCazsu = UltraVoicePlugin.LoadClips("V2.Cazsu.v2_Pain{0}.wav", 5);
+            ChatterClipsCazsu = UltraVoicePlugin.LoadClips("assets/resources/v2/cazsu/v2_chatter{0}.wav", 5);
+            ChatterPissedClipsCazsu = UltraVoicePlugin.LoadClips("assets/resources/v2/cazsu/v2_chatterpissed{0}.wav", 5);
+            PainClipsCazsu = UltraVoicePlugin.LoadClips("assets/resources/v2/cazsu/v2_pain{0}.wav", 5);
 
             logger.LogInfo("V2 voice lines loaded successfully!");
         }

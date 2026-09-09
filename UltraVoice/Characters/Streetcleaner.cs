@@ -38,9 +38,9 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Chatter{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Attack{0}.wav", 5);
-            ParryClips = UltraVoicePlugin.LoadClips("Streetcleaner.Kyljoi.sc_Parry{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/streetcleaner/kyljoi/sc_chatter{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/streetcleaner/kyljoi/sc_attack{0}.wav", 5);
+            ParryClips = UltraVoicePlugin.LoadClips("assets/resources/streetcleaner/kyljoi/sc_parry{0}.wav", 3);
 
             logger.LogInfo("Streetcleaner voice lines loaded successfully!");
         }

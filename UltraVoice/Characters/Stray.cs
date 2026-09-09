@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Stray.Mel.str_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/stray/mel/str_chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Stray.Mel.str_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Stray.Mel.str_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("assets/resources/stray/mel/str_attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/stray/mel/str_death.wav");
 
             logger.LogInfo("Stray voice lines loaded successfully!");
         }

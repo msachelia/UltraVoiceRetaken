@@ -39,11 +39,11 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            BlessClips = UltraVoicePlugin.LoadClips("Idol.Voinvi.idol_Spawn{0}.wav", 5);
-            VulnerableClips = UltraVoicePlugin.LoadClips("Idol.Voinvi.idol_Vulnerable{0}.wav", 4);
+            BlessClips = UltraVoicePlugin.LoadClips("assets/resources/idol/voinvi/idol_spawn{0}.wav", 5);
+            VulnerableClips = UltraVoicePlugin.LoadClips("assets/resources/idol/voinvi/idol_vulnerable{0}.wav", 4);
 
-            BlessClipsVirchew = UltraVoicePlugin.LoadClips("Idol.Virchew.idol_Spawn{0}.wav", 5);
-            VulnerableClipsVirchew = UltraVoicePlugin.LoadClips("Idol.Virchew.idol_Vulnerable{0}.wav", 4);
+            BlessClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/idol/virchew/idol_spawn{0}.wav", 5);
+            VulnerableClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/idol/virchew/idol_vulnerable{0}.wav", 4);
 
             logger.LogInfo("Idol voice lines loaded successfully!");
         }

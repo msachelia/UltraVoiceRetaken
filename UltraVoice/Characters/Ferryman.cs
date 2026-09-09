@@ -154,45 +154,45 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            BossIntroClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_FightStarted.wav");
-            CoinSkipClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.Ferry_CoinSkip.wav");
-            CoinFightClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_CoinFight.wav");
-            PhaseChangeClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_PhaseChange.wav");
-            ApproachClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_Approach.wav");
-            AgonisIntroClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_SpawnSpecialAgonis.wav");
-            RudrakshaIntroClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_SpawnSpecialRudraksha.wav");
-            AgonisDownedClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_DownedAgonis.wav");
-            RudrakshaDownedClip = UltraVoicePlugin.LoadClip("Ferryman.Mel.ferry_DownedRudraksha.wav");
+            BossIntroClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_fightstarted.wav");
+            CoinSkipClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_coinskip.wav");
+            CoinFightClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_coinfight.wav");
+            PhaseChangeClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_phasechange.wav");
+            ApproachClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_approach.wav");
+            AgonisIntroClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_spawnspecialagonis.wav");
+            RudrakshaIntroClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_spawnspecialrudraksha.wav");
+            AgonisDownedClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_downedagonis.wav");
+            RudrakshaDownedClip = UltraVoicePlugin.LoadClip("assets/resources/ferryman/mel/ferry_downedrudraksha.wav");
 
-            SpawnClips = UltraVoicePlugin.LoadClips("Ferryman.Mel.ferry_Spawn{0}.wav", 5);
-            ChatterClips = UltraVoicePlugin.LoadClips("Ferryman.Mel.Ferry_Chatter{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("Ferryman.Mel.ferry_Death{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/ferryman/mel/ferry_spawn{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/ferryman/mel/ferry_chatter{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/ferryman/mel/ferry_death{0}.wav", 3);
 
-            BossIntroClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_FightStarted.wav");
-            BossIntroClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_FightStarted.wav");
-            CoinSkipClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.Ferry_CoinSkip.wav");
-            CoinSkipClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.Ferry_CoinSkip.wav");
-            CoinFightClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_CoinFight.wav");
-            CoinFightClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_CoinFight.wav");
-            PhaseChangeClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_PhaseChange.wav");
-            PhaseChangeClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_PhaseChange.wav");
-            ApproachClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_Approach.wav");
-            ApproachClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_Approach.wav");
-            AgonisIntroClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_SpawnSpecialAgonis.wav");
-            AgonisIntroClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_SpawnSpecialAgonis.wav");
-            RudrakshaIntroClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_SpawnSpecialRudraksha.wav");
-            RudrakshaIntroClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_SpawnSpecialRudraksha.wav");
-            AgonisDownedClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_DownedAgonis.wav");
-            AgonisDownedClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_DownedAgonis.wav");
-            RudrakshaDownedClipSoil = UltraVoicePlugin.LoadClip("Ferryman.Soil.ferry_DownedRudraksha.wav");
-            RudrakshaDownedClipNicky = UltraVoicePlugin.LoadClip("Ferryman.Nicky.ferry_DownedRudraksha.wav");
+            BossIntroClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_fightstarted.wav");
+            BossIntroClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_fightstarted.wav");
+            CoinSkipClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_coinskip.wav");
+            CoinSkipClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_coinskip.wav");
+            CoinFightClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_coinfight.wav");
+            CoinFightClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_coinfight.wav");
+            PhaseChangeClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_phasechange.wav");
+            PhaseChangeClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_phasechange.wav");
+            ApproachClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_approach.wav");
+            ApproachClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_approach.wav");
+            AgonisIntroClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_spawnspecialagonis.wav");
+            AgonisIntroClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_spawnspecialagonis.wav");
+            RudrakshaIntroClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_spawnspecialrudraksha.wav");
+            RudrakshaIntroClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_spawnspecialrudraksha.wav");
+            AgonisDownedClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_downedagonis.wav");
+            AgonisDownedClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_downedagonis.wav");
+            RudrakshaDownedClipSoil = UltraVoicePlugin.LoadClip("assets/resources/ferryman/soil/ferry_downedrudraksha.wav");
+            RudrakshaDownedClipNicky = UltraVoicePlugin.LoadClip("assets/resources/ferryman/nicky/ferry_downedrudraksha.wav");
 
-            SpawnClipsSoil = UltraVoicePlugin.LoadClips("Ferryman.Soil.ferry_Spawn{0}.wav", 5);
-            SpawnClipsNicky = UltraVoicePlugin.LoadClips("Ferryman.Nicky.ferry_Spawn{0}.wav", 5);
-            ChatterClipsSoil = UltraVoicePlugin.LoadClips("Ferryman.Soil.Ferry_Chatter{0}.wav", 4);
-            ChatterClipsNicky = UltraVoicePlugin.LoadClips("Ferryman.Nicky.Ferry_Chatter{0}.wav", 4);
-            DeathClipsSoil = UltraVoicePlugin.LoadClips("Ferryman.Soil.ferry_Death{0}.wav", 3);
-            DeathClipsNicky = UltraVoicePlugin.LoadClips("Ferryman.Nicky.ferry_Death{0}.wav", 3);
+            SpawnClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/ferryman/soil/ferry_spawn{0}.wav", 5);
+            SpawnClipsNicky = UltraVoicePlugin.LoadClips("assets/resources/ferryman/nicky/ferry_spawn{0}.wav", 5);
+            ChatterClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/ferryman/soil/ferry_chatter{0}.wav", 4);
+            ChatterClipsNicky = UltraVoicePlugin.LoadClips("assets/resources/ferryman/nicky/ferry_chatter{0}.wav", 4);
+            DeathClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/ferryman/soil/ferry_death{0}.wav", 3);
+            DeathClipsNicky = UltraVoicePlugin.LoadClips("assets/resources/ferryman/nicky/ferry_death{0}.wav", 3);
 
             logger.LogInfo("Ferryman voice lines loaded successfully!");
         }

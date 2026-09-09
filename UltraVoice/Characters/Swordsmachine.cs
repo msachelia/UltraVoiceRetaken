@@ -188,66 +188,66 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecial.wav");
-            IntroClipSecond = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecial2.wav");
-            BigPainClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_BigPain.wav");
-            LungeClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Lunge.wav");
-            ComboClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Combo.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_Death.wav");
-            KnockdownClipSpecial = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_KnockdownSpecial.wav");
-            KnockdownClipSpecialBrutal = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_PieceOfShit.wav");
+            IntroClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecial.wav");
+            IntroClipSecond = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecial2.wav");
+            BigPainClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_bigpain.wav");
+            LungeClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_lunge.wav");
+            ComboClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_combo.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_death.wav");
+            KnockdownClipSpecial = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_knockdownspecial.wav");
+            KnockdownClipSpecialBrutal = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_pieceofshit.wav");
 
-            SpawnClipSecret = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialSecret.wav");
-            SandedClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Sanded{0}.wav", 3);
+            SpawnClipSecret = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecialsecret.wav");
+            SandedClips = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_sanded{0}.wav", 3);
 
-            AgonySpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialAgony.wav");
-            TundraSpawnClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialTundra.wav");
-            AgonyKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_DownedAgony.wav");
-            TundraKnockdownClip = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_DownedTundra.wav");
+            AgonySpawnClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecialagony.wav");
+            TundraSpawnClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecialtundra.wav");
+            AgonyKnockdownClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_downedagony.wav");
+            TundraKnockdownClip = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_downedtundra.wav");
 
-            SpawnClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Spawn{0}.wav", 7);
-            EnrageClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Enrage{0}.wav", 4);
-            KnockdownClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Knockdown{0}.wav", 3);
-            RangedClips = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Ranged{0}.wav", 2);
+            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_spawn{0}.wav", 7);
+            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_enrage{0}.wav", 4);
+            KnockdownClips = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_knockdown{0}.wav", 3);
+            RangedClips = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_ranged{0}.wav", 2);
 
-            IntroClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecial.wav");
-            IntroClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecial.wav");
-            IntroClipSecondNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecial2.wav");
-            IntroClipSecondSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecial2.wav");
-            BigPainClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_BigPain.wav");
-            BigPainClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_BigPain.wav");
-            LungeClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Lunge.wav");
-            LungeClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Lunge.wav");
-            ComboClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Combo.wav");
-            ComboClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Combo.wav");
-            DeathClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_Death.wav");
-            DeathClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_Death.wav");
-            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_KnockdownSpecial.wav");
-            KnockdownClipSpecialSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_KnockdownSpecial.wav");
-            KnockdownClipSpecialBrutalNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_PieceOfShit.wav");
-            KnockdownClipSpecialBrutalSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_PieceOfShit.wav");
-            SpawnClipSecretNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialSecret.wav");
-            SpawnClipSecretSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Mel.sm_SpawnSpecialSecret.wav");
-            SandedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Sanded{0}.wav", 3);
-            SandedClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Mel.sm_Sanded{0}.wav", 3);
+            IntroClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_spawnspecial.wav");
+            IntroClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_spawnspecial.wav");
+            IntroClipSecondNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_spawnspecial2.wav");
+            IntroClipSecondSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_spawnspecial2.wav");
+            BigPainClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_bigpain.wav");
+            BigPainClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_bigpain.wav");
+            LungeClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_lunge.wav");
+            LungeClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_lunge.wav");
+            ComboClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_combo.wav");
+            ComboClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_combo.wav");
+            DeathClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_death.wav");
+            DeathClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_death.wav");
+            KnockdownClipSpecialNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_knockdownspecial.wav");
+            KnockdownClipSpecialSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_knockdownspecial.wav");
+            KnockdownClipSpecialBrutalNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_pieceofshit.wav");
+            KnockdownClipSpecialBrutalSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_pieceofshit.wav");
+            SpawnClipSecretNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecialsecret.wav");
+            SpawnClipSecretSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/mel/sm_spawnspecialsecret.wav");
+            SandedClipsNoto = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/noto/sm_sanded{0}.wav", 3);
+            SandedClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/mel/sm_sanded{0}.wav", 3);
 
-            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecialAgony.wav");
-            AgonySpawnClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecialAgony.wav");
-            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_SpawnSpecialTundra.wav");
-            TundraSpawnClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_SpawnSpecialTundra.wav");
-            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_DownedAgony.wav");
-            AgonyKnockdownClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_DownedAgony.wav");
-            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip("Swordsmachine.Noto.sm_DownedTundra.wav");
-            TundraKnockdownClipSoil = UltraVoicePlugin.LoadClip("Swordsmachine.Soil.sm_DownedTundra.wav");
+            AgonySpawnClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_spawnspecialagony.wav");
+            AgonySpawnClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_spawnspecialagony.wav");
+            TundraSpawnClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_spawnspecialtundra.wav");
+            TundraSpawnClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_spawnspecialtundra.wav");
+            AgonyKnockdownClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_downedagony.wav");
+            AgonyKnockdownClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_downedagony.wav");
+            TundraKnockdownClipNoto = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/noto/sm_downedtundra.wav");
+            TundraKnockdownClipSoil = UltraVoicePlugin.LoadClip("assets/resources/swordsmachine/soil/sm_downedtundra.wav");
 
-            SpawnClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Spawn{0}.wav", 7);
-            SpawnClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Spawn{0}.wav", 7);
-            EnrageClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Enrage{0}.wav", 4);
-            EnrageClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Enrage{0}.wav", 4);
-            KnockdownClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Knockdown{0}.wav", 3);
-            KnockdownClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Knockdown{0}.wav", 3);
-            RangedClipsNoto = UltraVoicePlugin.LoadClips("Swordsmachine.Noto.sm_Ranged{0}.wav", 2);
-            RangedClipsSoil = UltraVoicePlugin.LoadClips("Swordsmachine.Soil.sm_Ranged{0}.wav", 2);
+            SpawnClipsNoto = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/noto/sm_spawn{0}.wav", 7);
+            SpawnClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/soil/sm_spawn{0}.wav", 7);
+            EnrageClipsNoto = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/noto/sm_enrage{0}.wav", 4);
+            EnrageClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/soil/sm_enrage{0}.wav", 4);
+            KnockdownClipsNoto = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/noto/sm_knockdown{0}.wav", 3);
+            KnockdownClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/soil/sm_knockdown{0}.wav", 3);
+            RangedClipsNoto = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/noto/sm_ranged{0}.wav", 2);
+            RangedClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/swordsmachine/soil/sm_ranged{0}.wav", 2);
 
             logger.LogInfo("Swordsmachine voice lines loaded successfully!");
         }

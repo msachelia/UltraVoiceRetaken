@@ -49,13 +49,13 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            AwakenClip = UltraVoicePlugin.LoadClip("HideousMass.Soil.mass_SpawnSpecial.wav");
+            AwakenClip = UltraVoicePlugin.LoadClip("assets/resources/hideousmass/soil/mass_spawnspecial.wav");
 
-            ChatterClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Generic{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Enrage{0}.wav", 4);
-            HarpoonClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Harpoon{0}.wav", 3);
-            ParryClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Parried{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("HideousMass.Soil.mass_Death{0}.wav", 2);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/hideousmass/soil/mass_generic{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/hideousmass/soil/mass_enrage{0}.wav", 4);
+            HarpoonClips = UltraVoicePlugin.LoadClips("assets/resources/hideousmass/soil/mass_harpoon{0}.wav", 3);
+            ParryClips = UltraVoicePlugin.LoadClips("assets/resources/hideousmass/soil/mass_parried{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/hideousmass/soil/mass_death{0}.wav", 2);
 
             logger.LogInfo("Hideous Mass voice lines loaded successfully!");
         }

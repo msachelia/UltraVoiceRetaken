@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Filth.CFanim.fil_Chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/filth/cfanim/fil_chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("Filth.CFanim.fil_Attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Filth.CFanim.fil_Death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("assets/resources/filth/cfanim/fil_attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/filth/cfanim/fil_death.wav");
 
             logger.LogInfo("Filth voice lines loaded successfully!");
         }

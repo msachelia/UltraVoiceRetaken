@@ -36,10 +36,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChaseClips = UltraVoicePlugin.LoadClips("Wicked.Cyberlord.wicked_Chase{0}.wav", 6);
+            ChaseClips = UltraVoicePlugin.LoadClips("assets/resources/wicked/cyberlord/wicked_chase{0}.wav", 6);
 
-            SkullPickupClip = UltraVoicePlugin.LoadClip("Wicked.Cyberlord.wicked_SkullPickup.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("Wicked.Cyberlord.wicked_Death.wav");
+            SkullPickupClip = UltraVoicePlugin.LoadClip("assets/resources/wicked/cyberlord/wicked_skullpickup.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/wicked/cyberlord/wicked_death.wav");
 
             logger.LogInfo("Something Wicked voice lines loaded successfully!");
         }

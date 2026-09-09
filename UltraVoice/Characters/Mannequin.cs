@@ -12,8 +12,8 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("Mannequin.Noto.mq_Laugh{0}.wav", 5);
-            DeathClips = UltraVoicePlugin.LoadClips("Mannequin.Noto.mq_Death{0}.wav", 2);
+            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/mannequin/noto/mq_laugh{0}.wav", 5);
+            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/mannequin/noto/mq_death{0}.wav", 2);
 
             logger.LogInfo("Mannequin voice lines loaded successfully!");
         }

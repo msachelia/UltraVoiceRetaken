@@ -29,10 +29,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            GenericClips = UltraVoicePlugin.LoadClips("MaliciousFace.Rotund.maurice_Generic{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("MaliciousFace.Rotund.maurice_Enraged{0}.wav", 3);
+            GenericClips = UltraVoicePlugin.LoadClips("assets/resources/maliciousface/rotund/maurice_generic{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/maliciousface/rotund/maurice_enraged{0}.wav", 3);
 
-            DeathClip = UltraVoicePlugin.LoadClip("MaliciousFace.Rotund.maurice_Death.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/maliciousface/rotund/maurice_death.wav");
 
             logger.LogInfo("Malicious Face voice lines loaded successfully!");
         }

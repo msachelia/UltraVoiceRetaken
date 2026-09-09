@@ -63,15 +63,15 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Spawn{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Attack{0}.wav", 5);
-            EnrageClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Enrage{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("Virtue.Noto.virtue_Death{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/virtue/noto/virtue_spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/virtue/noto/virtue_attack{0}.wav", 5);
+            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/virtue/noto/virtue_enrage{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/virtue/noto/virtue_death{0}.wav", 3);
 
-            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Spawn{0}.wav", 5);
-            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Attack{0}.wav", 5);
-            EnrageClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Enrage{0}.wav", 3);
-            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Virtue.Virchew.virtue_Death{0}.wav", 3);
+            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/virtue/virchew/virtue_spawn{0}.wav", 5);
+            AttackClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/virtue/virchew/virtue_attack{0}.wav", 5);
+            EnrageClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/virtue/virchew/virtue_enrage{0}.wav", 3);
+            DeathClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/virtue/virchew/virtue_death{0}.wav", 3);
 
             logger.LogInfo("Virtue voice lines loaded successfully!");
         }

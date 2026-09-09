@@ -49,9 +49,9 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Spawn{0}.wav", 5);
-            AttackClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Chatter{0}.wav", 5);
-            DodgeClips = UltraVoicePlugin.LoadClips("Providence.Goober.prov_Dodge{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/providence/goober/prov_spawn{0}.wav", 5);
+            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/providence/goober/prov_chatter{0}.wav", 5);
+            DodgeClips = UltraVoicePlugin.LoadClips("assets/resources/providence/goober/prov_dodge{0}.wav", 3);
 
             logger.LogInfo("Providence voice lines loaded successfully!");
         }
