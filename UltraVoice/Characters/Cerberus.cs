@@ -104,29 +104,29 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            PreludeClip = UltraVoicePlugin.LoadClip("assets/resources/cerberus/mel/cerb_wakeupspecial.wav");
-            AwakenClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_wakeup{0}.wav", 6);
-            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_enrage{0}.wav", 4);
-            ThrowClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_orb{0}.wav", 2);
-            StompClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_stomp{0}.wav", 2);
-            TackleClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_tackle{0}.wav", 2);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/cerberus/mel/cerb_death{0}.wav", 3);
+            PreludeClip = UltraVoicePlugin.LoadClip("Cerberus.Mel.cerb_WakeUpSpecial.wav");
+            AwakenClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_WakeUp{0}.wav", 6);
+            EnrageClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Enrage{0}.wav", 4);
+            ThrowClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Orb{0}.wav", 2);
+            StompClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Stomp{0}.wav", 2);
+            TackleClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Tackle{0}.wav", 2);
+            DeathClips = UltraVoicePlugin.LoadClips("Cerberus.Mel.cerb_Death{0}.wav", 3);
 
-            PreludeClipSoil = UltraVoicePlugin.LoadClip("assets/resources/cerberus/soil/cerb_wakeupspecial.wav");
-            AwakenClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_wakeup{0}.wav", 6);
-            EnrageClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_enrage{0}.wav", 4);
-            ThrowClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_orb{0}.wav", 2);
-            StompClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_stomp{0}.wav", 2);
-            TackleClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_tackle{0}.wav", 2);
-            DeathClipsSoil = UltraVoicePlugin.LoadClips("assets/resources/cerberus/soil/cerb_death{0}.wav", 3);
+            PreludeClipSoil = UltraVoicePlugin.LoadClip("Cerberus.Soil.cerb_WakeUpSpecial.wav");
+            AwakenClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_WakeUp{0}.wav", 6);
+            EnrageClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Enrage{0}.wav", 4);
+            ThrowClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Orb{0}.wav", 2);
+            StompClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Stomp{0}.wav", 2);
+            TackleClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Tackle{0}.wav", 2);
+            DeathClipsSoil = UltraVoicePlugin.LoadClips("Cerberus.Soil.cerb_Death{0}.wav", 3);
 
-            PreludeClipRotund = UltraVoicePlugin.LoadClip("assets/resources/cerberus/rotund/cerb_wakeupspecial.wav");
-            AwakenClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_wakeup{0}.wav", 6);
-            EnrageClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_enrage{0}.wav", 4);
-            ThrowClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_orb{0}.wav", 2);
-            StompClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_stomp{0}.wav", 2);
-            TackleClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_tackle{0}.wav", 2);
-            DeathClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/cerberus/rotund/cerb_death{0}.wav", 3);
+            PreludeClipRotund = UltraVoicePlugin.LoadClip("Cerberus.Rotund.cerb_WakeUpSpecial.wav");
+            AwakenClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_WakeUp{0}.wav", 6);
+            EnrageClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Enrage{0}.wav", 4);
+            ThrowClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Orb{0}.wav", 2);
+            StompClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Stomp{0}.wav", 2);
+            TackleClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Tackle{0}.wav", 2);
+            DeathClipsRotund = UltraVoicePlugin.LoadClips("Cerberus.Rotund.cerb_Death{0}.wav", 3);
 
             logger.LogInfo("Cerberus voice lines loaded successfully!");
         }

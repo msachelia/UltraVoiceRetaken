@@ -11,9 +11,9 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/stalker/mitzi/stalker_chatter{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Chatter{0}.wav", 5);
 
-            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/stalker/mitzi/stalker_explode{0}.wav", 3);
+            AttackClips = UltraVoicePlugin.LoadClips("Stalker.Mitzi.stalker_Explode{0}.wav", 3);
 
             logger.LogInfo("Stalker voice lines loaded successfully!");
         }

@@ -26,15 +26,15 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/leviathan/noto/lev_chatter{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Leviathan.Noto.lev_Chatter{0}.wav", 5);
 
-            BiteClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_bite.wav");
-            BiteWindupClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_bitewindup.wav");
-            ParryClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_parried.wav");
-            RoarClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_roar.wav");
-            IntroRoarClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_introroar.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_death.wav");
-            DeathEndClip = UltraVoicePlugin.LoadClip("assets/resources/leviathan/noto/lev_deathend.wav");
+            BiteClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Bite.wav");
+            BiteWindupClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_BiteWindup.wav");
+            ParryClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Parried.wav");
+            RoarClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Roar.wav");
+            IntroRoarClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_IntroRoar.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_Death.wav");
+            DeathEndClip = UltraVoicePlugin.LoadClip("Leviathan.Noto.lev_DeathEnd.wav");
 
             logger.LogInfo("Leviathan voice lines loaded successfully!");
         }

@@ -67,17 +67,17 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/fem/mf_spawn{0}.wav", 5);
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/fem/mf_chatter{0}.wav", 5);
-            MeleeClips = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/fem/mf_melee{0}.wav", 4);
-            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/fem/mf_enrage{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/fem/mf_death{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Spawn{0}.wav", 5);
+            ChatterClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Chatter{0}.wav", 5);
+            MeleeClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Melee{0}.wav", 4);
+            EnrageClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Enrage{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("Mindflayer.Fem.mf_Death{0}.wav", 3);
 
-            SpawnClipsMasc = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/masc/mf_spawn{0}.wav", 5);
-            ChatterClipsMasc = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/masc/mf_chatter{0}.wav", 4);
-            MeleeClipsMasc = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/masc/mf_melee{0}.wav", 3);
-            EnrageClipsMasc = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/masc/mf_enrage{0}.wav", 4);
-            DeathClipsMasc = UltraVoicePlugin.LoadClips("assets/resources/mindflayer/masc/mf_death{0}.wav", 3);
+            SpawnClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Spawn{0}.wav", 5);
+            ChatterClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Chatter{0}.wav", 4);
+            MeleeClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Melee{0}.wav", 3);
+            EnrageClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Enrage{0}.wav", 4);
+            DeathClipsMasc = UltraVoicePlugin.LoadClips("Mindflayer.Masc.mf_Death{0}.wav", 3);
 
             logger.LogInfo("Mindflayer voice lines loaded successfully!");
         }

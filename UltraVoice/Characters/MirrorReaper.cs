@@ -52,29 +52,29 @@ namespace UltraVoice.Characters
         {
             SpawnClips = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/noto/mr_spawnspecial.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/noto/mr_spawn1.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/noto/mr_spawn2.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/noto/mr_spawn3.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_SpawnSpecial.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Noto.mr_Spawn3.wav"),
             };
 
-            LaughClips = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/noto/mr_laugh{0}.wav", 3);
-            MirrorTauntClips = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/noto/mr_mirrortaunt{0}.wav", 3);
-            PuppetHandClips = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/noto/mr_puppethand{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/noto/mr_death{0}.wav", 3);
+            LaughClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_Laugh{0}.wav", 3);
+            MirrorTauntClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_MirrorTaunt{0}.wav", 3);
+            PuppetHandClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_PuppetHand{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("MirrorReaper.Noto.mr_Death{0}.wav", 3);
 
             SpawnClipsRotund = new AudioClip[]
             {
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/rotund/mr_spawnspecial.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/rotund/mr_spawn1.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/rotund/mr_spawn2.wav"),
-                UltraVoicePlugin.LoadClip("assets/resources/mirrorreaper/rotund/mr_spawn3.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_SpawnSpecial.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn1.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn2.wav"),
+                UltraVoicePlugin.LoadClip("MirrorReaper.Rotund.mr_Spawn3.wav"),
             };
 
-            LaughClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/rotund/mr_laugh{0}.wav", 3);
-            MirrorTauntClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/rotund/mr_mirrortaunt{0}.wav", 3);
-            PuppetHandClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/rotund/mr_puppethand{0}.wav", 4);
-            DeathClipsRotund = UltraVoicePlugin.LoadClips("assets/resources/mirrorreaper/rotund/mr_death{0}.wav", 3);
+            LaughClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_Laugh{0}.wav", 3);
+            MirrorTauntClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_MirrorTaunt{0}.wav", 3);
+            PuppetHandClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_PuppetHand{0}.wav", 4);
+            DeathClipsRotund = UltraVoicePlugin.LoadClips("MirrorReaper.Rotund.mr_Death{0}.wav", 3);
 
             logger.LogInfo("Mirror Reaper voice lines loaded successfully!");
         }

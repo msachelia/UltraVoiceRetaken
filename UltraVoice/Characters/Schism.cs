@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/schism/mel/sch_chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Schism.Mel.sch_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("assets/resources/schism/mel/sch_attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/schism/mel/sch_death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Schism.Mel.sch_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Schism.Mel.sch_Death.wav");
 
             logger.LogInfo("Schism voice lines loaded successfully!");
         }
