@@ -13,18 +13,18 @@ namespace UltraVoice.Characters
 
         public static readonly string[] GenericSubs =
         {
-            "BLEED...",
-            "FOOLISH...",
-            "FUTILE...",
-            "FRAIL...",
-            "WEAKLING..."
+            "BLEED",
+            "FOOLISH",
+            "FUTILE",
+            "FRAIL",
+            "WEAKLING"
         };
 
         public static readonly string[] EnrageSubs =
         {
-            "ENOUGH.",
-            "SUFFER.",
-            "PATHETIC."
+            "ENOUGH",
+            "SUFFER",
+            "PATHETIC"
         };
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)

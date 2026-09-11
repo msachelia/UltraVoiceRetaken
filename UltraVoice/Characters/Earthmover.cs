@@ -98,8 +98,8 @@ namespace UltraVoice.Characters
             IntroPlayed = true;
 
             PlayAnnouncement(3f, "Earthmover_Intro", UseEarthmoverClip(IntroClip, IntroClipTondar, IntroClipMegaslash),
-                "HIGH-PRIORITY TARGET DETECTED.",
-                (2.15f, 2.55f, 2.9f, "READYING WEAPONS.")
+                "HIGH-PRIORITY TARGET DETECTED",
+                (2.15f, 2.55f, 2.9f, "READYING WEAPONS")
             );
         }
 
@@ -149,9 +149,9 @@ namespace UltraVoice.Characters
                 return;
 
             PlayAnnouncement(3f, "Earthmover_Shoot", UseEarthmoverClip(ShootClip, ShootClipTondar, ShootClipMegaslash),
-                "FIRING SEQUENCE INTERRUPTED.",
+                "FIRING SEQUENCE INTERRUPTED",
                 (2.1f, 2.05f, 2.55f, "EXTERIOR HULL INTEGRITY:"),
-                (1.5f, 1.6f, 2.4f, "60%.")
+                (1.5f, 1.6f, 2.4f, "60%")
             );
         }
 

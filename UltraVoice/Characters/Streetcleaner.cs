@@ -13,20 +13,20 @@ namespace UltraVoice.Characters
 
         public static readonly string[] ChatterSubs =
         {
-            "IMPURITY.",
-            "SANITIZE.",
-            "EXTERMINATE.",
-            "PURGE.",
-            "UNCLEAN."
+            "IMPURITY",
+            "SANITIZE",
+            "EXTERMINATE",
+            "PURGE",
+            "UNCLEAN"
         };
 
         public static readonly string[] AttackSubs =
         {
-            "CLEANSING...",
-            "PURIFYING...",
-            "TO ASH...",
-            "QUIT MOVING.",
-            "STOP RESISTING."
+            "CLEANSING",
+            "PURIFYING",
+            "TO ASH",
+            "QUIT MOVING",
+            "STOP RESISTING"
         };
 
         public static readonly string[] ParrySubs =

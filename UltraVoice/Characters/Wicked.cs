@@ -14,15 +14,15 @@ namespace UltraVoice.Characters
 
         public static readonly string[] ChaseSubs =
         {
-            "LEAVE...",
-            "GET OUT...",
-            "UNWELCOME...",
-            "TURN BACK...",
-            "GO AWAY...",
-            "UNWANTED..."
+            "LEAVE",
+            "GET OUT",
+            "UNWELCOME",
+            "TURN BACK",
+            "GO AWAY",
+            "UNWANTED"
         };
 
-        public static readonly string SkullPickupSub = "NO...";
+        public static readonly string SkullPickupSub = "NO";
         public static readonly string DeathSub = "RELEASE...";
 
         public static readonly Color WickedColor = new Color(0.2f, 0.2f, 0.2f);

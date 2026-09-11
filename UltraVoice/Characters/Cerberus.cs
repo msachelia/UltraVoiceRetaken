@@ -35,11 +35,11 @@ namespace UltraVoice.Characters
         public static readonly string[] AwakenSubs =
         {
             "Who dares awaken me?",
-            "You will go no further.",
-            "Your story ends here.",
-            "Your defiance shall be punished.",
-            "Be gone, or be destroyed.",
-            "You stand condemned."
+            "You will go no further",
+            "Your story ends here",
+            "Your defiance shall be punished",
+            "Be gone, or be destroyed",
+            "You stand condemned"
         };
 
         public static readonly string[] EnrageSubs =
@@ -52,20 +52,20 @@ namespace UltraVoice.Characters
 
         public static readonly string[] ThrowSubs =
         {
-            "Perish!",
-            "Die!"
+            "Perish",
+            "Die"
         };
 
         public static readonly string[] StompSubs =
         {
-            "Tremble!",
-            "Fall!"
+            "Tremble",
+            "Fall"
         };
 
         public static readonly string[] TackleSubs =
         {
-            "Face me!",
-            "You cannot run!"
+            "Face me",
+            "You cannot run"
         };
 
         public static Color CerberusColor => VoiceManager.GetEnemyTypeColor(EnemyType.Cerberus);
@@ -158,7 +158,7 @@ namespace UltraVoice.Characters
                 cerb,
                 "CerberusIntro",
                 CerberusCharacter.UseCerberusClip(CerberusCharacter.PreludeClip, CerberusCharacter.PreludeClipSoil, CerberusCharacter.PreludeClipRotund),
-                "You tread forbidden ground, machine.",
+                "You tread forbidden ground, machine",
                 shouldInterrupt: true,
                 subtitleColor: CerberusCharacter.CerberusColor,
                 parentToEnemy: false,
@@ -173,7 +173,7 @@ namespace UltraVoice.Characters
             if (src == null)
                 yield break;
 
-            VoiceManager.ShowSubtitle("BE GONE!", src, CerberusCharacter.CerberusColor);
+            VoiceManager.ShowSubtitle("BEGONE", src, CerberusCharacter.CerberusColor);
         }
     }
 

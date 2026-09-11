@@ -101,7 +101,7 @@ namespace UltraVoice.Characters
         {
             "IS THAT ALL YOU GOT?",
             "I AIN'T DONE WITH YOU YET!",
-            "I'M JUST GETTING STARTED."
+            "I'M JUST GETTING STARTED!"
         };
 
         public static readonly string[] RangedSubs =
