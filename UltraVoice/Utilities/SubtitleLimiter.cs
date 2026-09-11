@@ -46,10 +46,8 @@ namespace UltraVoice.Patches
 
                     if (oldest == null) break;
 
-                    Transform parent = oldest.transform.parent;
-                    Object.Destroy(oldest.gameObject);
+                    ReleaseAndDestroy(oldest);
                     activeCount--;
-                    if (parent != null) ForceRebuildContainerLayout(parent);
                 }
             }
             catch (System.Exception ex)
@@ -95,6 +93,22 @@ namespace UltraVoice.Patches
             }
         }
 
+        public static void ReleaseAndDestroy(Subtitle subtitle)
+        {
+            if (subtitle == null) return;
+
+            Transform parent = subtitle.transform.parent;
+
+            MonoSingleton<SubtitleController>.Instance?.NotifyHoldEnd(subtitle);
+
+            if (subtitle.nextInChain != null)
+                subtitle.nextInChain.ContinueChain();
+
+            Object.Destroy(subtitle.gameObject);
+
+            ForceRebuildContainerLayout(parent);
+        }
+
         public static void ForceRebuildContainerLayout(Transform container)
         {
             if (container == null) return;
@@ -113,6 +127,7 @@ namespace UltraVoice.Patches
         private CanvasGroup group;
         private float fadeOutSpeed;
         private Coroutine monitorCoroutine;
+        private bool watching;
 
         private const float WaitBeforeFadeAfterAudio = 5f;
         private const float LifetimeBeforeAutoFade = 5f;
@@ -130,13 +145,25 @@ namespace UltraVoice.Patches
 
         public void StartWatching()
         {
+            watching = true;
+
             if (monitorCoroutine == null)
+                monitorCoroutine = StartCoroutine(MonitorLifecycle());
+        }
+
+        private void OnEnable()
+        {
+            if (watching && monitorCoroutine == null)
                 monitorCoroutine = StartCoroutine(MonitorLifecycle());
         }
 
         private void OnDisable()
         {
-            if (monitorCoroutine != null) StopCoroutine(monitorCoroutine);
+            if (monitorCoroutine != null)
+            {
+                StopCoroutine(monitorCoroutine);
+                monitorCoroutine = null;
+            }
         }
 
         private IEnumerator MonitorLifecycle()
@@ -147,9 +174,7 @@ namespace UltraVoice.Patches
                 int max = (UltraVoicePlugin.SubtitleLimit != null) ? UltraVoicePlugin.SubtitleLimit.Value : 5;
                 if (active > max)
                 {
-                    Transform parent = subtitle.transform.parent;
-                    Object.Destroy(subtitle.gameObject);
-                    SubtitleLimitPatch.ForceRebuildContainerLayout(parent);
+                    SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
                     Destroy(this);
                     yield break;
                 }
@@ -167,9 +192,7 @@ namespace UltraVoice.Patches
                         active = CountActiveSubtitles();
                         if (active > max)
                         {
-                            Transform parent = subtitle.transform.parent;
-                            Object.Destroy(subtitle.gameObject);
-                            SubtitleLimitPatch.ForceRebuildContainerLayout(parent);
+                            SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
                             Destroy(this);
                             yield break;
                         }
@@ -189,9 +212,7 @@ namespace UltraVoice.Patches
                         active = CountActiveSubtitles();
                         if (active > max)
                         {
-                            Transform parent = subtitle.transform.parent;
-                            Object.Destroy(subtitle.gameObject);
-                            SubtitleLimitPatch.ForceRebuildContainerLayout(parent);
+                            SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
                             Destroy(this);
                             yield break;
                         }
@@ -251,9 +272,7 @@ namespace UltraVoice.Patches
         {
             if (group == null)
             {
-                Transform p = subtitle.transform.parent;
-                Object.Destroy(subtitle.gameObject);
-                SubtitleLimitPatch.ForceRebuildContainerLayout(p);
+                SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
                 Destroy(this);
                 yield break;
             }
@@ -264,9 +283,7 @@ namespace UltraVoice.Patches
 
             if (duration <= 0.0001f)
             {
-                Transform p = subtitle.transform.parent;
-                Object.Destroy(subtitle.gameObject);
-                SubtitleLimitPatch.ForceRebuildContainerLayout(p);
+                SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
                 Destroy(this);
                 yield break;
             }
@@ -280,10 +297,7 @@ namespace UltraVoice.Patches
             }
 
             group.alpha = 0f;
-            MonoSingleton<SubtitleController>.Instance?.NotifyHoldEnd(subtitle);
-            Transform parentAfter = subtitle.transform.parent;
-            Object.Destroy(subtitle.gameObject);
-            SubtitleLimitPatch.ForceRebuildContainerLayout(parentAfter);
+            SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
             Destroy(this);
         }
     }
