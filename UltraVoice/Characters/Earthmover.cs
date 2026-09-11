@@ -110,35 +110,35 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_intro.wav");
-            ShootClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_shoot.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_death.wav");
-            IdolClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_idol.wav");
-            BloodVentClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_bloodvent.wav");
-            DefenseSystemClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_defensesystem.wav");
-            BloodFloodClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_bloodflood.wav");
-            BrainBattleClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_brainbattle.wav");
-            BrainKilledClip = UltraVoicePlugin.LoadClip("assets/resources/earthmover/rotund/em_brainkilled.wav");
+            IntroClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_Intro.wav");
+            ShootClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_Shoot.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_Death.wav");
+            IdolClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_Idol.wav");
+            BloodVentClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_BloodVent.wav");
+            DefenseSystemClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_DefenseSystem.wav");
+            BloodFloodClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_BloodFlood.wav");
+            BrainBattleClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_BrainBattle.wav");
+            BrainKilledClip = UltraVoicePlugin.LoadClip("Earthmover.Rotund.em_BrainKilled.wav");
 
-            IntroClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_intro.wav");
-            ShootClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_shoot.wav");
-            DeathClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_death.wav");
-            IdolClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_idol.wav");
-            BloodVentClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_bloodvent.wav");
-            DefenseSystemClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_defensesystem.wav");
-            BloodFloodClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_bloodflood.wav");
-            BrainBattleClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_brainbattle.wav");
-            BrainKilledClipTondar = UltraVoicePlugin.LoadClip("assets/resources/earthmover/tondar/em_brainkilled.wav");
+            IntroClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_Intro.wav");
+            ShootClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_Shoot.wav");
+            DeathClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_Death.wav");
+            IdolClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_Idol.wav");
+            BloodVentClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_BloodVent.wav");
+            DefenseSystemClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_DefenseSystem.wav");
+            BloodFloodClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_BloodFlood.wav");
+            BrainBattleClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_BrainBattle.wav");
+            BrainKilledClipTondar = UltraVoicePlugin.LoadClip("Earthmover.Tondar.em_BrainKilled.wav");
 
-            IntroClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_intro.wav");
-            ShootClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_shoot.wav");
-            DeathClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_death.wav");
-            IdolClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_idol.wav");
-            BloodVentClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_bloodvent.wav");
-            DefenseSystemClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_defensesystem.wav");
-            BloodFloodClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_bloodflood.wav");
-            BrainBattleClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_brainbattle.wav");
-            BrainKilledClipMegaslash = UltraVoicePlugin.LoadClip("assets/resources/earthmover/megaslash/em_brainkilled.wav");
+            IntroClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_Intro.wav");
+            ShootClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_Shoot.wav");
+            DeathClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_Death.wav");
+            IdolClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_Idol.wav");
+            BloodVentClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_BloodVent.wav");
+            DefenseSystemClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_DefenseSystem.wav");
+            BloodFloodClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_BloodFlood.wav");
+            BrainBattleClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_BrainBattle.wav");
+            BrainKilledClipMegaslash = UltraVoicePlugin.LoadClip("Earthmover.Megaslash.em_BrainKilled.wav");
 
             logger.LogInfo("Earthmover voice lines loaded successfully!");
         }

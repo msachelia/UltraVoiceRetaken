@@ -63,19 +63,19 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            DigInClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_digin{0}.wav", 6);
-            InterruptPainClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_pain{0}.wav", 2);
-            InterruptClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_interrupt{0}.wav", 5);
-            ShootClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_fire{0}.wav", 3);
-            KickClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_kick{0}.wav", 3);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/sentry/noto/tur_death{0}.wav", 2);
+            DigInClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_DigIn{0}.wav", 6);
+            InterruptPainClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Pain{0}.wav", 2);
+            InterruptClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Interrupt{0}.wav", 5);
+            ShootClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Fire{0}.wav", 3);
+            KickClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Kick{0}.wav", 3);
+            DeathClips = UltraVoicePlugin.LoadClips("Sentry.Noto.tur_Death{0}.wav", 2);
 
-            DigInClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_digin{0}.wav", 6);
-            InterruptPainClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_pain{0}.wav", 2);
-            InterruptClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_interrupt{0}.wav", 5);
-            ShootClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_fire{0}.wav", 3);
-            KickClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_kick{0}.wav", 3);
-            DeathClipsGoob = UltraVoicePlugin.LoadClips("assets/resources/sentry/goober/tur_death{0}.wav", 2);
+            DigInClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_DigIn{0}.wav", 6);
+            InterruptPainClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Pain{0}.wav", 2);
+            InterruptClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Interrupt{0}.wav", 5);
+            ShootClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Fire{0}.wav", 3);
+            KickClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Kick{0}.wav", 3);
+            DeathClipsGoob = UltraVoicePlugin.LoadClips("Sentry.Goober.tur_Death{0}.wav", 2);
 
             logger.LogInfo("Sentry voice lines loaded successfully!");
         }

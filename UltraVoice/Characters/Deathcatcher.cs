@@ -22,7 +22,7 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ReviveClips = UltraVoicePlugin.LoadClips("assets/resources/deathcatcher/test/dc_revive{0}.wav", 6);
+            ReviveClips = UltraVoicePlugin.LoadClips("Deathcatcher.Test.dc_Revive{0}.wav", 6);
 
             logger.LogInfo("Deathcatcher voice lines loaded successfully!");
         }

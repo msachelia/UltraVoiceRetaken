@@ -275,8 +275,6 @@ namespace UltraVoice
                 ConfigManager.LoadConfig(ConfigModule);
             }
 
-            LoadVoiceBundle();
-
             LoadAssets();
 
             harmony = new Harmony(PluginGuid);
@@ -424,29 +422,42 @@ namespace UltraVoice
             return clips;
         }
 
-        public const string VoiceBundleName = "ultravoice.retaken";
-
-        static AssetBundle voiceBundle;
-
-        void LoadVoiceBundle()
-        {
-            voiceBundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Info.Location), VoiceBundleName));
-
-            if (voiceBundle == null)
-                Logger.LogError($"UltraVoice failed to load {VoiceBundleName}. No voice lines will play.");
-        }
-
         public static AudioClip LoadClip(string resourcePath)
         {
-            if (voiceBundle == null)
+            try
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+
+                if (!resourcePath.StartsWith("UltraVoice.Resources."))
+                    resourcePath = $"UltraVoice.Resources.{resourcePath}";
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
+                {
+                    if (stream == null)
+                    {
+                        Instance.Logger.LogWarning($"UltraVoice missing clip: {resourcePath}");
+                        return null;
+                    }
+
+                    byte[] audioData = new byte[stream.Length];
+                    stream.Read(audioData, 0, audioData.Length);
+
+                    AudioClip clip = WavUtility.ToAudioClip(audioData);
+
+                    if (clip == null)
+                    {
+                        Instance.Logger.LogWarning($"UltraVoice failed to convert clip: {resourcePath}");
+                        return null;
+                    }
+
+                    return clip;
+                }
+            }
+            catch (System.Exception e)
+            {
+                Instance.Logger.LogError($"UltraVoice error loading clip {resourcePath}: {e}");
                 return null;
-
-            AudioClip clip = voiceBundle.LoadAsset<AudioClip>(resourcePath);
-
-            if (clip == null)
-                Instance.Logger.LogWarning($"UltraVoice missing clip: {resourcePath}");
-
-            return clip;
+            }
         }
 
     }

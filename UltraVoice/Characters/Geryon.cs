@@ -64,23 +64,23 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            IntroClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_intro.wav");
-            IntroClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_intro.wav");
-            RestartClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_respawn.wav");
-            RestartClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_respawn.wav");
-            EnrageClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_enrage.wav");
-            EnrageClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_enrage.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_death.wav");
-            DeathClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_death.wav");
-            BigPainClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_bigpain.wav");
-            BigPainClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_bigpain.wav");
-            RecoverClip = UltraVoicePlugin.LoadClip("assets/resources/geryon/theratman_valin_megaslash/ger_recover.wav");
-            RecoverClipMel = UltraVoicePlugin.LoadClip("assets/resources/geryon/mel/ger_recover.wav");
+            IntroClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_Intro.wav");
+            IntroClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_Intro.wav");
+            RestartClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_Respawn.wav");
+            RestartClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_Respawn.wav");
+            EnrageClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_Enrage.wav");
+            EnrageClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_Enrage.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_Death.wav");
+            DeathClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_Death.wav");
+            BigPainClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_BigPain.wav");
+            BigPainClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_BigPain.wav");
+            RecoverClip = UltraVoicePlugin.LoadClip("Geryon.TheRatman_Valin_Megaslash.ger_Recover.wav");
+            RecoverClipMel = UltraVoicePlugin.LoadClip("Geryon.Mel.ger_Recover.wav");
 
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/geryon/theratman_valin_megaslash/ger_chatter{0}.wav", 9);
-            ChatterClipsMel = UltraVoicePlugin.LoadClips("assets/resources/geryon/mel/ger_chatter{0}.wav", 9);
-            OverheatClips = UltraVoicePlugin.LoadClips("assets/resources/geryon/theratman_valin_megaslash/ger_overheat{0}.wav", 3);
-            OverheatClipsMel = UltraVoicePlugin.LoadClips("assets/resources/geryon/mel/ger_overheat{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Geryon.TheRatman_Valin_Megaslash.ger_Chatter{0}.wav", 9);
+            ChatterClipsMel = UltraVoicePlugin.LoadClips("Geryon.Mel.ger_Chatter{0}.wav", 9);
+            OverheatClips = UltraVoicePlugin.LoadClips("Geryon.TheRatman_Valin_Megaslash.ger_Overheat{0}.wav", 3);
+            OverheatClipsMel = UltraVoicePlugin.LoadClips("Geryon.Mel.ger_Overheat{0}.wav", 3);
 
             logger.LogInfo("Geryon voice lines loaded successfully!");
         }

@@ -76,23 +76,23 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_spawn{0}.wav", 4);
-            AttackClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_attack{0}.wav", 3);
-            LandmineClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_landmine{0}.wav", 3);
-            PunchClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_punch{0}.wav", 3);
-            PunchHitClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_punchhit{0}.wav", 3);
-            FrustratedClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_punchtrip{0}.wav", 4);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_death{0}.wav", 3);
-            TripPainClips = UltraVoicePlugin.LoadClips("assets/resources/guttertank/mel/gt_trippain{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Spawn{0}.wav", 4);
+            AttackClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Attack{0}.wav", 3);
+            LandmineClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Landmine{0}.wav", 3);
+            PunchClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Punch{0}.wav", 3);
+            PunchHitClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_PunchHit{0}.wav", 3);
+            FrustratedClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_PunchTrip{0}.wav", 4);
+            DeathClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_Death{0}.wav", 3);
+            TripPainClips = UltraVoicePlugin.LoadClips("Guttertank.Mel.gt_TripPain{0}.wav", 3);
 
-            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_spawn{0}.wav", 4);
-            AttackClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_attack{0}.wav", 3);
-            LandmineClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_landmine{0}.wav", 3);
-            PunchClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_punch{0}.wav", 3);
-            PunchHitClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_punchhit{0}.wav", 3);
-            FrustratedClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_punchtrip{0}.wav", 4);
-            DeathClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_death{0}.wav", 3);
-            TripPainClipsVirchew = UltraVoicePlugin.LoadClips("assets/resources/guttertank/virchew/gt_trippain{0}.wav", 3);
+            SpawnClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Spawn{0}.wav", 4);
+            AttackClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Attack{0}.wav", 3);
+            LandmineClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Landmine{0}.wav", 3);
+            PunchClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Punch{0}.wav", 3);
+            PunchHitClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_PunchHit{0}.wav", 3);
+            FrustratedClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_PunchTrip{0}.wav", 4);
+            DeathClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_Death{0}.wav", 3);
+            TripPainClipsVirchew = UltraVoicePlugin.LoadClips("Guttertank.Virchew.gt_TripPain{0}.wav", 3);
 
             logger.LogInfo("Guttertank voice lines loaded successfully!");
         }

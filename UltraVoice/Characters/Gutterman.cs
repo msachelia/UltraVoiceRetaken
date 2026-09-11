@@ -57,19 +57,19 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            SpawnClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_spawn{0}.wav", 6);
-            PunchClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_punch{0}.wav", 3);
-            ShieldBreakClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_guardbreak{0}.wav", 3);
-            EnrageClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_enrage{0}.wav", 5);
-            DeathClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_death{0}.wav", 3);
-            ParryClips = UltraVoicePlugin.LoadClips("assets/resources/gutterman/mel/gm_parry{0}.wav", 3);
+            SpawnClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Spawn{0}.wav", 6);
+            PunchClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Punch{0}.wav", 3);
+            ShieldBreakClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_GuardBreak{0}.wav", 3);
+            EnrageClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Enrage{0}.wav", 5);
+            DeathClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Death{0}.wav", 3);
+            ParryClips = UltraVoicePlugin.LoadClips("Gutterman.Mel.gm_Parry{0}.wav", 3);
 
-            SpawnClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_spawn{0}.wav", 6);
-            PunchClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_punch{0}.wav", 3);
-            ShieldBreakClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_guardbreak{0}.wav", 3);
-            EnrageClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_enrage{0}.wav", 5);
-            DeathClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_death{0}.wav", 3);
-            ParryClipsLemen = UltraVoicePlugin.LoadClips("assets/resources/gutterman/lemen/gm_parry{0}.wav", 3);
+            SpawnClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Spawn{0}.wav", 6);
+            PunchClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Punch{0}.wav", 3);
+            ShieldBreakClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_GuardBreak{0}.wav", 3);
+            EnrageClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Enrage{0}.wav", 5);
+            DeathClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Death{0}.wav", 3);
+            ParryClipsLemen = UltraVoicePlugin.LoadClips("Gutterman.Lemen.gm_Parry{0}.wav", 3);
 
             logger.LogInfo("Gutterman voice lines loaded successfully!");
         }

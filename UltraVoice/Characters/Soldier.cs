@@ -12,10 +12,10 @@ namespace UltraVoice.Characters
 
         public static void LoadVoiceLines(BepInEx.Logging.ManualLogSource logger)
         {
-            ChatterClips = UltraVoicePlugin.LoadClips("assets/resources/soldier/lemen/sol_chatter{0}.wav", 3);
+            ChatterClips = UltraVoicePlugin.LoadClips("Soldier.Lemen.sol_Chatter{0}.wav", 3);
 
-            AttackClip = UltraVoicePlugin.LoadClip("assets/resources/soldier/lemen/sol_attack.wav");
-            DeathClip = UltraVoicePlugin.LoadClip("assets/resources/soldier/lemen/sol_death.wav");
+            AttackClip = UltraVoicePlugin.LoadClip("Soldier.Lemen.sol_Attack.wav");
+            DeathClip = UltraVoicePlugin.LoadClip("Soldier.Lemen.sol_Death.wav");
 
             logger.LogInfo("Soldier voice lines loaded successfully!");
         }
