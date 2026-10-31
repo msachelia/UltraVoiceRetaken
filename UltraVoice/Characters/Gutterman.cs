@@ -50,7 +50,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseGuttermanClips(AudioClip[] melClips, AudioClip[] lemenClips)
         {
-            return UltraVoicePlugin.GuttermanVoiceActorField != null && UltraVoicePlugin.GuttermanVoiceActorField.Value == UltraVoicePlugin.GuttermanVoiceActor.Lemen
+            return UltraVoicePlugin.GuttermanVoiceActorField != null && UltraVoicePlugin.GuttermanVoiceActorField.value == UltraVoicePlugin.GuttermanVoiceActor.Lemen
                 ? lemenClips
                 : melClips;
         }
@@ -80,7 +80,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
             if (__instance.dead) return;
 
@@ -100,7 +100,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
             if (__instance.enraged)
                 VoiceManager.PlayRandomVoice(__instance, "Gutterman",
@@ -124,7 +124,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Gutterman",
                 GuttermanCharacter.UseGuttermanClips(GuttermanCharacter.DeathClips, GuttermanCharacter.DeathClipsLemen),
@@ -140,7 +140,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
                 return;
@@ -159,7 +159,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Gutterman __instance)
         {
-            if (!UltraVoicePlugin.GuttermanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttermanVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Gutterman",
                 GuttermanCharacter.UseGuttermanClips(GuttermanCharacter.PunchClips, GuttermanCharacter.PunchClipsLemen),

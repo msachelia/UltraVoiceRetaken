@@ -56,7 +56,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseSentryClips(AudioClip[] notoClips, AudioClip[] goobClips)
         {
-            return UltraVoicePlugin.SentryVoiceActorField != null && UltraVoicePlugin.SentryVoiceActorField.Value == UltraVoicePlugin.SentryVoiceActor.Goober
+            return UltraVoicePlugin.SentryVoiceActorField != null && UltraVoicePlugin.SentryVoiceActorField.value == UltraVoicePlugin.SentryVoiceActor.Goober
                 ? goobClips
                 : notoClips;
         }
@@ -86,7 +86,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.DigInClips, SentryCharacter.DigInClipsGoob),
@@ -102,7 +102,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.ShootClips, SentryCharacter.ShootClipsGoob),
@@ -118,7 +118,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.KickClips, SentryCharacter.KickClipsGoob),
@@ -134,7 +134,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.InterruptPainClips, SentryCharacter.InterruptPainClipsGoob),
@@ -157,7 +157,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             if (__instance.aiming) return;
 
@@ -183,7 +183,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Turret __instance)
         {
-            if (!UltraVoicePlugin.SentryVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SentryVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Sentry",
                 SentryCharacter.UseSentryClips(SentryCharacter.DeathClips, SentryCharacter.DeathClipsGoob),

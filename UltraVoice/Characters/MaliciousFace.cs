@@ -52,7 +52,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -80,7 +80,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "MaliciousFace",
@@ -96,7 +96,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(MaliciousFace __instance)
         {
-            if (!UltraVoicePlugin.MauriceVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MauriceVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(__instance,

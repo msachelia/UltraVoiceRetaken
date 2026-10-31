@@ -51,7 +51,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
             if (Random.Range(0f, 1f) >= 0.75f)
@@ -101,7 +101,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Streetcleaner __instance)
         {
-            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.Value)
+            if (!UltraVoicePlugin.StreetcleanerVoiceEnabled.value)
                 return;
 
             if (Random.Range(0f, 1f) >= 0.5f)

@@ -43,7 +43,7 @@ namespace UltraVoice.Characters
 
         public static UltraVoicePlugin.EarthmoverVoiceActor CurrentActor =>
             UltraVoicePlugin.EarthmoverVoiceActorField != null
-                ? UltraVoicePlugin.EarthmoverVoiceActorField.Value
+                ? UltraVoicePlugin.EarthmoverVoiceActorField.value
                 : UltraVoicePlugin.EarthmoverVoiceActor.Rotund;
 
         public static AudioClip UseEarthmoverClip(AudioClip rotundClip, AudioClip tondarClip, AudioClip megaslashClip)
@@ -92,7 +92,7 @@ namespace UltraVoice.Characters
             if (string.IsNullOrEmpty(bossName) || !bossName.Contains("EARTHMOVER"))
                 return;
 
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             IntroPlayed = true;
@@ -207,7 +207,7 @@ namespace UltraVoice.Characters
             if (!EarthmoverCharacter.InEarthmoverLevel())
                 return;
 
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (Time.time - EarthmoverCharacter.lastIdolTime < 5f)
@@ -227,7 +227,7 @@ namespace UltraVoice.Characters
             if (EarthmoverCharacter.DeathPlayed)
                 return;
 
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (!EarthmoverCharacter.InEarthmoverLevel())
@@ -254,7 +254,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(AudioSource __instance)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.clip == null)
@@ -277,7 +277,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(AudioSource __instance, bool __result)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.clip == null)
@@ -324,7 +324,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Crossfade __instance)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (!EarthmoverCharacter.InEarthmoverLevel())
@@ -351,7 +351,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(CombinedBossBar __instance)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (!EarthmoverCharacter.InEarthmoverLevel())
@@ -375,7 +375,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(GameObject __instance)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (__instance == null)
@@ -412,7 +412,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(GameObject __instance)
         {
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (__instance == null || !__instance.activeSelf)
@@ -449,7 +449,7 @@ namespace UltraVoice.Characters
             if (__instance == null || !__instance.activeSelf)
                 return;
 
-            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.Value)
+            if (!UltraVoicePlugin.EarthmoverVoiceEnabled.value)
                 return;
 
             if (!EarthmoverCharacter.InEarthmoverLevel())

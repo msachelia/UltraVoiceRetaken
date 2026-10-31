@@ -81,7 +81,7 @@ namespace UltraVoice.Utilities
 
         public static bool CheckGlobalCooldown()
         {
-            if (Time.time - lastVoiceTime < UltraVoicePlugin.VoiceCooldown.Value)
+            if (Time.time - lastVoiceTime < UltraVoicePlugin.VoiceCooldown.value)
                 return false;
 
             lastVoiceTime = Time.time;

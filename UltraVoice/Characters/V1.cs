@@ -459,7 +459,7 @@ namespace UltraVoice.Characters
         public static void ApplyVoiceActor()
         {
             UltraVoicePlugin.V1VoiceActor actor = UltraVoicePlugin.V1VoiceActorField != null
-                ? UltraVoicePlugin.V1VoiceActorField.Value
+                ? UltraVoicePlugin.V1VoiceActorField.value
                 : UltraVoicePlugin.V1VoiceActor.HashCap;
 
             bool noto = actor == UltraVoicePlugin.V1VoiceActor.Noto;
@@ -616,7 +616,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(EnemyIdentifier __instance, bool __state)
         {
-            if (!UltraVoicePlugin.V1VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V1VoiceEnabled.value)
                 return;
 
             if (__state || __instance.puppet || !__instance.dead)
@@ -727,7 +727,7 @@ namespace UltraVoice.Characters
             float delay = 2.5f;
 
             AudioClip v2DeathClip = V2Character.UseV2Clip(V2Character.DeathClip, V2Character.DeathClipCazsu);
-            if (UltraVoicePlugin.V2VoiceEnabled.Value && v2DeathClip != null)
+            if (UltraVoicePlugin.V2VoiceEnabled.value && v2DeathClip != null)
                 delay = v2DeathClip.length + 0.4f;
 
             UltraVoicePlugin.Instance.StartCoroutine(Routine());
@@ -910,7 +910,7 @@ namespace UltraVoice.Characters
             if (Time.time - V1Character.V2KnockedOutTime > 30f)
                 return;
 
-            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.value)
                 return;
 
             if (V1Character.V2CowardClip == null)
@@ -942,7 +942,7 @@ namespace UltraVoice.Characters
             if (__instance == null || __instance.message == null || !__instance.message.ToLowerInvariant().Contains("not getting away"))
                 return true;
 
-            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || UltraVoicePlugin.V1VoiceEnabled == null || !UltraVoicePlugin.V1VoiceEnabled.value)
                 return true;
 
             if (V1Character.V2EscapeClip == null)

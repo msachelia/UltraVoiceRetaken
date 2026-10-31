@@ -75,7 +75,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.CerberusVoiceActorField == null)
                 return melClip;
 
-            switch (UltraVoicePlugin.CerberusVoiceActorField.Value)
+            switch (UltraVoicePlugin.CerberusVoiceActorField.value)
             {
                 case UltraVoicePlugin.CerberusVoiceActor.Soil:
                     return soilClip;
@@ -91,7 +91,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.CerberusVoiceActorField == null)
                 return melClips;
 
-            switch (UltraVoicePlugin.CerberusVoiceActorField.Value)
+            switch (UltraVoicePlugin.CerberusVoiceActorField.value)
             {
                 case UltraVoicePlugin.CerberusVoiceActor.Soil:
                     return soilClips;
@@ -141,7 +141,7 @@ namespace UltraVoice.Characters
             if (__instance.quickSpawn)
                 return;
 
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             UltraVoicePlugin.Instance.StartCoroutine(PlayIntro(__instance));
@@ -185,7 +185,7 @@ namespace UltraVoice.Characters
             if (!__instance.quickSpawn)
                 return;
 
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -234,7 +234,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             VoiceManager.PlayRandomVoiceDelayed(Random.Range(0f, 0.4f), __instance, "Cerberus",
@@ -251,7 +251,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -273,7 +273,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -295,7 +295,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             if (VoiceManager.IsSpawnVoicePlaying(__instance))
@@ -317,7 +317,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatueBoss __instance)
         {
-            if (!UltraVoicePlugin.CerberusVoiceEnabled.Value)
+            if (!UltraVoicePlugin.CerberusVoiceEnabled.value)
                 return;
 
             VoiceManager.PlayRandomVoice(__instance, "Cerberus",

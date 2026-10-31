@@ -185,7 +185,7 @@ namespace UltraVoice.Characters
 
                 lastWave = grid.currentWave;
 
-                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                     continue;
 
                 NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -209,7 +209,7 @@ namespace UltraVoice.Characters
 
         public static void PlayPageLine(Component page, AudioClip[] clips, string[] subs)
         {
-            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                 return;
 
             if (Time.frameCount - ShopOpenedFrame <= 1)
@@ -235,7 +235,7 @@ namespace UltraVoice.Characters
 
         public static bool UsingGoober =>
             UltraVoicePlugin.ShopTerminalVoiceActorField != null
-            && UltraVoicePlugin.ShopTerminalVoiceActorField.Value == UltraVoicePlugin.ShopTerminalVoiceActor.Goober;
+            && UltraVoicePlugin.ShopTerminalVoiceActorField.value == UltraVoicePlugin.ShopTerminalVoiceActor.Goober;
 
         public static IEnumerator PurchaseRoutine(ShopZone zone)
         {
@@ -244,7 +244,7 @@ namespace UltraVoice.Characters
             while (Time.time < V1Character.PurchaseLineEndTime)
                 yield return null;
 
-            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                 yield break;
 
             if (zone == null)
@@ -266,7 +266,7 @@ namespace UltraVoice.Characters
 
                 LastInteraction = Time.time;
 
-                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                     continue;
 
                 VoiceManager.PlayRandomVoice(zone, "ShopTerminal", UseTerminalClips(IdleClips, IdleClipsGoober), IdleSubs, colorOverride: SubtitleColor);
@@ -282,7 +282,7 @@ namespace UltraVoice.Characters
 
             yield return new WaitForSecondsRealtime(1f);
 
-            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                 yield break;
 
             NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -502,7 +502,7 @@ namespace UltraVoice.Characters
                 if (zone == null || ShopTerminalCharacter.FlippedPlayed)
                     yield break;
 
-                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+                if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                     continue;
 
                 NewMovement player = MonoSingleton<NewMovement>.Instance;
@@ -533,7 +533,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ShopZone __instance)
         {
-            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.Value)
+            if (!UltraVoicePlugin.ShopTerminalVoiceEnabled.value)
                 return;
 
             if (ShopTerminalCharacter.BootUpPlayed || !__instance.inUse)

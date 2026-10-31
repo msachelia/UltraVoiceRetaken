@@ -24,7 +24,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -48,7 +48,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mannequin",
                 MannequinCharacter.ChatterClips,
@@ -63,7 +63,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mannequin __instance)
         {
-            if (!UltraVoicePlugin.MannequinVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MannequinVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Mannequin",
                 MannequinCharacter.DeathClips,

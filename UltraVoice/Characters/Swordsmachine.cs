@@ -159,7 +159,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.SwordsmachineVoiceActorField == null)
                 return melClip;
 
-            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.Value)
+            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.value)
             {
                 case UltraVoicePlugin.SwordsmachineVoiceActor.Noto:
                     return notoClip;
@@ -175,7 +175,7 @@ namespace UltraVoice.Characters
             if (UltraVoicePlugin.SwordsmachineVoiceActorField == null)
                 return melClips;
 
-            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.Value)
+            switch (UltraVoicePlugin.SwordsmachineVoiceActorField.value)
             {
                 case UltraVoicePlugin.SwordsmachineVoiceActor.Noto:
                     return notoClips;
@@ -254,7 +254,7 @@ namespace UltraVoice.Characters
 
         public static void PlayRangedVoice(SwordsMachine sm)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(sm, 3f))
@@ -282,7 +282,7 @@ namespace UltraVoice.Characters
         {
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
 
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -339,7 +339,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (!SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -373,7 +373,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -424,7 +424,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (SwordsmachineCharacter.IsAgonyOrTundra(__instance))
@@ -516,7 +516,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 0.1f))
@@ -604,7 +604,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -629,7 +629,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 3f))
@@ -654,7 +654,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(SwordsMachine __instance)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(
@@ -679,7 +679,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(EnemyIdentifier __instance, bool __state)
         {
-            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.Value)
+            if (!UltraVoicePlugin.SwordsmachineVoiceEnabled.value)
                 return;
 
             if (__state || !__instance.sandified)

@@ -33,7 +33,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Deathcatcher __instance)
         {
-            if (!UltraVoicePlugin.DeathcatcherVoiceEnabled.Value)
+            if (!UltraVoicePlugin.DeathcatcherVoiceEnabled.value)
                 return;
 
             if (__instance.chargeAud.isPlaying)

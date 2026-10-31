@@ -41,7 +41,7 @@ namespace UltraVoice.Characters
 
         public static void PlayClip(LeviathanHead head, AudioClip clip)
         {
-            if (!UltraVoicePlugin.LeviathanVoiceEnabled.Value)
+            if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(head, "Leviathan", clip, null, true);
@@ -53,7 +53,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(LeviathanHead __instance)
         {
-            if (!UltraVoicePlugin.LeviathanVoiceEnabled.Value)
+            if (!UltraVoicePlugin.LeviathanVoiceEnabled.value)
                 return;
 
             if (!__instance.active)

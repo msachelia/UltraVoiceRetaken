@@ -26,7 +26,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -42,7 +42,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -58,7 +58,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
 
             VoiceManager.CreateVoiceSource(
                 __instance, "Filth",
@@ -74,7 +74,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieMelee __instance)
         {
-            if (!UltraVoicePlugin.FilthVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FilthVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;

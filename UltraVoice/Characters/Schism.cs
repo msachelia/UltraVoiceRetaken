@@ -26,7 +26,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -52,7 +52,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Schism) return;
 
@@ -69,7 +69,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ZombieProjectiles __instance)
         {
-            if (!UltraVoicePlugin.SchismVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.SchismVoiceEnabled.value) return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.enemyType != EnemyType.Schism) return;
 

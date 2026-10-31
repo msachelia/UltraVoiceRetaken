@@ -56,7 +56,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseVirtueClips(AudioClip[] notoClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.VirtueVoiceActorField != null && UltraVoicePlugin.VirtueVoiceActorField.Value == UltraVoicePlugin.VirtueVoiceActor.Virchew
+            return UltraVoicePlugin.VirtueVoiceActorField != null && UltraVoicePlugin.VirtueVoiceActorField.value == UltraVoicePlugin.VirtueVoiceActor.Virchew
                 ? virchewClips
                 : notoClips;
         }
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;
@@ -102,7 +102,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(VirtueInsignia __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
 
             Drone drone = null;
 
@@ -137,7 +137,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;
@@ -163,7 +163,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.VirtueVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.VirtueVoiceEnabled.value) return;
 
             if (!VirtueCharacter.IsVirtue(__instance))
                 return;

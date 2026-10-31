@@ -40,7 +40,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Stalker __instance)
         {
-            if (!UltraVoicePlugin.StalkerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.StalkerVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -61,7 +61,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Stalker __instance)
         {
-            if (!UltraVoicePlugin.StalkerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.StalkerVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Stalker",
                 StalkerCharacter.AttackClips,

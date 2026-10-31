@@ -1,4 +1,4 @@
-# UltraVoice Retaken (version 1.5.5)
+# UltraVoice Retaken (version 1.5.6)
 
 This mod has been abandoned and if it is not working it won't get updated. If you are a person who wants to continue this mod, you don't have my permission and any attempt will get taken down.
 

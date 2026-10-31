@@ -43,7 +43,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseMirrorReaperClips(AudioClip[] notoClips, AudioClip[] rotundClips)
         {
-            return UltraVoicePlugin.MirrorReaperVoiceActorField != null && UltraVoicePlugin.MirrorReaperVoiceActorField.Value == UltraVoicePlugin.MirrorReaperVoiceActor.Rotund
+            return UltraVoicePlugin.MirrorReaperVoiceActorField != null && UltraVoicePlugin.MirrorReaperVoiceActorField.value == UltraVoicePlugin.MirrorReaperVoiceActor.Rotund
                 ? rotundClips
                 : notoClips;
         }
@@ -81,7 +81,7 @@ namespace UltraVoice.Characters
 
         public static void PlaySwingLaugh(MirrorReaper reaper)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
                 return;
 
             if (reaper == null || reaper.eid.dead)
@@ -107,7 +107,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(BossHealthBar __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
                 return;
 
             if (SceneHelper.CurrentScene != "Level 8-2")
@@ -133,7 +133,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value)
                 return;
 
             if (SceneHelper.CurrentScene == "Level 8-2")
@@ -181,7 +181,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -200,7 +200,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(MirrorReaper __instance)
         {
-            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MirrorReaperVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "MirrorReaper",
                 MirrorReaperCharacter.UseMirrorReaperClips(MirrorReaperCharacter.DeathClips, MirrorReaperCharacter.DeathClipsRotund),

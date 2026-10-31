@@ -58,7 +58,7 @@ namespace UltraVoice.Characters
 
         public static void PlayAttackVoice(Drone drone)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
 
             if (!IsProvidence(drone))
                 return;
@@ -82,7 +82,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
 
             if (!ProvidenceCharacter.IsProvidence(__instance))
                 return;
@@ -120,7 +120,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Drone __instance)
         {
-            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.ProvidenceVoiceEnabled.value) return;
 
             if (!ProvidenceCharacter.IsProvidence(__instance))
                 return;

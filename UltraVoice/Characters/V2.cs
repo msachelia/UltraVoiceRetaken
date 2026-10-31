@@ -94,14 +94,14 @@ namespace UltraVoice.Characters
 
         public static AudioClip UseV2Clip(AudioClip rubyClip, AudioClip caszuClip)
         {
-            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.Value == UltraVoicePlugin.V2VoiceActor.Cazsu
+            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.value == UltraVoicePlugin.V2VoiceActor.Cazsu
                 ? caszuClip
                 : rubyClip;
         }
 
         public static AudioClip[] UseV2Clips(AudioClip[] rubyClips, AudioClip[] caszuClips)
         {
-            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.Value == UltraVoicePlugin.V2VoiceActor.Cazsu
+            return UltraVoicePlugin.V2VoiceActorField != null && UltraVoicePlugin.V2VoiceActorField.value == UltraVoicePlugin.V2VoiceActor.Cazsu
                 ? caszuClips
                 : rubyClips;
         }
@@ -156,7 +156,7 @@ namespace UltraVoice.Characters
             if (stats == null || stats.restarts >= 1)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (__instance.secondEncounter)
@@ -199,7 +199,7 @@ namespace UltraVoice.Characters
             if (stats == null || stats.restarts == 0)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (!__instance.secondEncounter)
@@ -267,7 +267,7 @@ namespace UltraVoice.Characters
             if (__instance == null)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -309,7 +309,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             float timeSinceIntro = Time.time - V2Character.V2IntroTime;
@@ -399,7 +399,7 @@ namespace UltraVoice.Characters
             if (__instance.dead)
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (!VoiceManager.CheckCooldown(__instance, 0.1f))
@@ -417,7 +417,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (__instance.enraged)
@@ -434,7 +434,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(V2 __instance)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(
@@ -452,7 +452,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Animator __instance, string stateName, int layer, float normalizedTime)
         {
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (__instance == null)
@@ -490,7 +490,7 @@ namespace UltraVoice.Characters
             if (__instance.name != "v2_GreenArm")
                 return;
 
-            if (!UltraVoicePlugin.V2VoiceEnabled.Value)
+            if (!UltraVoicePlugin.V2VoiceEnabled.value)
                 return;
 
             if (V2Character.V2DeathPlayed) return;

@@ -50,7 +50,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Wicked __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
 
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
         }
@@ -61,7 +61,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Wicked __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -95,7 +95,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ItemIdentifier __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
 
             if (__instance == null || __instance.itemType != ItemType.SkullRed)
                 return;
@@ -130,7 +130,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Skull __instance)
         {
-            if (!UltraVoicePlugin.WickedVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.WickedVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;

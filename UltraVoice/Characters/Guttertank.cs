@@ -69,7 +69,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseGuttertankClips(AudioClip[] melClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.GuttertankVoiceActorField != null && UltraVoicePlugin.GuttertankVoiceActorField.Value == UltraVoicePlugin.GuttertankVoiceActor.Virchew
+            return UltraVoicePlugin.GuttertankVoiceActorField != null && UltraVoicePlugin.GuttertankVoiceActorField.value == UltraVoicePlugin.GuttertankVoiceActor.Virchew
                 ? virchewClips
                 : melClips;
         }
@@ -103,7 +103,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -129,7 +129,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -150,7 +150,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -170,7 +170,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -190,7 +190,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -207,7 +207,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -241,7 +241,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Guttertank __instance)
         {
-            if (!UltraVoicePlugin.GuttertankVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.GuttertankVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;

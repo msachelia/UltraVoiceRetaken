@@ -66,7 +66,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MassVoiceEnabled.value) return;
 
             VoiceManager.enemySpawnTimes[__instance] = Time.time;
         }
@@ -77,7 +77,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
@@ -108,7 +108,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.dead)
@@ -127,7 +127,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(FakeMassActivator __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (__instance == null)
@@ -157,7 +157,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.dead)
@@ -177,7 +177,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.dead)
@@ -196,7 +196,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mass __instance)
         {
-            if (!UltraVoicePlugin.MassVoiceEnabled.Value)
+            if (!UltraVoicePlugin.MassVoiceEnabled.value)
                 return;
 
             if (__instance == null || __instance.eid == null || __instance.eid.dead)

@@ -122,7 +122,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             if (!InsurrectionistCharacter.IsAngryOrRude(__instance))
                 VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
@@ -156,7 +156,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.AttackClips,
@@ -171,7 +171,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.AttackClips,
@@ -186,7 +186,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -197,7 +197,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -208,7 +208,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -219,7 +219,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             InsurrectionistCharacter.PlayAttackVoice(__instance);
         }
@@ -230,7 +230,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(Animator __instance, int id)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             if (!__instance.gameObject.TryGetComponent<Sisyphus>(out var sisyphus))
                 return;
@@ -249,7 +249,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             if (!VoiceManager.CheckCooldown(__instance, 4f))
                 return;
@@ -301,7 +301,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Sisyphus __instance)
         {
-            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.InsurrectionistVoiceEnabled.value) return;
 
             VoiceManager.PlayRandomVoice(__instance, "Insurrectionist",
                 InsurrectionistCharacter.DeathClips,

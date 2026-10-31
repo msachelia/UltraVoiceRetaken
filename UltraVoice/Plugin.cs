@@ -26,9 +26,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using ThornClient.Core;
-using ThornClient.Core.ConfigurableElements;
-using ThornClient.Managers;
+using PluginConfig.API;
+using PluginConfig.API.Fields;
 using UltraVoice.Characters;
 using UltraVoice.Utilities;
 using UnityEngine;
@@ -37,7 +36,7 @@ using UnityEngine.SceneManagement;
 namespace UltraVoice
 {
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
-    [BepInDependency("com.github.end-4.thornClient")]
+    [BepInDependency("com.eternalUnion.pluginConfigurator")]
     [BepInDependency("com.github.end-4.notiffy")]
     public class UltraVoicePlugin : BaseUnityPlugin
     {
@@ -51,56 +50,56 @@ namespace UltraVoice
 
         public static VoiceConfig ConfigModule;
 
-        public static Setting<bool> CerberusVoiceEnabled;
-        public static Setting<bool> SwordsmachineVoiceEnabled;
-        public static Setting<bool> V2VoiceEnabled;
-        public static Setting<bool> StreetcleanerVoiceEnabled;
-        public static Setting<bool> MindflayerVoiceEnabled;
-        public static Setting<bool> VirtueVoiceEnabled;
-        public static Setting<bool> FerrymanVoiceEnabled;
-        public static Setting<bool> GuttermanVoiceEnabled;
-        public static Setting<bool> MannequinVoiceEnabled;
-        public static Setting<bool> GuttertankVoiceEnabled;
-        public static Setting<bool> ProvidenceVoiceEnabled;
-        public static Setting<bool> SentryVoiceEnabled;
-        public static Setting<bool> MauriceVoiceEnabled;
-        public static Setting<bool> EarthmoverVoiceEnabled;
-        public static Setting<bool> MirrorReaperVoiceEnabled;
-        public static Setting<bool> GeryonVoiceEnabled;
-        public static Setting<bool> LeviathanVoiceEnabled;
-        public static Setting<bool> InsurrectionistVoiceEnabled;
-        public static Setting<bool> FilthVoiceEnabled;
-        public static Setting<bool> StrayVoiceEnabled;
-        public static Setting<bool> SchismVoiceEnabled;
-        public static Setting<bool> SoldierVoiceEnabled;
-        public static Setting<bool> StalkerVoiceEnabled;
-        public static Setting<bool> MassVoiceEnabled;
-        public static Setting<bool> IdolVoiceEnabled;
-        public static Setting<bool> WickedVoiceEnabled;
-        public static Setting<bool> V1VoiceEnabled;
-        public static Setting<bool> ShopTerminalVoiceEnabled;
-        public static Setting<bool> PowerAltVoiceEnabled;
-        public static Setting<bool> DeathcatcherVoiceEnabled;
-        public static Setting<bool> MasterVoiceEnabled;
-        public static Setting<bool> SubtitleColorsEnabled;
-        public static Setting<float> VoiceCooldown;
-        public static Setting<int> SubtitleLimit;
+        public static BoolField CerberusVoiceEnabled;
+        public static BoolField SwordsmachineVoiceEnabled;
+        public static BoolField V2VoiceEnabled;
+        public static BoolField StreetcleanerVoiceEnabled;
+        public static BoolField MindflayerVoiceEnabled;
+        public static BoolField VirtueVoiceEnabled;
+        public static BoolField FerrymanVoiceEnabled;
+        public static BoolField GuttermanVoiceEnabled;
+        public static BoolField MannequinVoiceEnabled;
+        public static BoolField GuttertankVoiceEnabled;
+        public static BoolField ProvidenceVoiceEnabled;
+        public static BoolField SentryVoiceEnabled;
+        public static BoolField MauriceVoiceEnabled;
+        public static BoolField EarthmoverVoiceEnabled;
+        public static BoolField MirrorReaperVoiceEnabled;
+        public static BoolField GeryonVoiceEnabled;
+        public static BoolField LeviathanVoiceEnabled;
+        public static BoolField InsurrectionistVoiceEnabled;
+        public static BoolField FilthVoiceEnabled;
+        public static BoolField StrayVoiceEnabled;
+        public static BoolField SchismVoiceEnabled;
+        public static BoolField SoldierVoiceEnabled;
+        public static BoolField StalkerVoiceEnabled;
+        public static BoolField MassVoiceEnabled;
+        public static BoolField IdolVoiceEnabled;
+        public static BoolField WickedVoiceEnabled;
+        public static BoolField V1VoiceEnabled;
+        public static BoolField ShopTerminalVoiceEnabled;
+        public static BoolField PowerAltVoiceEnabled;
+        public static BoolField DeathcatcherVoiceEnabled;
+        public static BoolField MasterVoiceEnabled;
+        public static BoolField SubtitleColorsEnabled;
+        public static FloatSliderField VoiceCooldown;
+        public static IntField SubtitleLimit;
 
-        public static Setting<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
-        public static Setting<SentryVoiceActor> SentryVoiceActorField;
-        public static Setting<GuttertankVoiceActor> GuttertankVoiceActorField;
-        public static Setting<GuttermanVoiceActor> GuttermanVoiceActorField;
-        public static Setting<CerberusVoiceActor> CerberusVoiceActorField;
-        public static Setting<FerrymanVoiceActor> FerrymanVoiceActorField;
-        public static Setting<IdolVoiceActor> IdolVoiceActorField;
-        public static Setting<VirtueVoiceActor> VirtueVoiceActorField;
-        public static Setting<MirrorReaperVoiceActor> MirrorReaperVoiceActorField;
-        public static Setting<ShopTerminalVoiceActor> ShopTerminalVoiceActorField;
-        public static Setting<GeryonVoiceActor> GeryonVoiceActorField;
-        public static Setting<EarthmoverVoiceActor> EarthmoverVoiceActorField;
-        public static Setting<PowerVoiceActor> PowerVoiceActorField;
-        public static SettingGroup PowerVoicePoolPanel;
-        public static Dictionary<string, Setting<bool>> PowerVoiceToggles = new Dictionary<string, Setting<bool>>();
+        public static EnumField<SwordsmachineVoiceActor> SwordsmachineVoiceActorField;
+        public static EnumField<SentryVoiceActor> SentryVoiceActorField;
+        public static EnumField<GuttertankVoiceActor> GuttertankVoiceActorField;
+        public static EnumField<GuttermanVoiceActor> GuttermanVoiceActorField;
+        public static EnumField<CerberusVoiceActor> CerberusVoiceActorField;
+        public static EnumField<FerrymanVoiceActor> FerrymanVoiceActorField;
+        public static EnumField<IdolVoiceActor> IdolVoiceActorField;
+        public static EnumField<VirtueVoiceActor> VirtueVoiceActorField;
+        public static EnumField<MirrorReaperVoiceActor> MirrorReaperVoiceActorField;
+        public static EnumField<ShopTerminalVoiceActor> ShopTerminalVoiceActorField;
+        public static EnumField<GeryonVoiceActor> GeryonVoiceActorField;
+        public static EnumField<EarthmoverVoiceActor> EarthmoverVoiceActorField;
+        public static EnumField<PowerVoiceActor> PowerVoiceActorField;
+        public static ConfigPanel PowerVoicePoolPanel;
+        public static Dictionary<string, BoolField> PowerVoiceToggles = new Dictionary<string, BoolField>();
 
         public static readonly string[] PowerVoiceOrder = { "Cazsu", "Goober", "NotoMasc", "Vanilla", "Mel", "NotoFem" };
 
@@ -113,33 +112,33 @@ namespace UltraVoice
             { "Mel", "Mel (Fem)" },
             { "NotoFem", "Noto (Fem)" }
         };
-        public static Setting<V1VoiceActor> V1VoiceActorField;
-        public static Setting<V2VoiceActor> V2VoiceActorField;
-        public static SettingGroup TogglesPanel;
-        public static SettingGroup EnemyTogglesPanel;
-        public static SettingGroup ActorPanel;
-        public static SettingGroup VolumePanel;
-        public static SettingGroup EnemyVolumePanel;
-        public static SettingGroup V1LinesPanel;
-        public static SettingGroup SubtitleColorsPanel;
-        public static SettingGroup CharacterSubtitleColorsPanel;
-        public static readonly Dictionary<string, Setting<bool>> SubtitleColorToggles = new Dictionary<string, Setting<bool>>();
+        public static EnumField<V1VoiceActor> V1VoiceActorField;
+        public static EnumField<V2VoiceActor> V2VoiceActorField;
+        public static ConfigPanel TogglesPanel;
+        public static ConfigPanel EnemyTogglesPanel;
+        public static ConfigPanel ActorPanel;
+        public static ConfigPanel VolumePanel;
+        public static ConfigPanel EnemyVolumePanel;
+        public static ConfigPanel V1LinesPanel;
+        public static ConfigPanel SubtitleColorsPanel;
+        public static ConfigPanel CharacterSubtitleColorsPanel;
+        public static readonly Dictionary<string, BoolField> SubtitleColorToggles = new Dictionary<string, BoolField>();
 
-        public static Dictionary<string, Setting<bool>> V1LineToggles = new Dictionary<string, Setting<bool>>();
+        public static Dictionary<string, BoolField> V1LineToggles = new Dictionary<string, BoolField>();
 
         public static bool V1LineEnabled(string key)
         {
-            if (V1VoiceEnabled == null || !V1VoiceEnabled.Value)
+            if (V1VoiceEnabled == null || !V1VoiceEnabled.value)
                 return false;
 
-            return !V1LineToggles.TryGetValue(key, out Setting<bool> field) || field.Value;
+            return !V1LineToggles.TryGetValue(key, out BoolField field) || field.value;
         }
 
-        public static bool VoicesEnabled => MasterVoiceEnabled == null || MasterVoiceEnabled.Value;
+        public static bool VoicesEnabled => MasterVoiceEnabled == null || MasterVoiceEnabled.value;
 
         public static bool SubtitleColorAllowed(string voiceName)
         {
-            if (SubtitleColorsEnabled != null && !SubtitleColorsEnabled.Value)
+            if (SubtitleColorsEnabled != null && !SubtitleColorsEnabled.value)
                 return false;
 
             if (string.IsNullOrEmpty(voiceName))
@@ -151,15 +150,15 @@ namespace UltraVoice
             foreach (var pair in SubtitleColorToggles)
             {
                 if (voiceName.StartsWith(pair.Key))
-                    return pair.Value.Value;
+                    return pair.Value.value;
             }
 
             return true;
         }
 
-        public static Setting<float> MasterVolumeField;
-        public static Setting<float> PowerAltVolumeField;
-        public static Dictionary<string, Setting<float>> EnemyVolumeFields = new Dictionary<string, Setting<float>>();
+        public static FloatSliderField MasterVolumeField;
+        public static FloatSliderField PowerAltVolumeField;
+        public static Dictionary<string, FloatSliderField> EnemyVolumeFields = new Dictionary<string, FloatSliderField>();
 
         public enum SwordsmachineVoiceActor
         {
@@ -266,14 +265,7 @@ namespace UltraVoice
             Instance = this;
             VoiceManager = new VoiceManager();
 
-            ConfigModule = ModuleManager.Get<VoiceConfig>();
-
-            if (ConfigModule == null)
-            {
-                ConfigModule = new VoiceConfig();
-                ModuleManager.Items.Add(ConfigModule);
-                ConfigManager.LoadConfig(ConfigModule);
-            }
+            ConfigModule = new VoiceConfig();
 
             LoadAssets();
 
@@ -292,27 +284,8 @@ namespace UltraVoice
             harmony.UnpatchSelf();
         }
 
-        static void RegisterConfig()
-        {
-            if (ConfigModule == null || ModuleManager.Items == null)
-                return;
-
-            ModuleManager.Items.RemoveAll(module =>
-                module != null && module.GUID == PluginGuid && !ReferenceEquals(module, ConfigModule));
-
-            foreach (ThornClient.Core.Module module in ModuleManager.Items)
-            {
-                if (ReferenceEquals(module, ConfigModule))
-                    return;
-            }
-
-            ModuleManager.Items.Add(ConfigModule);
-        }
-
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            RegisterConfig();
-
             ResetEnemyStates();
 
             UpdateChecker.OnSceneLoaded();
@@ -390,7 +363,7 @@ namespace UltraVoice
 
         public static float GetVoiceVolume(string voiceName)
         {
-            float master = MasterVolumeField != null ? MasterVolumeField.Value / 100f : 1f;
+            float master = MasterVolumeField != null ? MasterVolumeField.value / 100f : 1f;
 
             if (string.IsNullOrEmpty(voiceName))
                 return master;
@@ -404,7 +377,7 @@ namespace UltraVoice
             {
                 if (voiceName.StartsWith(pair.Key))
                 {
-                    character = pair.Value.Value / 100f;
+                    character = pair.Value.value / 100f;
                     break;
                 }
             }

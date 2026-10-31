@@ -32,7 +32,7 @@ namespace UltraVoice.Characters
 
         public static AudioClip[] UseIdolClips(AudioClip[] voinviClips, AudioClip[] virchewClips)
         {
-            return UltraVoicePlugin.IdolVoiceActorField != null && UltraVoicePlugin.IdolVoiceActorField.Value == UltraVoicePlugin.IdolVoiceActor.Virchew
+            return UltraVoicePlugin.IdolVoiceActorField != null && UltraVoicePlugin.IdolVoiceActorField.value == UltraVoicePlugin.IdolVoiceActor.Virchew
                 ? virchewClips
                 : voinviClips;
         }
@@ -94,7 +94,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Idol __instance)
         {
-            if (!UltraVoicePlugin.IdolVoiceEnabled.Value)
+            if (!UltraVoicePlugin.IdolVoiceEnabled.value)
                 return;
 
             if (SceneHelper.CurrentScene == "Level 7-4")
@@ -120,7 +120,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Idol __instance)
         {
-            if (!UltraVoicePlugin.IdolVoiceEnabled.Value)
+            if (!UltraVoicePlugin.IdolVoiceEnabled.value)
                 return;
 
             if (!IdolCharacter.JustBecameVisible(NewMovement.Instance, __instance)) return;

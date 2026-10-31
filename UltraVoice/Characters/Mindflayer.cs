@@ -88,7 +88,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
             if (__instance.dying) return;
 
@@ -108,7 +108,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -138,7 +138,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
             if (__instance.dying) return;
 
@@ -158,7 +158,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Mindflayer __instance)
         {
-            if (!UltraVoicePlugin.MindflayerVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.MindflayerVoiceEnabled.value) return;
 
             if (__instance.dying) return;
 

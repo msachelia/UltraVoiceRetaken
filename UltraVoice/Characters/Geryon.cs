@@ -87,7 +87,7 @@ namespace UltraVoice.Characters
 
         public static bool UsingMel =>
             UltraVoicePlugin.GeryonVoiceActorField != null
-            && UltraVoicePlugin.GeryonVoiceActorField.Value == UltraVoicePlugin.GeryonVoiceActor.Mel;
+            && UltraVoicePlugin.GeryonVoiceActorField.value == UltraVoicePlugin.GeryonVoiceActor.Mel;
 
         public static AudioClip[] UseGeryonClips(AudioClip[] trioClips, AudioClip[] melClips)
         {
@@ -134,7 +134,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Geryon __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             GeryonCharacter.EnrageLinePlayed = false;
@@ -163,7 +163,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(StatsManager __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             if (GeryonCharacter.CanRestartFight)
@@ -178,7 +178,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Geryon __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(
@@ -204,7 +204,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Geryon __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             if (__instance.stunned || !__instance.active)
@@ -240,7 +240,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(GameObject __instance, bool value)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             if (__instance.name != "Geryon_Rig")
@@ -275,7 +275,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Geryon __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(
@@ -294,7 +294,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Geryon __instance)
         {
-            if (!UltraVoicePlugin.GeryonVoiceEnabled.Value)
+            if (!UltraVoicePlugin.GeryonVoiceEnabled.value)
                 return;
 
             VoiceManager.CreateVoiceSource(

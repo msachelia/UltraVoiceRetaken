@@ -1,66 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
-using ThornClient.Core;
-using ThornClient.Core.ConfigurableElements;
+using PluginConfig.API;
+using PluginConfig.API.Fields;
 using UltraVoice.Characters;
 using UnityEngine;
 
 namespace UltraVoice.Utilities
 {
-    public class VoiceConfig : Module
+    public class VoiceConfig
     {
-        static Sprite icon;
+        public PluginConfigurator Config { get; }
 
-        public override Sprite Icon => icon != null ? icon : icon = UpdateChecker.LoadIcon("UltraVoice.Images.thorn_icon.png");
+        ConfigPanel Root => Config.rootPanel;
 
-        public VoiceConfig() : base(
-            UltraVoicePlugin.PluginGuid,
-            UltraVoicePlugin.PluginName,
-            "Voice lines for ULTRAKILL enemies",
-            ModuleCategory.Misc,
-            KeyCode.None,
-            KeyCode.None,
-            false,
-            false)
+        public VoiceConfig()
         {
-            UltraVoicePlugin.TogglesPanel = CreateGroup("toggles", "Enemy Line Toggles", "", null);
-            UltraVoicePlugin.ActorPanel = CreateGroup("actors", "Voice Actors", "", null);
-            UltraVoicePlugin.VolumePanel = CreateGroup("volumes", "Volume Levels", "", null);
-            UltraVoicePlugin.SubtitleColorsPanel = CreateGroup("subtitlecolors", "Subtitle Colors", "", null);
+            Config = PluginConfigurator.Create(UltraVoicePlugin.PluginName, UltraVoicePlugin.PluginGuid);
+            Config.icon = UpdateChecker.LoadIcon("UltraVoice.Images.notiffy_icon.png");
 
-            UltraVoicePlugin.VoiceCooldown = CreateSetting("cooldown", "Voice Cooldown", "", 0.25f, null);
-            UltraVoicePlugin.VoiceCooldown.Hints = new InterfaceHints
-            {
-                Range = new Tuple<float, float>(0f, 0.5f),
-                Decimals = 2
-            };
+            UltraVoicePlugin.TogglesPanel = CreatePanel(Root, "toggles", "Enemy Line Toggles");
+            UltraVoicePlugin.ActorPanel = CreatePanel(Root, "actors", "Voice Actors");
+            UltraVoicePlugin.VolumePanel = CreatePanel(Root, "volumes", "Volume Levels");
+            UltraVoicePlugin.SubtitleColorsPanel = CreatePanel(Root, "subtitlecolors", "Subtitle Colors");
 
-            UltraVoicePlugin.SubtitleLimit = CreateSetting("subtitlelimit", "Max Allowed Subtitles", "", 5, null);
-            UltraVoicePlugin.SubtitleLimit.Hints = new InterfaceHints
-            {
-                Range = new Tuple<float, float>(1f, 10f)
-            };
+            UltraVoicePlugin.VoiceCooldown = CreateSlider(Root, "cooldown", "Voice Cooldown", 0.25f, 0f, 0.5f, 2);
+
+            UltraVoicePlugin.SubtitleLimit = new IntField(Root, "Max Allowed Subtitles", "subtitlelimit", 5, 1, 10);
 
             BuildToggles();
             BuildSubtitleColors();
             BuildVoiceActors();
             BuildVolumes();
+
+            UltraVoicePlugin.MasterVoiceEnabled.postValueChangeEvent += _ => RefreshInteractable();
+            UltraVoicePlugin.SubtitleColorsEnabled.postValueChangeEvent += _ => RefreshInteractable();
+            UltraVoicePlugin.V1VoiceEnabled.postValueChangeEvent += _ => RefreshInteractable();
+            UltraVoicePlugin.PowerVoiceActorField.postValueChangeEvent += _ => RefreshInteractable();
+
+            RefreshInteractable();
+        }
+
+        static void RefreshInteractable()
+        {
+            bool master = UltraVoicePlugin.MasterVoiceEnabled.value;
+
+            UltraVoicePlugin.VoiceCooldown.interactable = master;
+            UltraVoicePlugin.SubtitleLimit.interactable = master;
+
+            UltraVoicePlugin.EnemyTogglesPanel.interactable = master;
+            UltraVoicePlugin.ActorPanel.interactable = master;
+            UltraVoicePlugin.MasterVolumeField.interactable = master;
+            UltraVoicePlugin.EnemyVolumePanel.interactable = master;
+
+            UltraVoicePlugin.SubtitleColorsEnabled.interactable = master;
+            UltraVoicePlugin.CharacterSubtitleColorsPanel.interactable = master && UltraVoicePlugin.SubtitleColorsEnabled.value;
+
+            UltraVoicePlugin.V1LinesPanel.interactable = master && UltraVoicePlugin.V1VoiceEnabled.value;
+
+            UltraVoicePlugin.PowerVoicePoolPanel.interactable = master
+                && UltraVoicePlugin.PowerVoiceActorField.value == UltraVoicePlugin.PowerVoiceActor.Random;
         }
 
         void BuildToggles()
         {
-            SettingGroup toggles = UltraVoicePlugin.TogglesPanel;
+            ConfigPanel toggles = UltraVoicePlugin.TogglesPanel;
 
-            UltraVoicePlugin.MasterVoiceEnabled = CreateSetting("mastervoice", "Enable Voice Lines", "", true, toggles);
+            UltraVoicePlugin.MasterVoiceEnabled = CreateSetting("mastervoice", "Enable Voice Lines", true, toggles);
 
-            SettingGroup enemies = CreateGroup("enemytoggles", "Enemy Toggles", "", toggles);
+            ConfigPanel enemies = CreatePanel(toggles, "enemytoggles", "Enemy Toggles");
             UltraVoicePlugin.EnemyTogglesPanel = enemies;
 
             UltraVoicePlugin.CerberusVoiceEnabled = CreateEnemyToggle("cerberusvoice", "Cerberus", true, enemies);
             UltraVoicePlugin.DeathcatcherVoiceEnabled = CreateEnemyToggle("deathcatchervoice", "Deathcatcher", true, enemies);
             UltraVoicePlugin.EarthmoverVoiceEnabled = CreateEnemyToggle("earthmovervoice", "Earthmover", true, enemies);
             UltraVoicePlugin.FerrymanVoiceEnabled = CreateEnemyToggle("ferrymanvoice", "Ferryman", true, enemies);
-            UltraVoicePlugin.FilthVoiceEnabled = CreateEnemyToggle("filthvoice", "Filth", false, enemies);
+            UltraVoicePlugin.FilthVoiceEnabled = CreateEnemyToggle("filthvoice", "Filth", true, enemies);
             UltraVoicePlugin.GeryonVoiceEnabled = CreateEnemyToggle("geryonvoice", "Geryon", true, enemies);
             UltraVoicePlugin.GuttermanVoiceEnabled = CreateEnemyToggle("guttermanvoice", "Gutterman", true, enemies);
             UltraVoicePlugin.GuttertankVoiceEnabled = CreateEnemyToggle("guttertankvoice", "Guttertank", true, enemies);
@@ -69,22 +83,22 @@ namespace UltraVoice.Utilities
             UltraVoicePlugin.InsurrectionistVoiceEnabled = CreateEnemyToggle("Insurrectionist", "Insurrectionist", true, enemies);
             UltraVoicePlugin.LeviathanVoiceEnabled = CreateEnemyToggle("levivoice", "Leviathan", true, enemies);
             UltraVoicePlugin.MauriceVoiceEnabled = CreateEnemyToggle("mauricevoice", "Malicious Face", true, enemies);
-            UltraVoicePlugin.MannequinVoiceEnabled = CreateEnemyToggle("mannequinvoice", "Mannequin", false, enemies);
+            UltraVoicePlugin.MannequinVoiceEnabled = CreateEnemyToggle("mannequinvoice", "Mannequin", true, enemies);
             UltraVoicePlugin.MindflayerVoiceEnabled = CreateEnemyToggle("mindflayervoice", "Mindflayer", true, enemies);
             UltraVoicePlugin.MirrorReaperVoiceEnabled = CreateEnemyToggle("mirrorreapervoice", "Mirror Reaper", true, enemies);
             UltraVoicePlugin.PowerAltVoiceEnabled = CreateEnemyToggle("poweraltvoice", "Power Alt", true, enemies);
             UltraVoicePlugin.ProvidenceVoiceEnabled = CreateEnemyToggle("providencevoice", "Providence", true, enemies);
-            UltraVoicePlugin.SchismVoiceEnabled = CreateEnemyToggle("schismvoice", "Schism", false, enemies);
+            UltraVoicePlugin.SchismVoiceEnabled = CreateEnemyToggle("schismvoice", "Schism", true, enemies);
             UltraVoicePlugin.SentryVoiceEnabled = CreateEnemyToggle("sentryvoice", "Sentry", true, enemies);
             UltraVoicePlugin.ShopTerminalVoiceEnabled = CreateEnemyToggle("shopterminalvoice", "Shop Terminal", true, enemies);
-            UltraVoicePlugin.SoldierVoiceEnabled = CreateEnemyToggle("soldiervoice", "Soldier", false, enemies);
+            UltraVoicePlugin.SoldierVoiceEnabled = CreateEnemyToggle("soldiervoice", "Soldier", true, enemies);
             UltraVoicePlugin.StalkerVoiceEnabled = CreateEnemyToggle("stalkervoice", "Stalker", true, enemies);
-            UltraVoicePlugin.StrayVoiceEnabled = CreateEnemyToggle("strayvoice", "Stray", false, enemies);
+            UltraVoicePlugin.StrayVoiceEnabled = CreateEnemyToggle("strayvoice", "Stray", true, enemies);
             UltraVoicePlugin.StreetcleanerVoiceEnabled = CreateEnemyToggle("streetcleanervoice", "Streetcleaner", true, enemies);
             UltraVoicePlugin.SwordsmachineVoiceEnabled = CreateEnemyToggle("swordsmachinevoice", "Swordsmachine", true, enemies);
             UltraVoicePlugin.V1VoiceEnabled = CreateEnemyToggle("v1voice", "V1", true, enemies);
 
-            SettingGroup v1Lines = CreateGroup("v1lines", "V1 Line Categories", "", enemies);
+            ConfigPanel v1Lines = CreatePanel(enemies, "v1lines", "V1 Line Categories");
             UltraVoicePlugin.V1LinesPanel = v1Lines;
 
             (string key, string name)[] v1Categories =
@@ -113,7 +127,7 @@ namespace UltraVoice.Utilities
             };
 
             foreach (var (key, name) in v1Categories)
-                UltraVoicePlugin.V1LineToggles[key] = CreateSetting($"v1line_{key}", name, "", true, v1Lines);
+                UltraVoicePlugin.V1LineToggles[key] = CreateSetting($"v1line_{key}", name, true, v1Lines);
 
             UltraVoicePlugin.V2VoiceEnabled = CreateEnemyToggle("v2voice", "V2", true, enemies);
             UltraVoicePlugin.VirtueVoiceEnabled = CreateEnemyToggle("virtuevoice", "Virtue", true, enemies);
@@ -122,11 +136,11 @@ namespace UltraVoice.Utilities
 
         void BuildSubtitleColors()
         {
-            SettingGroup colors = UltraVoicePlugin.SubtitleColorsPanel;
+            ConfigPanel colors = UltraVoicePlugin.SubtitleColorsPanel;
 
-            UltraVoicePlugin.SubtitleColorsEnabled = CreateSetting("subtitlecolorsenabled", "Enable Subtitle Colors", "", true, colors);
+            UltraVoicePlugin.SubtitleColorsEnabled = CreateSetting("subtitlecolorsenabled", "Enable Subtitle Colors", true, colors);
 
-            SettingGroup perCharacter = CreateGroup("charsubtitlecolors", "Character Subtitle Colors", "", colors);
+            ConfigPanel perCharacter = CreatePanel(colors, "charsubtitlecolors", "Character Subtitle Colors");
             UltraVoicePlugin.CharacterSubtitleColorsPanel = perCharacter;
 
             (string key, string label)[] subtitleColorCharacters =
@@ -158,12 +172,12 @@ namespace UltraVoice.Utilities
             };
 
             foreach (var (key, label) in subtitleColorCharacters)
-                UltraVoicePlugin.SubtitleColorToggles[key] = CreateSetting($"subcolor_{key.ToLowerInvariant()}", label, "", true, perCharacter);
+                UltraVoicePlugin.SubtitleColorToggles[key] = CreateSetting($"subcolor_{key.ToLowerInvariant()}", label, true, perCharacter);
         }
 
         void BuildVoiceActors()
         {
-            SettingGroup actors = UltraVoicePlugin.ActorPanel;
+            ConfigPanel actors = UltraVoicePlugin.ActorPanel;
 
             UltraVoicePlugin.CerberusVoiceActorField = CreateActorSetting("cerbvoiceactor", "Cerberus", UltraVoicePlugin.CerberusVoiceActor.Mel, actors,
                 (UltraVoicePlugin.CerberusVoiceActor.Mel, "Mel"),
@@ -209,11 +223,11 @@ namespace UltraVoice.Utilities
                 (UltraVoicePlugin.PowerVoiceActor.Mel, "Mel (Fem)"),
                 (UltraVoicePlugin.PowerVoiceActor.NotoFem, "Noto (Fem)"));
 
-            SettingGroup powerPool = CreateGroup("powervoicepool", "Power Voice Pool", "", actors);
+            ConfigPanel powerPool = CreatePanel(actors, "powervoicepool", "Power Voice Pool");
             UltraVoicePlugin.PowerVoicePoolPanel = powerPool;
 
             foreach (string actor in UltraVoicePlugin.PowerVoiceOrder)
-                UltraVoicePlugin.PowerVoiceToggles[actor] = CreateSetting($"powervoice_{actor.ToLowerInvariant()}", UltraVoicePlugin.PowerVoiceNames[actor], "", true, powerPool);
+                UltraVoicePlugin.PowerVoiceToggles[actor] = CreateSetting($"powervoice_{actor.ToLowerInvariant()}", UltraVoicePlugin.PowerVoiceNames[actor], true, powerPool);
 
             UltraVoicePlugin.SentryVoiceActorField = CreateActorSetting("svoiceactor", "Sentry", UltraVoicePlugin.SentryVoiceActor.Goober, actors,
                 (UltraVoicePlugin.SentryVoiceActor.Noto, "Noto"),
@@ -233,7 +247,7 @@ namespace UltraVoice.Utilities
                 (UltraVoicePlugin.V1VoiceActor.Noto, "Noto (Fem)"),
                 (UltraVoicePlugin.V1VoiceActor.HashCap, "HashCap (Masc)"));
 
-            UltraVoicePlugin.V1VoiceActorField.OnValueChanged += _ => V1Character.ApplyVoiceActor();
+            UltraVoicePlugin.V1VoiceActorField.postValueChangeEvent += _ => V1Character.ApplyVoiceActor();
 
             UltraVoicePlugin.V2VoiceActorField = CreateActorSetting("v2voiceactor", "V2", UltraVoicePlugin.V2VoiceActor.Ruby, actors,
                 (UltraVoicePlugin.V2VoiceActor.Ruby, "Ruby (Fem)"),
@@ -246,19 +260,14 @@ namespace UltraVoice.Utilities
 
         void BuildVolumes()
         {
-            SettingGroup volumes = UltraVoicePlugin.VolumePanel;
+            ConfigPanel volumes = UltraVoicePlugin.VolumePanel;
 
-            UltraVoicePlugin.MasterVolumeField = CreateSetting("mastervolume", "Master Voice Volume", "", 100f, volumes);
-            UltraVoicePlugin.MasterVolumeField.Hints = new InterfaceHints
-            {
-                Range = new Tuple<float, float>(0f, 200f),
-                Decimals = 0
-            };
+            UltraVoicePlugin.MasterVolumeField = CreateSlider(volumes, "mastervolume", "Master Voice Volume", 100f, 0f, 200f, 0);
 
-            SettingGroup enemyVolumes = CreateGroup("enemyvolumes", "Enemy Volumes", "", volumes);
+            ConfigPanel enemyVolumes = CreatePanel(volumes, "enemyvolumes", "Enemy Volumes");
             UltraVoicePlugin.EnemyVolumePanel = enemyVolumes;
 
-            (string key, string displayName, Setting<bool> toggle)[] volumeEnemies =
+            (string key, string displayName, BoolField toggle)[] volumeEnemies =
             {
                 ("Cerberus", "Cerberus", UltraVoicePlugin.CerberusVoiceEnabled),
                 ("Earthmover", "Earthmover", UltraVoicePlugin.EarthmoverVoiceEnabled),
@@ -293,48 +302,45 @@ namespace UltraVoice.Utilities
 
             foreach (var (key, displayName, toggle) in volumeEnemies)
             {
-                Setting<float> slider = CreateSetting($"volume_{key.ToLowerInvariant()}", displayName, "", 100f, enemyVolumes);
+                FloatSliderField slider = CreateSlider(enemyVolumes, $"volume_{key.ToLowerInvariant()}", displayName, 100f, 0f, 200f, 0);
 
                 UltraVoicePlugin.EnemyVolumeFields[key] = slider;
 
-                slider.Hints = BuildVolumeHints(!toggle.Value);
-                toggle.OnValueChanged += enabled => slider.Hints = BuildVolumeHints(!enabled);
+                slider.hidden = !toggle.value;
+                toggle.postValueChangeEvent += enabled => slider.hidden = !enabled;
             }
 
             UltraVoicePlugin.PowerAltVolumeField = UltraVoicePlugin.EnemyVolumeFields["PowerAlt"];
         }
 
-        static InterfaceHints BuildVolumeHints(bool hidden)
+        static ConfigPanel CreatePanel(ConfigPanel parent, string guid, string name)
         {
-            return new InterfaceHints
-            {
-                Range = new Tuple<float, float>(0f, 200f),
-                Decimals = 0,
-                Hidden = hidden
-            };
+            return new ConfigPanel(parent, name, guid);
         }
 
-        Setting<bool> CreateEnemyToggle(string guid, string name, bool defaultValue, SettingGroup group)
+        static BoolField CreateSetting(string guid, string name, bool defaultValue, ConfigPanel panel)
         {
-            return CreateSetting(guid, name, "", defaultValue, group);
+            return new BoolField(panel, name, guid, defaultValue);
         }
 
-        Setting<T> CreateActorSetting<T>(string guid, string name, T defaultValue, SettingGroup group, params (T actor, string label)[] options) where T : struct
+        static BoolField CreateEnemyToggle(string guid, string name, bool defaultValue, ConfigPanel panel)
         {
-            Setting<T> setting = CreateSetting(guid, name, "", defaultValue, group);
+            return new BoolField(panel, name, guid, defaultValue);
+        }
 
-            Dictionary<string, string> substitutions = new Dictionary<string, string>();
+        static FloatSliderField CreateSlider(ConfigPanel panel, string guid, string name, float defaultValue, float min, float max, int decimals)
+        {
+            return new FloatSliderField(panel, name, guid, new Tuple<float, float>(min, max), defaultValue, decimals);
+        }
+
+        static EnumField<T> CreateActorSetting<T>(string guid, string name, T defaultValue, ConfigPanel panel, params (T actor, string label)[] options) where T : struct, Enum
+        {
+            EnumField<T> field = new EnumField<T>(panel, name, guid, defaultValue);
 
             foreach (var (actor, label) in options)
-                substitutions[actor.ToString()] = label;
+                field.SetEnumDisplayName(actor, label);
 
-            setting.Hints = new InterfaceHints
-            {
-                EnumSubstitutions = substitutions,
-                EnumPreferButtonGroup = true
-            };
-
-            return setting;
+            return field;
         }
     }
 }

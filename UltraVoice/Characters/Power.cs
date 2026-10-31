@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TMPro;
+using PluginConfig.API.Fields;
 using UltraVoice.Utilities;
 using UnityEngine;
 
@@ -52,7 +53,7 @@ namespace UltraVoice.Characters
 
         static int ForcedVoice()
         {
-            int index = System.Array.IndexOf(VoiceActors, UltraVoicePlugin.PowerVoiceActorField.Value.ToString());
+            int index = System.Array.IndexOf(VoiceActors, UltraVoicePlugin.PowerVoiceActorField.value.ToString());
 
             return index < 0 ? 0 : index + 1;
         }
@@ -61,13 +62,13 @@ namespace UltraVoice.Characters
         {
             string actor = voice == 0 ? "Vanilla" : VoiceActors[voice - 1];
 
-            return !UltraVoicePlugin.PowerVoiceToggles.TryGetValue(actor, out ThornClient.Core.ConfigurableElements.Setting<bool> field) || field.Value;
+            return !UltraVoicePlugin.PowerVoiceToggles.TryGetValue(actor, out BoolField field) || field.value;
         }
 
         static List<int> AllowedVoices()
         {
             if (UltraVoicePlugin.PowerVoiceActorField != null
-                && UltraVoicePlugin.PowerVoiceActorField.Value != UltraVoicePlugin.PowerVoiceActor.Random)
+                && UltraVoicePlugin.PowerVoiceActorField.value != UltraVoicePlugin.PowerVoiceActor.Random)
                 return new List<int> { ForcedVoice() };
 
             List<int> allowed = new List<int>();
@@ -218,7 +219,7 @@ namespace UltraVoice.Characters
         static AudioClip WithVolume(AudioClip alt)
         {
             float gain = UltraVoicePlugin.PowerAltVolumeField != null
-                ? UltraVoicePlugin.PowerAltVolumeField.Value / 100f
+                ? UltraVoicePlugin.PowerAltVolumeField.value / 100f
                 : 1f;
 
             if (Mathf.Approximately(gain, 1f))
@@ -271,7 +272,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Power __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             int id = __instance.GetInstanceID();
@@ -302,7 +303,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ref AudioClip __result)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             AudioClip alt = PowerCharacter.GetVoiceClip(PowerCharacter.CurrentVoice, __result);
@@ -317,7 +318,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(Power __instance, ref AudioClip clip)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             if (clip == null)
@@ -338,7 +339,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(ref AudioClip __result)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             AudioClip alt = PowerCharacter.GetVoiceClip(PowerCharacter.CurrentVoice, __result);
@@ -353,7 +354,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(PowerIntro __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             HashSet<int> used = PowerCharacter.ActiveVoices(0);
@@ -396,7 +397,7 @@ namespace UltraVoice.Characters
 
         static void Postfix(PowerIntro __instance)
         {
-            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.Value)
+            if (!UltraVoicePlugin.VoicesEnabled || !UltraVoicePlugin.PowerAltVoiceEnabled.value)
                 return;
 
             if (!__instance.TryGetComponent<AudioSource>(out AudioSource introSource) || !introSource.isPlaying)

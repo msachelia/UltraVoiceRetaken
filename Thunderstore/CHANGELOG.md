@@ -1,6 +1,24 @@
 # UltraVoice Retaken Changelog
 
 <details>
+  <summary>1.5.6</summary>
+
+- Came back to move the config to PluginConfigurator due to the recent controversies regarding end_4
+
+</details>
+
+---
+
+<details>
+  <summary>1.5.5</summary>
+
+- Marked the mods abandonment
+
+</details>
+
+---
+
+<details>
   <summary>1.5.4</summary>
 
 - Added compability for [The Timestopper](https://thunderstore.io/c/ultrakill/p/GalvinVoltag/The_Timestopper/) mod

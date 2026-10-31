@@ -110,7 +110,7 @@ namespace UltraVoice.Characters
 
         public static UltraVoicePlugin.FerrymanVoiceActor CurrentActor =>
             UltraVoicePlugin.FerrymanVoiceActorField != null
-                ? UltraVoicePlugin.FerrymanVoiceActorField.Value
+                ? UltraVoicePlugin.FerrymanVoiceActorField.value
                 : UltraVoicePlugin.FerrymanVoiceActor.Mel;
 
         public static AudioClip UseFerrymanClip(AudioClip melClip, AudioClip soilClip, AudioClip nickyClip)
@@ -232,7 +232,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Ferryman __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -289,7 +289,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(FerrymanFake __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             FerrymanCharacter.FerrymanCoinTossed = true;
 
@@ -307,7 +307,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Ferryman __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (ULTRAKILL.Cheats.BlindEnemies.Blind)
                 return;
@@ -334,7 +334,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Ferryman __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;
@@ -363,7 +363,7 @@ namespace UltraVoice.Characters
     {
         static void Prefix(Ferryman __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (FerrymanCharacter.IsAgonis(__instance))
                 return;
@@ -382,7 +382,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(Ferryman __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (FerrymanCharacter.IsAgonis(__instance))
                 VoiceManager.CreateVoiceSource(__instance, "Ferryman",
@@ -402,7 +402,7 @@ namespace UltraVoice.Characters
     {
         static void Postfix(FerrymanFake __instance)
         {
-            if (!UltraVoicePlugin.FerrymanVoiceEnabled.Value) return;
+            if (!UltraVoicePlugin.FerrymanVoiceEnabled.value) return;
 
             if (__instance == null)
                 return;

@@ -33,8 +33,8 @@
 		<Reference Include="BepInEx">
 			<HintPath>$(ULTRAKILLPath)BepInEx\core\BepInEx.dll</HintPath>
 		</Reference>
-		<Reference Include="ThornClient">
-		  <HintPath>$(ULTRAKILLPath)BepInEx\plugins\Thorn\ThornClient.dll</HintPath>
+		<Reference Include="PluginConfigurator">
+		  <HintPath>$(ULTRAKILLPath)BepInEx\plugins\PluginConfigurator\PluginConfigurator.dll</HintPath>
 		</Reference>
     <Reference Include="Notiffy">
       <HintPath>$(ULTRAKILLPath)BepInEx\plugins\Notiffy\Notiffy.dll</HintPath>

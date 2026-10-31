@@ -15,7 +15,7 @@ namespace UltraVoice.Patches
             {
                 if (__instance == null) return;
 
-                int max = (UltraVoicePlugin.SubtitleLimit != null) ? UltraVoicePlugin.SubtitleLimit.Value : 5;
+                int max = (UltraVoicePlugin.SubtitleLimit != null) ? UltraVoicePlugin.SubtitleLimit.value : 5;
                 Transform container = __instance.container;
                 if (container == null) return;
 
@@ -171,7 +171,7 @@ namespace UltraVoice.Patches
             while (true)
             {
                 int active = CountActiveSubtitles();
-                int max = (UltraVoicePlugin.SubtitleLimit != null) ? UltraVoicePlugin.SubtitleLimit.Value : 5;
+                int max = (UltraVoicePlugin.SubtitleLimit != null) ? UltraVoicePlugin.SubtitleLimit.value : 5;
                 if (active > max)
                 {
                     SubtitleLimitPatch.ReleaseAndDestroy(subtitle);
